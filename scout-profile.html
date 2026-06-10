@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Scout Profile</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; background: #f7f7f7; color: #111; }
+    .page { background: white; border: 2px solid #111; padding: 30px; }
+    .nav { border: 1px solid #111; padding: 12px; margin-bottom: 30px; display: flex; gap: 20px; }
+    .nav a { text-decoration: none; color: #111; padding: 8px 12px; }
+    .nav a.active { border: 1px solid #111; font-weight: bold; }
+    .grid { display: grid; gap: 20px; }
+    .columns-2 { grid-template-columns: 1fr 2fr; }
+    .columns-3 { grid-template-columns: repeat(3, 1fr); }
+    .box { border: 1px solid #111; padding: 15px; background: white; }
+    .button { border: 1px solid #111; padding: 7px 10px; display: inline-block; margin-right: 6px; text-decoration: none; color: #111; }
+    .stat { text-align: center; font-size: 18px; }
+    .stat strong { display: block; font-size: 28px; margin-top: 8px; }
+  </style>
+</head>
+
+<body>
+
+  <div class="nav">
+    <a href="index.html">System Overview</a>
+    <a href="scout-profile.html" class="active">Scout Profile</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="discover.html">Discover Athletes</a>
+    <a href="prospects.html">Prospects</a>
+    <a href="profile.html">Athlete Profile</a>
+    <a href="messages.html">Messages</a>
+  </div>
+
+<div class="page">
+  <h1>Scout Profile</h1>
+
+  <div class="box">
+    <h2>Profile Header</h2>
+    <p>Profile Photo | Scout Name | Organization | Role | Country</p>
+
+    <span class="button">Edit Profile</span>
+    <span class="button">Verification Status</span>
+    <span class="button">Account Settings</span>
+  </div>
+
+  <br>
+
+  <div class="grid columns-3">
+    <div class="box stat">Saved Prospects<strong>72</strong></div>
+    <div class="box stat">Active Discussions<strong>9</strong></div>
+    <div class="box stat">Completed Pipelines<strong>21</strong></div>
+  </div>
+
+  <br>
+
+  <div class="grid columns-2">
+    <div class="box">
+      <h2>Scout Information</h2>
+      <p><strong>Name:</strong> Scout Name</p>
+      <p><strong>Role:</strong> Academy Scout</p>
+      <p><strong>Organization:</strong> Toronto Academy</p>
+      <p><strong>Country:</strong> Canada</p>
+      <p><strong>Region Covered:</strong> Ontario / Canada</p>
+      <p><strong>Sports:</strong> Football / Soccer</p>
+      <p><strong>Age Groups:</strong> U16, U18, U21</p>
+    </div>
+
+    <div class="box">
+      <h2>Recruiting Preferences</h2>
+      <p><strong>Positions:</strong> Midfielders, Wingers, Centre Backs</p>
+      <p><strong>Competitive Level:</strong> Academy, Semi-Pro, University</p>
+      <p><strong>Target Countries:</strong> Canada, Spain, Turkey</p>
+      <p><strong>Key Metrics:</strong> Technical ability, mentality, potential, physical development</p>
+      <p><strong>Saved Searches:</strong> Canadian U18 Midfielders, Spanish U21 Wingers</p>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="grid columns-2">
+    <div class="box">
+      <h2>Verification</h2>
+      <p><strong>Status:</strong> Verified Scout</p>
+      <p><strong>Verification Type:</strong> Club / Academy Representative</p>
+      <p><strong>Verified Email:</strong> scout@organization.com</p>
+      <p><strong>Documents:</strong> Organization proof submitted</p>
+    </div>
+
+    <div class="box">
+      <h2>CRM Activity Summary</h2>
+      <p>12 athletes currently in Reviewing</p>
+      <p>8 athletes currently Contacted</p>
+      <p>5 athletes awaiting follow-up</p>
+      <p>3 athlete responses pending review</p>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="box">
+    <h2>Recent Scout Activity</h2>
+    <p>Added John Smith to Prospects</p>
+    <p>Created evaluation for Carlos Gomez</p>
+    <p>Requested match footage from Alex Brown</p>
+    <p>Moved David Lee to Active Discussion</p>
+  </div>
+</div>
+</body>
+</html>

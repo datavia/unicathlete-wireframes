@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Messages</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; background: #f7f7f7; color: #111; }
+    .page { background: white; border: 2px solid #111; padding: 30px; }
+    .nav { border: 1px solid #111; padding: 12px; margin-bottom: 30px; display: flex; gap: 20px; }
+    .nav a { text-decoration: none; color: #111; padding: 8px 12px; }
+    .nav a.active { border: 1px solid #111; font-weight: bold; }
+    .layout { display: grid; grid-template-columns: 1fr 3fr; gap: 20px; }
+    .box { border: 1px solid #111; padding: 15px; background: white; }
+    .conversation { border: 1px solid #111; padding: 10px; margin-bottom: 10px; }
+    .message { border: 1px solid #111; padding: 10px; margin: 10px 0; }
+    .input { border: 1px solid #111; padding: 15px; margin-top: 30px; }
+  </style>
+</head>
+
+<body>
+  <div class="nav">
+    <a href="index.html">System Overview</a>
+    <a href="scout-profile.html">Scout Profile</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="discover.html">Discover Athletes</a>
+    <a href="prospects.html">Prospects</a>
+    <a href="profile.html">Athlete Profile</a>
+    <a href="messages.html" class="active">Messages</a>
+  </div>
+  
+<div class="page">
+  <h1>Messages</h1>
+
+  <div class="layout">
+    <div class="box">
+      <h2>Conversations</h2>
+      <div class="conversation">John Smith</div>
+      <div class="conversation">Alex Brown</div>
+      <div class="conversation">Carlos Gomez</div>
+      <div class="conversation">David Lee</div>
+    </div>
+
+    <div class="box">
+      <h2>John Smith</h2>
+
+      <div class="message">
+        <strong>Scout:</strong> Hello John, we reviewed your profile and would like more match footage.
+      </div>
+
+      <div class="message">
+        <strong>System:</strong> Information request sent — Match Footage.
+      </div>
+
+      <div class="message">
+        <strong>Athlete:</strong> Thank you. I uploaded the requested video.
+      </div>
+
+      <div class="message">
+        <strong>System:</strong> Athlete uploaded new highlight video.
+      </div>
+
+      <div class="input">Type message...</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

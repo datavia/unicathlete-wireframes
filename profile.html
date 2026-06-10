@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Athlete Profile</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; background: #f7f7f7; color: #111; }
+    .page { background: white; border: 2px solid #111; padding: 30px; }
+    .nav { border: 1px solid #111; padding: 12px; margin-bottom: 30px; display: flex; gap: 20px; }
+    .nav a { text-decoration: none; color: #111; padding: 8px 12px; }
+    .nav a.active { border: 1px solid #111; font-weight: bold; }
+    .box { border: 1px solid #111; padding: 15px; background: white; }
+    .button { border: 1px solid #111; padding: 7px 10px; display: inline-block; margin-right: 6px; }
+    .profile-layout { display: grid; grid-template-columns: 1fr 2fr 1.2fr; gap: 20px; margin-top: 20px; }
+    .profile-column { border: 1px solid #111; padding: 15px; background: white; min-height: 650px; }
+    .card { border: 1px solid #111; padding: 10px; margin: 10px 0; }
+  </style>
+</head>
+
+<body>
+<div class="nav">
+    <a href="index.html">System Overview</a>
+    <a href="scout-profile.html">Scout Profile</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="discover.html">Discover Athletes</a>
+    <a href="prospects.html">Prospects</a>
+    <a href="profile.html" class="active">Athlete Profile</a>
+    <a href="messages.html">Messages</a>
+</div>
+
+<div class="page">
+  <h1>Athlete Profile / Scout View</h1>
+
+  <div class="box">
+    <h2>John Smith</h2>
+    <p>Midfielder | 17 | Toronto Academy | Canada</p>
+    <span class="button">Add To Prospects</span>
+    <span class="button">Watch Athlete</span>
+    <span class="button">Message</span>
+    <span class="button">Compare</span>
+  </div>
+
+  <div class="profile-layout">
+    <div class="profile-column">
+      <h2>Profile Info</h2>
+      <p>Position: Midfielder</p>
+      <p>Age: 17</p>
+      <p>Country: Canada</p>
+      <p>Club: Toronto Academy</p>
+
+      <hr>
+
+      <h2>Physical Metrics</h2>
+      <p>Height: 183 cm</p>
+      <p>Weight: 76 kg</p>
+      <p>Sprint: 5.1 sec</p>
+      <p>Vertical Jump: 72 cm</p>
+
+      <hr>
+
+      <h2>Achievements</h2>
+      <p>Ontario U18 Champion</p>
+      <p>Academy Player of the Year</p>
+    </div>
+
+    <div class="profile-column">
+      <h2>Media</h2>
+      <div class="card">Full Match Video</div>
+      <div class="card">Highlight Video 1</div>
+      <div class="card">Highlight Video 2</div>
+
+      <hr>
+
+      <h2>Statistics</h2>
+      <p>Games Played: 28</p>
+      <p>Goals: 14</p>
+      <p>Assists: 9</p>
+      <p>Minutes Played: 2140</p>
+
+      <hr>
+
+      <h2>Athletic History</h2>
+      <p>2025 - Present | Toronto Academy</p>
+      <p>2023 - 2025 | Mississauga Academy</p>
+
+      <hr>
+
+      <h2>Documents</h2>
+      <div class="card">Academic Transcript</div>
+      <div class="card">Medical Clearance</div>
+    </div>
+
+    <div class="profile-column">
+      <h2>Scout Workspace</h2>
+      <p>Status: Reviewing</p>
+      <p>Priority: High</p>
+      <p>Watching: Yes</p>
+
+      <hr>
+
+      <h2>Evaluation</h2>
+      <p>Technical: 8</p>
+      <p>Physical: 7</p>
+      <p>Tactical: 8</p>
+      <p>Mentality: 9</p>
+      <p>Potential: 8</p>
+
+      <hr>
+
+      <h2>Notes</h2>
+      <div class="card">Strong technical player. Needs physical development.</div>
+
+      <hr>
+
+      <h2>Requests</h2>
+      <p>Match Footage — Completed</p>
+      <p>Medical Info — Pending</p>
+
+      <hr>
+
+      <h2>Timeline</h2>
+      <p>Added to Prospects</p>
+      <p>Evaluation Submitted</p>
+      <p>Information Requested</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

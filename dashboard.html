@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+
+  <style>
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background: #f7f7f7;
+      color: #111;
+    }
+
+    .page {
+      background: white;
+      border: 2px solid #111;
+      padding: 30px;
+    }
+
+    .nav {
+      border: 1px solid #111;
+      padding: 12px;
+      margin-bottom: 30px;
+
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #111;
+      padding: 8px 12px;
+    }
+
+    .nav a.active {
+      border: 1px solid #111;
+      font-weight: bold;
+    }
+
+    .grid {
+      display: grid;
+      gap: 15px;
+    }
+
+    .pipeline-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 15px;
+    }
+
+    .box {
+      border: 1px solid #111;
+      padding: 15px;
+      background: white;
+    }
+
+    .metric {
+      text-align: center;
+    }
+
+    .metric-number {
+      font-size: 28px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+  </style>
+
+</head>
+
+<body>
+  <div class="nav">
+    <a href="index.html">System Overview</a>
+    <a href="scout-profile.html">Scout Profile</a>
+    <a href="dashboard.html" class="active">Dashboard</a>
+    <a href="discover.html">Discover Athletes</a>
+    <a href="prospects.html">Prospects</a>
+    <a href="profile.html">Athlete Profile</a>
+    <a href="messages.html">Messages</a>
+  </div>
+
+<div class="page">
+
+  <h1>Dashboard</h1>
+
+  <h2>Pipeline Overview</h2>
+
+  <div class="pipeline-grid">
+
+    <div class="box metric">
+      <strong>New</strong>
+      <div class="metric-number">32</div>
+    </div>
+
+    <div class="box metric">
+      <strong>Reviewing</strong>
+      <div class="metric-number">14</div>
+    </div>
+
+    <div class="box metric">
+      <strong>Contacted</strong>
+      <div class="metric-number">8</div>
+    </div>
+
+    <div class="box metric">
+      <strong>Discussion</strong>
+      <div class="metric-number">5</div>
+    </div>
+
+    <div class="box metric">
+      <strong>Decision</strong>
+      <div class="metric-number">17</div>
+    </div>
+
+  </div>
+
+  <br>
+
+  <div class="grid">
+
+    <div class="box">
+
+      <h2>Pending Actions</h2>
+
+      <p>Review athlete response — Due Today</p>
+
+      <p>Watch new highlight video — Overdue</p>
+
+      <p>Follow up with athlete — 2 Days Remaining</p>
+
+      <p>Evaluate newly saved athlete — Due Tomorrow</p>
+
+    </div>
+
+    <div class="box">
+
+      <h2>Recent Activity</h2>
+
+      <p>John Smith uploaded a new highlight video</p>
+
+      <p>Alex Brown responded to an information request</p>
+
+      <p>David Lee updated physical metrics</p>
+
+      <p>Carlos Gomez completed requested documents</p>
+
+    </div>
+
+    <div class="box">
+
+      <h2>New Talent Matches</h2>
+
+      <p>5 new midfielders match your saved search</p>
+
+      <p>3 new defenders available in Spain</p>
+
+      <p>2 new goalkeepers added this week</p>
+
+      <p>4 athletes completed profile verification</p>
+
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

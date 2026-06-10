@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>UnicAthlete Scouting CRM Wireframes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      color: #111;
+      background: #f7f7f7;
+      line-height: 1.5;
+    }
+
+    h1, h2, h3 {
+      margin-top: 0;
+    }
+
+    .intro {
+      background: white;
+      border: 2px solid #111;
+      padding: 30px;
+      margin-bottom: 40px;
+    }
+
+    .page {
+      background: white;
+      border: 2px solid #111;
+      padding: 30px;
+      margin-bottom: 50px;
+      min-height: 650px;
+    }
+
+    .description {
+      border-left: 4px solid #111;
+      padding-left: 15px;
+      margin-bottom: 25px;
+      max-width: 900px;
+    }
+
+    .nav {
+      border: 1px solid #111;
+      padding: 12px;
+      margin: 20px 0;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .grid {
+      display: grid;
+      gap: 15px;
+    }
+
+    .columns-2 {
+      grid-template-columns: 1fr 3fr;
+    }
+
+    .columns-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .box {
+      border: 1px solid #111;
+      padding: 15px;
+      min-height: 80px;
+      background: #fff;
+    }
+
+    .metric-box {
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .metric-box span {
+      display: block;
+      font-size: 28px;
+      margin-top: 8px;
+    }
+
+    .pipeline {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .pipeline-column {
+      border: 1px solid #111;
+      padding: 12px;
+      min-height: 300px;
+    }
+
+    .athlete-card {
+      border: 1px solid #111;
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+
+    .button {
+      border: 1px solid #111;
+      padding: 6px 10px;
+      display: inline-block;
+      margin-top: 8px;
+      margin-right: 5px;
+      font-size: 13px;
+    }
+
+    .small-text {
+      font-size: 14px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="intro">
+  <h1>UnicAthlete Scouting CRM</h1>
+
+  <p><strong>Purpose:</strong> A centralized workspace where scouts can discover, evaluate, track, contact, compare, and manage athletes through a structured recruiting pipeline.</p>
+
+  <p><strong>Core Workflow:</strong> Discover → Save Prospect → Evaluate → Contact → Track Progress → Decision</p>
+
+  <div class="nav">
+    My Profile | Dashboard | Discover Athletes | Prospects | Messages
+  </div>
+</div>
+
+<div class="page">
+  <h2>1. Dashboard</h2>
+
+  <div class="description">
+    <p>The Dashboard is a visibility page. It shows what needs the scout's attention, including pipeline status, pending actions, recent activity, and athlete updates. No major work happens here; it helps the scout quickly understand what to review next.</p>
+  </div>
+
+  <h3>Pipeline Overview</h3>
+
+  <div class="grid columns-3">
+    <div class="box metric-box">New<span>32</span></div>
+    <div class="box metric-box">Reviewing<span>14</span></div>
+    <div class="box metric-box">Contacted<span>8</span></div>
+    <div class="box metric-box">Active Discussion<span>5</span></div>
+    <div class="box metric-box">Trial Invited<span>3</span></div>
+    <div class="box metric-box">Decision Made<span>17</span></div>
+  </div>
+
+  <br>
+
+  <div class="box">
+    <h3>Pending Actions</h3>
+    <p>Review athlete response — Due today</p>
+    <p>Watch new highlight video — Overdue</p>
+    <p>Follow up with athlete — In 2 days</p>
+  </div>
+
+  <br>
+
+  <div class="box">
+    <h3>Recent Activity</h3>
+    <p>Athlete uploaded new video</p>
+    <p>Athlete responded to information request</p>
+    <p>Athlete updated profile statistics</p>
+  </div>
+</div>
+
+<div class="page">
+  <h2>2. Discover Athletes</h2>
+
+  <div class="description">
+    <p>Discover Athletes is the scout's search area. Scouts can filter athletes by sport, position, age, country, competitive level, physical metrics, statistics, video availability, and profile verification.</p>
+  </div>
+
+  <div class="grid columns-2">
+    <div class="box">
+      <h3>Filters</h3>
+      <p>Sport</p>
+      <p>Position</p>
+      <p>Age</p>
+      <p>Country</p>
+      <p>Competitive Level</p>
+      <p>Physical Metrics</p>
+      <p>Statistics</p>
+      <p>Has Video</p>
+      <p>Verified Profile</p>
+    </div>
+
+    <div class="box">
+      <h3>Search Results</h3>
+
+      <div class="athlete-card">
+        <strong>Athlete Name</strong>
+        <p>Position | Age | Country | Club</p>
+        <span class="button">View Profile</span>
+        <span class="button">Add To Prospects</span>
+        <span class="button">Watch</span>
+      </div>
+
+      <div class="athlete-card">Athlete Card</div>
+      <div class="athlete-card">Athlete Card</div>
+      <div class="athlete-card">Athlete Card</div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <h2>3. Prospects / CRM Workspace</h2>
+
+  <div class="description">
+    <p>Prospects is the main CRM workspace. This is where scouts manage saved athletes, organize them into groups, prioritize prospects, track pipeline status, and access actions such as evaluation, messaging, information requests, comparison, and archiving.</p>
+  </div>
+
+  <div class="grid columns-2">
+    <div class="box">
+      <h3>Groups</h3>
+      <p>All Prospects</p>
+      <p>High Priority</p>
+      <p>Goalkeepers</p>
+      <p>U18 Prospects</p>
+      <p>Trial Candidates</p>
+      <p>Archived</p>
+      <br>
+      <span class="button">+ Create Group</span>
+    </div>
+
+    <div>
+      <h3>Recruiting Pipeline</h3>
+
+      <div class="pipeline">
+        <div class="pipeline-column">
+          <strong>New</strong>
+          <p class="small-text">Saved, not reviewed yet.</p>
+          <div class="athlete-card">Athlete</div>
+          <div class="athlete-card">Athlete</div>
+        </div>
+
+        <div class="pipeline-column">
+          <strong>Reviewing</strong>
+          <p class="small-text">Scout is evaluating.</p>
+          <div class="athlete-card">Athlete</div>
+        </div>
+
+        <div class="pipeline-column">
+          <strong>Contacted</strong>
+          <p class="small-text">Message/request sent.</p>
+          <div class="athlete-card">Athlete</div>
+        </div>
+
+        <div class="pipeline-column">
+          <strong>Discussion</strong>
+          <p class="small-text">Athlete responded.</p>
+          <div class="athlete-card">Athlete</div>
+        </div>
+
+        <div class="pipeline-column">
+          <strong>Decision</strong>
+          <p class="small-text">Signed, rejected, or archived.</p>
+          <div class="athlete-card">Athlete</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <h2>4. Athlete CRM Record</h2>
+
+  <div class="description">
+    <p>The Athlete CRM Record stores the full recruiting history for one athlete, including profile summary, pipeline status, priority, evaluations, information requests, notes, and activity timeline.</p>
+  </div>
+
+  <div class="box">
+    <h3>Athlete Summary</h3>
+    <p>Name | Position | Club | Status | Priority</p>
+    <span class="button">Evaluate</span>
+    <span class="button">Request Info</span>
+    <span class="button">Message</span>
+    <span class="button">Compare</span>
+    <span class="button">Archive</span>
+  </div>
+
+  <br>
+
+  <div class="grid columns-2">
+    <div class="box">
+      <h3>Evaluation</h3>
+      <p>Technical Ability: 8</p>
+      <p>Physical Ability: 7</p>
+      <p>Tactical Understanding: 8</p>
+      <p>Mentality: 9</p>
+      <p>Potential: 8</p>
+      <p>Overall Score: 8.0</p>
+    </div>
+
+    <div class="box">
+      <h3>Information Requests</h3>
+      <p>Match Footage — Completed</p>
+      <p>Medical Information — Pending</p>
+      <p>Academic Records — Completed</p>
+      <p>Custom Form — Not Sent</p>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="box">
+    <h3>Activity Timeline</h3>
+    <p>Saved to Prospects</p>
+    <p>Evaluation submitted</p>
+    <p>Information requested</p>
+    <p>Athlete responded</p>
+    <p>Video uploaded</p>
+  </div>
+</div>
+
+<div class="page">
+  <h2>5. Messages</h2>
+
+  <div class="description">
+    <p>Messages stores communication history with each athlete. Each chat includes direct messages and system activity such as information requests, athlete responses, profile updates, and recruiting actions.</p>
+  </div>
+
+  <div class="grid columns-2">
+    <div class="box">
+      <h3>Conversations</h3>
+      <p>Athlete A</p>
+      <p>Athlete B</p>
+      <p>Athlete C</p>
+      <p>Athlete D</p>
+    </div>
+
+    <div class="box">
+      <h3>Chat Window</h3>
+      <p>Message history</p>
+      <p>System notification: Information request submitted</p>
+      <p>System notification: Athlete uploaded new video</p>
+      <br>
+      <div class="box">Type message...</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

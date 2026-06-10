@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Discover Athletes</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; background: #f7f7f7; color: #111; }
+    .page { background: white; border: 2px solid #111; padding: 30px; }
+    .nav { border: 1px solid #111; padding: 12px; margin-bottom: 30px; display: flex; gap: 20px; }
+    .nav a { text-decoration: none; color: #111; padding: 8px 12px; }
+    .nav a.active { border: 1px solid #111; font-weight: bold; }
+    .layout { display: grid; grid-template-columns: 1fr 3fr; gap: 20px; }
+    .box { border: 1px solid #111; padding: 15px; background: white; }
+    .athlete-card { border: 1px solid #111; padding: 15px; margin-bottom: 15px; }
+    .button { border: 1px solid #111; padding: 7px 10px; display: inline-block; margin-right: 6px; text-decoration: none; color: #111; }
+  </style>
+</head>
+
+<body>
+  <div class="nav">
+    <a href="index.html">System Overview</a>
+    <a href="scout-profile.html">Scout Profile</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="discover.html" class="active">Discover Athletes</a>
+    <a href="prospects.html">Prospects</a>
+    <a href="profile.html">Athlete Profile</a>
+    <a href="messages.html">Messages</a>
+  </div>
+<div class="page">
+  <h1>Discover Athletes</h1>
+
+  <div class="layout">
+    <div class="box">
+      <h2>Filters</h2>
+      <p>Sport</p>
+      <p>Position</p>
+      <p>Age</p>
+      <p>Country</p>
+      <p>Competitive Level</p>
+      <p>Height / Weight</p>
+      <p>Statistics</p>
+      <p>Has Video</p>
+      <p>Verified Profile</p>
+    </div>
+
+    <div class="box">
+      <h2>Search Results</h2>
+
+      <div class="athlete-card">
+        <h3>John Smith</h3>
+        <p>Midfielder | 17 | Canada | Toronto Academy</p>
+        <a class="button" href="profile.html">Open Profile</a>
+        <span class="button">Add To Prospects</span>
+        <span class="button">Watch</span>
+      </div>
+
+      <div class="athlete-card">
+        <h3>Alex Brown</h3>
+        <p>Forward | 18 | Spain | Madrid Youth Club</p>
+        <a class="button" href="profile.html">Open Profile</a>
+        <span class="button">Add To Prospects</span>
+        <span class="button">Watch</span>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Prospects</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; background: #f7f7f7; color: #111; }
+    .page { background: white; border: 2px solid #111; padding: 30px; }
+    .nav { border: 1px solid #111; padding: 12px; margin-bottom: 30px; display: flex; gap: 20px; }
+    .nav a { text-decoration: none; color: #111; padding: 8px 12px; }
+    .nav a.active { border: 1px solid #111; font-weight: bold; }
+    .layout { display: grid; grid-template-columns: 1fr 4fr; gap: 20px; }
+    .box { border: 1px solid #111; padding: 15px; background: white; }
+    .pipeline { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .column { border: 1px solid #111; padding: 12px; min-height: 400px; }
+    .card { border: 1px solid #111; padding: 10px; margin: 10px 0; }
+  </style>
+</head>
+
+<body>
+  <div class="nav">
+    <a href="index.html">System Overview</a>
+    <a href="scout-profile.html">Scout Profile</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="discover.html">Discover Athletes</a>
+    <a href="prospects.html" class="active">Prospects</a>
+    <a href="profile.html">Athlete Profile</a>
+    <a href="messages.html">Messages</a>
+  </div>
+<div class="page">
+  <h1>Prospects / CRM Workspace</h1>
+
+  <div class="layout">
+    <div class="box">
+      <h2>Groups</h2>
+      <p>All Prospects</p>
+      <p>High Priority</p>
+      <p>Goalkeepers</p>
+      <p>U18 Prospects</p>
+      <p>Trial Candidates</p>
+      <p>Archived</p>
+      <hr>
+      <p>+ Create Group</p>
+    </div>
+
+    <div class="pipeline">
+      <div class="column">
+        <h3>New</h3>
+        <div class="card">John Smith</div>
+        <div class="card">Alex Brown</div>
+      </div>
+
+      <div class="column">
+        <h3>Reviewing</h3>
+        <div class="card">Carlos Gomez</div>
+      </div>
+
+      <div class="column">
+        <h3>Contacted</h3>
+        <div class="card">David Lee</div>
+      </div>
+
+      <div class="column">
+        <h3>Discussion</h3>
+        <div class="card">Mike Johnson</div>
+      </div>
+
+      <div class="column">
+        <h3>Decision</h3>
+        <div class="card">Archived Athlete</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
