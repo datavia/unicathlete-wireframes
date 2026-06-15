@@ -143,6 +143,95 @@
     .tag-orange { background: var(--orange-light); color: var(--orange); }
     .tag-purple { background: var(--purple-light); color: var(--purple); }
 
+
+    .requests-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .request-card {
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      padding: 14px;
+      background: #f9fafb;
+    }
+
+    .request-card.completed {
+      background: var(--green-light);
+      border-color: #bbf7d0;
+    }
+
+    .request-card.pending {
+      background: var(--orange-light);
+      border-color: #fed7aa;
+    }
+
+    .request-title {
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .request-meta {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+      margin-bottom: 10px;
+    }
+
+    .request-status {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 5px 8px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+
+    .status-pending {
+      background: #fed7aa;
+      color: var(--orange);
+    }
+
+    .status-completed {
+      background: #bbf7d0;
+      color: var(--green);
+    }
+
+    .request-action {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--navy);
+      border-radius: 9px;
+      padding: 9px 10px;
+      font-size: 13px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .request-action.primary {
+      background: var(--blue);
+      color: white;
+      border-color: var(--blue);
+    }
+
+    .new-request-box {
+      border: 1px dashed #bfdbfe;
+      background: var(--blue-light);
+      border-radius: 13px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .new-request-box p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
     @media (max-width: 1100px) {
       .nav { overflow-x: auto; padding: 14px 18px; }
       .page-title { flex-direction: column; align-items: flex-start; }
@@ -151,7 +240,7 @@
 
     .layout {
       display: grid;
-      grid-template-columns: 320px 1fr;
+      grid-template-columns: 300px 1fr 320px;
       gap: 20px;
       align-items: stretch;
       min-height: 680px;
@@ -280,6 +369,95 @@
       font-size: 14px;
     }
 
+
+    .requests-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .request-card {
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      padding: 14px;
+      background: #f9fafb;
+    }
+
+    .request-card.completed {
+      background: var(--green-light);
+      border-color: #bbf7d0;
+    }
+
+    .request-card.pending {
+      background: var(--orange-light);
+      border-color: #fed7aa;
+    }
+
+    .request-title {
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .request-meta {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+      margin-bottom: 10px;
+    }
+
+    .request-status {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 5px 8px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+
+    .status-pending {
+      background: #fed7aa;
+      color: var(--orange);
+    }
+
+    .status-completed {
+      background: #bbf7d0;
+      color: var(--green);
+    }
+
+    .request-action {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--navy);
+      border-radius: 9px;
+      padding: 9px 10px;
+      font-size: 13px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .request-action.primary {
+      background: var(--blue);
+      color: white;
+      border-color: var(--blue);
+    }
+
+    .new-request-box {
+      border: 1px dashed #bfdbfe;
+      background: var(--blue-light);
+      border-radius: 13px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .new-request-box p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
     @media (max-width: 1100px) {
       .layout { grid-template-columns: 1fr; }
       .message { max-width: 100%; }
@@ -377,6 +555,41 @@
         <div class="input-area">
           <div class="input">Type message...</div>
           <span class="button btn-primary">Send</span>
+        </div>
+      </div>
+
+      <div class="card requests-panel">
+        <div>
+          <h2 class="section-title">Request Management</h2>
+          <p style="margin: -6px 0 14px; color: var(--muted); font-size: 14px;">
+            Track structured information requests for this athlete.
+          </p>
+        </div>
+
+        <div class="request-card pending">
+          <div class="request-title">Medical Information</div>
+          <span class="request-status status-pending">Pending</span>
+          <div class="request-meta">
+            Sent: Jun 14, 2026<br>
+            Deadline: Jun 20, 2026<br>
+            Waiting for athlete response
+          </div>
+          <div class="request-action">View Request</div>
+        </div>
+
+        <div class="request-card completed">
+          <div class="request-title">Match Footage</div>
+          <span class="request-status status-completed">Completed</span>
+          <div class="request-meta">
+            Submitted: Jun 15, 2026<br>
+            Athlete uploaded new highlight video
+          </div>
+          <div class="request-action primary">Review Submission</div>
+        </div>
+
+        <div class="new-request-box">
+          <p>Create a structured request for documents, video, statistics, or additional recruiting details.</p>
+          <div class="request-action primary">+ New Request</div>
         </div>
       </div>
     </div>

@@ -151,6 +151,10 @@
       font-size: 14px;
       font-weight: 600;
       cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .btn-primary {
@@ -472,6 +476,16 @@
       line-height: 1;
     }
 
+    .workspace-badge {
+        margin-left: auto;
+        background: #dbeafe;
+        color: #2563eb;
+        padding: 3px 8px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
     @media (max-width: 1100px) {
       .profile-layout { grid-template-columns: 1fr; }
       .hero { flex-direction: column; align-items: flex-start; }
@@ -480,6 +494,32 @@
     }
   </style>
 </head>
+
+<script>
+function toggleProspect(btn) {
+    if (btn.innerText === "Add to Prospects") {
+        btn.innerText = "✓ In Prospects";
+        btn.style.background = "#16a34a";
+    } else {
+        btn.innerText = "Add to Prospects";
+        btn.style.background = "#2563eb";
+    }
+}
+</script>
+
+<script>
+function toggleWatch(btn) {
+    if (btn.innerText === "Watch") {
+        btn.innerText = "★ Watching";
+        btn.style.background = "#fef3c7";
+        btn.style.borderColor = "#f59e0b";
+    } else {
+        btn.innerText = "Watch";
+        btn.style.background = "white";
+        btn.style.borderColor = "#d1d5db";
+    }
+}
+</script>
 
 <body>
   <div class="nav">
@@ -513,10 +553,17 @@
       </div>
 
       <div class="actions">
-        <button class="button btn-primary">Add to Prospects</button>
-        <button class="button btn-secondary">Message</button>
-        <button class="button btn-outline">Watch</button>
-        <button class="button btn-outline">Compare</button>
+        <button
+          class="button btn-primary"
+          onclick="toggleProspect(this)">
+          Add to Prospects
+        </button>
+        <a href="messages.html" class="button btn-secondary">Message</a>
+        <button
+            class="button btn-outline"
+            onclick="toggleWatch(this)">
+            Watch
+        </button>
       </div>
     </div>
 
@@ -606,10 +653,18 @@
             Open Evaluation
           </a>
 
-          <button class="workspace-btn workspace-btn-secondary">
-            <span class="workspace-btn-icon">＋</span>
+          <a href="messages.html?tab=requests"
+            class="workspace-btn workspace-btn-secondary">
+              <span class="workspace-btn-icon">📋</span>
+              Request History
+              <span class="workspace-badge">4</span>
+          </a>
+
+          <a href="requests.html"
+             class="workspace-btn workspace-btn-secondary">
+            <span calss=""workspace-btn-icon">+</span>
             Request Information
-          </button>
+          </a>
         </div>
 
         <div class="status-card">
