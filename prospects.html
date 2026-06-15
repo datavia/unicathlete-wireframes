@@ -129,6 +129,73 @@
       color: var(--navy);
     }
 
+
+    a {
+      text-decoration: none;
+    }
+
+    .button,
+    .group,
+    .create-group,
+    .prospect-name,
+    .small-action,
+    .menu-dot {
+      cursor: pointer;
+    }
+
+    .button {
+      text-decoration: none;
+    }
+
+    .group {
+      text-decoration: none;
+    }
+
+    .prospect-name {
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .prospect-name:hover {
+      color: var(--blue);
+    }
+
+    .small-action {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.15s ease;
+    }
+
+    .small-action:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px rgba(15, 23, 42, 0.08);
+    }
+
+    .menu-dot {
+      border: none;
+      background: transparent;
+      padding: 0 4px;
+      color: var(--muted);
+      font-weight: 800;
+      line-height: 1;
+      font-size: 14px;
+    }
+
+    .menu-dot:hover {
+      color: var(--blue);
+    }
+
+    .search-box {
+      outline: none;
+    }
+
+    .search-box:focus {
+      border-color: #93c5fd;
+      background: white;
+    }
+
     @media (max-width: 1100px) {
       .nav { overflow-x: auto; padding: 14px 18px; }
       .page-title { flex-direction: column; align-items: flex-start; }
@@ -360,6 +427,13 @@
       border-color: var(--blue);
     }
 
+    .action-btn {
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     @media (max-width: 1100px) {
       .layout { grid-template-columns: 1fr; }
       .sidebar { position: static; }
@@ -386,7 +460,7 @@
         <h1>Prospects / Talent Pool</h1>
         <p>CRM workspace for saved athletes, scouting groups, and recruiting pipeline stages.</p>
       </div>
-      <span class="button btn-primary">+ Create Group</span>
+      <a href="#" class="button btn-primary">+ Create Group</a>
     </div>
 
     <div class="layout">
@@ -394,16 +468,16 @@
         <h2>Talent Groups</h2>
 
         <div class="group-list">
-          <div class="group active"><span>All Prospects</span><span class="group-count">24</span></div>
-          <div class="group"><span>High Priority</span><span class="group-count">7</span></div>
-          <div class="group"><span>Goalkeepers</span><span class="group-count">4</span></div>
-          <div class="group"><span>U18 Prospects</span><span class="group-count">9</span></div>
-          <div class="group"><span>Trial Candidates</span><span class="group-count">3</span></div>
-          <div class="group"><span>Archived</span><span class="group-count">12</span></div>
+          <a href="#" class="group active"><span>All Prospects</span><span class="group-count">24</span></a>
+          <a href="#" class="group"><span>High Priority</span><span class="group-count">7</span></a>
+          <a href="#" class="group"><span>Goalkeepers</span><span class="group-count">4</span></a>
+          <a href="#" class="group"><span>U18 Prospects</span><span class="group-count">9</span></a>
+          <a href="#" class="group"><span>Trial Candidates</span><span class="group-count">3</span></a>
+          <a href="#" class="group"><span>Archived</span><span class="group-count">12</span></a>
         </div>
 
         <div class="sidebar-divider"></div>
-        <div class="create-group">+ Create Custom Group</div>
+        <a href="#" class="create-group">+ Create Custom Group</a>
       </div>
 
       <div class="pipeline-area">
@@ -413,25 +487,23 @@
             <p style="margin: 0; color: var(--muted); font-size: 14px;">Move saved athletes through scouting and recruiting stages.</p>
           </div>
 
-          <div class="search-box">Search saved athletes...</div>
+          <input class="search-box" placeholder="Search saved athletes...">
         </div>
 
         <div class="pipeline">
           <div class="column">
             <div class="column-header new-header">New <span>2</span></div>
 
-            <div class="prospect-card">
-              <div class="prospect-top"><div class="prospect-name">John Smith</div><div class="menu-dot">•••</div></div>
+            <div class="prospect-card" onclick=""window.location.href='profile.html'>
+              <div class="prospect-top"><a href="profile.html" class="prospect-name">John Smith</a><button class="menu-dot">•••</button></div>
               <div class="prospect-meta">Midfielder • 17 • Canada<br>Toronto Academy</div>
               <div class="tag-row"><span class="tag tag-priority">High Priority</span><span class="tag tag-video">Video</span></div>
-              <div class="card-footer"><div class="small-action primary">View</div><div class="small-action">Move</div></div>
             </div>
 
             <div class="prospect-card">
-              <div class="prospect-top"><div class="prospect-name">Alex Brown</div><div class="menu-dot">•••</div></div>
+              <div class="prospect-top"><a href="profile.html" class="prospect-name">Alex Brown</a><button class="menu-dot">•••</button></div>
               <div class="prospect-meta">Goalkeeper • 18 • Canada<br>Mississauga Academy</div>
               <div class="tag-row"><span class="tag tag-video">Video</span></div>
-              <div class="card-footer"><div class="small-action primary">View</div><div class="small-action">Move</div></div>
             </div>
           </div>
 
@@ -439,10 +511,9 @@
             <div class="column-header reviewing-header">Reviewing <span>1</span></div>
 
             <div class="prospect-card">
-              <div class="prospect-top"><div class="prospect-name">Carlos Gomez</div><div class="menu-dot">•••</div></div>
+              <div class="prospect-top"><a href="profile.html" class="prospect-name">Carlos Gomez</a><button class="menu-dot">•••</button></div>
               <div class="prospect-meta">Winger • 17 • Spain<br>Valencia Youth</div>
               <div class="tag-row"><span class="tag tag-priority">High Priority</span></div>
-              <div class="card-footer"><div class="small-action primary">Evaluate</div><div class="small-action">Move</div></div>
             </div>
           </div>
 
@@ -450,10 +521,9 @@
             <div class="column-header contacted-header">Contacted <span>1</span></div>
 
             <div class="prospect-card">
-              <div class="prospect-top"><div class="prospect-name">David Lee</div><div class="menu-dot">•••</div></div>
+              <div class="prospect-top"><a href="profile.html" class="prospect-name">David Lee</a><button class="menu-dot">•••</button></div>
               <div class="prospect-meta">Centre Back • 18 • Canada<br>North York Academy</div>
               <div class="tag-row"><span class="tag tag-request">Info Requested</span></div>
-              <div class="card-footer"><div class="small-action primary">Message</div><div class="small-action">Move</div></div>
             </div>
           </div>
 
@@ -461,10 +531,9 @@
             <div class="column-header discussion-header">Discussion <span>1</span></div>
 
             <div class="prospect-card">
-              <div class="prospect-top"><div class="prospect-name">Mike Johnson</div><div class="menu-dot">•••</div></div>
+              <div class="prospect-top"><a href="profile.html" class="prospect-name">Mike Johnson</a><button class="menu-dot">•••</button></div>
               <div class="prospect-meta">Striker • 19 • Canada<br>Ontario Semi-Pro</div>
               <div class="tag-row"><span class="tag tag-priority">Trial Candidate</span></div>
-              <div class="card-footer"><div class="small-action primary">Message</div><div class="small-action">Move</div></div>
             </div>
           </div>
 
@@ -472,10 +541,9 @@
             <div class="column-header decision-header">Decision <span>1</span></div>
 
             <div class="prospect-card">
-              <div class="prospect-top"><div class="prospect-name">Archived Athlete</div><div class="menu-dot">•••</div></div>
+              <div class="prospect-top"><a href="profile.html" class="prospect-name">Archived Athlete</a><button class="menu-dot">•••</button></div>
               <div class="prospect-meta">Fullback • 18 • Canada<br>Archived after review</div>
               <div class="tag-row"><span class="tag">Archived</span></div>
-              <div class="card-footer"><div class="small-action primary">View</div><div class="small-action">Restore</div></div>
             </div>
           </div>
         </div>

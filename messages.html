@@ -209,6 +209,8 @@
       font-size: 13px;
       font-weight: 800;
       text-align: center;
+      text-decoration: none;
+      display: block;
     }
 
     .request-action.primary {
@@ -232,6 +234,35 @@
       line-height: 1.4;
     }
 
+
+    .conversation-name-row{
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+
+    .mini-badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:18px;
+      height:18px;
+      border-radius:999px;
+      font-size:10px;
+      font-weight:800;
+      padding:0 5px;
+    }
+
+    .mini-badge.msg{
+      background: var(--blue);
+      color:white;
+    }
+
+    .mini-badge.req{
+      background: var(--orange);
+      color:white;
+    }
+
     @media (max-width: 1100px) {
       .nav { overflow-x: auto; padding: 14px 18px; }
       .page-title { flex-direction: column; align-items: flex-start; }
@@ -240,7 +271,7 @@
 
     .layout {
       display: grid;
-      grid-template-columns: 300px 1fr 320px;
+      grid-template-columns: 300px 1fr;
       gap: 20px;
       align-items: stretch;
       min-height: 680px;
@@ -435,6 +466,8 @@
       font-size: 13px;
       font-weight: 800;
       text-align: center;
+      text-decoration: none;
+      display: block;
     }
 
     .request-action.primary {
@@ -456,6 +489,44 @@
       color: var(--muted);
       font-size: 13px;
       line-height: 1.4;
+    }
+
+
+    .chat-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .request-shortcut {
+      text-decoration: none;
+      background: var(--blue-light);
+      color: var(--blue);
+      border: 1px solid #bfdbfe;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 14px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 6px rgba(37, 99, 235, 0.08);
+    }
+
+    .request-shortcut:hover {
+      background: #dbeafe;
+    }
+
+    .request-badge {
+      background: var(--blue);
+      color: white;
+      border-radius: 999px;
+      padding: 2px 7px;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.3;
     }
 
     @media (max-width: 1100px) {
@@ -493,7 +564,7 @@
         <div class="conversation-list">
           <div class="conversation active">
             <div class="conversation-top">
-              <div class="conversation-name">John Smith</div>
+              <div class="conversation-name-row"><div class="conversation-name">John Smith</div><span class="mini-badge msg">2</span></div>
               <div class="conversation-time">Now</div>
             </div>
             <div class="conversation-preview">Uploaded the requested video.</div>
@@ -501,7 +572,7 @@
 
           <div class="conversation">
             <div class="conversation-top">
-              <div class="conversation-name">Alex Brown</div>
+              <div class="conversation-name-row"><div class="conversation-name">Alex Brown</div></div>
               <div class="conversation-time">1h</div>
             </div>
             <div class="conversation-preview">Responded to an information request.</div>
@@ -509,7 +580,7 @@
 
           <div class="conversation">
             <div class="conversation-top">
-              <div class="conversation-name">Carlos Gomez</div>
+              <div class="conversation-name-row"><div class="conversation-name">Carlos Gomez</div><span class="mini-badge msg">1</span></div>
               <div class="conversation-time">Yesterday</div>
             </div>
             <div class="conversation-preview">Document upload completed.</div>
@@ -531,7 +602,13 @@
             <h2>John Smith</h2>
             <p>Midfielder | Toronto Academy | Connected Athlete</p>
           </div>
-          <span class="button btn-light">Open Profile</span>
+          <div class="chat-actions">
+            <a href="profile.html" class="button btn-light">Open Profile</a>
+            <a href="request_management.html" class="request-shortcut">
+              <span>📋 Requests</span>
+              <span class="request-badge">2</span>
+            </a>
+          </div>
         </div>
 
         <div class="messages">
@@ -557,42 +634,6 @@
           <span class="button btn-primary">Send</span>
         </div>
       </div>
-
-      <div class="card requests-panel">
-        <div>
-          <h2 class="section-title">Request Management</h2>
-          <p style="margin: -6px 0 14px; color: var(--muted); font-size: 14px;">
-            Track structured information requests for this athlete.
-          </p>
-        </div>
-
-        <div class="request-card pending">
-          <div class="request-title">Medical Information</div>
-          <span class="request-status status-pending">Pending</span>
-          <div class="request-meta">
-            Sent: Jun 14, 2026<br>
-            Deadline: Jun 20, 2026<br>
-            Waiting for athlete response
-          </div>
-          <div class="request-action">View Request</div>
-        </div>
-
-        <div class="request-card completed">
-          <div class="request-title">Match Footage</div>
-          <span class="request-status status-completed">Completed</span>
-          <div class="request-meta">
-            Submitted: Jun 15, 2026<br>
-            Athlete uploaded new highlight video
-          </div>
-          <div class="request-action primary">Review Submission</div>
-        </div>
-
-        <div class="new-request-box">
-          <p>Create a structured request for documents, video, statistics, or additional recruiting details.</p>
-          <div class="request-action primary">+ New Request</div>
-        </div>
-      </div>
-    </div>
 
   </div>
 </body>

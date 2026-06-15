@@ -181,6 +181,13 @@
       font-weight: 700;
     }
 
+
+    .rating-highlight {
+      color: var(--blue);
+      font-size: 22px;
+      font-weight: 900;
+    }
+
     .status-pill {
       display: inline-block;
       background: var(--blue-light);
@@ -464,47 +471,38 @@
       </div>
 
       <div class="assessment-meta">
-        <div>
-          <div class="meta-label">Evaluation Type</div>
-          <div class="meta-value">Athlete Assessment</div>
-        </div>
+        <div style="
+    background: linear-gradient(135deg,#ffffff 0%,#eff6ff 100%);
+    border: 1px solid #bfdbfe;
+    border-radius: 16px;
+    padding: 18px;
+">
 
-        <div>
-          <div class="meta-label">Evaluation Date</div>
-          <div class="meta-value">June 15, 2026</div>
-        </div>
+    <div class="meta-label">Overall Rating</div>
 
-        <div>
-          <div class="meta-label">Scout</div>
-          <div class="meta-value">Scout Name</div>
-        </div>
+    <div class="rating-highlight" style="
+        font-size: 34px;
+        margin: 4px 0 14px;
+    ">
+        8.0 / 10
+    </div>
 
-        <div>
-          <div class="meta-label">Status</div>
-          <div class="status-pill">In Progress</div>
-        </div>
+    <div
+       class="button btn-outline"
+       style="
+          width:100%;
+          margin-top:0;
+          justify-content:center;
+       ">
+       View Evaluation History
+  </div>
+
+</div>
       </div>
     </div>
 
     <div class="card">
-      <div class="recommendation-row">
-        <div>
-          <h2 class="section-heading">1. Overall Recommendation</h2>
-          <p class="section-subtitle">Overall recommendation for this athlete.</p>
-        </div>
-
-        <div class="recommendation-options">
-          <div class="option-pill">Not Suitable</div>
-          <div class="option-pill">Monitor</div>
-          <div class="option-pill">Prospect</div>
-          <div class="option-pill">Strong Prospect</div>
-          <div class="option-pill selected">Priority Prospect</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2 class="section-heading">2. Technical Level</h2>
+      <h2 class="section-heading">1. Technical Level</h2>
       <p class="section-subtitle">Rate the athlete’s technical abilities from 1–5.</p>
 
       <div class="rating-grid">
@@ -535,7 +533,7 @@
     </div>
 
     <div class="card">
-      <h2 class="section-heading">3. Physical Level</h2>
+      <h2 class="section-heading">2. Physical Level</h2>
       <p class="section-subtitle">Rate the athlete’s physical attributes from 1–5.</p>
 
       <div class="rating-grid">
@@ -566,7 +564,7 @@
     </div>
 
     <div class="card">
-      <h2 class="section-heading">4. Mental Level</h2>
+      <h2 class="section-heading">3. Mental Level</h2>
       <p class="section-subtitle">Rate the athlete’s mental attributes from 1–5.</p>
 
       <div class="rating-grid">
@@ -598,7 +596,7 @@
 
     <div class="three-grid">
       <div class="card">
-        <h2 class="section-heading">5. Current Playing Level</h2>
+        <h2 class="section-heading">4. Current Playing Level</h2>
         <p class="section-subtitle">How does the athlete perform at the current level?</p>
 
         <div class="option-list">
@@ -610,7 +608,7 @@
       </div>
 
       <div class="card">
-        <h2 class="section-heading">6. Future Potential</h2>
+        <h2 class="section-heading">5. Future Potential</h2>
         <p class="section-subtitle">What is the athlete’s potential?</p>
 
         <div class="option-list">
@@ -622,7 +620,7 @@
       </div>
 
       <div class="card">
-        <h2 class="section-heading">7. Recruitment Readiness</h2>
+        <h2 class="section-heading">6. Recruitment Readiness</h2>
         <p class="section-subtitle">How ready is the athlete for the next level?</p>
 
         <div class="option-list">
@@ -636,7 +634,7 @@
 
     <div class="two-grid">
       <div class="card">
-        <h2 class="section-heading">8. Biggest Strengths <span style="font-weight: 400; color: var(--muted);">(Select up to 5)</span></h2>
+        <h2 class="section-heading">7. Biggest Strengths <span style="font-weight: 400; color: var(--muted);">(Select up to 5)</span></h2>
 
         <div class="chip-row">
           <div class="chip selected">Technical Quality</div>
@@ -653,7 +651,7 @@
       </div>
 
       <div class="card">
-        <h2 class="section-heading">9. Biggest Concerns <span style="font-weight: 400; color: var(--muted);">(Select up to 5)</span></h2>
+        <h2 class="section-heading">8. Biggest Concerns <span style="font-weight: 400; color: var(--muted);">(Select up to 5)</span></h2>
 
         <div class="chip-row">
           <div class="chip concern-selected">Physical Development</div>
@@ -669,7 +667,7 @@
     </div>
 
     <div class="card">
-      <h2 class="section-heading">10. Scout Notes</h2>
+      <h2 class="section-heading">9. Scout Notes</h2>
       <p class="section-subtitle">Additional observations, context, and notes about the athlete.</p>
 
       <textarea>Very technically gifted midfielder with excellent vision and passing range. Shows high work rate and willingness to press. Needs to improve physical strength and consistency in defensive situations. High potential player with the right mentality.</textarea>

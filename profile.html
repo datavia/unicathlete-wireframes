@@ -497,26 +497,52 @@
 
 <script>
 function toggleProspect(btn) {
-    if (btn.innerText === "Add to Prospects") {
-        btn.innerText = "✓ In Prospects";
-        btn.style.background = "#16a34a";
-    } else {
-        btn.innerText = "Add to Prospects";
+
+    const watchBtn = document.querySelector('.btn-outline');
+
+    if (btn.classList.contains("active")) {
+
+        btn.classList.remove("active");
+        btn.innerHTML = "Add to Prospects";
         btn.style.background = "#2563eb";
+
+        if (watchBtn) {
+            watchBtn.classList.remove("active");
+            watchBtn.innerHTML = "Watch";
+            watchBtn.style.background = "white";
+            watchBtn.style.color = "#111827";
+            watchBtn.style.borderColor = "#d1d5db";
+        }
+
+    } else {
+
+        btn.classList.add("active");
+        btn.innerHTML = "✓ In Prospects";
+        btn.style.background = "#16a34a";
+
+        if (watchBtn) {
+            watchBtn.classList.add("active");
+            watchBtn.innerHTML = "★ Watching";
+            watchBtn.style.background = "#fef3c7";
+            watchBtn.style.color = "#92400e";
+            watchBtn.style.borderColor = "#f59e0b";
+        }
     }
 }
-</script>
 
-<script>
 function toggleWatch(btn) {
-    if (btn.innerText === "Watch") {
-        btn.innerText = "★ Watching";
-        btn.style.background = "#fef3c7";
-        btn.style.borderColor = "#f59e0b";
-    } else {
-        btn.innerText = "Watch";
+    if (btn.classList.contains("active")) {
+        btn.classList.remove("active");
+        btn.innerHTML = "Watch";
         btn.style.background = "white";
+        btn.style.color = "#111827";
         btn.style.borderColor = "#d1d5db";
+    } else {
+        btn.classList.add("active");
+        btn.innerHTML = "★ Watching";
+        btn.style.background = "#fef3c7";
+        btn.style.color = "#92400e";
+        btn.style.borderColor = "#f59e0b";
     }
 }
 </script>
@@ -653,7 +679,7 @@ function toggleWatch(btn) {
             Open Evaluation
           </a>
 
-          <a href="messages.html?tab=requests"
+          <a href="request_management.html"
             class="workspace-btn workspace-btn-secondary">
               <span class="workspace-btn-icon">📋</span>
               Request History
@@ -677,41 +703,31 @@ function toggleWatch(btn) {
           <div class="status-value">High</div>
         </div>
 
+        <div class="section-divider"></div>
+
+        <h2>Aggregated Rating</h2>
+
         <div class="status-card">
-          <div class="status-label">Watching</div>
-          <div class="status-value">Yes</div>
+            <div class="status-label">Overall Scout Rating</div>
+            <div class="status-value" style="font-size:24px;">
+                8.0 / 10
+            </div>
         </div>
 
-        <div class="section-divider"></div>
-
-        <h2>Evaluation</h2>
         <div class="info-list">
-          <div class="info-row"><span>Technical</span><span>8 / 10</span></div>
-          <div class="info-row"><span>Physical</span><span>7 / 10</span></div>
-          <div class="info-row"><span>Tactical</span><span>8 / 10</span></div>
-          <div class="info-row"><span>Mentality</span><span>9 / 10</span></div>
-          <div class="info-row"><span>Potential</span><span>8 / 10</span></div>
+            <div class="info-row"><span>Technical</span><span>8 / 10</span></div>
+            <div class="info-row"><span>Physical</span><span>7 / 10</span></div>
+            <div class="info-row"><span>Tactical</span><span>8 / 10</span></div>
+            <div class="info-row"><span>Mentality</span><span>9 / 10</span></div>
+            <div class="info-row"><span>Potential</span><span>8 / 10</span></div>
         </div>
 
         <div class="section-divider"></div>
 
-        <h2>Notes</h2>
-        <div class="note-card">Strong technical player. Needs physical development.</div>
-
-        <div class="section-divider"></div>
-
-        <h2>Requests</h2>
-        <div class="info-list">
-          <div class="info-row"><span>Match Footage</span><span class="request-completed">Completed</span></div>
-          <div class="info-row"><span>Medical Info</span><span class="request-pending">Pending</span></div>
+        <div class="status-card">
+            <div class="status-label">Last Evaluation</div>
+            <div class="status-value">Jun 12, 2026</div>
         </div>
-
-        <div class="section-divider"></div>
-
-        <h2>Timeline</h2>
-        <div class="card">Added to Prospects</div>
-        <div class="card">Evaluation Submitted</div>
-        <div class="card">Information Requested</div>
       </div>
     </div>
   </div>

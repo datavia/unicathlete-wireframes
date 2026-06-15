@@ -129,6 +129,44 @@
       color: var(--navy);
     }
 
+
+    a {
+      text-decoration: none;
+    }
+
+    .button {
+      cursor: pointer;
+    }
+
+    .metric-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      transition: 0.15s ease;
+    }
+
+    .metric-card:hover {
+      transform: translateY(-2px);
+      border-color: #bfdbfe;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+    }
+
+    .list-item {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      transition: 0.15s ease;
+    }
+
+    .list-item:hover {
+      background: white;
+      border-color: #bfdbfe;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+    }
+
     @media (max-width: 1100px) {
       .nav { overflow-x: auto; padding: 14px 18px; }
       .page-title { flex-direction: column; align-items: flex-start; }
@@ -234,34 +272,34 @@
         <h1>Recruiter Dashboard</h1>
         <p>Overview of pipeline activity, pending actions, and new athlete matches.</p>
       </div>
-      <span class="button btn-primary">Open Prospects</span>
+      <a href="prospects.html" class="button btn-primary">Open Prospects</a>
     </div>
 
     <div class="metric-grid">
-      <div class="metric-card">
+      <a href="prospects.html?status=new" class="metric-card">
         <div class="metric-label">New</div>
         <div class="metric-number">32</div>
-      </div>
+      </a>
 
-      <div class="metric-card">
+      <a href="prospects.html?status=reviewing" class="metric-card">
         <div class="metric-label">Reviewing</div>
         <div class="metric-number">14</div>
-      </div>
+      </a>
 
-      <div class="metric-card">
+      <a href="prospects.html?status=contacted" class="metric-card">
         <div class="metric-label">Contacted</div>
         <div class="metric-number">8</div>
-      </div>
+      </a>
 
-      <div class="metric-card">
+      <a href="prospects.html?status=discussion" class="metric-card">
         <div class="metric-label">Discussion</div>
         <div class="metric-number">5</div>
-      </div>
+      </a>
 
-      <div class="metric-card">
+      <a href="prospects.html?status=decision" class="metric-card">
         <div class="metric-label">Decision</div>
         <div class="metric-number">17</div>
-      </div>
+      </a>
     </div>
 
     <div class="dashboard-grid">
@@ -269,29 +307,29 @@
         <h2 class="section-title">Pending Actions</h2>
 
         <div class="list">
-          <div class="list-item">
-            <div class="list-title">Review athlete response</div>
+          <a href="request_management.html?athlete=alex-brown" class="list-item">
+            <div class="list-title">Review request response</div>
             <div class="list-meta">Alex Brown responded to an information request.</div>
             <span class="status status-due">Due Today</span>
-          </div>
+          </a>
 
-          <div class="list-item">
-            <div class="list-title">Watch new highlight video</div>
-            <div class="list-meta">John Smith uploaded new match footage.</div>
+          <a href="profile.html?athlete=john-smith" class="list-item">
+            <div class="list-title">Review new athlete footage</div>
+            <div class="list-meta">John Smith uploaded new match footage for review.</div>
             <span class="status status-overdue">Overdue</span>
-          </div>
+          </a>
 
-          <div class="list-item">
+          <a href="messages.html?athlete=david-lee" class="list-item">
             <div class="list-title">Follow up with athlete</div>
-            <div class="list-meta">David Lee is waiting for next steps.</div>
+            <div class="list-meta">David Lee is waiting for next pipeline action.</div>
             <span class="status status-due">2 Days Remaining</span>
-          </div>
+          </a>
 
-          <div class="list-item">
+          <a href="evaluate.html?athlete=carlos-gomez" class="list-item">
             <div class="list-title">Evaluate newly saved athlete</div>
-            <div class="list-meta">Carlos Gomez was added to Reviewing.</div>
+            <div class="list-meta">Carlos Gomez was moved to Reviewing.</div>
             <span class="status status-due">Due Tomorrow</span>
-          </div>
+          </a>
         </div>
       </div>
 
@@ -299,25 +337,25 @@
         <h2 class="section-title">Recent Activity</h2>
 
         <div class="list">
-          <div class="list-item">
+          <a href="profile.html?athlete=john-smith" class="list-item">
             <div class="list-title">John Smith uploaded a new highlight video</div>
-            <div class="list-meta">Media update • 12 minutes ago</div>
-          </div>
+            <div class="list-meta">12 minutes ago</div>
+          </a>
 
-          <div class="list-item">
+          <a href="request_management.html?athlete=alex-brown" class="list-item">
             <div class="list-title">Alex Brown responded to an information request</div>
-            <div class="list-meta">Request completed • 1 hour ago</div>
-          </div>
+            <div class="list-meta">1 hour ago</div>
+          </a>
 
-          <div class="list-item">
+          <a href="profile.html?athlete=david-lee" class="list-item">
             <div class="list-title">David Lee updated physical metrics</div>
-            <div class="list-meta">Profile update • Yesterday</div>
-          </div>
+            <div class="list-meta">Yesterday</div>
+          </a>
 
-          <div class="list-item">
+          <a href="request_management.html?athlete=carlos-gomez" class="list-item">
             <div class="list-title">Carlos Gomez completed requested documents</div>
-            <div class="list-meta">Documents received • Yesterday</div>
-          </div>
+            <div class="list-meta">Yesterday</div>
+          </a>
         </div>
       </div>
 
@@ -325,29 +363,25 @@
         <h2 class="section-title">New Talent Matches</h2>
 
         <div class="list">
-          <div class="list-item">
+          <a href="discover.html?position=midfielder" class="list-item">
             <div class="list-title">5 new midfielders</div>
             <div class="list-meta">Match your saved search criteria.</div>
-            <span class="status status-new">View Matches</span>
-          </div>
+          </a>
 
-          <div class="list-item">
+          <a href="discover.html?position=defender&country=spain" class="list-item">
             <div class="list-title">3 new defenders in Spain</div>
             <div class="list-meta">Added this week.</div>
-            <span class="status status-new">View Matches</span>
-          </div>
+          </a>
 
-          <div class="list-item">
+          <a href="discover.html?position=goalkeeper" class="list-item">
             <div class="list-title">2 new goalkeepers</div>
             <div class="list-meta">Recently completed profiles.</div>
-            <span class="status status-new">View Matches</span>
-          </div>
+          </a>
 
-          <div class="list-item">
+          <a href="discover.html?verified=true" class="list-item">
             <div class="list-title">4 newly verified athletes</div>
             <div class="list-meta">Profiles now ready for review.</div>
-            <span class="status status-complete">Verified</span>
-          </div>
+          </a>
         </div>
       </div>
     </div>

@@ -143,6 +143,24 @@
     .tag-orange { background: var(--orange-light); color: var(--orange); }
     .tag-purple { background: var(--purple-light); color: var(--purple); }
 
+
+    a {
+      text-decoration: none;
+    }
+
+    .button {
+      cursor: pointer;
+    }
+
+    .athlete-card {
+      transition: 0.15s ease;
+    }
+
+    .athlete-card:hover {
+      border-color: #bfdbfe;
+      box-shadow: 0 10px 24px rgba(15,23,42,0.08);
+    }
+
     @media (max-width: 1100px) {
       .nav { overflow-x: auto; padding: 14px 18px; }
       .page-title { flex-direction: column; align-items: flex-start; }
@@ -290,7 +308,7 @@
         <h1>Discover Athletes</h1>
         <p>Search and filter structured athlete profiles based on recruiting criteria.</p>
       </div>
-      <span class="button btn-primary">Save Search</span>
+      <a href="#" class="button btn-primary">Save Search</a>
     </div>
 
     <div class="layout">
@@ -330,14 +348,14 @@
         </div>
 
         <div style="margin-top: 16px;">
-          <span class="button btn-light" style="width: 100%;">Reset Filters</span>
+          <a href="#" class="button btn-light" style="width: 100%;">Reset Filters</a>
         </div>
       </div>
 
       <div>
         <div class="card search-panel">
           <div class="search-box">Search by name, position, club, country, or recruiting criteria...</div>
-          <span class="button btn-dark">Search</span>
+          <a href="#" class="button btn-dark">Search</a>
         </div>
 
         <div class="results">
@@ -346,7 +364,7 @@
               <div class="athlete-main">
                 <div class="avatar">JS</div>
                 <div>
-                  <h3>John Smith</h3>
+                  <h3><a href="profile.html" style="color:inherit;text-decoration:none;">John Smith</a></h3>
                   <p>Midfielder | 17 | Canada | Toronto Academy</p>
                   <div class="result-meta">
                     <span class="tag tag-blue">Highlight Video</span>
@@ -359,8 +377,8 @@
 
             <div class="athlete-actions">
               <a class="button btn-primary" href="profile.html">Open Profile</a>
-              <span class="button btn-light">Add to Prospects</span>
-              <span class="button btn-light">Watch</span>
+              <button class="button btn-light" onclick="toggleProspect(this)">Add to Prospects</button>
+              <button class="button btn-light" onclick="toggleWatch(this)">Watch</button>
             </div>
           </div>
 
@@ -369,7 +387,7 @@
               <div class="athlete-main">
                 <div class="avatar">AB</div>
                 <div>
-                  <h3>Alex Brown</h3>
+                  <h3><a href="profile.html" style="color:inherit;text-decoration:none;">Alex Brown</a></h3>
                   <p>Forward | 18 | Spain | Madrid Youth Club</p>
                   <div class="result-meta">
                     <span class="tag tag-blue">Full Match</span>
@@ -381,8 +399,8 @@
 
             <div class="athlete-actions">
               <a class="button btn-primary" href="profile.html">Open Profile</a>
-              <span class="button btn-light">Add to Prospects</span>
-              <span class="button btn-light">Watch</span>
+              <button class="button btn-light" onclick="toggleProspect(this)">Add to Prospects</button>
+              <button class="button btn-light" onclick="toggleWatch(this)">Watch</button>
             </div>
           </div>
 
@@ -391,7 +409,7 @@
               <div class="athlete-main">
                 <div class="avatar">CG</div>
                 <div>
-                  <h3>Carlos Gomez</h3>
+                  <h3><a href="profile.html" style="color:inherit;text-decoration:none;">Carlos Gomez</a></h3>
                   <p>Winger | 17 | Spain | Valencia Youth</p>
                   <div class="result-meta">
                     <span class="tag tag-green">Verified Profile</span>
@@ -403,8 +421,8 @@
 
             <div class="athlete-actions">
               <a class="button btn-primary" href="profile.html">Open Profile</a>
-              <span class="button btn-light">Add to Prospects</span>
-              <span class="button btn-light">Watch</span>
+              <button class="button btn-light" onclick="toggleProspect(this)">Add to Prospects</button>
+              <button class="button btn-light" onclick="toggleWatch(this)">Watch</button>
             </div>
           </div>
         </div>
@@ -412,5 +430,67 @@
     </div>
 
   </div>
+
+<script>
+function toggleWatch(btn){
+
+    if(btn.dataset.active === "true"){
+
+        btn.dataset.active = "false";
+        btn.innerText = "Watch";
+        btn.style.background = "white";
+        btn.style.color = "#111827";
+        btn.style.borderColor = "#e5e7eb";
+
+    } else {
+
+        btn.dataset.active = "true";
+        btn.innerText = "★ Watching";
+        btn.style.background = "#fef3c7";
+        btn.style.color = "#92400e";
+        btn.style.borderColor = "#f59e0b";
+    }
+}
+
+function toggleProspect(btn){
+
+    const container = btn.parentElement;
+    const watchBtn = container.querySelector('button.btn-light:last-child');
+
+    if(btn.dataset.active === "true"){
+
+        btn.dataset.active = "false";
+        btn.innerText = "Add to Prospects";
+        btn.style.background = "white";
+        btn.style.color = "#111827";
+        btn.style.borderColor = "#e5e7eb";
+
+        if(watchBtn){
+            watchBtn.dataset.active = "false";
+            watchBtn.innerText = "Watch";
+            watchBtn.style.background = "white";
+            watchBtn.style.color = "#111827";
+            watchBtn.style.borderColor = "#e5e7eb";
+        }
+
+    } else {
+
+        btn.dataset.active = "true";
+        btn.innerText = "✓ In Prospects";
+        btn.style.background = "#dcfce7";
+        btn.style.color = "#166534";
+        btn.style.borderColor = "#22c55e";
+
+        if(watchBtn){
+            watchBtn.dataset.active = "true";
+            watchBtn.innerText = "★ Watching";
+            watchBtn.style.background = "#fef3c7";
+            watchBtn.style.color = "#92400e";
+            watchBtn.style.borderColor = "#f59e0b";
+        }
+    }
+}
+</script>
+
 </body>
 </html>
