@@ -1,97 +1,312 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>UnicAthlete Scouting CRM System</title>
+  <title>UnicAthlete System Overview</title>
   <style>
+    :root {
+      --navy: #111827;
+      --blue: #2563eb;
+      --blue-light: #eff6ff;
+      --green: #16a34a;
+      --green-light: #ecfdf5;
+      --orange: #f97316;
+      --orange-light: #fff7ed;
+      --purple: #7c3aed;
+      --purple-light: #f5f3ff;
+      --gray-bg: #f3f4f6;
+      --border: #e5e7eb;
+      --text: #111827;
+      --muted: #6b7280;
+      --card: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: Arial, sans-serif;
-      margin: 40px;
-      color: #111;
-      background: #f7f7f7;
+      margin: 0;
+      color: var(--text);
+      background: var(--gray-bg);
       line-height: 1.5;
     }
 
-    h1, h2, h3 {
-      margin-top: 0;
-    }
-
-    .page {
-      background: white;
-      border: 2px solid #111;
-      padding: 30px;
-      margin-bottom: 40px;
-    }
-
     .nav {
-      border: 1px solid #111;
-      padding: 12px;
-      margin: 20px 0;
+      background: var(--navy);
+      padding: 16px 40px;
       display: flex;
-      gap: 20px;
+      gap: 10px;
       align-items: center;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
     .nav a {
+      color: #d1d5db;
       text-decoration: none;
-      color: #111;
-      padding: 8px 12px;
+      padding: 9px 13px;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav a:hover {
+      background: rgba(255,255,255,0.10);
+      color: white;
     }
 
     .nav a.active {
-      border: 1px solid #111;
-      font-weight: bold;
+      background: var(--blue);
+      color: white;
+      font-weight: 600;
     }
 
-    .grid {
-      display: grid;
-      gap: 20px;
+    .page {
+      max-width: 1340px;
+      margin: 28px auto;
+      padding: 0 28px 40px;
     }
 
-    .columns-2 {
-      grid-template-columns: repeat(2, 1fr);
+    .hero {
+      background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 34px;
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+      margin-bottom: 22px;
     }
 
-    .columns-3 {
-      grid-template-columns: repeat(3, 1fr);
+    .hero-label {
+      display: inline-block;
+      background: var(--blue-light);
+      color: var(--blue);
+      border: 1px solid #bfdbfe;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 14px;
     }
 
-    .box {
-      border: 1px solid #111;
-      padding: 18px;
-      background: #fff;
-      min-height: 120px;
+    .hero h1 {
+      margin: 0 0 12px;
+      font-size: 34px;
+      color: var(--navy);
+      letter-spacing: -0.4px;
     }
 
-    .flow {
-      text-align: center;
-      font-weight: bold;
-      padding: 20px;
-      border: 1px solid #111;
+    .hero p {
+      margin: 0;
+      max-width: 850px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .workflow {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .workflow-step {
       background: white;
-      margin: 20px 0;
+      border: 1px solid #bfdbfe;
+      color: var(--navy);
+      border-radius: 999px;
+      padding: 9px 12px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .arrow {
+      color: var(--blue);
+      font-weight: 900;
+    }
+
+    .section {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+      margin-bottom: 22px;
+    }
+
+    .section-header {
+      margin-bottom: 18px;
+    }
+
+    .section-header h2 {
+      margin: 0 0 6px;
+      color: var(--navy);
+      font-size: 22px;
+    }
+
+    .section-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .components-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .component-card {
+      border: 1px solid var(--border);
+      background: #f9fafb;
+      border-radius: 16px;
+      padding: 18px;
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .component-card h3 {
+      margin: 0 0 10px;
+      color: var(--navy);
+      font-size: 18px;
+    }
+
+    .component-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .component-meta {
+      margin-top: 14px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 8px;
+      border-radius: 999px;
+      margin: 3px 4px 3px 0;
+    }
+
+    .tag-doc {
+      background: var(--blue-light);
+      color: var(--blue);
+    }
+
+    .tag-crm {
+      background: var(--green-light);
+      color: var(--green);
+    }
+
+    .tag-workflow {
+      background: var(--purple-light);
+      color: var(--purple);
+    }
+
+    .tag-comm {
+      background: var(--orange-light);
+      color: var(--orange);
     }
 
     .button {
-      border: 1px solid #111;
-      padding: 8px 12px;
-      display: inline-block;
-      margin-top: 10px;
+      margin-top: 18px;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 9px;
+      font-size: 14px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: default;
       text-decoration: none;
-      color: #111;
+      background: white;
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .button.primary {
+      background: var(--blue);
+      color: white;
+      border-color: var(--blue);
+      box-shadow: 0 2px 6px rgba(37, 99, 235, 0.20);
+    }
+
+    .logic-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .logic-card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      background: #f9fafb;
+    }
+
+    .logic-card h3 {
+      margin: 0 0 14px;
+      color: var(--navy);
+      font-size: 18px;
+    }
+
+    .logic-row {
+      border-bottom: 1px solid var(--border);
+      padding: 10px 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .logic-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .logic-row strong {
+      color: var(--navy);
+    }
+
+    .note {
+      background: #fff7ed;
+      color: #9a3412;
+      border: 1px solid #fed7aa;
+      border-radius: 14px;
+      padding: 15px;
+      font-size: 14px;
+      margin-top: 18px;
+    }
+
+    @media (max-width: 1100px) {
+      .nav {
+        overflow-x: auto;
+        padding: 14px 18px;
+      }
+
+      .components-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .logic-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 28px;
+      }
     }
   </style>
 </head>
 
 <body>
-
-<div class="page">
-  <h1>UnicAthlete Scouting CRM</h1>
-
-  <p>
-    The Scouting CRM is a structured recruiting system that helps scouts discover,
-    evaluate, contact, compare, and manage athletes through a centralized workflow.
-  </p>
-
   <div class="nav">
     <a href="index.html" class="active">System Overview</a>
     <a href="scout-profile.html">Scout Profile</a>
@@ -102,101 +317,161 @@
     <a href="messages.html">Messages</a>
   </div>
 
-  <h2>Core Workflow</h2>
+  <div class="page">
+    <div class="hero">
+      <div class="hero-label">System Documentation</div>
+      <h1>UnicAthlete Scouting CRM System</h1>
+      <p>
+        This page documents the proposed MVP system structure. It explains how the recruiter-facing
+        scouting CRM connects athlete discovery, evaluation, communication, and pipeline management
+        into one structured recruiting workflow.
+      </p>
 
-  <div class="flow">
-    Discover → Save Prospect → Evaluate → Contact → Track Progress → Decision
+      <div class="workflow">
+        <span class="workflow-step">Discover</span>
+        <span class="arrow">→</span>
+        <span class="workflow-step">Save Prospect</span>
+        <span class="arrow">→</span>
+        <span class="workflow-step">Evaluate</span>
+        <span class="arrow">→</span>
+        <span class="workflow-step">Contact</span>
+        <span class="arrow">→</span>
+        <span class="workflow-step">Track Progress</span>
+        <span class="arrow">→</span>
+        <span class="workflow-step">Decision</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <h2>System Components</h2>
+        <p>Prototype pages representing the main MVP modules and recruiter workflow screens.</p>
+      </div>
+
+      <div class="components-grid">
+        <div class="component-card">
+          <div>
+            <h3>Scout Profile</h3>
+            <p>
+              Stores recruiter identity, organization details, verification status, recruiting
+              preferences, saved searches, and account-level information.
+            </p>
+            <div class="component-meta">
+              <span class="tag tag-doc">Identity</span>
+              <span class="tag tag-crm">Verification</span>
+            </div>
+          </div>
+          <a class="button primary" href="scout-profile.html">Open Scout Profile</a>
+        </div>
+
+        <div class="component-card">
+          <div>
+            <h3>Dashboard</h3>
+            <p>
+              Provides a high-level overview of pipeline status, pending actions, recent activity,
+              athlete updates, and new talent matches.
+            </p>
+            <div class="component-meta">
+              <span class="tag tag-doc">Overview</span>
+              <span class="tag tag-crm">Activity</span>
+            </div>
+          </div>
+          <a class="button primary" href="dashboard.html">Open Dashboard</a>
+        </div>
+
+        <div class="component-card">
+          <div>
+            <h3>Discover Athletes</h3>
+            <p>
+              Search and filtering area where scouts discover athletes by sport, position, age,
+              country, level, metrics, statistics, and media availability.
+            </p>
+            <div class="component-meta">
+              <span class="tag tag-workflow">Search</span>
+              <span class="tag tag-crm">Discovery</span>
+            </div>
+          </div>
+          <a class="button primary" href="discover.html">Open Discover</a>
+        </div>
+
+        <div class="component-card">
+          <div>
+            <h3>Prospects</h3>
+            <p>
+              Main CRM workspace where scouts organize saved athletes, manage groups, assign
+              priorities, track pipeline stages, and progress recruiting actions.
+            </p>
+            <div class="component-meta">
+              <span class="tag tag-crm">CRM</span>
+              <span class="tag tag-workflow">Pipeline</span>
+            </div>
+          </div>
+          <a class="button primary" href="prospects.html">Open Prospects</a>
+        </div>
+
+        <div class="component-card">
+          <div>
+            <h3>Athlete Profile</h3>
+            <p>
+              Scout-facing profile view combining athlete data, media, statistics, documents,
+              history, evaluation tools, notes, and information requests.
+            </p>
+            <div class="component-meta">
+              <span class="tag tag-doc">Profile</span>
+              <span class="tag tag-workflow">Evaluation</span>
+            </div>
+          </div>
+          <a class="button primary" href="profile.html">Open Profile</a>
+        </div>
+
+        <div class="component-card">
+          <div>
+            <h3>Messages</h3>
+            <p>
+              Communication area for direct scout-athlete messages, recruiting follow-ups,
+              information request updates, and platform notifications.
+            </p>
+            <div class="component-meta">
+              <span class="tag tag-comm">Communication</span>
+              <span class="tag tag-workflow">Requests</span>
+            </div>
+          </div>
+          <a class="button primary" href="messages.html">Open Messages</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <h2>CRM Logic</h2>
+        <p>Core recruiting statuses and scout actions that define the workflow logic.</p>
+      </div>
+
+      <div class="logic-grid">
+        <div class="logic-card">
+          <h3>Pipeline Statuses</h3>
+          <div class="logic-row"><strong>New:</strong> Athlete saved to prospects.</div>
+          <div class="logic-row"><strong>Reviewing:</strong> Scout is evaluating athlete.</div>
+          <div class="logic-row"><strong>Contacted:</strong> Scout sent message or request.</div>
+          <div class="logic-row"><strong>Discussion:</strong> Athlete responded and communication is active.</div>
+          <div class="logic-row"><strong>Decision:</strong> Signed, rejected, or archived.</div>
+        </div>
+
+        <div class="logic-card">
+          <h3>Main Scout Actions</h3>
+          <div class="logic-row">Add athlete to prospects.</div>
+          <div class="logic-row">Watch athlete profile updates.</div>
+          <div class="logic-row">Evaluate and write private notes.</div>
+          <div class="logic-row">Request additional recruiting information.</div>
+          <div class="logic-row">Message athlete and manage follow-ups.</div>
+          <div class="logic-row">Compare athletes and archive completed pipelines.</div>
+        </div>
+      </div>
+
+      <div class="note">
+        This page is not intended to function as part of the recruiter CRM itself. It is a system overview document used to explain the MVP structure, page relationships, and recruiting workflow logic.
+      </div>
+    </div>
   </div>
-</div>
-
-<div class="page">
-  <h2>System Components</h2>
-
-  <div class="grid columns-3">
-
-     <div class="box">
-      <h3>Scout Profile</h3>
-      <p>
-        The Scout Profile serves as the recruiter's professional identity within UnicAthlete. It stores organizational information, verification details, scouting preferences, saved search criteria, activity summaries, and account settings while helping athletes and platform administrators verify the legitimacy of recruiting activity.
-      </p>
-      <a class="button" href="scout-profile.html">Open Scout Profile</a>
-    </div>
-
-    <div class="box">
-      <h3>Dashboard</h3>
-      <p>
-        Visibility page showing pipeline status, pending actions,
-        recent activity, and athlete updates.
-      </p>
-      <a class="button" href="dashboard.html">Open Dashboard</a>
-    </div>
-
-    <div class="box">
-      <h3>Discover Athletes</h3>
-      <p>
-        Search area where scouts filter athletes by sport, position,
-        age, country, level, metrics, statistics, and video availability.
-      </p>
-      <a class="button" href="discover.html">Open Discover</a>
-    </div>
-
-    <div class="box">
-      <h3>Prospects</h3>
-      <p>
-        Main CRM workspace where scouts manage saved athletes,
-        groups, priorities, pipeline stages, and recruiting actions.
-      </p>
-      <a class="button" href="prospects.html">Open Prospects</a>
-    </div>
-
-    <div class="box">
-      <h3>Athlete Profile</h3>
-      <p>
-        Combined athlete profile and scout view. Shows athlete information,
-        media, stats, history, documents, and scout workspace.
-      </p>
-      <a class="button" href="profile.html">Open Profile</a>
-    </div>
-
-    <div class="box">
-      <h3>Messages</h3>
-      <p>
-        Communication space where scouts manage direct messages,
-        information request updates, and recruiting notifications.
-      </p>
-      <a class="button" href="messages.html">Open Messages</a>
-    </div>
-
-  </div>
-</div>
-
-<div class="page">
-  <h2>CRM Logic</h2>
-
-  <div class="grid columns-2">
-
-    <div class="box">
-      <h3>Pipeline Statuses</h3>
-      <p><strong>New:</strong> Athlete saved to prospects.</p>
-      <p><strong>Reviewing:</strong> Scout is evaluating athlete.</p>
-      <p><strong>Contacted:</strong> Scout sent message or request.</p>
-      <p><strong>Discussion:</strong> Athlete responded.</p>
-      <p><strong>Decision:</strong> Signed, rejected, or archived.</p>
-    </div>
-
-    <div class="box">
-      <h3>Main Scout Actions</h3>
-      <p>Add athlete to prospects</p>
-      <p>Watch athlete profile updates</p>
-      <p>Evaluate and write notes</p>
-      <p>Request additional information</p>
-      <p>Message athlete</p>
-      <p>Compare athletes</p>
-      <p>Archive completed pipelines</p>
-    </div>
-
-  </div>
-</div>
-
 </body>
 </html>

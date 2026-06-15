@@ -3,18 +3,281 @@
 <head>
   <title>Scout Profile</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 40px; background: #f7f7f7; color: #111; }
-    .page { background: white; border: 2px solid #111; padding: 30px; }
-    .nav { border: 1px solid #111; padding: 12px; margin-bottom: 30px; display: flex; gap: 20px; }
-    .nav a { text-decoration: none; color: #111; padding: 8px 12px; }
-    .nav a.active { border: 1px solid #111; font-weight: bold; }
-    .grid { display: grid; gap: 20px; }
-    .columns-2 { grid-template-columns: 1fr 2fr; }
-    .columns-3 { grid-template-columns: repeat(3, 1fr); }
-    .box { border: 1px solid #111; padding: 15px; background: white; }
-    .button { border: 1px solid #111; padding: 7px 10px; display: inline-block; margin-right: 6px; text-decoration: none; color: #111; }
-    .stat { text-align: center; font-size: 18px; }
-    .stat strong { display: block; font-size: 28px; margin-top: 8px; }
+
+    :root {
+      --navy: #111827;
+      --blue: #2563eb;
+      --blue-light: #eff6ff;
+      --green: #16a34a;
+      --green-light: #ecfdf5;
+      --orange: #f97316;
+      --orange-light: #fff7ed;
+      --purple: #7c3aed;
+      --purple-light: #f5f3ff;
+      --yellow: #ca8a04;
+      --yellow-light: #fefce8;
+      --gray-bg: #f3f4f6;
+      --border: #e5e7eb;
+      --text: #111827;
+      --muted: #6b7280;
+      --card: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: var(--gray-bg);
+      color: var(--text);
+    }
+
+    .nav {
+      background: var(--navy);
+      padding: 16px 40px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav a {
+      color: #d1d5db;
+      text-decoration: none;
+      padding: 9px 13px;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav a:hover {
+      background: rgba(255,255,255,0.10);
+      color: white;
+    }
+
+    .nav a.active {
+      background: var(--blue);
+      color: white;
+      font-weight: 600;
+    }
+
+    .page {
+      max-width: 1440px;
+      margin: 28px auto;
+      padding: 0 28px 40px;
+    }
+
+    .page-title {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+    }
+
+    .page-title h1 {
+      margin: 0;
+      font-size: 28px;
+      color: var(--navy);
+    }
+
+    .page-title p {
+      margin: 6px 0 0;
+      color: var(--muted);
+    }
+
+    .button {
+      border: none;
+      padding: 10px 14px;
+      border-radius: 9px;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: default;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.10);
+      text-decoration: none;
+    }
+
+    .btn-primary { background: var(--blue); color: white; }
+    .btn-dark { background: var(--navy); color: white; }
+    .btn-light {
+      background: white;
+      color: var(--navy);
+      border: 1px solid var(--border);
+      box-shadow: none;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+    }
+
+    .section-title {
+      margin: 0 0 14px;
+      font-size: 18px;
+      color: var(--navy);
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: #f3f4f6;
+      color: var(--muted);
+      margin: 3px 4px 3px 0;
+    }
+
+    .tag-blue { background: var(--blue-light); color: var(--blue); }
+    .tag-green { background: var(--green-light); color: var(--green); }
+    .tag-orange { background: var(--orange-light); color: var(--orange); }
+    .tag-purple { background: var(--purple-light); color: var(--purple); }
+
+    @media (max-width: 1100px) {
+      .nav { overflow-x: auto; padding: 14px 18px; }
+      .page-title { flex-direction: column; align-items: flex-start; }
+    }
+
+
+    .hero {
+      background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: center;
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+      margin-bottom: 22px;
+    }
+
+    .profile-main {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 78px;
+      height: 78px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .profile-main h2 {
+      margin: 0 0 6px;
+      font-size: 26px;
+      color: var(--navy);
+    }
+
+    .profile-main p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .stat-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      text-align: center;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+    }
+
+    .stat-card span {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 30px;
+      color: var(--blue);
+      margin-top: 8px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .info-row span:first-child {
+      color: var(--muted);
+    }
+
+    .info-row span:last-child {
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .activity-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .activity-item {
+      background: #f9fafb;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 13px;
+      color: var(--navy);
+      font-size: 14px;
+    }
+
+    @media (max-width: 1100px) {
+      .hero { flex-direction: column; align-items: flex-start; }
+      .hero-actions { justify-content: flex-start; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 
@@ -30,79 +293,98 @@
     <a href="messages.html">Messages</a>
   </div>
 
-<div class="page">
-  <h1>Scout Profile</h1>
-
-  <div class="box">
-    <h2>Profile Header</h2>
-    <p>Profile Photo | Scout Name | Organization | Role | Country</p>
-
-    <span class="button">Edit Profile</span>
-    <span class="button">Verification Status</span>
-    <span class="button">Account Settings</span>
-  </div>
-
-  <br>
-
-  <div class="grid columns-3">
-    <div class="box stat">Saved Prospects<strong>72</strong></div>
-    <div class="box stat">Active Discussions<strong>9</strong></div>
-    <div class="box stat">Completed Pipelines<strong>21</strong></div>
-  </div>
-
-  <br>
-
-  <div class="grid columns-2">
-    <div class="box">
-      <h2>Scout Information</h2>
-      <p><strong>Name:</strong> Scout Name</p>
-      <p><strong>Role:</strong> Academy Scout</p>
-      <p><strong>Organization:</strong> Toronto Academy</p>
-      <p><strong>Country:</strong> Canada</p>
-      <p><strong>Region Covered:</strong> Ontario / Canada</p>
-      <p><strong>Sports:</strong> Football / Soccer</p>
-      <p><strong>Age Groups:</strong> U16, U18, U21</p>
+  <div class="page">
+    <div class="page-title">
+      <div>
+        <h1>Scout Profile</h1>
+        <p>Verified recruiter identity, recruiting preferences, and CRM activity overview.</p>
+      </div>
     </div>
 
-    <div class="box">
-      <h2>Recruiting Preferences</h2>
-      <p><strong>Positions:</strong> Midfielders, Wingers, Centre Backs</p>
-      <p><strong>Competitive Level:</strong> Academy, Semi-Pro, University</p>
-      <p><strong>Target Countries:</strong> Canada, Spain, Turkey</p>
-      <p><strong>Key Metrics:</strong> Technical ability, mentality, potential, physical development</p>
-      <p><strong>Saved Searches:</strong> Canadian U18 Midfielders, Spanish U21 Wingers</p>
+    <div class="hero">
+      <div class="profile-main">
+        <div class="avatar">SN</div>
+        <div>
+          <h2>Scout Name</h2>
+          <p>Academy Scout | Toronto Academy | Canada</p>
+          <div style="margin-top: 10px;">
+            <span class="tag tag-green">Verified Scout</span>
+            <span class="tag tag-blue">Football / Soccer</span>
+            <span class="tag tag-purple">Ontario / Canada</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <span class="button btn-primary">Edit Profile</span>
+        <span class="button btn-light">Verification Status</span>
+        <span class="button btn-light">Account Settings</span>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card"><span>Saved Prospects</span><strong>72</strong></div>
+      <div class="stat-card"><span>Active Discussions</span><strong>9</strong></div>
+      <div class="stat-card"><span>Completed Pipelines</span><strong>21</strong></div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h2 class="section-title">Scout Information</h2>
+        <div class="info-list">
+          <div class="info-row"><span>Name</span><span>Scout Name</span></div>
+          <div class="info-row"><span>Role</span><span>Academy Scout</span></div>
+          <div class="info-row"><span>Organization</span><span>Toronto Academy</span></div>
+          <div class="info-row"><span>Country</span><span>Canada</span></div>
+          <div class="info-row"><span>Region Covered</span><span>Ontario / Canada</span></div>
+          <div class="info-row"><span>Sports</span><span>Football / Soccer</span></div>
+          <div class="info-row"><span>Age Groups</span><span>U16, U18, U21</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">Recruiting Preferences</h2>
+        <div class="info-list">
+          <div class="info-row"><span>Positions</span><span>Midfielders, Wingers, Centre Backs</span></div>
+          <div class="info-row"><span>Competitive Level</span><span>Academy, Semi-Pro, University</span></div>
+          <div class="info-row"><span>Target Countries</span><span>Canada, Spain, Turkey</span></div>
+          <div class="info-row"><span>Key Metrics</span><span>Technical ability, mentality, potential</span></div>
+          <div class="info-row"><span>Saved Searches</span><span>Canadian U18 Midfielders</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h2 class="section-title">Verification</h2>
+        <div class="info-list">
+          <div class="info-row"><span>Status</span><span>Verified Scout</span></div>
+          <div class="info-row"><span>Verification Type</span><span>Club / Academy Representative</span></div>
+          <div class="info-row"><span>Verified Email</span><span>scout@organization.com</span></div>
+          <div class="info-row"><span>Documents</span><span>Organization proof submitted</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">CRM Activity Summary</h2>
+        <div class="info-list">
+          <div class="info-row"><span>Reviewing</span><span>12 athletes</span></div>
+          <div class="info-row"><span>Contacted</span><span>8 athletes</span></div>
+          <div class="info-row"><span>Awaiting Follow-Up</span><span>5 athletes</span></div>
+          <div class="info-row"><span>Responses Pending Review</span><span>3 athletes</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">Recent Scout Activity</h2>
+      <div class="activity-list">
+        <div class="activity-item">Added John Smith to Prospects</div>
+        <div class="activity-item">Created evaluation for Carlos Gomez</div>
+        <div class="activity-item">Requested match footage from Alex Brown</div>
+        <div class="activity-item">Moved David Lee to Active Discussion</div>
+      </div>
     </div>
   </div>
-
-  <br>
-
-  <div class="grid columns-2">
-    <div class="box">
-      <h2>Verification</h2>
-      <p><strong>Status:</strong> Verified Scout</p>
-      <p><strong>Verification Type:</strong> Club / Academy Representative</p>
-      <p><strong>Verified Email:</strong> scout@organization.com</p>
-      <p><strong>Documents:</strong> Organization proof submitted</p>
-    </div>
-
-    <div class="box">
-      <h2>CRM Activity Summary</h2>
-      <p>12 athletes currently in Reviewing</p>
-      <p>8 athletes currently Contacted</p>
-      <p>5 athletes awaiting follow-up</p>
-      <p>3 athlete responses pending review</p>
-    </div>
-  </div>
-
-  <br>
-
-  <div class="box">
-    <h2>Recent Scout Activity</h2>
-    <p>Added John Smith to Prospects</p>
-    <p>Created evaluation for Carlos Gomez</p>
-    <p>Requested match footage from Alex Brown</p>
-    <p>Moved David Lee to Active Discussion</p>
-  </div>
-</div>
 </body>
 </html>

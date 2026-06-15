@@ -3,19 +3,277 @@
 <head>
   <title>Discover Athletes</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 40px; background: #f7f7f7; color: #111; }
-    .page { background: white; border: 2px solid #111; padding: 30px; }
-    .nav { border: 1px solid #111; padding: 12px; margin-bottom: 30px; display: flex; gap: 20px; }
-    .nav a { text-decoration: none; color: #111; padding: 8px 12px; }
-    .nav a.active { border: 1px solid #111; font-weight: bold; }
-    .layout { display: grid; grid-template-columns: 1fr 3fr; gap: 20px; }
-    .box { border: 1px solid #111; padding: 15px; background: white; }
-    .athlete-card { border: 1px solid #111; padding: 15px; margin-bottom: 15px; }
-    .button { border: 1px solid #111; padding: 7px 10px; display: inline-block; margin-right: 6px; text-decoration: none; color: #111; }
+
+    :root {
+      --navy: #111827;
+      --blue: #2563eb;
+      --blue-light: #eff6ff;
+      --green: #16a34a;
+      --green-light: #ecfdf5;
+      --orange: #f97316;
+      --orange-light: #fff7ed;
+      --purple: #7c3aed;
+      --purple-light: #f5f3ff;
+      --yellow: #ca8a04;
+      --yellow-light: #fefce8;
+      --gray-bg: #f3f4f6;
+      --border: #e5e7eb;
+      --text: #111827;
+      --muted: #6b7280;
+      --card: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: var(--gray-bg);
+      color: var(--text);
+    }
+
+    .nav {
+      background: var(--navy);
+      padding: 16px 40px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav a {
+      color: #d1d5db;
+      text-decoration: none;
+      padding: 9px 13px;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav a:hover {
+      background: rgba(255,255,255,0.10);
+      color: white;
+    }
+
+    .nav a.active {
+      background: var(--blue);
+      color: white;
+      font-weight: 600;
+    }
+
+    .page {
+      max-width: 1440px;
+      margin: 28px auto;
+      padding: 0 28px 40px;
+    }
+
+    .page-title {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+    }
+
+    .page-title h1 {
+      margin: 0;
+      font-size: 28px;
+      color: var(--navy);
+    }
+
+    .page-title p {
+      margin: 6px 0 0;
+      color: var(--muted);
+    }
+
+    .button {
+      border: none;
+      padding: 10px 14px;
+      border-radius: 9px;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: default;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.10);
+      text-decoration: none;
+    }
+
+    .btn-primary { background: var(--blue); color: white; }
+    .btn-dark { background: var(--navy); color: white; }
+    .btn-light {
+      background: white;
+      color: var(--navy);
+      border: 1px solid var(--border);
+      box-shadow: none;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+    }
+
+    .section-title {
+      margin: 0 0 14px;
+      font-size: 18px;
+      color: var(--navy);
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: #f3f4f6;
+      color: var(--muted);
+      margin: 3px 4px 3px 0;
+    }
+
+    .tag-blue { background: var(--blue-light); color: var(--blue); }
+    .tag-green { background: var(--green-light); color: var(--green); }
+    .tag-orange { background: var(--orange-light); color: var(--orange); }
+    .tag-purple { background: var(--purple-light); color: var(--purple); }
+
+    @media (max-width: 1100px) {
+      .nav { overflow-x: auto; padding: 14px 18px; }
+      .page-title { flex-direction: column; align-items: flex-start; }
+    }
+
+
+    .layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .filters {
+      position: sticky;
+      top: 90px;
+    }
+
+    .filter-group {
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+    }
+
+    .filter-group:first-of-type {
+      padding-top: 0;
+    }
+
+    .filter-label {
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .filter-value {
+      background: #f9fafb;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .search-panel {
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .search-box {
+      flex: 1;
+      background: #f9fafb;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 13px 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .results {
+      display: grid;
+      gap: 14px;
+    }
+
+    .athlete-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .athlete-main {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+    }
+
+    .athlete-card h3 {
+      margin: 0 0 5px;
+      font-size: 18px;
+      color: var(--navy);
+    }
+
+    .athlete-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .athlete-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .result-meta {
+      margin-top: 9px;
+    }
+
+    @media (max-width: 1100px) {
+      .layout { grid-template-columns: 1fr; }
+      .filters { position: static; }
+      .athlete-card { grid-template-columns: 1fr; }
+      .athlete-actions { justify-content: flex-start; }
+    }
   </style>
 </head>
 
 <body>
+
   <div class="nav">
     <a href="index.html">System Overview</a>
     <a href="scout-profile.html">Scout Profile</a>
@@ -25,43 +283,134 @@
     <a href="profile.html">Athlete Profile</a>
     <a href="messages.html">Messages</a>
   </div>
-<div class="page">
-  <h1>Discover Athletes</h1>
 
-  <div class="layout">
-    <div class="box">
-      <h2>Filters</h2>
-      <p>Sport</p>
-      <p>Position</p>
-      <p>Age</p>
-      <p>Country</p>
-      <p>Competitive Level</p>
-      <p>Height / Weight</p>
-      <p>Statistics</p>
-      <p>Has Video</p>
-      <p>Verified Profile</p>
+  <div class="page">
+    <div class="page-title">
+      <div>
+        <h1>Discover Athletes</h1>
+        <p>Search and filter structured athlete profiles based on recruiting criteria.</p>
+      </div>
+      <span class="button btn-primary">Save Search</span>
     </div>
 
-    <div class="box">
-      <h2>Search Results</h2>
+    <div class="layout">
+      <div class="card filters">
+        <h2 class="section-title">Search Filters</h2>
 
-      <div class="athlete-card">
-        <h3>John Smith</h3>
-        <p>Midfielder | 17 | Canada | Toronto Academy</p>
-        <a class="button" href="profile.html">Open Profile</a>
-        <span class="button">Add To Prospects</span>
-        <span class="button">Watch</span>
+        <div class="filter-group">
+          <div class="filter-label">Sport</div>
+          <div class="filter-value">Football / Soccer</div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-label">Position</div>
+          <div class="filter-value">Any Position</div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-label">Age Range</div>
+          <div class="filter-value">16–21</div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-label">Country</div>
+          <div class="filter-value">Canada, Spain, Turkey</div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-label">Competitive Level</div>
+          <div class="filter-value">Academy / Semi-Pro</div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-label">Profile Requirements</div>
+          <span class="tag tag-blue">Has Video</span>
+          <span class="tag tag-green">Verified</span>
+          <span class="tag tag-purple">Complete Profile</span>
+        </div>
+
+        <div style="margin-top: 16px;">
+          <span class="button btn-light" style="width: 100%;">Reset Filters</span>
+        </div>
       </div>
 
-      <div class="athlete-card">
-        <h3>Alex Brown</h3>
-        <p>Forward | 18 | Spain | Madrid Youth Club</p>
-        <a class="button" href="profile.html">Open Profile</a>
-        <span class="button">Add To Prospects</span>
-        <span class="button">Watch</span>
+      <div>
+        <div class="card search-panel">
+          <div class="search-box">Search by name, position, club, country, or recruiting criteria...</div>
+          <span class="button btn-dark">Search</span>
+        </div>
+
+        <div class="results">
+          <div class="athlete-card">
+            <div>
+              <div class="athlete-main">
+                <div class="avatar">JS</div>
+                <div>
+                  <h3>John Smith</h3>
+                  <p>Midfielder | 17 | Canada | Toronto Academy</p>
+                  <div class="result-meta">
+                    <span class="tag tag-blue">Highlight Video</span>
+                    <span class="tag tag-green">Verified Profile</span>
+                    <span class="tag tag-orange">High Match</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="athlete-actions">
+              <a class="button btn-primary" href="profile.html">Open Profile</a>
+              <span class="button btn-light">Add to Prospects</span>
+              <span class="button btn-light">Watch</span>
+            </div>
+          </div>
+
+          <div class="athlete-card">
+            <div>
+              <div class="athlete-main">
+                <div class="avatar">AB</div>
+                <div>
+                  <h3>Alex Brown</h3>
+                  <p>Forward | 18 | Spain | Madrid Youth Club</p>
+                  <div class="result-meta">
+                    <span class="tag tag-blue">Full Match</span>
+                    <span class="tag tag-purple">Open to Trial</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="athlete-actions">
+              <a class="button btn-primary" href="profile.html">Open Profile</a>
+              <span class="button btn-light">Add to Prospects</span>
+              <span class="button btn-light">Watch</span>
+            </div>
+          </div>
+
+          <div class="athlete-card">
+            <div>
+              <div class="athlete-main">
+                <div class="avatar">CG</div>
+                <div>
+                  <h3>Carlos Gomez</h3>
+                  <p>Winger | 17 | Spain | Valencia Youth</p>
+                  <div class="result-meta">
+                    <span class="tag tag-green">Verified Profile</span>
+                    <span class="tag tag-orange">Strong Match</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="athlete-actions">
+              <a class="button btn-primary" href="profile.html">Open Profile</a>
+              <span class="button btn-light">Add to Prospects</span>
+              <span class="button btn-light">Watch</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
   </div>
-</div>
 </body>
 </html>

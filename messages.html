@@ -3,20 +3,292 @@
 <head>
   <title>Messages</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 40px; background: #f7f7f7; color: #111; }
-    .page { background: white; border: 2px solid #111; padding: 30px; }
-    .nav { border: 1px solid #111; padding: 12px; margin-bottom: 30px; display: flex; gap: 20px; }
-    .nav a { text-decoration: none; color: #111; padding: 8px 12px; }
-    .nav a.active { border: 1px solid #111; font-weight: bold; }
-    .layout { display: grid; grid-template-columns: 1fr 3fr; gap: 20px; }
-    .box { border: 1px solid #111; padding: 15px; background: white; }
-    .conversation { border: 1px solid #111; padding: 10px; margin-bottom: 10px; }
-    .message { border: 1px solid #111; padding: 10px; margin: 10px 0; }
-    .input { border: 1px solid #111; padding: 15px; margin-top: 30px; }
+
+    :root {
+      --navy: #111827;
+      --blue: #2563eb;
+      --blue-light: #eff6ff;
+      --green: #16a34a;
+      --green-light: #ecfdf5;
+      --orange: #f97316;
+      --orange-light: #fff7ed;
+      --purple: #7c3aed;
+      --purple-light: #f5f3ff;
+      --yellow: #ca8a04;
+      --yellow-light: #fefce8;
+      --gray-bg: #f3f4f6;
+      --border: #e5e7eb;
+      --text: #111827;
+      --muted: #6b7280;
+      --card: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: var(--gray-bg);
+      color: var(--text);
+    }
+
+    .nav {
+      background: var(--navy);
+      padding: 16px 40px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav a {
+      color: #d1d5db;
+      text-decoration: none;
+      padding: 9px 13px;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav a:hover {
+      background: rgba(255,255,255,0.10);
+      color: white;
+    }
+
+    .nav a.active {
+      background: var(--blue);
+      color: white;
+      font-weight: 600;
+    }
+
+    .page {
+      max-width: 1440px;
+      margin: 28px auto;
+      padding: 0 28px 40px;
+    }
+
+    .page-title {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+    }
+
+    .page-title h1 {
+      margin: 0;
+      font-size: 28px;
+      color: var(--navy);
+    }
+
+    .page-title p {
+      margin: 6px 0 0;
+      color: var(--muted);
+    }
+
+    .button {
+      border: none;
+      padding: 10px 14px;
+      border-radius: 9px;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: default;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.10);
+      text-decoration: none;
+    }
+
+    .btn-primary { background: var(--blue); color: white; }
+    .btn-dark { background: var(--navy); color: white; }
+    .btn-light {
+      background: white;
+      color: var(--navy);
+      border: 1px solid var(--border);
+      box-shadow: none;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+    }
+
+    .section-title {
+      margin: 0 0 14px;
+      font-size: 18px;
+      color: var(--navy);
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: #f3f4f6;
+      color: var(--muted);
+      margin: 3px 4px 3px 0;
+    }
+
+    .tag-blue { background: var(--blue-light); color: var(--blue); }
+    .tag-green { background: var(--green-light); color: var(--green); }
+    .tag-orange { background: var(--orange-light); color: var(--orange); }
+    .tag-purple { background: var(--purple-light); color: var(--purple); }
+
+    @media (max-width: 1100px) {
+      .nav { overflow-x: auto; padding: 14px 18px; }
+      .page-title { flex-direction: column; align-items: flex-start; }
+    }
+
+
+    .layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 20px;
+      align-items: stretch;
+      min-height: 680px;
+    }
+
+    .conversation-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .conversation {
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      padding: 13px;
+      background: #f9fafb;
+    }
+
+    .conversation.active {
+      background: var(--blue-light);
+      border-color: #bfdbfe;
+    }
+
+    .conversation-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 5px;
+    }
+
+    .conversation-name {
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .conversation-time {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .conversation-preview {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .chat {
+      display: flex;
+      flex-direction: column;
+      min-height: 680px;
+    }
+
+    .chat-header {
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .chat-header h2 {
+      margin: 0 0 5px;
+      font-size: 20px;
+      color: var(--navy);
+    }
+
+    .chat-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .messages {
+      flex: 1;
+      padding: 18px 0;
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+
+    .message {
+      max-width: 72%;
+      border-radius: 14px;
+      padding: 12px 14px;
+      line-height: 1.4;
+      font-size: 14px;
+    }
+
+    .message.scout {
+      background: var(--blue);
+      color: white;
+      margin-left: auto;
+    }
+
+    .message.athlete {
+      background: #f3f4f6;
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .message.system {
+      max-width: 100%;
+      background: var(--orange-light);
+      color: var(--orange);
+      border: 1px solid #fed7aa;
+      text-align: center;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .input-area {
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .input {
+      flex: 1;
+      background: #f9fafb;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 13px 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 1100px) {
+      .layout { grid-template-columns: 1fr; }
+      .message { max-width: 100%; }
+    }
   </style>
 </head>
 
 <body>
+
   <div class="nav">
     <a href="index.html">System Overview</a>
     <a href="scout-profile.html">Scout Profile</a>
@@ -26,41 +298,89 @@
     <a href="profile.html">Athlete Profile</a>
     <a href="messages.html" class="active">Messages</a>
   </div>
-  
-<div class="page">
-  <h1>Messages</h1>
 
-  <div class="layout">
-    <div class="box">
-      <h2>Conversations</h2>
-      <div class="conversation">John Smith</div>
-      <div class="conversation">Alex Brown</div>
-      <div class="conversation">Carlos Gomez</div>
-      <div class="conversation">David Lee</div>
+  <div class="page">
+    <div class="page-title">
+      <div>
+        <h1>Messages</h1>
+        <p>Direct communication and recruiting request updates with connected athletes.</p>
+      </div>
+      <span class="button btn-primary">New Message</span>
     </div>
 
-    <div class="box">
-      <h2>John Smith</h2>
+    <div class="layout">
+      <div class="card">
+        <h2 class="section-title">Conversations</h2>
 
-      <div class="message">
-        <strong>Scout:</strong> Hello John, we reviewed your profile and would like more match footage.
+        <div class="conversation-list">
+          <div class="conversation active">
+            <div class="conversation-top">
+              <div class="conversation-name">John Smith</div>
+              <div class="conversation-time">Now</div>
+            </div>
+            <div class="conversation-preview">Uploaded the requested video.</div>
+          </div>
+
+          <div class="conversation">
+            <div class="conversation-top">
+              <div class="conversation-name">Alex Brown</div>
+              <div class="conversation-time">1h</div>
+            </div>
+            <div class="conversation-preview">Responded to an information request.</div>
+          </div>
+
+          <div class="conversation">
+            <div class="conversation-top">
+              <div class="conversation-name">Carlos Gomez</div>
+              <div class="conversation-time">Yesterday</div>
+            </div>
+            <div class="conversation-preview">Document upload completed.</div>
+          </div>
+
+          <div class="conversation">
+            <div class="conversation-top">
+              <div class="conversation-name">David Lee</div>
+              <div class="conversation-time">2d</div>
+            </div>
+            <div class="conversation-preview">Awaiting follow-up.</div>
+          </div>
+        </div>
       </div>
 
-      <div class="message">
-        <strong>System:</strong> Information request sent — Match Footage.
-      </div>
+      <div class="card chat">
+        <div class="chat-header">
+          <div>
+            <h2>John Smith</h2>
+            <p>Midfielder | Toronto Academy | Connected Athlete</p>
+          </div>
+          <span class="button btn-light">Open Profile</span>
+        </div>
 
-      <div class="message">
-        <strong>Athlete:</strong> Thank you. I uploaded the requested video.
-      </div>
+        <div class="messages">
+          <div class="message scout">
+            <strong>Scout:</strong> Hello John, we reviewed your profile and would like more match footage.
+          </div>
 
-      <div class="message">
-        <strong>System:</strong> Athlete uploaded new highlight video.
-      </div>
+          <div class="message system">
+            Information request sent — Match Footage
+          </div>
 
-      <div class="input">Type message...</div>
+          <div class="message athlete">
+            <strong>Athlete:</strong> Thank you. I uploaded the requested video.
+          </div>
+
+          <div class="message system">
+            Athlete uploaded new highlight video
+          </div>
+        </div>
+
+        <div class="input-area">
+          <div class="input">Type message...</div>
+          <span class="button btn-primary">Send</span>
+        </div>
+      </div>
     </div>
+
   </div>
-</div>
 </body>
 </html>

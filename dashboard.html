@@ -2,74 +2,221 @@
 <html>
 <head>
   <title>Dashboard</title>
-
   <style>
+
+    :root {
+      --navy: #111827;
+      --blue: #2563eb;
+      --blue-light: #eff6ff;
+      --green: #16a34a;
+      --green-light: #ecfdf5;
+      --orange: #f97316;
+      --orange-light: #fff7ed;
+      --purple: #7c3aed;
+      --purple-light: #f5f3ff;
+      --yellow: #ca8a04;
+      --yellow-light: #fefce8;
+      --gray-bg: #f3f4f6;
+      --border: #e5e7eb;
+      --text: #111827;
+      --muted: #6b7280;
+      --card: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
 
     body {
       font-family: Arial, sans-serif;
-      margin: 40px;
-      background: #f7f7f7;
-      color: #111;
-    }
-
-    .page {
-      background: white;
-      border: 2px solid #111;
-      padding: 30px;
+      margin: 0;
+      background: var(--gray-bg);
+      color: var(--text);
     }
 
     .nav {
-      border: 1px solid #111;
-      padding: 12px;
-      margin-bottom: 30px;
-
+      background: var(--navy);
+      padding: 16px 40px;
       display: flex;
-      gap: 20px;
+      gap: 10px;
+      align-items: center;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
     .nav a {
+      color: #d1d5db;
       text-decoration: none;
-      color: #111;
-      padding: 8px 12px;
+      padding: 9px 13px;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav a:hover {
+      background: rgba(255,255,255,0.10);
+      color: white;
     }
 
     .nav a.active {
-      border: 1px solid #111;
-      font-weight: bold;
+      background: var(--blue);
+      color: white;
+      font-weight: 600;
     }
 
-    .grid {
-      display: grid;
-      gap: 15px;
+    .page {
+      max-width: 1440px;
+      margin: 28px auto;
+      padding: 0 28px 40px;
     }
 
-    .pipeline-grid {
+    .page-title {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+    }
+
+    .page-title h1 {
+      margin: 0;
+      font-size: 28px;
+      color: var(--navy);
+    }
+
+    .page-title p {
+      margin: 6px 0 0;
+      color: var(--muted);
+    }
+
+    .button {
+      border: none;
+      padding: 10px 14px;
+      border-radius: 9px;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: default;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.10);
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: white;
+    }
+
+    .btn-light {
+      background: white;
+      color: var(--navy);
+      border: 1px solid var(--border);
+      box-shadow: none;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+    }
+
+    .section-title {
+      margin: 0 0 14px;
+      font-size: 18px;
+      color: var(--navy);
+    }
+
+    @media (max-width: 1100px) {
+      .nav { overflow-x: auto; padding: 14px 18px; }
+      .page-title { flex-direction: column; align-items: flex-start; }
+    }
+
+
+    .metric-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 15px;
+      gap: 14px;
+      margin-bottom: 22px;
     }
 
-    .box {
-      border: 1px solid #111;
-      padding: 15px;
+    .metric-card {
       background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      text-align: center;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
     }
 
-    .metric {
-      text-align: center;
+    .metric-label {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 8px;
     }
 
     .metric-number {
-      font-size: 28px;
-      font-weight: bold;
-      margin-top: 10px;
+      font-size: 30px;
+      font-weight: 800;
+      color: var(--blue);
     }
 
-  </style>
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
 
+    .list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .list-item {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 13px;
+      background: #f9fafb;
+    }
+
+    .list-title {
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--navy);
+    }
+
+    .list-meta {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .status {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .status-due { background: var(--yellow-light); color: var(--yellow); }
+    .status-overdue { background: #fee2e2; color: #dc2626; }
+    .status-new { background: var(--blue-light); color: var(--blue); }
+    .status-complete { background: var(--green-light); color: var(--green); }
+
+    @media (max-width: 1100px) {
+      .metric-grid { grid-template-columns: repeat(2, 1fr); }
+      .dashboard-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 
 <body>
+
   <div class="nav">
     <a href="index.html">System Overview</a>
     <a href="scout-profile.html">Scout Profile</a>
@@ -80,90 +227,130 @@
     <a href="messages.html">Messages</a>
   </div>
 
-<div class="page">
 
-  <h1>Dashboard</h1>
-
-  <h2>Pipeline Overview</h2>
-
-  <div class="pipeline-grid">
-
-    <div class="box metric">
-      <strong>New</strong>
-      <div class="metric-number">32</div>
+  <div class="page">
+    <div class="page-title">
+      <div>
+        <h1>Recruiter Dashboard</h1>
+        <p>Overview of pipeline activity, pending actions, and new athlete matches.</p>
+      </div>
+      <span class="button btn-primary">Open Prospects</span>
     </div>
 
-    <div class="box metric">
-      <strong>Reviewing</strong>
-      <div class="metric-number">14</div>
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-label">New</div>
+        <div class="metric-number">32</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-label">Reviewing</div>
+        <div class="metric-number">14</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-label">Contacted</div>
+        <div class="metric-number">8</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-label">Discussion</div>
+        <div class="metric-number">5</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-label">Decision</div>
+        <div class="metric-number">17</div>
+      </div>
     </div>
 
-    <div class="box metric">
-      <strong>Contacted</strong>
-      <div class="metric-number">8</div>
-    </div>
+    <div class="dashboard-grid">
+      <div class="card">
+        <h2 class="section-title">Pending Actions</h2>
 
-    <div class="box metric">
-      <strong>Discussion</strong>
-      <div class="metric-number">5</div>
-    </div>
+        <div class="list">
+          <div class="list-item">
+            <div class="list-title">Review athlete response</div>
+            <div class="list-meta">Alex Brown responded to an information request.</div>
+            <span class="status status-due">Due Today</span>
+          </div>
 
-    <div class="box metric">
-      <strong>Decision</strong>
-      <div class="metric-number">17</div>
-    </div>
+          <div class="list-item">
+            <div class="list-title">Watch new highlight video</div>
+            <div class="list-meta">John Smith uploaded new match footage.</div>
+            <span class="status status-overdue">Overdue</span>
+          </div>
 
+          <div class="list-item">
+            <div class="list-title">Follow up with athlete</div>
+            <div class="list-meta">David Lee is waiting for next steps.</div>
+            <span class="status status-due">2 Days Remaining</span>
+          </div>
+
+          <div class="list-item">
+            <div class="list-title">Evaluate newly saved athlete</div>
+            <div class="list-meta">Carlos Gomez was added to Reviewing.</div>
+            <span class="status status-due">Due Tomorrow</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">Recent Activity</h2>
+
+        <div class="list">
+          <div class="list-item">
+            <div class="list-title">John Smith uploaded a new highlight video</div>
+            <div class="list-meta">Media update • 12 minutes ago</div>
+          </div>
+
+          <div class="list-item">
+            <div class="list-title">Alex Brown responded to an information request</div>
+            <div class="list-meta">Request completed • 1 hour ago</div>
+          </div>
+
+          <div class="list-item">
+            <div class="list-title">David Lee updated physical metrics</div>
+            <div class="list-meta">Profile update • Yesterday</div>
+          </div>
+
+          <div class="list-item">
+            <div class="list-title">Carlos Gomez completed requested documents</div>
+            <div class="list-meta">Documents received • Yesterday</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">New Talent Matches</h2>
+
+        <div class="list">
+          <div class="list-item">
+            <div class="list-title">5 new midfielders</div>
+            <div class="list-meta">Match your saved search criteria.</div>
+            <span class="status status-new">View Matches</span>
+          </div>
+
+          <div class="list-item">
+            <div class="list-title">3 new defenders in Spain</div>
+            <div class="list-meta">Added this week.</div>
+            <span class="status status-new">View Matches</span>
+          </div>
+
+          <div class="list-item">
+            <div class="list-title">2 new goalkeepers</div>
+            <div class="list-meta">Recently completed profiles.</div>
+            <span class="status status-new">View Matches</span>
+          </div>
+
+          <div class="list-item">
+            <div class="list-title">4 newly verified athletes</div>
+            <div class="list-meta">Profiles now ready for review.</div>
+            <span class="status status-complete">Verified</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <br>
-
-  <div class="grid">
-
-    <div class="box">
-
-      <h2>Pending Actions</h2>
-
-      <p>Review athlete response — Due Today</p>
-
-      <p>Watch new highlight video — Overdue</p>
-
-      <p>Follow up with athlete — 2 Days Remaining</p>
-
-      <p>Evaluate newly saved athlete — Due Tomorrow</p>
-
-    </div>
-
-    <div class="box">
-
-      <h2>Recent Activity</h2>
-
-      <p>John Smith uploaded a new highlight video</p>
-
-      <p>Alex Brown responded to an information request</p>
-
-      <p>David Lee updated physical metrics</p>
-
-      <p>Carlos Gomez completed requested documents</p>
-
-    </div>
-
-    <div class="box">
-
-      <h2>New Talent Matches</h2>
-
-      <p>5 new midfielders match your saved search</p>
-
-      <p>3 new defenders available in Spain</p>
-
-      <p>2 new goalkeepers added this week</p>
-
-      <p>4 athletes completed profile verification</p>
-
-    </div>
-
-  </div>
-
-</div>
-
 </body>
 </html>
