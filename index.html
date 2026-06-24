@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>UnicAthlete System Overview</title>
+  <title>UnicAthlete Ecosystem Overview</title>
   <style>
     :root{
       --navy:#111827;--blue:#2563eb;--blue-light:#eff6ff;--green:#16a34a;--green-light:#ecfdf5;
@@ -18,34 +18,238 @@
     .hero{background:linear-gradient(135deg,#fff 0%,#eff6ff 100%);padding:34px}
     .label{display:inline-flex;background:var(--blue-light);color:var(--blue);border:1px solid #bfdbfe;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:900;margin-bottom:14px}
     h1{margin:0 0 10px;color:var(--navy);font-size:34px;letter-spacing:-.4px}
-    h2{margin:0 0 8px;color:var(--navy);font-size:22px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    h2{margin:0 0 8px;color:var(--navy);font-size:22px}
     h3{margin:0 0 8px;color:var(--navy);font-size:17px}
     p{margin:0;color:var(--muted)}
     .hero p{max-width:900px;font-size:16px}
-    .toc{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:22px}
+    .toc{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:22px}
     .toc a{background:white;border:1px solid #bfdbfe;color:var(--navy);border-radius:12px;padding:12px;text-decoration:none;font-size:13px;font-weight:800;text-align:center}
-    .flow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:18px}
-    .step{background:white;border:1px solid var(--border);border-radius:999px;padding:9px 12px;font-size:13px;font-weight:800;color:var(--navy)}
-    .arrow{font-weight:900;color:var(--blue)}
     .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:16px}
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
     .card{background:#f9fafb;border:1px solid var(--border);border-radius:16px;padding:18px}
-    .card.white{background:white}
     .card p{font-size:14px}
     .row{border-bottom:1px solid var(--border);padding:10px 0;font-size:14px;color:var(--muted)}
-    .row:last-child{border-bottom:none}.row strong{color:var(--navy)}
+    .row:last-child{border-bottom:none}
+    .row strong{color:var(--navy)}
     .tag{display:inline-block;font-size:12px;font-weight:800;padding:5px 8px;border-radius:999px;margin:3px 4px 3px 0}
-    .blue{background:var(--blue-light);color:var(--blue)}.green{background:var(--green-light);color:var(--green)}.purple{background:var(--purple-light);color:var(--purple)}.orange{background:var(--orange-light);color:var(--orange)}
-    .button{margin-top:14px;padding:9px 12px;border-radius:9px;background:var(--blue);color:white;text-decoration:none;font-size:13px;font-weight:800;display:inline-flex}
+    .blue{background:var(--blue-light);color:var(--blue)}
+    .green{background:var(--green-light);color:var(--green)}
+    .purple{background:var(--purple-light);color:var(--purple)}
+    .orange{background:var(--orange-light);color:var(--orange)}
+    .flow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:18px}
+    .step{background:white;border:1px solid var(--border);border-radius:999px;padding:9px 12px;font-size:13px;font-weight:800;color:var(--navy)}
+    .arrow{font-weight:900;color:var(--blue)}
     .backend{background:#111827;color:white;border-radius:16px;padding:18px;overflow:auto;font-size:14px;line-height:1.6;white-space:pre;margin-top:16px}
     .note{background:#fff7ed;color:#9a3412;border:1px solid #fed7aa;border-radius:14px;padding:15px;font-size:14px;margin-top:16px}
-    .info-note{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#eef2ff;color:#2563eb;border:1px solid #bfdbfe;font-size:12px;font-weight:900;cursor:pointer}
-    .backend-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(17,24,39,.42);z-index:5000;padding:24px}
-    .backend-modal.visible{display:flex}.backend-modal-card{width:min(620px,calc(100vw - 40px));max-height:calc(100vh - 70px);overflow-y:auto;background:white;border-radius:18px;box-shadow:0 24px 60px rgba(15,23,42,.35);border:1px solid var(--border)}
-    .backend-modal-header{padding:18px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .backend-modal-title{margin:0;color:var(--navy);font-size:18px;font-weight:900}.backend-modal-close{border:1px solid var(--border);background:#f9fafb;color:var(--navy);border-radius:10px;width:34px;height:34px;font-size:18px;font-weight:900;cursor:pointer}
-    .backend-modal-body{padding:18px 20px 20px;color:var(--muted);font-size:14px;line-height:1.55;white-space:pre-line}
     @media(max-width:1100px){.nav{padding:14px 18px}.toc,.grid-2,.grid-3{grid-template-columns:1fr}h1{font-size:28px}}
+    .embedded-system{
+  margin-top:20px;
+}
+
+.embed-level{
+  border-radius:22px;
+  padding:22px;
+  border:1px solid var(--border);
+  margin-top:16px;
+}
+
+.embed-header{
+  margin-bottom:16px;
+}
+
+.embed-header h3{
+  font-size:20px;
+  margin:6px 0 6px;
+}
+
+.level-professional{
+  background:var(--purple-light);
+  border-color:#ddd6fe;
+}
+
+.level-workspace{
+  background:var(--blue-light);
+  border-color:#bfdbfe;
+}
+
+.level-project{
+  background:var(--green-light);
+  border-color:#bbf7d0;
+}
+
+.criteria-box{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+  margin-bottom:16px;
+}
+
+.managed-athletes{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+}
+
+.card.white{
+  background:white;
+}
+
+.big-flow{
+  background:#f9fafb;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+}
+.info-note{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:#eef2ff;
+  color:#2563eb;
+  border:1px solid #bfdbfe;
+  font-size:12px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.backend-modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:rgba(17,24,39,.42);
+  z-index:5000;
+  padding:24px;
+}
+
+.backend-modal.visible{
+  display:flex;
+}
+
+.backend-modal-card{
+  width:min(620px,calc(100vw - 40px));
+  max-height:calc(100vh - 70px);
+  overflow-y:auto;
+  background:white;
+  border-radius:18px;
+  box-shadow:0 24px 60px rgba(15,23,42,.35);
+  border:1px solid var(--border);
+}
+
+.backend-modal-header{
+  padding:18px 20px;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+
+.backend-modal-title{
+  margin:0;
+  color:var(--navy);
+  font-size:18px;
+  font-weight:900;
+}
+
+.backend-modal-close{
+  border:1px solid var(--border);
+  background:#f9fafb;
+  color:var(--navy);
+  border-radius:10px;
+  width:34px;
+  height:34px;
+  font-size:18px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.backend-modal-body{
+  margin:18px 20px 20px;
+  padding:18px;
+  background:#111827;
+  color:white;
+  border-radius:14px;
+  font-family:"Courier New", monospace;
+  font-size:14px;
+  line-height:1.65;
+  white-space:pre;
+  overflow-x:auto;
+}
+
+.pipeline-panel{
+  background:#f9fafb;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+  margin-top:20px;
+}
+
+.pipeline-panel > p{
+  margin-bottom:18px;
+}
+
+.pipeline-steps{
+  display:grid;
+  grid-template-columns:1fr auto 1fr auto 1fr auto 1fr auto 1fr;
+  gap:10px;
+  align-items:stretch;
+}
+
+.pipeline-step{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:14px;
+}
+
+.pipeline-step strong{
+  display:block;
+  color:var(--navy);
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+.pipeline-step p{
+  font-size:13px;
+}
+
+.pipeline-status{
+  display:inline-block;
+  background:var(--blue-light);
+  color:var(--blue);
+  border:1px solid #bfdbfe;
+  border-radius:999px;
+  padding:4px 8px;
+  font-size:11px;
+  font-weight:900;
+  margin-bottom:8px;
+}
+
+.pipeline-arrow{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--blue);
+  font-weight:900;
+  font-size:20px;
+}
+
+@media(max-width:1100px){
+  .pipeline-steps{
+    grid-template-columns:1fr;
+  }
+
+  .pipeline-arrow{
+    transform:rotate(90deg);
+  }
+}
   </style>
 </head>
 
@@ -61,247 +265,425 @@
   </div>
 
   <div class="page">
-    <div class="hero">
-      <div class="label">MVP System Overview</div>
-      <h1>UnicAthlete Scouting CRM</h1>
+  <div class="hero">
+    <h1>UnicAthlete Athlete Work Ecosystem</h1>
+
+    <div class="toc">
+        <a href="#architecture">Profile Types</a>
+        <a href="#professional-work">Workspace Access</a>
+        <a href="#workspace-logic">Workspace Logic</a>
+        <a href="#recruiting-project-work">Project Work</a>
+    </div>
+  </div>
+
+  <div class="section" id="architecture">
+    <h2>
+    1. Profile Types
+
+    <button
+    class="info-note"
+    onclick="openBackendNote('profile-architecture')">
+    ⓘ
+    </button>
+    </h2>
+    <p>
+        The platform is built around two main profile types: Athlete Profiles and Professional Profiles.
+        These two profile types create the foundation of the ecosystem.
+    </p>
+
+    <div class="grid-2">
+        <div class="card">
+        <h3>Athlete Profile</h3>
+        <p>
+            A structured athlete portfolio that represents the athlete inside the platform.
+            It contains the athlete’s identity, sport information, stats, media, documents,
+            and other materials needed by professionals.
+        </p>
+        <span class="tag blue">Portfolio</span>
+        <span class="tag green">Stats</span>
+        <span class="tag orange">Media</span>
+        <span class="tag purple">Documents</span>
+        </div>
+
+        <div class="card">
+        <h3>Professional Profile</h3>
+        <p>
+            A profile for people or organizations that work with athletes. Each professional profile
+            has access to a workspace where athlete-related work is organized and managed.
+        </p>
+        <span class="tag purple">Workspace</span>
+        <span class="tag blue">Projects</span>
+        <span class="tag green">Athlete Management</span>
+        </div>
+    </div>
+
+    <div class="note">
+        Core platform split: athletes present themselves through structured portfolios, while professionals use workspaces to manage their work with athletes.
+    </div>
+    </div>
+
+  <div class="section" id="professional-work">
+  <h2>
+    2. Professional Workspace Access
+
+    <button
+      class="info-note"
+      onclick="openBackendNote('professional-work')">
+      ⓘ
+    </button>
+  </h2>
+
+  <p>
+    A Professional Profile can access workspaces in different ways. Depending on how the professional works,
+    they may have an individual workspace, one or more organization workspaces, or both.
+  </p>
+
+  <div class="grid-3">
+
+    <div class="card">
+      <h3>Individual Workspace</h3>
       <p>
-        This page separates the recruiter-facing product experience from the backend architecture. 
-        The MVP is organized around professional profiles, workspaces, recruiting projects, athletes, 
-        collaboration, project-based evaluation, requests, messages, and comparison.
+        Used when a professional works independently and manages their own athlete-related work.
       </p>
-      <div class="toc">
-        <a href="#ux">Recruiting UX</a>
-        <a href="#workspace">Workspace Logic</a>
-        <a href="#projects">Project Logic</a>
-        <a href="#collaboration">Collaboration</a>
-        <a href="#evaluation">Evaluation</a>
-        <a href="#backend">Backend</a>
-      </div>
+      <span class="tag blue">Optional</span>
     </div>
 
-    <div class="section" id="ux">
-      <h2>1. Recruiting UX</h2>
-      <p>What the recruiter/scout experiences in the product.</p>
-      <div class="flow">
-        <span class="step">Open Dashboard</span><span class="arrow">→</span>
-        <span class="step">Choose Workspace</span><span class="arrow">→</span>
-        <span class="step">Open Project</span><span class="arrow">→</span>
-        <span class="step">Discover Athlete</span><span class="arrow">→</span>
-        <span class="step">Add to Project</span><span class="arrow">→</span>
-        <span class="step">Assign Primary Scout</span><span class="arrow">→</span>
-        <span class="step">Evaluate / Request / Message</span><span class="arrow">→</span>
-        <span class="step">Compare / Decide</span>
-      </div>
-
-      <div class="grid-3">
-        <div class="card">
-          <h3>Dashboard</h3>
-          <p>Shows tasks, request updates, unread messages, assigned athlete updates, and new talent matches across all accessible workspaces.</p>
-          <a class="button" href="dashboard.html">Open Dashboard</a>
-        </div>
-        <div class="card">
-          <h3>Discover Athletes</h3>
-          <p>Scouts search athletes using filters, apply project criteria, compare candidates, and add athletes to a selected workspace/project.</p>
-          <a class="button" href="discover.html">Open Discover</a>
-        </div>
-        <div class="card">
-          <h3>Workspace</h3>
-          <p>The operational CRM page where scouts manage projects, pipeline stages, athlete ownership, and selected comparison candidates.</p>
-          <a class="button" href="workspace.html">Open Workspace</a>
-        </div>
-      </div>
+    <div class="card">
+      <h3>Organization Workspace</h3>
+      <p>
+        Created for an organization and shared by its members for collaborative athlete management.
+      </p>
+      <span class="tag green">Organization-Based</span>
     </div>
 
-    <div class="section" id="workspace">
-      <h2>2. Workspace Logic
-        <button class="info-note" onclick="openBackendNote(this)" data-title="Workspace Logic" data-note="A workspace is the operational area where professional profiles manage athletes.
+  </div>
 
-Workspace types:
-• Organization Workspace
-• Individual Workspace
+  <div class="flow big-flow">
+    <span class="step">Professional Profile</span>
+    <span class="arrow">→</span>
+    <span class="step">Individual Workspace</span>
+    <span class="arrow">and/or</span>
+    <span class="step">Organization Workspace(s)</span>
+  </div>
 
-The UX can combine both through All Workspaces, but every object should still show its workspace context when needed.">ⓘ</button>
-      </h2>
-      <p>Workspaces are the top-level operating containers for recruiting work.</p>
-      <div class="grid-2">
-        <div class="card">
-          <h3>Organization Workspace</h3>
-          <div class="row"><strong>Owner:</strong> Organization owner/admin or head scout.</div>
-          <div class="row"><strong>Members:</strong> Multiple scouts with roles and permissions.</div>
-          <div class="row"><strong>Use case:</strong> Team recruiting, shared pipeline, shared evaluations, shared requests/messages.</div>
-          <div><span class="tag blue">Slate / organization marker</span></div>
-        </div>
-        <div class="card">
-          <h3>Individual Workspace</h3>
-          <div class="row"><strong>Owner:</strong> Individual professional/recruiter.</div>
-          <div class="row"><strong>Members:</strong> Usually one user, future collaborators possible.</div>
-          <div class="row"><strong>Use case:</strong> Private prospects, independent recruiting, personal watchlist.</div>
-          <div><span class="tag purple">Purple / individual marker</span></div>
-        </div>
-      </div>
-      <div class="note">Workspace markers should appear on project/group cards and mixed views, not repeated unnecessarily on every athlete card.</div>
+  <div class="note">
+    Workspace access is flexible: a professional can work independently, through one organization,
+    through multiple organizations, or through both independent and organization workspaces.
+  </div>
+</div>
+
+  <div class="section" id="workspace-logic">
+  <h2>
+    3. Workspace Logic
+
+    <button
+      class="info-note"
+      onclick="openBackendNote('workspace-logic')">
+      ⓘ
+    </button>
+  </h2>
+
+  <p>
+    A workspace is where professional work with athletes is organized. Inside a workspace,
+    work is divided into containers. The meaning of a container depends on the professional type.
+    For the MVP recruiter profile, containers are Recruiting Projects.
+  </p>
+
+  <div class="grid-3">
+    <div class="card">
+      <h3>Workspace</h3>
+      <p>
+        The operating area where a professional or organization manages athlete-related work.
+      </p>
+      <span class="tag blue">Work Area</span>
     </div>
 
-    <div class="section" id="projects">
-      <h2>3. Recruiting Project Logic</h2>
-      <p>Projects/groups are recruiting focuses with criteria, not simple folders.</p>
-      <div class="grid-2">
-        <div class="card">
-          <h3>Project Defines</h3>
-          <div class="row"><strong>Objective:</strong> Example: U17 Midfielders for 2027 squad.</div>
-          <div class="row"><strong>Criteria:</strong> Sport, position, age, gender/category, region, level, class, availability, physical metrics, stats, media, verification.</div>
-          <div class="row"><strong>People:</strong> Project owner and assigned scouts.</div>
-          <div class="row"><strong>Work:</strong> Athletes, pipeline, evaluations, notes, requests, and decisions.</div>
-        </div>
-        <div class="card">
-          <h3>Athlete Membership</h3>
-          <div class="row"><strong>Important:</strong> One athlete can belong to multiple projects inside the same workspace.</div>
-          <div class="row"><strong>Example:</strong> John Smith can be in U17 Midfielders and Ontario Prospects.</div>
-          <div class="row"><strong>Reason:</strong> Different projects evaluate the same athlete against different criteria.</div>
-          <div class="row"><strong>Primary Project:</strong> Optional marker for the main recruiting context.</div>
-        </div>
-      </div>
-      <a class="button" href="create_group.html">Open Create Recruiting Project</a>
+    <div class="card">
+      <h3>Containers</h3>
+      <p>
+        Flexible work units inside a workspace. Their meaning depends on the professional profile type.
+      </p>
+      <span class="tag purple">Backend Generic</span>
     </div>
 
-    <div class="section" id="collaboration">
-      <h2>4. Collaboration Logic</h2>
-      <p>Several scouts can work on the same athlete, but responsibility should stay clear.</p>
-      <div class="grid-3">
-        <div class="card">
-          <h3>Primary Scout</h3>
-          <p>One scout responsible for follow-up, pipeline movement, and final recommendation for the athlete inside the workspace/project context.</p>
-          <span class="tag green">Accountability</span>
-        </div>
-        <div class="card">
-          <h3>Collaborating Scouts</h3>
-          <p>Additional scouts can evaluate, add notes, request information, review media, message the athlete, and support the decision.</p>
-          <span class="tag blue">Team Work</span>
-        </div>
-        <div class="card">
-          <h3>Shared Tools</h3>
-          <p>Evaluation Management, Request Management, Messages, and Internal Notes should be shared for assigned scouts to prevent duplicated work.</p>
-          <span class="tag orange">Shared Context</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="section" id="evaluation">
-      <h2>5. Evaluation Logic
-        <button class="info-note" onclick="openBackendNote(this)" data-title="Project-Based Evaluation" data-note="Evaluation is tied to project membership, not only to the athlete globally.
-
-The same athlete can have different ratings in different projects because each project has different criteria.">ⓘ</button>
-      </h2>
-      <p>Evaluations are project-specific because scouts evaluate relative to recruiting criteria.</p>
-      <div class="grid-2">
-        <div class="card">
-          <h3>Correct Evaluation Context</h3>
-          <div class="row"><strong>Workspace:</strong> Toronto Academy</div>
-          <div class="row"><strong>Project:</strong> U17 Midfielders</div>
-          <div class="row"><strong>Criteria:</strong> Midfielder · Age 15–17 · Ontario · Academy level</div>
-          <div class="row"><strong>Rating:</strong> 8.0 / 10 for this project</div>
-        </div>
-        <div class="card">
-          <h3>Different Project, Different Rating</h3>
-          <div class="row"><strong>Workspace:</strong> Toronto Academy</div>
-          <div class="row"><strong>Project:</strong> Ontario Prospects</div>
-          <div class="row"><strong>Criteria:</strong> Any position · Ontario · Academy level</div>
-          <div class="row"><strong>Rating:</strong> 7.4 / 10 for this project</div>
-        </div>
-      </div>
-      <div class="grid-3">
-        <div class="card"><h3>Athlete Profile</h3><p>Shows aggregated rating for selected project only.</p><a class="button" href="profile.html">Open Profile</a></div>
-        <div class="card"><h3>Evaluation Management</h3><p>Shows project selector, project criteria, history, drafts, project rating, and internal notes.</p><a class="button" href="evaluation_management.html">Open Evaluations</a></div>
-        <div class="card"><h3>Submit Evaluation</h3><p>Scout submits an individual score/version for the selected project context.</p><a class="button" href="evaluate.html">Open Evaluate</a></div>
-      </div>
-    </div>
-
-    <div class="section">
-      <h2>6. Communication, Requests & Compare</h2>
-      <p>These modules support collaboration and decision-making.</p>
-      <div class="grid-3">
-        <div class="card"><h3>Request Management</h3><p>Shared request history prevents multiple scouts asking the athlete for the same files or information.</p><a class="button" href="request_management.html">Open Request Management</a></div>
-        <div class="card"><h3>Messages</h3><p>Use shared workspace-athlete conversation rather than separate private scout threads.</p><a class="button" href="messages.html">Open Messages</a></div>
-        <div class="card"><h3>Compare</h3><p>Compare 2–4 athletes side-by-side. Best used within project/group criteria context.</p><a class="button" href="compare.html">Open Compare</a></div>
-      </div>
-    </div>
-
-    <div class="section" id="backend">
-      <h2>7. Backend Architecture</h2>
-      <p>This section is only the data relationship model, separated from UX behavior.</p>
-      <div class="backend">User
-└── Profile
-    ├── Athlete Profile
-    │   └── Portfolio, media, stats, documents
-    │
-    └── Professional Profile
-        ├── Professional Type
-        │   ├── MVP: Sports Recruiter
-        │   └── Future: Agent, Coach, Physiotherapist, Nutritionist, Sports Center, Brand
-        │
-        └── Workspace Access
-            ├── Organization Workspace
-            └── Individual Workspace
-
-Workspace
-├── Workspace Members
-├── Roles / Permissions
-├── Recruiting Projects / Groups
-└── Workspace Athlete Records
-
-Recruiting Project
-├── Workspace ID
-├── Project Owner
-├── Assigned Scouts
-├── Recruiting Criteria
-├── Athlete Project Memberships
-└── Project Pipeline View
-
-Workspace Athlete Record
-├── Athlete ID
-├── Workspace ID
-├── Primary Scout
-├── Collaborating Scouts
-├── Pipeline Status
-├── Requests
-├── Messages
-└── Activity History
-
-Project Membership
-├── Athlete ID
-├── Project ID
-├── Primary / Secondary Project Flag
-├── Project-Specific Evaluations
-├── Project-Specific Aggregated Rating
-└── Project-Specific Notes / Recommendation</div>
-
-      <div class="note">
-        Marketplace expansion should reuse the same base pattern: Professional Profile → Workspace → Project/Service Context → Managed Profiles/Clients → Actions. Different professions may later get different toolsets, but the workspace architecture should stay consistent.
-      </div>
+    <div class="card">
+      <h3>Recruiting Project</h3>
+      <p>
+        For recruiter profiles, each container represents a scouting assignment with specific recruiting criteria.
+      </p>
+      <span class="tag green">MVP Container</span>
     </div>
   </div>
 
-  <div class="backend-modal" id="backendNoteModal" onclick="closeBackendNote(event)">
-    <div class="backend-modal-card">
-      <div class="backend-modal-header">
-        <h3 class="backend-modal-title" id="backendModalTitle">Backend Note</h3>
-        <button class="backend-modal-close" onclick="closeBackendNote()">×</button>
-      </div>
-      <div class="backend-modal-body" id="backendModalBody"></div>
+  <div class="flow big-flow">
+    <span class="step">Workspace</span>
+    <span class="arrow">→</span>
+    <span class="step">Container</span>
+    <span class="arrow">→</span>
+    <span class="step">Recruiting Project</span>
+    <span class="arrow">→</span>
+    <span class="step">Managed Athletes</span>
+  </div>
+
+  <div class="note">
+    Backend logic: containers should be generic. For recruiters, the container subtype is Recruiting Project.
+    Future professional types can use different container subtypes without changing the workspace structure.
+  </div>
+</div>
+
+  <div class="section" id="recruiting-project-work">
+  <h2>
+    4. Recruiting Project Work
+
+    <button
+      class="info-note"
+      onclick="openBackendNote('recruiting-project-work')">
+      ⓘ
+    </button>
+  </h2>
+
+  <p>
+    Each Recruiting Project is one scouting assignment. It contains recruiting criteria,
+    athletes who may fit those criteria, and the collaborative workflow scouts use to make
+    decisions on each athlete.
+  </p>
+
+  <div class="grid-3">
+    <div class="card">
+      <h3>Recruiting Criteria</h3>
+      <p>
+        The description of the athlete the organization is looking for, such as position,
+        level, age, location, performance profile, media, and other requirements.
+      </p>
+      <span class="tag blue">Player Target</span>
+    </div>
+
+    <div class="card">
+      <h3>Managed Athletes</h3>
+      <p>
+        Discovered athletes are added to the project when they may fit the recruiting criteria.
+      </p>
+      <span class="tag green">Candidate Pool</span>
+    </div>
+
+    <div class="card">
+      <h3>Scout Collaboration</h3>
+      <p>
+        Scouts work together on evaluations, requests, messages, comparisons, notes, and final decisions.
+      </p>
+      <span class="tag purple">Team Workflow</span>
     </div>
   </div>
+
+  <div class="pipeline-panel">
+  <h3>Athlete Pipeline Inside a Recruiting Project</h3>
+  <p>
+    This shows how one athlete moves through the project from being added as a possible fit
+    to reaching a recruiting decision.
+  </p>
+
+  <div class="pipeline-steps">
+    <div class="pipeline-step">
+      <span class="pipeline-status">NEW</span>
+      <strong>Athlete Added</strong>
+      <p>Added to the project. Can still be unassigned.</p>
+    </div>
+
+    <div class="pipeline-arrow">→</div>
+
+    <div class="pipeline-step">
+      <span class="pipeline-status">REVIEWING</span>
+      <strong>Initial Review</strong>
+      <p>Evaluation starts. Primary Scout required.</p>
+    </div>
+
+    <div class="pipeline-arrow">→</div>
+
+    <div class="pipeline-step">
+      <span class="pipeline-status">CONTACTED</span>
+      <strong>Athlete Contacted</strong>
+      <p>Communication or information request begins.</p>
+    </div>
+
+    <div class="pipeline-arrow">→</div>
+
+    <div class="pipeline-step">
+      <span class="pipeline-status">DISCUSSION</span>
+      <strong>Active Discussion</strong>
+      <p>Scouts review, compare, and discuss fit.</p>
+    </div>
+
+    <div class="pipeline-arrow">→</div>
+
+    <div class="pipeline-step">
+      <span class="pipeline-status">DECISION</span>
+      <strong>Recruiting Decision</strong>
+      <p>Final recommendation or outcome is recorded.</p>
+    </div>
+  </div>
+
+  <div class="note">
+    Pipeline rule: only New can be unassigned. To move to Reviewing or later,
+    the athlete must have a Primary Scout.
+  </div>
+</div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Primary Scout</h3>
+      <p>
+        The scout responsible for the athlete inside the project. The Primary Scout manages
+        follow-up, pipeline movement, evaluation coordination, and final recommendation.
+      </p>
+      <div class="row"><strong>Can evaluate:</strong> Yes</div>
+      <div class="row"><strong>Can request info:</strong> Yes</div>
+      <div class="row"><strong>Can message athlete:</strong> Yes</div>
+      <div class="row"><strong>Can compare athletes:</strong> Yes</div>
+      <div class="row"><strong>Can request collaborator review:</strong> Yes</div>
+    </div>
+
+    <div class="card">
+      <h3>Collaborator Scouts</h3>
+      <p>
+        Scouts who support the Primary Scout on a specific athlete. They help review,
+        evaluate, compare, and contribute internal notes.
+      </p>
+      <div class="row"><strong>Can evaluate:</strong> Yes</div>
+      <div class="row"><strong>Can review request responses:</strong> Yes</div>
+      <div class="row"><strong>Can compare athletes:</strong> Yes</div>
+      <div class="row"><strong>Can leave internal notes:</strong> Yes</div>
+      <div class="row"><strong>Final responsibility:</strong> No, Primary Scout owns this</div>
+    </div>
+  </div>
+
+  <div class="note">
+    Pipeline rule: when an athlete is added to a project, they start as New and may be unassigned.
+    To move beyond New, the athlete must be assigned a Primary Scout. Collaborator Scouts can support
+    the decision, but the Primary Scout owns the final recommendation.
+  </div>
+</div>
+</div>
+
+<div class="backend-modal" id="backendNoteModal" onclick="closeBackendNote(event)">
+  <div class="backend-modal-card">
+    <div class="backend-modal-header">
+      <h3 class="backend-modal-title" id="backendModalTitle">Architecture Note</h3>
+      <button class="backend-modal-close" onclick="closeBackendNote()">×</button>
+    </div>
+    <div class="backend-modal-body" id="backendModalBody"></div>
+  </div>
+</div>
 
 <script>
-function openBackendNote(button){
-  document.getElementById("backendModalTitle").textContent=button.getAttribute("data-title")||"Backend Note";
-  document.getElementById("backendModalBody").textContent=button.getAttribute("data-note")||"";
+const backendNotes = {
+
+  "profile-architecture": {
+    title: "Profile Architecture",
+    body: `User
+├── Athlete Profile
+│   └── Portfolio Data
+│
+└── Professional Profile
+    ├── Professional Type
+    │   ├── Recruiter (MVP)
+    │   └── Future Professional Types
+    │
+    └── Workspace
+        └── Containers
+            └── MVP: Recruiting Projects`
+  },
+
+  "professional-work": {
+  title: "Professional Workspace Access",
+  body: `ProfessionalProfile
+│
+├── Individual Workspace
+│   └── Personal recruiting work
+│
+└── Organization Workspace Memberships
+    ├── Organization Workspace A
+    ├── Organization Workspace B
+    └── Organization Workspace C`
+},
+
+  "workspace-logic": {
+  title: "Workspace Container Architecture",
+  body: `Workspace
+│
+└── Containers
+    ├── container_type
+    ├── workspace_id
+    └── professional_type_context
+        │
+        ├── MVP: RecruitingProject
+        │   ├── recruiting_criteria
+        │   ├── project_members
+        │   └── managed_athletes
+        │
+        └── Future: Other Container Types`
+},
+
+  "recruiting-project-work": {
+  title: "Recruiting Project Work Architecture",
+  body: `RecruitingProject
+│
+├── recruiting_criteria
+├── project_members
+└── ProjectAthletes
+    │
+    ├── athlete_profile_id
+    ├── pipeline_status
+    │   ├── NEW
+    │   ├── REVIEWING
+    │   ├── CONTACTED
+    │   ├── DISCUSSION
+    │   └── DECISION
+    │
+    ├── primary_scout_id
+    ├── collaborator_scout_ids
+    │
+    ├── evaluations
+    ├── information_requests
+    ├── messages
+    ├── comparisons
+    ├── internal_notes
+    └── decision
+
+Rule:
+NEW can be unassigned.
+REVIEWING and later require primary_scout_id.`
+}
+
+};
+
+function openBackendNote(noteId){
+  const note = backendNotes[noteId];
+
+  if(!note) return;
+
+  document.getElementById("backendModalTitle").textContent = note.title;
+  document.getElementById("backendModalBody").textContent = note.body;
   document.getElementById("backendNoteModal").classList.add("visible");
 }
+
 function closeBackendNote(event){
-  const modal=document.getElementById("backendNoteModal");
-  if(!event||event.target===modal||event.target.classList.contains("backend-modal-close")) modal.classList.remove("visible");
+  const modal = document.getElementById("backendNoteModal");
+
+  if(
+    !event ||
+    event.target === modal ||
+    event.target.classList.contains("backend-modal-close")
+  ){
+    modal.classList.remove("visible");
+  }
 }
-document.addEventListener("keydown",function(event){if(event.key==="Escape")document.getElementById("backendNoteModal").classList.remove("visible")});
+
+document.addEventListener("keydown", function(event){
+  if(event.key === "Escape"){
+    document.getElementById("backendNoteModal").classList.remove("visible");
+  }
+});
 </script>
+
 </body>
 </html>
