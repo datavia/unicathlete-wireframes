@@ -13,10 +13,15 @@
       --orange-light: #fff7ed;
       --purple: #7c3aed;
       --purple-light: #f5f3ff;
+      --red: #dc2626;
+      --red-light: #fee2e2;
+      --yellow: #ca8a04;
+      --yellow-light: #fefce8;
       --gray-bg: #f3f4f6;
       --border: #e5e7eb;
       --text: #111827;
       --muted: #6b7280;
+      --card: #ffffff;
     }
 
     * { box-sizing: border-box; }
@@ -62,7 +67,7 @@
     }
 
     .page {
-      max-width: 1180px;
+      max-width: 1240px;
       margin: 28px auto;
       padding: 0 28px 40px;
     }
@@ -76,33 +81,53 @@
     }
 
     .page-title h1 {
-      margin: 0;
+      margin: 10px 0 6px;
       font-size: 28px;
       color: var(--navy);
     }
 
     .page-title p {
-      margin: 6px 0 0;
+      margin: 0;
       color: var(--muted);
+    }
+
+    .back-link {
+      color: var(--blue);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
     }
 
     .button {
       border: none;
-      padding: 10px 14px;
+      padding: 11px 16px;
       border-radius: 9px;
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 800;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
       text-decoration: none;
+      min-width: 120px;
     }
 
-    .btn-primary { background: var(--blue); color: white; }
+    .btn-primary {
+      background: var(--blue);
+      color: white;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.20);
+    }
+
     .btn-light {
       background: white;
       color: var(--navy);
       border: 1px solid var(--border);
+    }
+
+    .btn-outline {
+      background: white;
+      color: var(--blue);
+      border: 1px solid #93c5fd;
     }
 
     .card {
@@ -111,15 +136,72 @@
       border-radius: 16px;
       padding: 18px;
       box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+      margin-bottom: 18px;
+    }
+
+    .search-switch-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+      margin-bottom: 18px;
+    }
+
+    .search-switch-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .search-box {
+      position: relative;
+      width: 100%;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .athlete-search-top {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: #f9fafb;
+      color: var(--navy);
+      border-radius: 10px;
+      padding: 12px 13px 12px 40px;
+      font-size: 14px;
+      font-weight: 700;
+      outline: none;
+    }
+
+    .athlete-search-top:focus {
+      border-color: #93c5fd;
+      background: white;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
     }
 
     .athlete-card {
+      min-height: 118px;
       background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 18px;
-      margin-bottom: 20px;
+      cursor: pointer;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .athlete-card:hover {
+      border-color: #bfdbfe;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
     }
 
     .athlete-main {
@@ -129,22 +211,23 @@
     }
 
     .avatar {
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
       background: var(--blue);
       color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 800;
+      flex-shrink: 0;
     }
 
     .athlete-main h2 {
-      margin: 0 0 4px;
-      font-size: 20px;
+      margin: 0 0 5px;
       color: var(--navy);
+      font-size: 22px;
     }
 
     .athlete-main p {
@@ -153,11 +236,85 @@
       font-size: 14px;
     }
 
+    .athlete-actions {
+      width: 340px;
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .primary-request-action {
+      text-decoration: none;
+      background: var(--blue);
+      color: white;
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.15s ease, box-shadow 0.15s ease;
+      min-height: 56px;
+    }
+
+    .primary-request-action:hover {
+      background: #1d4ed8;
+      box-shadow: 0 6px 14px rgba(37, 99, 235, 0.22);
+    }
+
+    .primary-request-action strong {
+      display: block;
+      font-size: 15px;
+      line-height: 1.2;
+    }
+
+    .primary-request-action span {
+      font-size: 12px;
+      opacity: 0.9;
+      line-height: 1.25;
+    }
+
+    .primary-request-action > span:last-child {
+      font-size: 16px;
+      font-weight: 900;
+      margin-left: 12px;
+    }
+
+    .secondary-request-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .secondary-request-action {
+      text-decoration: none;
+      background: white;
+      color: var(--navy);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 800;
+      transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .secondary-request-action:hover {
+      border-color: #bfdbfe;
+      background: #f8fafc;
+      color: var(--blue);
+    }
+
     .summary-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 14px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .summary-card {
@@ -170,8 +327,8 @@
 
     .summary-card strong {
       display: block;
+      font-size: 28px;
       color: var(--blue);
-      font-size: 26px;
       margin-bottom: 4px;
     }
 
@@ -183,65 +340,95 @@
 
     .layout {
       display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 20px;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 18px;
       align-items: start;
     }
 
-    .filter-list {
-      display: grid;
-      gap: 8px;
-    }
-
-    .filter {
-      padding: 11px 12px;
-      border-radius: 10px;
+    .section-title {
+      margin: 0 0 6px;
       color: var(--navy);
-      font-size: 14px;
-      display: flex;
-      justify-content: space-between;
-      text-decoration: none;
+      font-size: 18px;
     }
 
-    .filter.active {
-      background: var(--blue-light);
-      color: var(--blue);
+    .section-subtitle {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .request-filter-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin: 12px 0 14px;
+      padding: 10px;
+      background: #f9fafb;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .request-filter select {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--navy);
+      border-radius: 9px;
+      padding: 9px 10px;
+      font-size: 12px;
       font-weight: 800;
-      border: 1px solid #bfdbfe;
+      outline: none;
+    }
+
+    .request-filter select:focus {
+      border-color: #93c5fd;
     }
 
     .request-list {
       display: grid;
-      gap: 14px;
+      gap: 12px;
     }
 
     .request-row {
       border: 1px solid var(--border);
-      border-radius: 15px;
-      padding: 16px;
-      background: white;
+      border-radius: 14px;
+      padding: 14px;
+      background: #f9fafb;
       display: grid;
       grid-template-columns: 1fr auto;
-      gap: 16px;
+      gap: 14px;
       align-items: center;
     }
 
-    .request-row h3 {
-      margin: 0 0 6px;
-      color: var(--navy);
-      font-size: 17px;
+    .request-row.highlight {
+      background: var(--orange-light);
+      border-color: #fed7aa;
     }
 
-    .request-row p {
-      margin: 0;
+    .request-title {
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 4px;
+      font-size: 15px;
+    }
+
+    .request-meta {
       color: var(--muted);
-      font-size: 14px;
+      font-size: 13px;
       line-height: 1.45;
+    }
+
+    .request-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .status {
       display: inline-block;
-      margin-top: 10px;
+      margin-top: 8px;
       padding: 5px 8px;
       border-radius: 999px;
       font-size: 12px;
@@ -251,20 +438,88 @@
     .pending { background: #fed7aa; color: var(--orange); }
     .completed { background: #bbf7d0; color: var(--green); }
     .reviewed { background: var(--blue-light); color: var(--blue); }
+    .closed { background: #f3f4f6; color: var(--muted); }
 
-    .row-actions {
+    .rating-breakdown {
+      display: grid;
+      gap: 10px;
+    }
+
+    .rating-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 9px;
+      font-size: 14px;
+    }
+
+    .rating-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .rating-row span:first-child {
+      color: var(--muted);
+    }
+
+    .rating-row span:last-child {
+      color: var(--navy);
+      font-weight: 800;
+      text-align: right;
+    }
+
+    .team-row {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
-      justify-content: flex-end;
+      margin-top: 10px;
     }
 
-    @media (max-width: 950px) {
+    .team-pill {
+      border-radius: 999px;
+      padding: 6px 9px;
+      font-size: 12px;
+      font-weight: 800;
+      background: var(--blue-light);
+      color: var(--blue);
+      border: 1px solid #bfdbfe;
+    }
+
+    .team-pill.owner {
+      background: var(--green-light);
+      color: var(--green);
+      border-color: #bbf7d0;
+    }
+
+    .comment-card {
+      border: 1px solid #dbeafe;
+      background: white;
+      border-radius: 12px;
+      padding: 13px;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .comment-card strong {
+      display: block;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .comment-card span {
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    @media (max-width: 1000px) {
       .nav { overflow-x: auto; padding: 14px 18px; }
       .page-title, .athlete-card { flex-direction: column; align-items: flex-start; }
-      .summary-grid, .layout { grid-template-columns: 1fr; }
+      .athlete-actions { width: 100%; min-width: 0; }
+      .secondary-request-actions { grid-template-columns: 1fr; }
+      .summary-grid, .layout, .request-filter-row { grid-template-columns: 1fr; }
       .request-row { grid-template-columns: 1fr; }
-      .row-actions { justify-content: flex-start; }
+      .request-actions { justify-content: flex-start; }
     }
   </style>
 </head>
@@ -275,7 +530,7 @@
     <a href="scout-profile.html">Scout Profile</a>
     <a href="dashboard.html">Dashboard</a>
     <a href="discover.html">Discover Athletes</a>
-    <a href="prospects.html">Prospects</a>
+    <a href="workspace.html">Workspace</a>
     <a href="profile.html">Athlete Profile</a>
     <a href="messages.html" class="active">Messages</a>
   </div>
@@ -283,16 +538,30 @@
   <div class="page">
     <div class="page-title">
       <div>
+        <a class="back-link" href="messages.html">‹ Back to Messages</a>
         <h1>Request Management</h1>
-        <p>Manage all structured information requests connected to this athlete.</p>
-      </div>
-      <div>
-        <a href="messages.html" class="button btn-light">Back to Messages</a>
-        <a href="requests.html" class="button btn-primary">+ New Request</a>
+        <p>Review request history, track submitted information, and coordinate follow-ups for this athlete.</p>
       </div>
     </div>
 
-    <div class="card athlete-card">
+    <div class="search-switch-card">
+      <div class="search-switch-row">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input
+            type="text"
+            class="athlete-search-top"
+            placeholder="Search athlete by name, position, or organization..."
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="card athlete-card"
+         role="link"
+         tabindex="0"
+         data-click-target="profile.html">
+
       <div class="athlete-main">
         <div class="avatar">JS</div>
         <div>
@@ -300,74 +569,212 @@
           <p>Midfielder | 17 | Toronto Academy | Connected Athlete</p>
         </div>
       </div>
-      <a href="profile.html" class="button btn-light">Open Athlete Profile</a>
+
+      <div class="athlete-actions">
+        <a href="requests.html" class="primary-request-action">
+          <div>
+            <strong>+ New Request</strong>
+          </div>
+        </a>
+
+        <div class="secondary-request-actions">
+          <a href="messages.html" class="secondary-request-action">Message Athlete</a>
+          <a href="#" class="secondary-request-action">Assign Follow-Up</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-grid">
+      <div class="summary-card">
+        <strong>4</strong>
+        <span>Total Requests</span>
+      </div>
+
+      <div class="summary-card">
+        <strong>1</strong>
+        <span>Pending</span>
+      </div>
+
+      <div class="summary-card">
+        <strong>2</strong>
+        <span>Submitted</span>
+      </div>
+
+      <div class="summary-card">
+        <strong>1</strong>
+        <span>Reviewed</span>
+      </div>
     </div>
 
     <div class="layout">
-      <div class="card">
-        <h2 class="section-title">Request Filters</h2>
-        <div class="filter-list">
-          <a href="#" class="filter active"><span>All Requests</span><span>4</span></a>
-          <a href="#" class="filter"><span>Pending</span><span>1</span></a>
-          <a href="#" class="filter"><span>Submitted</span><span>2</span></a>
-          <a href="#" class="filter"><span>Reviewed</span><span>1</span></a>
-          <a href="#" class="filter"><span>Closed</span><span>0</span></a>
+      <div>
+        <div class="card">
+          <h2 class="section-title">Request History</h2>
+          <p class="section-subtitle">Track structured requests, statuses, ownership, and athlete responses.</p>
+
+          <div class="request-filter-row">
+            <div class="request-filter">
+              <select>
+                <option>All requests</option>
+                <option>Pending</option>
+                <option>Submitted</option>
+                <option>Reviewed</option>
+                <option>Closed</option>
+              </select>
+            </div>
+
+            <div class="request-filter">
+              <select>
+                <option>All request types</option>
+                <option>Media Request</option>
+                <option>Medical Information</option>
+                <option>Verification</option>
+                <option>Introductory Call</option>
+                <option>Assessment / Trial</option>
+              </select>
+            </div>
+
+            <div class="request-filter">
+              <select>
+                <option>Newest first</option>
+                <option>Oldest first</option>
+                <option>Deadline soonest</option>
+                <option>Created by scout</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="request-list">
+            <div class="request-row highlight">
+              <div>
+                <div class="request-title">Medical Information Request</div>
+                <div class="request-meta">Sent Jun 14, 2026 · Deadline Jun 20, 2026<br>Created by Mike Brown · Assigned to Sarah Wilson</div>
+                <span class="status pending">Pending</span>
+              </div>
+              <div class="request-actions">
+                <a href="requests.html" class="button btn-light">Open</a>
+                <a href="messages.html" class="button btn-primary">Message</a>
+              </div>
+            </div>
+
+            <div class="request-row">
+              <div>
+                <div class="request-title">Match Footage Request</div>
+                <div class="request-meta">Sent Jun 12, 2026 · Submitted Jun 15, 2026<br>Created by Sarah Wilson · Reviewed by Mike Brown</div>
+                <span class="status completed">Completed</span>
+              </div>
+              <div class="request-actions">
+                <a href="profile.html" class="button btn-light">Review Media</a>
+                <a href="messages.html" class="button btn-primary">Message</a>
+              </div>
+            </div>
+
+            <div class="request-row">
+              <div>
+                <div class="request-title">Verification Request</div>
+                <div class="request-meta">Sent Jun 9, 2026 · Documents received and reviewed<br>Created by David Lee · Reviewed by Sarah Wilson</div>
+                <span class="status reviewed">Reviewed</span>
+              </div>
+              <div class="request-actions">
+                <a href="requests.html" class="button btn-light">View Details</a>
+              </div>
+            </div>
+
+            <div class="request-row">
+              <div>
+                <div class="request-title">Introductory Call Request</div>
+                <div class="request-meta">Sent Jun 5, 2026 · Athlete confirmed availability<br>Created by Mike Brown · Assigned to Mike Brown</div>
+                <span class="status completed">Completed</span>
+              </div>
+              <div class="request-actions">
+                <a href="messages.html" class="button btn-light">View Conversation</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="card">
-        <h2 class="section-title">Request History</h2>
+      <div>
+        <div class="card">
+          <h2 class="section-title">Team Assignment</h2>
+          <p class="section-subtitle">Ownership and collaborators for this request process.</p>
 
-        <div class="request-list">
-          <div class="request-row">
-            <div>
-              <h3>Medical Information Request</h3>
-              <p>Sent Jun 14, 2026 · Deadline Jun 20, 2026</p>
-              <span class="status pending">Pending</span>
-            </div>
-            <div class="row-actions">
-              <a href="requests.html" class="button btn-light">Open Request</a>
-              <a href="messages.html" class="button btn-primary">Message Athlete</a>
-            </div>
+          <div class="rating-breakdown">
+            <div class="rating-row"><span>Owner Scout</span><span>Mike Brown</span></div>
+            <div class="rating-row"><span>Organization</span><span>Toronto Academy</span></div>
+            <div class="rating-row"><span>Status</span><span>Info Requested</span></div>
           </div>
 
-          <div class="request-row">
-            <div>
-              <h3>Match Footage Request</h3>
-              <p>Sent Jun 12, 2026 · Submitted Jun 15, 2026 · Athlete uploaded highlight video.</p>
-              <span class="status completed">Completed</span>
-            </div>
-            <div class="row-actions">
-              <a href="profile.html" class="button btn-light">Review Media</a>
-              <a href="messages.html" class="button btn-primary">Message Athlete</a>
-            </div>
+          <div class="team-row">
+            <span class="team-pill owner">Mike Brown</span>
+            <span class="team-pill">Sarah Wilson</span>
+            <span class="team-pill">David Lee</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="section-title">Request Breakdown</h2>
+          <p class="section-subtitle">Current structured request activity by type.</p>
+
+          <div class="rating-breakdown">
+            <div class="rating-row"><span>Media</span><span>1 completed</span></div>
+            <div class="rating-row"><span>Medical</span><span>1 pending</span></div>
+            <div class="rating-row"><span>Verification</span><span>1 reviewed</span></div>
+            <div class="rating-row"><span>Introductory Call</span><span>1 completed</span></div>
+            <div class="rating-row"><span>Trial / Assessment</span><span>0 active</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="section-title">Latest Follow-Up</h2>
+          <p class="section-subtitle">Most recent request-related next step.</p>
+
+          <div class="rating-breakdown">
+            <div class="rating-row"><span>Next Step</span><span>Wait for medical response</span></div>
+            <div class="rating-row"><span>Assigned To</span><span>Sarah Wilson</span></div>
+            <div class="rating-row"><span>Due</span><span>Jun 20, 2026</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="section-title">Internal Request Notes</h2>
+          <p class="section-subtitle">Visible only to the organization.</p>
+
+          <div class="comment-card">
+            <strong>Mike Brown</strong>
+            <span>Medical information is the only remaining open request before the next evaluation step.</span>
           </div>
 
-          <div class="request-row">
-            <div>
-              <h3>Verification Request</h3>
-              <p>Sent Jun 9, 2026 · Documents received and reviewed.</p>
-              <span class="status reviewed">Reviewed</span>
-            </div>
-            <div class="row-actions">
-              <a href="requests.html" class="button btn-light">View Details</a>
-            </div>
-          </div>
-
-          <div class="request-row">
-            <div>
-              <h3>Introductory Call Request</h3>
-              <p>Sent Jun 5, 2026 · Athlete confirmed availability.</p>
-              <span class="status completed">Completed</span>
-            </div>
-            <div class="row-actions">
-              <a href="messages.html" class="button btn-light">View Conversation</a>
-            </div>
+          <div class="comment-card">
+            <strong>Sarah Wilson</strong>
+            <span>I will follow up if the athlete does not respond by the deadline.</span>
           </div>
         </div>
       </div>
     </div>
-
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const clickableCards = document.querySelectorAll("[data-click-target]");
+
+      clickableCards.forEach(function (card) {
+        card.addEventListener("click", function (event) {
+          if (event.target.closest("a, button, input, select, textarea")) {
+            return;
+          }
+
+          window.location.href = card.dataset.clickTarget;
+        });
+
+        card.addEventListener("keydown", function (event) {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            window.location.href = card.dataset.clickTarget;
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>

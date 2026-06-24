@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Scout Profile</title>
+  <title>Professional Profile</title>
   <style>
-
     :root {
       --navy: #111827;
       --blue: #2563eb;
@@ -14,8 +13,6 @@
       --orange-light: #fff7ed;
       --purple: #7c3aed;
       --purple-light: #f5f3ff;
-      --yellow: #ca8a04;
-      --yellow-light: #fefce8;
       --gray-bg: #f3f4f6;
       --border: #e5e7eb;
       --text: #111827;
@@ -42,6 +39,7 @@
       position: sticky;
       top: 0;
       z-index: 10;
+      overflow-x: auto;
     }
 
     .nav a {
@@ -66,7 +64,7 @@
     }
 
     .page {
-      max-width: 1440px;
+      max-width: 1360px;
       margin: 28px auto;
       padding: 0 28px 40px;
     }
@@ -88,6 +86,7 @@
     .page-title p {
       margin: 6px 0 0;
       color: var(--muted);
+      line-height: 1.4;
     }
 
     .button {
@@ -95,59 +94,18 @@
       padding: 10px 14px;
       border-radius: 9px;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 700;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      cursor: default;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.10);
+      cursor: pointer;
       text-decoration: none;
+      white-space: nowrap;
     }
 
     .btn-primary { background: var(--blue); color: white; }
+    .btn-light { background: white; color: var(--navy); border: 1px solid var(--border); }
     .btn-dark { background: var(--navy); color: white; }
-    .btn-light {
-      background: white;
-      color: var(--navy);
-      border: 1px solid var(--border);
-      box-shadow: none;
-    }
-
-    .card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 18px;
-      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
-    }
-
-    .section-title {
-      margin: 0 0 14px;
-      font-size: 18px;
-      color: var(--navy);
-    }
-
-    .tag {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 700;
-      padding: 5px 8px;
-      border-radius: 999px;
-      background: #f3f4f6;
-      color: var(--muted);
-      margin: 3px 4px 3px 0;
-    }
-
-    .tag-blue { background: var(--blue-light); color: var(--blue); }
-    .tag-green { background: var(--green-light); color: var(--green); }
-    .tag-orange { background: var(--orange-light); color: var(--orange); }
-    .tag-purple { background: var(--purple-light); color: var(--purple); }
-
-    @media (max-width: 1100px) {
-      .nav { overflow-x: auto; padding: 14px 18px; }
-      .page-title { flex-direction: column; align-items: flex-start; }
-    }
-
 
     .hero {
       background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
@@ -179,6 +137,7 @@
       justify-content: center;
       font-size: 26px;
       font-weight: bold;
+      flex-shrink: 0;
     }
 
     .profile-main h2 {
@@ -190,6 +149,7 @@
     .profile-main p {
       margin: 0;
       color: var(--muted);
+      line-height: 1.4;
     }
 
     .hero-actions {
@@ -199,40 +159,57 @@
       justify-content: flex-end;
     }
 
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-bottom: 22px;
+    .badge-row {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
     }
 
-    .stat-card {
+    .badge {
       background: white;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 18px;
-      text-align: center;
-      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
-    }
-
-    .stat-card span {
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .stat-card strong {
-      display: block;
-      font-size: 30px;
       color: var(--blue);
-      margin-top: 8px;
+      border: 1px solid #bfdbfe;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
     }
+
+    .badge.green { color: var(--green); border-color: #bbf7d0; background: var(--green-light); }
+    .badge.purple { color: var(--purple); border-color: #ddd6fe; background: var(--purple-light); }
+    .badge.orange { color: var(--orange); border-color: #fed7aa; background: var(--orange-light); }
 
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 18px;
       margin-bottom: 18px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+    }
+
+    .section-title {
+      margin: 0 0 14px;
+      font-size: 18px;
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    .section-subtitle {
+      margin: -6px 0 14px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.4;
     }
 
     .info-list {
@@ -245,50 +222,268 @@
       justify-content: space-between;
       gap: 12px;
       border-bottom: 1px solid #f1f5f9;
-      padding-bottom: 8px;
+      padding-bottom: 9px;
       font-size: 14px;
     }
 
-    .info-row span:first-child {
+    .info-row span:first-child { color: var(--muted); }
+    .info-row span:last-child { font-weight: 700; text-align: right; color: var(--navy); }
+
+    .workspace-membership-summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .workspace-summary-tile {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 13px;
+      text-align: center;
+    }
+
+    .workspace-summary-tile strong {
+      display: block;
+      color: var(--blue);
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+
+    .workspace-summary-tile span {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .workspace-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .workspace-subsection {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .workspace-subsection h3 {
+      margin: 0 0 12px;
+      color: var(--navy);
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .workspace-card-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .workspace-membership-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 15px;
+    }
+
+    .workspace-membership-card.organization {
+      border-color: #bfdbfe;
+      background: #eff6ff;
+    }
+
+    .workspace-membership-card.individual {
+      border-color: #ddd6fe;
+      background: #f5f3ff;
+    }
+
+    .workspace-membership-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .workspace-membership-name {
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .workspace-membership-meta {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .workspace-type-pill {
+      border-radius: 999px;
+      padding: 5px 8px;
+      font-size: 11px;
+      font-weight: 900;
+      background: white;
+      color: var(--blue);
+      border: 1px solid #bfdbfe;
+      white-space: nowrap;
+    }
+
+    .workspace-type-pill.personal {
+      color: var(--purple);
+      border-color: #ddd6fe;
+    }
+
+    .workspace-stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .workspace-stat {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 9px;
+      font-size: 12px;
       color: var(--muted);
     }
 
-    .info-row span:last-child {
-      font-weight: 700;
-      text-align: right;
+    .workspace-stat strong {
+      display: block;
+      color: var(--navy);
+      font-size: 14px;
+      margin-bottom: 2px;
     }
 
-    .activity-list {
+    .workspace-action-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .project-card {
+      background: #f9fafb;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+
+    .project-name {
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .project-meta {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .project-purpose {
+      margin-top: 8px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 9px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .role-grid {
       display: grid;
       gap: 10px;
     }
 
-    .activity-item {
-      background: #f9fafb;
+    .role-card {
       border: 1px solid var(--border);
+      background: #f9fafb;
       border-radius: 12px;
-      padding: 13px;
-      color: var(--navy);
+      padding: 12px;
       font-size: 14px;
     }
 
+    .role-card strong {
+      display: block;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .role-card span {
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .info-note {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #eef2ff;
+      color: #2563eb;
+      border: 1px solid #bfdbfe;
+      font-size: 12px;
+      font-weight: 900;
+      cursor: help;
+      flex-shrink: 0;
+    }
+
+    .info-tooltip {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 26px;
+      width: 330px;
+      background: #111827;
+      color: white;
+      border-radius: 12px;
+      padding: 13px 14px;
+      box-shadow: 0 14px 30px rgba(15,23,42,.28);
+      font-size: 12px;
+      line-height: 1.45;
+      font-weight: 600;
+      white-space: pre-line;
+      z-index: 100;
+      text-align: left;
+    }
+
+    .info-note:hover .info-tooltip {
+      display: block;
+    }
+
+    .section-title .info-tooltip {
+      left: auto;
+      right: 0;
+    }
+
     @media (max-width: 1100px) {
-      .hero { flex-direction: column; align-items: flex-start; }
+      .nav { padding: 14px 18px; }
+      .page-title, .hero { flex-direction: column; align-items: flex-start; }
       .hero-actions { justify-content: flex-start; }
-      .stats-grid { grid-template-columns: 1fr; }
-      .grid-2 { grid-template-columns: 1fr; }
+      .grid-2, .workspace-grid, .workspace-membership-summary, .workspace-stat-row { grid-template-columns: 1fr; }
+      .info-tooltip { width: 280px; left: -80px; }
     }
   </style>
 </head>
 
 <body>
-
   <div class="nav">
     <a href="index.html">System Overview</a>
-    <a href="scout-profile.html" class="active">Scout Profile</a>
+    <a href="scout-profile.html" class="active">Professional Profile</a>
     <a href="dashboard.html">Dashboard</a>
     <a href="discover.html">Discover Athletes</a>
-    <a href="prospects.html">Prospects</a>
+    <a href="workspace.html">Workspace</a>
     <a href="profile.html">Athlete Profile</a>
     <a href="messages.html">Messages</a>
   </div>
@@ -296,82 +491,226 @@
   <div class="page">
     <div class="page-title">
       <div>
-        <h1>Scout Profile</h1>
-        <p>Verified recruiter identity, recruiting preferences, and CRM activity overview.</p>
+        <h1>Professional Profile
+          <span class="info-note">ⓘ
+            <span class="info-tooltip">PROFILE ARCHITECTURE
+
+User
+↓
+Profile
+↓
+Profile Type
+
+MVP profile types:
+• Athlete
+• Professional
+
+MVP professional type:
+• Sports Recruiter
+
+Future professional types:
+• Sports Agent
+• Physiotherapist
+• Nutritionist
+• Coach
+• Sports Center
+• Brand
+
+Professional profiles can create or join organization workspaces and can also work individually.</span>
+          </span>
+        </h1>
+        <p>Identity, verification, expertise, and workspace memberships for a sports recruiting professional.</p>
       </div>
     </div>
 
     <div class="hero">
       <div class="profile-main">
-        <div class="avatar">SN</div>
+        <div class="avatar">MB</div>
         <div>
-          <h2>Scout Name</h2>
-          <p>Academy Scout | Toronto Academy | Canada</p>
-          <div style="margin-top: 10px;">
-            <span class="tag tag-green">Verified Scout</span>
-            <span class="tag tag-blue">Football / Soccer</span>
-            <span class="tag tag-purple">Ontario / Canada</span>
+          <h2>Mike Brown</h2>
+          <p>Sports Recruiter · Toronto Academy · Canada / Spain network</p>
+          <div class="badge-row">
+            <span class="badge green">Verified Professional</span>
+            <span class="badge">Organization Owner</span>
+            <span class="badge purple">Individual Workspace Active</span>
           </div>
         </div>
       </div>
 
       <div class="hero-actions">
-        <span class="button btn-primary">Edit Profile</span>
-        <span class="button btn-light">Verification Status</span>
-        <span class="button btn-light">Account Settings</span>
-      </div>
-    </div>
-
-    <div class="stats-grid">
-      <div class="stat-card"><span>Saved Prospects</span><strong>72</strong></div>
-      <div class="stat-card"><span>Active Discussions</span><strong>9</strong></div>
-      <div class="stat-card"><span>Completed Pipelines</span><strong>21</strong></div>
-    </div>
-
-    <div class="grid-2">
-      <div class="card">
-        <h2 class="section-title">Scout Information</h2>
-        <div class="info-list">
-          <div class="info-row"><span>Name</span><span>Scout Name</span></div>
-          <div class="info-row"><span>Role</span><span>Academy Scout</span></div>
-          <div class="info-row"><span>Organization</span><span>Toronto Academy</span></div>
-          <div class="info-row"><span>Country</span><span>Canada</span></div>
-          <div class="info-row"><span>Region Covered</span><span>Ontario / Canada</span></div>
-          <div class="info-row"><span>Sports</span><span>Football / Soccer</span></div>
-          <div class="info-row"><span>Age Groups</span><span>U16, U18, U21</span></div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2 class="section-title">Recruiting Preferences</h2>
-        <div class="info-list">
-          <div class="info-row"><span>Positions</span><span>Midfielders, Wingers, Centre Backs</span></div>
-          <div class="info-row"><span>Competitive Level</span><span>Academy, Semi-Pro, University</span></div>
-          <div class="info-row"><span>Target Countries</span><span>Canada, Spain, Turkey</span></div>
-          <div class="info-row"><span>Key Metrics</span><span>Technical ability, mentality, potential</span></div>
-          <div class="info-row"><span>Saved Searches</span><span>Canadian U18 Midfielders</span></div>
-        </div>
+        <a href="#" class="button btn-light">Edit Profile</a>
+        <a href="#" class="button btn-dark">Account Settings</a>
       </div>
     </div>
 
     <div class="grid-2">
       <div class="card">
-        <h2 class="section-title">Verification</h2>
+        <h2 class="section-title">Professional Details</h2>
         <div class="info-list">
-          <div class="info-row"><span>Status</span><span>Verified Scout</span></div>
-          <div class="info-row"><span>Verification Type</span><span>Club / Academy Representative</span></div>
-          <div class="info-row"><span>Verified Email</span><span>scout@organization.com</span></div>
-          <div class="info-row"><span>Documents</span><span>Organization proof submitted</span></div>
+          <div class="info-row"><span>Professional Type</span><span>Sports Recruiter</span></div>
+          <div class="info-row"><span>Current Organization</span><span>Toronto Academy</span></div>
+          <div class="info-row"><span>Location</span><span>Toronto, Canada</span></div>
+          <div class="info-row"><span>Experience</span><span>8 years</span></div>
+          <div class="info-row"><span>Languages</span><span>English, Turkish, Spanish</span></div>
         </div>
       </div>
 
       <div class="card">
-        <h2 class="section-title">CRM Activity Summary</h2>
+        <h2 class="section-title">Professional Expertise
+          <span class="info-note">ⓘ
+            <span class="info-tooltip">PROFESSIONAL EXPERTISE
+
+This describes the professional's background and strengths.
+
+It is not the same as recruiting criteria.
+
+Recruiting criteria should live inside Projects / Groups because each workspace project may search for different athletes.</span>
+          </span>
+        </h2>
         <div class="info-list">
-          <div class="info-row"><span>Reviewing</span><span>12 athletes</span></div>
-          <div class="info-row"><span>Contacted</span><span>8 athletes</span></div>
-          <div class="info-row"><span>Awaiting Follow-Up</span><span>5 athletes</span></div>
-          <div class="info-row"><span>Responses Pending Review</span><span>3 athletes</span></div>
+          <div class="info-row"><span>Sport</span><span>Football / Soccer</span></div>
+          <div class="info-row"><span>Regions Known</span><span>Canada, Spain, Turkey</span></div>
+          <div class="info-row"><span>Age Groups</span><span>U15–U21</span></div>
+          <div class="info-row"><span>Specialization</span><span>Youth scouting, midfielders, wingers</span></div>
+          <div class="info-row"><span>Evaluation Strengths</span><span>Technical ability, mentality, potential</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:18px;">
+      <h2 class="section-title">Verification Details
+        <span class="info-note">ⓘ
+          <span class="info-tooltip">VERIFICATION
+
+Verification belongs to the professional profile.
+
+Organization verification may be separate later.
+
+For MVP, a professional can be verified by:
+• Organization email
+• Club/academy document
+• Admin approval
+• Manual platform review</span>
+        </span>
+      </h2>
+
+      <div class="info-list">
+        <div class="info-row"><span>Verification Status</span><span>Verified</span></div>
+        <div class="info-row"><span>Verification Method</span><span>Organization email + manual review</span></div>
+        <div class="info-row"><span>Verified Organization</span><span>Toronto Academy</span></div>
+        <div class="info-row"><span>Last Reviewed</span><span>Jun 12, 2026</span></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:18px;">
+      <h2 class="section-title">Workspace Memberships
+        <span class="info-note">ⓘ
+          <span class="info-tooltip">WORKSPACE ARCHITECTURE
+
+A professional can access multiple workspaces.
+
+Workspace types:
+• Organization Workspace
+• Individual Workspace
+
+A single UI can show both, but objects should be marked with workspace context where needed.
+
+Each workspace can contain:
+• Members
+• Projects / Groups
+• Managed athletes
+• Evaluations
+• Requests
+• Messages
+• Notes
+• Activity history</span>
+        </span>
+      </h2>
+      <p class="section-subtitle">Workspaces this professional can use for organization collaboration and individual recruiting work.</p>
+
+
+      <div class="workspace-grid">
+        <div class="workspace-subsection">
+          <h3>Organization Workspace
+            <span class="info-note">ⓘ
+              <span class="info-tooltip">ORGANIZATION WORKSPACE
+
+Linked to an organization.
+
+Used for team recruiting:
+• Shared athletes
+• Shared projects
+• Members and roles
+• Team evaluations
+• Internal collaboration
+
+Deleting the organization can also delete or archive its workspace depending on backend rules.</span>
+            </span>
+          </h3>
+
+          <div class="workspace-card-list">
+            <div class="workspace-membership-card organization">
+              <div class="workspace-membership-top">
+                <div>
+                  <div class="workspace-membership-name">Toronto Academy</div>
+                  <div class="workspace-membership-meta">Organization Type: Academy<br>Workspace Role: Owner / Admin</div>
+                </div>
+                <span class="workspace-type-pill">Organization</span>
+              </div>
+
+              <div class="workspace-stat-row">
+                <div class="workspace-stat"><strong>5</strong>Members</div>
+                <div class="workspace-stat"><strong>72</strong>Managed Athletes</div>
+                <div class="workspace-stat"><strong>4</strong>Projects / Groups</div>
+              </div>
+
+              <div class="workspace-action-row">
+                <a href="workspace.html" class="button btn-primary">Open Workspace</a>
+                <a href="#" class="button btn-light">Manage Settings</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="workspace-subsection">
+          <h3>Individual Workspace
+            <span class="info-note">ⓘ
+              <span class="info-tooltip">INDIVIDUAL WORKSPACE
+
+Owned by one professional profile.
+
+Used for private recruiting work:
+• Personal prospects
+• Personal projects/groups
+• Individual evaluations
+• Private notes and tracking
+
+This lets a professional work outside an organization while using the same workspace structure.</span>
+            </span>
+          </h3>
+
+          <div class="workspace-card-list">
+            <div class="workspace-membership-card individual">
+              <div class="workspace-membership-top">
+                <div>
+                  <div class="workspace-membership-name">Mike Brown Individual Workspace</div>
+                  <div class="workspace-membership-meta">Private recruiting workspace<br>Workspace Role: Owner</div>
+                </div>
+                <span class="workspace-type-pill personal">Individual</span>
+              </div>
+
+              <div class="workspace-stat-row">
+                <div class="workspace-stat"><strong>1</strong>Member</div>
+                <div class="workspace-stat"><strong>14</strong>Managed Athletes</div>
+                <div class="workspace-stat"><strong>3</strong>Projects / Groups</div>
+              </div>
+
+              <div class="workspace-action-row">
+                <a href="workspace.html" class="button btn-primary">Open Workspace</a>
+                <a href="#" class="button btn-light">Manage Settings</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

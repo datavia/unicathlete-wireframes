@@ -486,63 +486,499 @@
         font-weight: 700;
     }
 
+
+    .team-chip-row { display:flex; gap:6px; flex-wrap:wrap; margin-top:8px; }
+    .team-chip { background:#eff6ff; color:#2563eb; border:1px solid #bfdbfe; border-radius:999px; padding:5px 8px; font-size:12px; font-weight:700; }
+    .evaluation-row { display:flex; justify-content:space-between; gap:12px; padding:9px 0; border-bottom:1px solid #f1f5f9; font-size:14px; }
+    .evaluation-row:last-child { border-bottom:none; }
+    .evaluation-row span:first-child { color:var(--navy); font-weight:700; }
+    .evaluation-row span:last-child { color:var(--blue); font-weight:800; }
+    .comment-card { background:white; border:1px solid #dbeafe; border-radius:12px; padding:12px; margin-bottom:10px; font-size:13px; }
+    .comment-author { font-weight:800; color:var(--navy); margin-bottom:4px; }
+    .comment-text { color:var(--muted); line-height:1.4; }
+    .mini-action { display:inline-flex; justify-content:center; align-items:center; width:100%; border:1px dashed #bfdbfe; color:#2563eb; background:#eff6ff; border-radius:10px; padding:10px 12px; font-size:13px; font-weight:800; text-decoration:none; margin-top:6px; }
+
+
+    .workspace-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 0 0 18px;
+    }
+
+    .workspace-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--navy);
+      border-radius: 999px;
+      padding: 9px 13px;
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+    }
+
+    .workspace-tab.active { background: var(--blue); color: white; border-color: var(--blue); }
+    .workspace-tab.personal { background: var(--purple-light); color: var(--purple); border-color: #ddd6fe; }
+
+    .workspace-tag {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 4px 7px;
+      font-size: 11px;
+      font-weight: 800;
+      margin-top: 7px;
+      background: var(--blue-light);
+      color: var(--blue);
+      border: 1px solid #bfdbfe;
+    }
+
+    .workspace-tag.personal {
+      background: var(--purple-light);
+      color: var(--purple);
+      border-color: #ddd6fe;
+    }
+
+    .destination-select { position: relative; display: inline-flex; }
+
+    .destination-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 44px;
+      width: 260px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px;
+      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.18);
+      z-index: 50;
+    }
+
+    .destination-select:hover .destination-menu { display: grid; gap: 8px; }
+
+    .destination-option {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px;
+      background: #f9fafb;
+      color: var(--navy);
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      text-align: left;
+      text-decoration: none;
+    }
+
+    .destination-option small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+
+
+    .workspace-context-pill {
+      display: inline-block;
+      margin-top: 8px;
+      background: #dbeafe;
+      color: #1d4ed8;
+      border: 1px solid #93c5fd;
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .workspace-context-card {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 14px;
+      font-size: 13px;
+      color: #1e40af;
+      line-height: 1.4;
+    }
+
+    .workspace-context-card strong {
+      display: block;
+      color: #111827;
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+
+
+
+    .group-focus-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+
+    .group-focus-name {
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .group-focus-meta {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .group-focus-purpose {
+      margin-top: 8px;
+      background: #f9fafb;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 9px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .group-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .group-chip {
+      background: var(--blue-light);
+      color: var(--blue);
+      border: 1px solid #bfdbfe;
+      border-radius: 999px;
+      padding: 5px 8px;
+      font-size: 12px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .group-chip.personal {
+      background: var(--purple-light);
+      color: var(--purple);
+      border-color: #ddd6fe;
+    }
+
+    .compact-note {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+      margin: -4px 0 12px;
+    }
+
+
+
+    .btn-compare {
+      background: #eff6ff;
+      color: #2563eb;
+      border: 1px solid #bfdbfe;
+    }
+
+    .btn-compare.active {
+      background: #2563eb;
+      color: white;
+      border-color: #2563eb;
+    }
+
+
     @media (max-width: 1100px) {
       .profile-layout { grid-template-columns: 1fr; }
       .hero { flex-direction: column; align-items: flex-start; }
       .actions { justify-content: flex-start; }
       .nav { overflow-x: auto; padding: 14px 18px; }
     }
-  </style>
+  
+    .compare-tray {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      width: min(920px, calc(100vw - 36px));
+      z-index: 1000;
+      background: var(--navy);
+      color: white;
+      border-radius: 16px;
+      padding: 14px 16px;
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.28);
+    }
+
+    .compare-tray.visible {
+      display: flex;
+    }
+
+    .compare-tray-title {
+      font-weight: 900;
+      margin-bottom: 4px;
+    }
+
+    .compare-tray-meta {
+      color: #d1d5db;
+      font-size: 13px;
+    }
+
+    .compare-pill-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .compare-pill {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.20);
+      border-radius: 999px;
+      padding: 5px 8px;
+      font-size: 12px;
+      font-weight: 800;
+      color: white;
+    }
+
+    .compare-tray-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .compare-tray .button {
+      box-shadow: none;
+    }
+
+    .compare-disabled {
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    .compare-limit-warning {
+      display: none;
+      margin-top: 6px;
+      color: #fed7aa;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .compare-limit-warning.visible {
+      display: block;
+    }
+
+    @media (max-width: 900px) {
+      .compare-tray {
+        width: calc(100vw - 24px);
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .compare-tray-actions {
+        justify-content: flex-start;
+      }
+    }
+
+
+    .workspace-marker {
+      display:inline-flex;
+      align-items:center;
+      gap:5px;
+      border-radius:999px;
+      padding:5px 8px;
+      font-size:12px;
+      font-weight:900;
+      background:#f1f5f9;
+      color:#475569;
+      border:1px solid #cbd5e1;
+      margin-top:8px;
+    }
+
+    .workspace-marker::before {
+      content:"🏢";
+      font-size:11px;
+    }
+
+    .project-card {
+      background:white;
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:12px;
+      margin-bottom:10px;
+    }
+
+    .project-card.active {
+      border-color:#bfdbfe;
+      background:#eff6ff;
+    }
+
+    .project-name {
+      color:var(--navy);
+      font-weight:900;
+      margin-bottom:4px;
+    }
+
+    .project-meta {
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.4;
+    }
+
+    .project-chip-row {
+      display:flex;
+      gap:6px;
+      flex-wrap:wrap;
+      margin-top:8px;
+    }
+
+    .project-chip {
+      background:white;
+      color:var(--blue);
+      border:1px solid #bfdbfe;
+      border-radius:999px;
+      padding:5px 8px;
+      font-size:12px;
+      font-weight:800;
+    }
+
+    .project-chip.secondary {
+      background:#f9fafb;
+      color:var(--muted);
+      border-color:var(--border);
+    }
+
+    .evaluation-context-select {
+      width:100%;
+      background:#f9fafb;
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:10px 12px;
+      color:var(--navy);
+      font-size:14px;
+      font-weight:800;
+      outline:none;
+      margin-top:8px;
+    }
+
+    .rating-context-note {
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.4;
+      margin-top:8px;
+    }
+
+    .info-note {
+      position:relative;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:18px;
+      height:18px;
+      border-radius:50%;
+      background:#eef2ff;
+      color:#2563eb;
+      border:1px solid #bfdbfe;
+      font-size:12px;
+      font-weight:900;
+      cursor:pointer;
+      flex-shrink:0;
+      vertical-align:middle;
+    }
+
+    .backend-modal {
+      position:fixed;
+      inset:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      background:rgba(17,24,39,.42);
+      z-index:5000;
+      padding:24px;
+    }
+
+    .backend-modal.visible { display:flex; }
+
+    .backend-modal-card {
+      width:min(560px,calc(100vw - 40px));
+      max-height:calc(100vh - 70px);
+      overflow-y:auto;
+      background:white;
+      border-radius:18px;
+      box-shadow:0 24px 60px rgba(15,23,42,.35);
+      border:1px solid var(--border);
+    }
+
+    .backend-modal-header {
+      padding:18px 20px;
+      border-bottom:1px solid var(--border);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+
+    .backend-modal-title {
+      margin:0;
+      color:var(--navy);
+      font-size:18px;
+      font-weight:900;
+    }
+
+    .backend-modal-close {
+      border:1px solid var(--border);
+      background:#f9fafb;
+      color:var(--navy);
+      border-radius:10px;
+      width:34px;
+      height:34px;
+      font-size:18px;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    .backend-modal-body {
+      padding:18px 20px 20px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.55;
+      white-space:pre-line;
+    }
+
+</style>
 </head>
 
 <script>
-function toggleProspect(btn) {
-
-    const watchBtn = document.querySelector('.btn-outline');
-
-    if (btn.classList.contains("active")) {
-
-        btn.classList.remove("active");
-        btn.innerHTML = "Add to Prospects";
-        btn.style.background = "#2563eb";
-
-        if (watchBtn) {
-            watchBtn.classList.remove("active");
-            watchBtn.innerHTML = "Watch";
-            watchBtn.style.background = "white";
-            watchBtn.style.color = "#111827";
-            watchBtn.style.borderColor = "#d1d5db";
-        }
-
-    } else {
-
-        btn.classList.add("active");
-        btn.innerHTML = "✓ In Prospects";
-        btn.style.background = "#16a34a";
-
-        if (watchBtn) {
-            watchBtn.classList.add("active");
-            watchBtn.innerHTML = "★ Watching";
-            watchBtn.style.background = "#fef3c7";
-            watchBtn.style.color = "#92400e";
-            watchBtn.style.borderColor = "#f59e0b";
-        }
-    }
+function addToWorkspace(option, workspaceName) {
+    const menu = option.closest(".destination-select");
+    const btn = menu.querySelector(".button");
+    btn.innerHTML = "✓ In " + workspaceName;
+    btn.style.background = "#16a34a";
 }
 
-function toggleWatch(btn) {
+function assignScout(btn) {
     if (btn.classList.contains("active")) {
         btn.classList.remove("active");
-        btn.innerHTML = "Watch";
+        btn.innerHTML = "Assign Scout";
         btn.style.background = "white";
         btn.style.color = "#111827";
         btn.style.borderColor = "#d1d5db";
     } else {
         btn.classList.add("active");
-        btn.innerHTML = "★ Watching";
-        btn.style.background = "#fef3c7";
-        btn.style.color = "#92400e";
-        btn.style.borderColor = "#f59e0b";
+        btn.innerHTML = "✓ Assigned: Mike";
+        btn.style.background = "#eff6ff";
+        btn.style.color = "#2563eb";
+        btn.style.borderColor = "#93c5fd";
     }
 }
 </script>
@@ -553,7 +989,7 @@ function toggleWatch(btn) {
     <a href="scout-profile.html">Scout Profile</a>
     <a href="dashboard.html">Dashboard</a>
     <a href="discover.html">Discover Athletes</a>
-    <a href="prospects.html">Prospects</a>
+    <a href="workspace.html">Workspace</a>
     <a href="profile.html" class="active">Athlete Profile</a>
     <a href="messages.html">Messages</a>
   </div>
@@ -579,16 +1015,30 @@ function toggleWatch(btn) {
       </div>
 
       <div class="actions">
-        <button
-          class="button btn-primary"
-          onclick="toggleProspect(this)">
-          Add to Prospects
-        </button>
+        <div class="destination-select">
+          <button class="button btn-primary"
+                  style="background:#16a34a;">
+            ✓ In Toronto Academy
+          </button>
+
+          <div class="destination-menu">
+            <button class="destination-option" onclick="addToWorkspace(this, 'My Individual Workspace')">
+              Add to My Individual Workspace
+              <small>Also save as a private prospect</small>
+            </button>
+
+            <button class="destination-option" onclick="addToWorkspace(this, 'Toronto Academy')">
+              Already in Toronto Academy
+              <small>Shared organization recruiting pipeline</small>
+            </button>
+          </div>
+        </div>
         <a href="messages.html" class="button btn-secondary">Message</a>
+        <button class="button btn-compare" onclick="toggleCompare(this)">+ Compare</button>
         <button
             class="button btn-outline"
-            onclick="toggleWatch(this)">
-            Watch
+            onclick="assignScout(this)">
+            Assign Scout
         </button>
       </div>
     </div>
@@ -669,12 +1119,21 @@ function toggleWatch(btn) {
 
       <div class="profile-column scout-column">
         <div class="workspace-header">
-          <h2>Scout Workspace</h2>
-          <p>Private recruiter-side evaluation tools</p>
+          <h2>Scout Workspace
+            <button class="info-note" type="button" onclick="openBackendNote(this)" data-title="Scout Workspace" data-note="This section shows how the athlete exists inside the selected workspace.
+
+The athlete can belong to several recruiting projects/groups inside the same workspace.
+
+Evaluations are tied to the athlete's project membership, not only to the athlete globally.
+
+Detailed evaluations, request management, and internal discussion remain in their own management pages.">ⓘ</button>
+          </h2>
+          <p>Workspace-specific recruiter-side tools and project context</p>
+          <span class="workspace-marker">Toronto Academy</span>
         </div>
 
         <div class="workspace-actions">
-          <a href="evaluate.html" class="workspace-btn workspace-btn-primary">
+          <a href="evaluation_management.html" class="workspace-btn workspace-btn-primary">
             <span class="workspace-btn-icon">▶</span>
             Open Evaluation
           </a>
@@ -688,9 +1147,36 @@ function toggleWatch(btn) {
 
           <a href="requests.html"
              class="workspace-btn workspace-btn-secondary">
-            <span calss=""workspace-btn-icon">+</span>
+            <span class="workspace-btn-icon">+</span>
             Request Information
           </a>
+        </div>
+
+        <div class="status-card">
+          <div class="status-label">Workspace</div>
+          <div class="status-value">Toronto Academy</div>
+          <span class="workspace-marker">Organization Workspace</span>
+        </div>
+
+        <div class="status-card">
+          <div class="status-label">Recruiting Projects / Groups</div>
+
+          <div class="project-card active">
+            <div class="project-name">U17 Midfielders</div>
+            <div class="project-meta">Primary project · Criteria: Midfielder · Age 15–17 · Ontario · Academy level</div>
+            <div class="project-chip-row">
+              <span class="project-chip">Evaluation context</span>
+              <span class="project-chip">Primary Project</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-name">Ontario Prospects</div>
+            <div class="project-meta">Additional project · Criteria: Any position · Ontario · Academy level</div>
+            <div class="project-chip-row">
+              <span class="project-chip secondary">Secondary Project</span>
+            </div>
+          </div>
         </div>
 
         <div class="status-card">
@@ -699,22 +1185,51 @@ function toggleWatch(btn) {
         </div>
 
         <div class="status-card">
-          <div class="status-label">Priority</div>
-          <div class="status-value">High</div>
+          <div class="status-label">Primary Scout</div>
+          <div class="status-value">Mike Brown</div>
+        </div>
+
+        <div class="status-card">
+          <div class="status-label">Collaborators</div>
+          <div class="team-chip-row">
+            <span class="team-chip">Sarah Wilson</span>
+            <span class="team-chip">David Lee</span>
+          </div>
+          <a href="#" class="mini-action">+ Add Collaborator</a>
         </div>
 
         <div class="section-divider"></div>
 
-        <h2>Aggregated Rating</h2>
+        <h2>Aggregated Rating
+          <button class="info-note" type="button" onclick="openBackendNote(this)" data-title="Project-Based Evaluation" data-note="Evaluation should be relative to a recruiting project's criteria.
+
+One athlete can be in multiple projects.
+
+Example:
+• U17 Midfielders: evaluated as a midfielder for age 15–17 criteria
+• Ontario Prospects: evaluated as a general Ontario prospect
+
+That means the same athlete can have different ratings in different project contexts.">ⓘ</button>
+        </h2>
 
         <div class="status-card">
-            <div class="status-label">Overall Scout Rating</div>
-            <div class="status-value" style="font-size:24px;">
-                8.0 / 10
-            </div>
+          <div class="status-label">Evaluation Context</div>
+          <select class="evaluation-context-select" onchange="updateEvaluationContext(this)">
+            <option value="u17">U17 Midfielders</option>
+            <option value="ontario">Ontario Prospects</option>
+          </select>
+          <div class="rating-context-note" id="ratingContextNote">Criteria: Midfielder · Age 15–17 · Ontario · Academy level</div>
         </div>
 
-        <div class="info-list">
+        <div class="status-card">
+            <div class="status-label">Aggregated Project Rating</div>
+            <div class="status-value" id="ratingScore" style="font-size:24px;">
+                8.0 / 10
+            </div>
+            <div class="rating-context-note" id="ratingMeta">Organization average for U17 Midfielders · 3 evaluations</div>
+        </div>
+
+        <div class="info-list" id="ratingBreakdown">
             <div class="info-row"><span>Technical</span><span>8 / 10</span></div>
             <div class="info-row"><span>Physical</span><span>7 / 10</span></div>
             <div class="info-row"><span>Tactical</span><span>8 / 10</span></div>
@@ -726,10 +1241,200 @@ function toggleWatch(btn) {
 
         <div class="status-card">
             <div class="status-label">Last Evaluation</div>
-            <div class="status-value">Jun 12, 2026</div>
+            <div class="status-value" id="lastEvaluation">Jun 12, 2026</div>
         </div>
       </div>
     </div>
   </div>
+
+  
+
+
+
+  <div class="backend-modal" id="backendNoteModal" onclick="closeBackendNote(event)">
+    <div class="backend-modal-card" role="dialog" aria-modal="true" aria-labelledby="backendModalTitle">
+      <div class="backend-modal-header">
+        <h3 class="backend-modal-title" id="backendModalTitle">Backend Note</h3>
+        <button class="backend-modal-close" type="button" onclick="closeBackendNote()">×</button>
+      </div>
+      <div class="backend-modal-body" id="backendModalBody"></div>
+    </div>
+  </div>
+
+    <div class="compare-tray" id="compareTray">
+      <div>
+        <div class="compare-tray-title">Compare selected athletes</div>
+        <div class="compare-tray-meta">
+          <span id="compareCount">0 / 4 selected</span> · Minimum 2 athletes needed to compare
+        </div>
+        <div class="compare-limit-warning" id="compareLimitWarning">Maximum 4 athletes can be selected.</div>
+        <div class="compare-pill-row" id="comparePills"></div>
+      </div>
+
+      <div class="compare-tray-actions">
+        <a href="compare.html" id="compareSelectedButton" class="button btn-primary compare-disabled">Compare Selected</a>
+        <button class="button btn-light" onclick="clearCompare()">Clear</button>
+      </div>
+    </div>
+
+
+<script>
+
+function updateEvaluationContext(select) {
+  const note = document.getElementById("ratingContextNote");
+  const score = document.getElementById("ratingScore");
+  const meta = document.getElementById("ratingMeta");
+  const breakdown = document.getElementById("ratingBreakdown");
+  const lastEvaluation = document.getElementById("lastEvaluation");
+
+  if (select.value === "ontario") {
+    note.textContent = "Criteria: Any position · Ontario · Academy level";
+    score.textContent = "7.4 / 10";
+    meta.textContent = "Organization average for Ontario Prospects · 2 evaluations";
+    breakdown.innerHTML = `
+      <div class="info-row"><span>Technical</span><span>7 / 10</span></div>
+      <div class="info-row"><span>Physical</span><span>7 / 10</span></div>
+      <div class="info-row"><span>Tactical</span><span>7.5 / 10</span></div>
+      <div class="info-row"><span>Mentality</span><span>8 / 10</span></div>
+      <div class="info-row"><span>Potential</span><span>7.5 / 10</span></div>
+    `;
+    lastEvaluation.textContent = "Jun 10, 2026";
+  } else {
+    note.textContent = "Criteria: Midfielder · Age 15–17 · Ontario · Academy level";
+    score.textContent = "8.0 / 10";
+    meta.textContent = "Organization average for U17 Midfielders · 3 evaluations";
+    breakdown.innerHTML = `
+      <div class="info-row"><span>Technical</span><span>8 / 10</span></div>
+      <div class="info-row"><span>Physical</span><span>7 / 10</span></div>
+      <div class="info-row"><span>Tactical</span><span>8 / 10</span></div>
+      <div class="info-row"><span>Mentality</span><span>9 / 10</span></div>
+      <div class="info-row"><span>Potential</span><span>8 / 10</span></div>
+    `;
+    lastEvaluation.textContent = "Jun 12, 2026";
+  }
+}
+
+function openBackendNote(button) {
+  const modal = document.getElementById("backendNoteModal");
+  const title = document.getElementById("backendModalTitle");
+  const body = document.getElementById("backendModalBody");
+
+  title.textContent = button.getAttribute("data-title") || "Backend Note";
+  body.textContent = button.getAttribute("data-note") || "";
+  modal.classList.add("visible");
+}
+
+function closeBackendNote(event) {
+  const modal = document.getElementById("backendNoteModal");
+  if (!event || event.target === modal || event.target.classList.contains("backend-modal-close")) {
+    modal.classList.remove("visible");
+  }
+}
+
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") {
+    const modal = document.getElementById("backendNoteModal");
+    if (modal) modal.classList.remove("visible");
+  }
+});
+
+const compareLimit = 4;
+let selectedAthletes = [];
+
+function getAthleteName(btn) {
+  const card = btn.closest(".prospect-card, .athlete-card, .hero");
+  if (!card) return "Selected Athlete";
+
+  const nameLink = card.querySelector(".prospect-name");
+  if (nameLink) return nameLink.textContent.trim();
+
+  const h2 = card.querySelector("h2");
+  if (h2) return h2.textContent.trim();
+
+  const h3 = card.querySelector("h3");
+  if (h3) return h3.textContent.trim();
+
+  return "Selected Athlete";
+}
+
+function updateCompareTray() {
+  const tray = document.getElementById("compareTray");
+  const count = document.getElementById("compareCount");
+  const pillRow = document.getElementById("comparePills");
+  const compareButton = document.getElementById("compareSelectedButton");
+
+  if (!tray || !count || !pillRow || !compareButton) return;
+
+  count.textContent = selectedAthletes.length + " / " + compareLimit + " selected";
+
+  pillRow.innerHTML = "";
+  selectedAthletes.forEach(function(name) {
+    const pill = document.createElement("span");
+    pill.className = "compare-pill";
+    pill.textContent = name;
+    pillRow.appendChild(pill);
+  });
+
+  if (selectedAthletes.length > 0) {
+    tray.classList.add("visible");
+  } else {
+    tray.classList.remove("visible");
+  }
+
+  if (selectedAthletes.length < 2) {
+    compareButton.classList.add("compare-disabled");
+    compareButton.onclick = null;
+  } else {
+    compareButton.classList.remove("compare-disabled");
+    compareButton.onclick = function(e) {
+      e.preventDefault();
+      localStorage.setItem("compareAthletes", JSON.stringify(selectedAthletes));
+      window.location.href = "compare.html";
+    };
+  }
+}
+
+function toggleCompare(btn) {
+  const name = getAthleteName(btn);
+  const warning = document.getElementById("compareLimitWarning");
+
+  if (btn.classList.contains("active")) {
+    btn.classList.remove("active");
+    btn.innerText = "+ Compare";
+    selectedAthletes = selectedAthletes.filter(function(item) {
+      return item !== name;
+    });
+    if (warning) warning.classList.remove("visible");
+    updateCompareTray();
+    return;
+  }
+
+  if (selectedAthletes.length >= compareLimit) {
+    if (warning) warning.classList.add("visible");
+    return;
+  }
+
+  btn.classList.add("active");
+  btn.innerText = "✓ Selected";
+  selectedAthletes.push(name);
+  if (warning) warning.classList.remove("visible");
+  updateCompareTray();
+}
+
+function clearCompare() {
+  selectedAthletes = [];
+  document.querySelectorAll(".compare-action.active, .btn-compare.active").forEach(function(btn) {
+    btn.classList.remove("active");
+    btn.innerText = btn.classList.contains("btn-compare") ? "+ Compare" : "+ Compare";
+  });
+
+  const warning = document.getElementById("compareLimitWarning");
+  if (warning) warning.classList.remove("visible");
+  updateCompareTray();
+}
+
+document.addEventListener("DOMContentLoaded", updateCompareTray);
+</script>
+
 </body>
 </html>

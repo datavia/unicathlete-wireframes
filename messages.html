@@ -263,6 +263,95 @@
       color:white;
     }
 
+
+    .participant-row { display:flex; gap:6px; flex-wrap:wrap; margin-top:8px; }
+    .participant-pill { background:var(--blue-light); color:var(--blue); border:1px solid #bfdbfe; border-radius:999px; padding:4px 7px; font-size:12px; font-weight:800; }
+
+
+    .workspace-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 0 0 18px;
+    }
+
+    .workspace-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--navy);
+      border-radius: 999px;
+      padding: 9px 13px;
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+    }
+
+    .workspace-tab.active { background: var(--blue); color: white; border-color: var(--blue); }
+    .workspace-tab.personal { background: var(--purple-light); color: var(--purple); border-color: #ddd6fe; }
+
+    .workspace-tag {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 4px 7px;
+      font-size: 11px;
+      font-weight: 800;
+      margin-top: 7px;
+      background: var(--blue-light);
+      color: var(--blue);
+      border: 1px solid #bfdbfe;
+    }
+
+    .workspace-tag.personal {
+      background: var(--purple-light);
+      color: var(--purple);
+      border-color: #ddd6fe;
+    }
+
+    .destination-select { position: relative; display: inline-flex; }
+
+    .destination-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 44px;
+      width: 260px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px;
+      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.18);
+      z-index: 50;
+    }
+
+    .destination-select:hover .destination-menu { display: grid; gap: 8px; }
+
+    .destination-option {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px;
+      background: #f9fafb;
+      color: var(--navy);
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      text-align: left;
+      text-decoration: none;
+    }
+
+    .destination-option small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+
     @media (max-width: 1100px) {
       .nav { overflow-x: auto; padding: 14px 18px; }
       .page-title { flex-direction: column; align-items: flex-start; }
@@ -543,7 +632,7 @@
     <a href="scout-profile.html">Scout Profile</a>
     <a href="dashboard.html">Dashboard</a>
     <a href="discover.html">Discover Athletes</a>
-    <a href="prospects.html">Prospects</a>
+    <a href="workspace.html">Workspace</a>
     <a href="profile.html">Athlete Profile</a>
     <a href="messages.html" class="active">Messages</a>
   </div>
@@ -552,9 +641,14 @@
     <div class="page-title">
       <div>
         <h1>Messages</h1>
-        <p>Direct communication and recruiting request updates with connected athletes.</p>
+        <p>Messages and request updates across personal and organization workspaces.</p>
       </div>
-      <span class="button btn-primary">New Message</span>
+    </div>
+
+    <div class="workspace-tabs">
+      <a href="#" class="workspace-tab active">All Workspaces</a>
+      <a href="#" class="workspace-tab personal">My Individual Workspace</a>
+      <a href="#" class="workspace-tab">Toronto Academy</a>
     </div>
 
     <div class="layout">
@@ -567,7 +661,7 @@
               <div class="conversation-name-row"><div class="conversation-name">John Smith</div><span class="mini-badge msg">2</span></div>
               <div class="conversation-time">Now</div>
             </div>
-            <div class="conversation-preview">Uploaded the requested video.</div>
+            <div class="conversation-preview">Uploaded the requested video.</div><span class="workspace-tag">Toronto Academy</span>
           </div>
 
           <div class="conversation">
@@ -575,7 +669,7 @@
               <div class="conversation-name-row"><div class="conversation-name">Alex Brown</div></div>
               <div class="conversation-time">1h</div>
             </div>
-            <div class="conversation-preview">Responded to an information request.</div>
+            <div class="conversation-preview">Responded to an information request.</div><span class="workspace-tag personal">Individual</span>
           </div>
 
           <div class="conversation">
@@ -601,6 +695,7 @@
           <div>
             <h2>John Smith</h2>
             <p>Midfielder | Toronto Academy | Connected Athlete</p>
+            <div class="participant-row"><span class="participant-pill">Assigned: Mike Brown</span><span class="participant-pill">Workspace: Toronto Academy</span><span class="participant-pill">Sarah Wilson</span><span class="participant-pill">David Lee</span></div>
           </div>
           <div class="chat-actions">
             <a href="profile.html" class="button btn-light">Open Profile</a>
@@ -613,7 +708,7 @@
 
         <div class="messages">
           <div class="message scout">
-            <strong>Scout:</strong> Hello John, we reviewed your profile and would like more match footage.
+            <strong>Mike Brown:</strong> Hello John, we reviewed your profile and would like more match footage.
           </div>
 
           <div class="message system">

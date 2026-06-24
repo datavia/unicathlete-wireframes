@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Athlete Assessment</title>
+  <title>Submit Evaluation</title>
   <style>
     :root {
       --navy: #111827;
@@ -374,7 +374,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      cursor: default;
+      cursor: pointer;
       text-decoration: none;
       min-width: 130px;
     }
@@ -438,7 +438,7 @@
     <a href="scout-profile.html">Scout Profile</a>
     <a href="dashboard.html">Dashboard</a>
     <a href="discover.html">Discover Athletes</a>
-    <a href="prospects.html">Prospects</a>
+    <a href="workspace.html">Workspace</a>
     <a href="profile.html">Athlete Profile</a>
     <a href="messages.html">Messages</a>
   </div>
@@ -446,14 +446,14 @@
   <div class="page">
     <div class="top-row">
       <div class="page-title">
-        <a class="back-link" href="profile.html">‹ Back to Athlete Profile</a>
-        <h1>Athlete Assessment</h1>
-        <p>Evaluate the athlete’s ability, potential, and recruitment readiness.</p>
+        <a class="back-link" href="evaluation_management.html">‹ Back to Evaluation Management</a>
+        <h1>Submit Evaluation</h1>
+        <p>Complete your individual scouting evaluation for this athlete.</p>
       </div>
 
       <div class="top-actions">
-        <span class="button btn-outline">Save Draft</span>
-        <span class="button btn-primary">Save & Complete</span>
+        <span class="button btn-outline">Save My Draft</span>
+        <span class="button btn-primary">Submit Evaluation</span>
       </div>
     </div>
 
@@ -471,34 +471,23 @@
       </div>
 
       <div class="assessment-meta">
-        <div style="
-    background: linear-gradient(135deg,#ffffff 0%,#eff6ff 100%);
-    border: 1px solid #bfdbfe;
-    border-radius: 16px;
-    padding: 18px;
-">
+        <div>
+          <div class="meta-label">Your Evaluation</div>
+          <div class="status-pill">Active Draft</div>
+        </div>
 
-    <div class="meta-label">Overall Rating</div>
-
-    <div class="rating-highlight" style="
-        font-size: 34px;
-        margin: 4px 0 14px;
-    ">
-        8.0 / 10
+        <div>
+          <div class="meta-label">Versioning Rule</div>
+          <div class="meta-value">New submission replaces your previous score in the team rating</div>
+        </div>
+      </div>
     </div>
 
-    <div
-       class="button btn-outline"
-       style="
-          width:100%;
-          margin-top:0;
-          justify-content:center;
-       ">
-       View Evaluation History
-  </div>
-
-</div>
-      </div>
+    <div class="card" style="background:#eff6ff; border-color:#bfdbfe;">
+      <h2 class="section-heading">Evaluation Version</h2>
+      <p class="section-subtitle" style="margin-bottom:0;">
+        You are editing your active draft. After submission, this becomes a new evaluation version. Your previous submitted evaluations remain in history, but only your latest submitted evaluation is included in the aggregated team rating.
+      </p>
     </div>
 
     <div class="card">
@@ -675,14 +664,15 @@
 
     <div class="footer-row">
       <div class="timestamps">
-        Created: June 15, 2026 at 10:30 AM<br>
-        Last updated: June 15, 2026 at 10:30 AM
+        Draft created: June 15, 2026 at 10:30 AM<br>
+        Last saved: June 15, 2026 at 10:30 AM<br>
+        Previous submitted version: May 28, 2026
       </div>
 
       <div class="bottom-actions">
         <a class="button btn-light" href="profile.html">Cancel</a>
-        <span class="button btn-outline">Save Draft</span>
-        <span class="button btn-primary">Save & Complete</span>
+        <span class="button btn-outline">Save My Draft</span>
+        <span class="button btn-primary">Submit Evaluation</span>
       </div>
     </div>
   </div>
