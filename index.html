@@ -356,6 +356,15 @@
       <span class="tag green">Organization-Based</span>
     </div>
 
+    <div class="card">
+      <h3>Access Management</h3>
+      <p>
+        Organization workspaces are controlled by the Organization Owner and Admins.
+        New members must be approved before gaining workspace access.
+      </p>
+      <span class="tag purple">Permissions</span>
+    </div>
+
   </div>
 
   <div class="flow big-flow">
@@ -483,6 +492,17 @@
     </p>
     <span class="tag purple">Ownership & Collaboration</span>
   </div>
+
+  <div class="card">
+    <h3>Ownership & Permissions</h3>
+    <p>
+      Projects are owned by a Project Owner. The Project Owner manages project
+      settings, recruiting criteria, project members, and access controls.
+      Project members can add athletes and work on them, while the Project Owner
+      can override assignments and responsibilities when needed.
+    </p>
+    <span class="tag orange">Access Control</span>
+  </div>
   </div>
 
   
@@ -533,19 +553,16 @@
       <p>Final recommendation or outcome is recorded.</p>
     </div>
   </div>
-
-  <div class="note">
-    Pipeline rule: only New can be unassigned. To move to Reviewing or later,
-    the athlete must have a Primary Scout.
-  </div>
 </div>
 
   <div class="grid-2">
     <div class="card">
       <h3>Primary Scout</h3>
       <p>
-        The scout responsible for the athlete inside the project. The Primary Scout manages
-        follow-up, pipeline movement, evaluation coordination, and final recommendation.
+        The scout responsible for the athlete inside the project. A scout may assign
+        themselves as Primary Scout when adding an athlete, or be assigned by a
+        Project Owner. The Primary Scout manages follow-up, pipeline movement,
+        evaluation coordination, and final recommendation.
       </p>
       <div class="row"><strong>Can evaluate:</strong> Yes</div>
       <div class="row"><strong>Can request info:</strong> Yes</div>
@@ -557,8 +574,9 @@
     <div class="card">
       <h3>Collaborator Scouts</h3>
       <p>
-        Scouts who support the Primary Scout on a specific athlete. They help review,
-        evaluate, compare, and contribute internal notes.
+        Scouts who support the Primary Scout on a specific athlete. Collaborators
+        can be added by the Primary Scout or Project Owner to assist with review,
+        evaluation, comparison, and internal discussion.
       </p>
       <div class="row"><strong>Can evaluate:</strong> Yes</div>
       <div class="row"><strong>Can review request responses:</strong> Yes</div>
@@ -569,9 +587,12 @@
   </div>
 
   <div class="note">
-    Pipeline rule: when an athlete is added to a project, they start as New and may be unassigned.
-    To move beyond New, the athlete must be assigned a Primary Scout. Collaborator Scouts can support
-    the decision, but the Primary Scout owns the final recommendation.
+    Rules:
+    - NEW can be unassigned.
+    - REVIEWING and later require primary_scout_id.
+    - Project members can add athletes.
+    - Project members can self-assign as Primary Scout when adding an athlete.
+    - Project Owner can override assignments.
   </div>
 </div>
 </div>
@@ -615,7 +636,20 @@ const backendNotes = {
 └── Organization Workspace Memberships
     ├── Organization Workspace A
     ├── Organization Workspace B
-    └── Organization Workspace C`
+    └── Organization Workspace C
+    
+Organization
+├── Owner
+│   ├── approve members
+│   ├── create projects
+│   └── assign admins
+│
+├── Admin
+│   ├── approve members
+│   └── create projects
+│
+└── Member
+    └── participate in projects`
 },
 
   "workspace-logic": {
@@ -639,6 +673,7 @@ const backendNotes = {
   title: "Recruiting Project Work Architecture",
   body: `RecruitingProject
 │
+├── project_owner_id
 ├── recruiting_criteria
 ├── project_members
 └── ProjectAthletes
@@ -653,6 +688,7 @@ const backendNotes = {
     │
     ├── primary_scout_id
     ├── collaborator_scout_ids
+    ├── added_by
     │
     ├── evaluations
     ├── information_requests
