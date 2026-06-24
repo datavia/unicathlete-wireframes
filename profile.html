@@ -823,6 +823,16 @@
       background:#eff6ff;
     }
 
+    .project-card {
+      cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .project-card:hover {
+      border-color:#bfdbfe;
+      box-shadow:0 4px 12px rgba(15,23,42,0.06);
+    }
+
     .project-name {
       color:var(--navy);
       font-weight:900;
@@ -997,7 +1007,7 @@ function assignScout(btn) {
   <div class="page">
     <div class="page-title">
       <h1>Athlete Profile / Scout View</h1>
-      <p>Structured athlete profile with recruiter-side evaluation workspace.</p>
+      <p>Structured athlete profile with workspace-level communication and project-specific evaluation context.</p>
     </div>
 
     <div class="hero">
@@ -1119,29 +1129,28 @@ function assignScout(btn) {
 
       <div class="profile-column scout-column">
         <div class="workspace-header">
-          <h2>Scout Workspace
-            <button class="info-note" type="button" onclick="openBackendNote(this)" data-title="Scout Workspace" data-note="This section shows how the athlete exists inside the selected workspace.
+          <h2>Workspace Relationship
+            <button class="info-note" type="button" onclick="openBackendNote(this)" data-title="Workspace Athlete Relationship" data-note="This section shows the relationship between this athlete and the selected workspace.
 
-The athlete can belong to several recruiting projects/groups inside the same workspace.
+Requests and messages are shared at the workspace-athlete level, so the same organization does not duplicate communication or information requests across projects.
 
-Evaluations are tied to the athlete's project membership, not only to the athlete globally.
-
-Detailed evaluations, request management, and internal discussion remain in their own management pages.">ⓘ</button>
+Evaluations, pipeline status, Primary Scout, collaborators, and project ratings remain project-specific.">ⓘ</button>
           </h2>
-          <p>Workspace-specific recruiter-side tools and project context</p>
+          <p>Toronto Academy's shared relationship with this athlete</p>
           <span class="workspace-marker">Toronto Academy</span>
         </div>
 
         <div class="workspace-actions">
-          <a href="evaluation_management.html" class="workspace-btn workspace-btn-primary">
-            <span class="workspace-btn-icon">▶</span>
-            Open Evaluation
+          <a href="messages.html" class="workspace-btn workspace-btn-primary">
+            <span class="workspace-btn-icon">💬</span>
+            Messages
+            <span class="workspace-badge">2</span>
           </a>
 
           <a href="request_management.html"
             class="workspace-btn workspace-btn-secondary">
               <span class="workspace-btn-icon">📋</span>
-              Request History
+              Information Requests
               <span class="workspace-badge">4</span>
           </a>
 
@@ -1152,73 +1161,57 @@ Detailed evaluations, request management, and internal discussion remain in thei
           </a>
         </div>
 
-        <div class="status-card">
-          <div class="status-label">Workspace</div>
-          <div class="status-value">Toronto Academy</div>
-          <span class="workspace-marker">Organization Workspace</span>
-        </div>
+        <div class="section-divider"></div>
 
         <div class="status-card">
-          <div class="status-label">Recruiting Projects / Groups</div>
+          <div class="status-label">Recruiting Projects / Evaluation Contexts</div>
 
-          <div class="project-card active">
+          <div class="project-card active" data-project="u17" onclick="selectProjectContext('u17')">
             <div class="project-name">U17 Midfielders</div>
-            <div class="project-meta">Primary project · Criteria: Midfielder · Age 15–17 · Ontario · Academy level</div>
+            <div class="project-meta">Criteria: Midfielder · Age 15–17 · Ontario · Academy level</div>
             <div class="project-chip-row">
-              <span class="project-chip">Evaluation context</span>
-              <span class="project-chip">Primary Project</span>
+              <span class="project-chip">Selected Context</span>
+              <span class="project-chip secondary">Reviewing</span>
             </div>
+            <a href="evaluation_management.html" class="mini-action">Open Project Evaluation</a>
           </div>
 
-          <div class="project-card">
+          <div class="project-card" data-project="ontario" onclick="selectProjectContext('ontario')">
             <div class="project-name">Ontario Prospects</div>
-            <div class="project-meta">Additional project · Criteria: Any position · Ontario · Academy level</div>
+            <div class="project-meta">Criteria: Any position · Ontario · Academy level</div>
             <div class="project-chip-row">
-              <span class="project-chip secondary">Secondary Project</span>
+              <span class="project-chip secondary">Additional Context</span>
+              <span class="project-chip secondary">New</span>
             </div>
+            <a href="evaluation_management.html" class="mini-action">Open Project Evaluation</a>
           </div>
-        </div>
-
-        <div class="status-card">
-          <div class="status-label">Pipeline Status</div>
-          <div class="status-value">Reviewing</div>
-        </div>
-
-        <div class="status-card">
-          <div class="status-label">Primary Scout</div>
-          <div class="status-value">Mike Brown</div>
-        </div>
-
-        <div class="status-card">
-          <div class="status-label">Collaborators</div>
-          <div class="team-chip-row">
-            <span class="team-chip">Sarah Wilson</span>
-            <span class="team-chip">David Lee</span>
-          </div>
-          <a href="#" class="mini-action">+ Add Collaborator</a>
         </div>
 
         <div class="section-divider"></div>
 
-        <h2>Aggregated Rating
-          <button class="info-note" type="button" onclick="openBackendNote(this)" data-title="Project-Based Evaluation" data-note="Evaluation should be relative to a recruiting project's criteria.
-
-One athlete can be in multiple projects.
-
-Example:
-• U17 Midfielders: evaluated as a midfielder for age 15–17 criteria
-• Ontario Prospects: evaluated as a general Ontario prospect
-
-That means the same athlete can have different ratings in different project contexts.">ⓘ</button>
-        </h2>
+        <div class="status-card">
+          <div class="status-label">Selected Project</div>
+          <div class="status-value" id="selectedProjectName">U17 Midfielders</div>
+          <div class="rating-context-note" id="selectedProjectCriteria">Criteria: Midfielder · Age 15–17 · Ontario · Academy level</div>
+        </div>
 
         <div class="status-card">
-          <div class="status-label">Evaluation Context</div>
-          <select class="evaluation-context-select" onchange="updateEvaluationContext(this)">
-            <option value="u17">U17 Midfielders</option>
-            <option value="ontario">Ontario Prospects</option>
-          </select>
-          <div class="rating-context-note" id="ratingContextNote">Criteria: Midfielder · Age 15–17 · Ontario · Academy level</div>
+          <div class="status-label">Pipeline Status</div>
+          <div class="status-value" id="pipelineStatus">Reviewing</div>
+        </div>
+
+        <div class="status-card">
+          <div class="status-label">Primary Scout</div>
+          <div class="status-value" id="primaryScout">Mike Brown</div>
+        </div>
+
+        <div class="status-card">
+          <div class="status-label">Collaborators</div>
+          <div class="team-chip-row" id="collaboratorList">
+            <span class="team-chip">Sarah Wilson</span>
+            <span class="team-chip">David Lee</span>
+          </div>
+          <a href="#" class="mini-action">+ Add Collaborator</a>
         </div>
 
         <div class="status-card">
@@ -1229,20 +1222,6 @@ That means the same athlete can have different ratings in different project cont
             <div class="rating-context-note" id="ratingMeta">Organization average for U17 Midfielders · 3 evaluations</div>
         </div>
 
-        <div class="info-list" id="ratingBreakdown">
-            <div class="info-row"><span>Technical</span><span>8 / 10</span></div>
-            <div class="info-row"><span>Physical</span><span>7 / 10</span></div>
-            <div class="info-row"><span>Tactical</span><span>8 / 10</span></div>
-            <div class="info-row"><span>Mentality</span><span>9 / 10</span></div>
-            <div class="info-row"><span>Potential</span><span>8 / 10</span></div>
-        </div>
-
-        <div class="section-divider"></div>
-
-        <div class="status-card">
-            <div class="status-label">Last Evaluation</div>
-            <div class="status-value" id="lastEvaluation">Jun 12, 2026</div>
-        </div>
       </div>
     </div>
   </div>
@@ -1280,38 +1259,68 @@ That means the same athlete can have different ratings in different project cont
 
 <script>
 
-function updateEvaluationContext(select) {
-  const note = document.getElementById("ratingContextNote");
-  const score = document.getElementById("ratingScore");
-  const meta = document.getElementById("ratingMeta");
-  const breakdown = document.getElementById("ratingBreakdown");
-  const lastEvaluation = document.getElementById("lastEvaluation");
-
-  if (select.value === "ontario") {
-    note.textContent = "Criteria: Any position · Ontario · Academy level";
-    score.textContent = "7.4 / 10";
-    meta.textContent = "Organization average for Ontario Prospects · 2 evaluations";
-    breakdown.innerHTML = `
-      <div class="info-row"><span>Technical</span><span>7 / 10</span></div>
-      <div class="info-row"><span>Physical</span><span>7 / 10</span></div>
-      <div class="info-row"><span>Tactical</span><span>7.5 / 10</span></div>
-      <div class="info-row"><span>Mentality</span><span>8 / 10</span></div>
-      <div class="info-row"><span>Potential</span><span>7.5 / 10</span></div>
-    `;
-    lastEvaluation.textContent = "Jun 10, 2026";
-  } else {
-    note.textContent = "Criteria: Midfielder · Age 15–17 · Ontario · Academy level";
-    score.textContent = "8.0 / 10";
-    meta.textContent = "Organization average for U17 Midfielders · 3 evaluations";
-    breakdown.innerHTML = `
-      <div class="info-row"><span>Technical</span><span>8 / 10</span></div>
-      <div class="info-row"><span>Physical</span><span>7 / 10</span></div>
-      <div class="info-row"><span>Tactical</span><span>8 / 10</span></div>
-      <div class="info-row"><span>Mentality</span><span>9 / 10</span></div>
-      <div class="info-row"><span>Potential</span><span>8 / 10</span></div>
-    `;
-    lastEvaluation.textContent = "Jun 12, 2026";
+const projectContexts = {
+  u17: {
+    name: "U17 Midfielders",
+    criteria: "Criteria: Midfielder · Age 15–17 · Ontario · Academy level",
+    pipelineStatus: "Reviewing",
+    primaryScout: "Mike Brown",
+    collaborators: ["Sarah Wilson", "David Lee"],
+    rating: "8.0 / 10",
+    ratingMeta: "Organization average for U17 Midfielders · 3 evaluations"
+  },
+  ontario: {
+    name: "Ontario Prospects",
+    criteria: "Criteria: Any position · Ontario · Academy level",
+    pipelineStatus: "New",
+    primaryScout: "Sarah Wilson",
+    collaborators: ["Mike Brown"],
+    rating: "7.4 / 10",
+    ratingMeta: "Organization average for Ontario Prospects · 2 evaluations"
   }
+};
+
+function selectProjectContext(projectKey) {
+  const project = projectContexts[projectKey];
+  if (!project) return;
+
+  document.querySelectorAll(".project-card[data-project]").forEach(function(card) {
+    card.classList.toggle("active", card.dataset.project === projectKey);
+
+    const firstChip = card.querySelector(".project-chip-row .project-chip:first-child");
+    if (firstChip) {
+      firstChip.textContent = card.dataset.project === projectKey ? "Selected Context" : "Additional Context";
+      firstChip.classList.toggle("secondary", card.dataset.project !== projectKey);
+    }
+  });
+
+  document.getElementById("selectedProjectName").textContent = project.name;
+  document.getElementById("selectedProjectCriteria").textContent = project.criteria;
+  document.getElementById("pipelineStatus").textContent = project.pipelineStatus;
+  document.getElementById("primaryScout").textContent = project.primaryScout;
+  document.getElementById("ratingScore").textContent = project.rating;
+  document.getElementById("ratingMeta").textContent = project.ratingMeta;
+
+  const collaboratorList = document.getElementById("collaboratorList");
+  collaboratorList.innerHTML = "";
+
+  if (project.collaborators.length === 0) {
+    const empty = document.createElement("span");
+    empty.className = "rating-context-note";
+    empty.textContent = "No collaborators assigned yet";
+    collaboratorList.appendChild(empty);
+  } else {
+    project.collaborators.forEach(function(name) {
+      const chip = document.createElement("span");
+      chip.className = "team-chip";
+      chip.textContent = name;
+      collaboratorList.appendChild(chip);
+    });
+  }
+}
+
+function updateEvaluationContext(select) {
+  selectProjectContext(select.value);
 }
 
 function openBackendNote(button) {
@@ -1433,7 +1442,10 @@ function clearCompare() {
   updateCompareTray();
 }
 
-document.addEventListener("DOMContentLoaded", updateCompareTray);
+document.addEventListener("DOMContentLoaded", function() {
+  selectProjectContext("u17");
+  updateCompareTray();
+});
 </script>
 
 </body>

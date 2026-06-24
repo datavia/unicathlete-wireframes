@@ -312,6 +312,85 @@
       border-color: #ddd6fe;
     }
 
+    .project-tag {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 4px 7px;
+      font-size: 11px;
+      font-weight: 800;
+      margin-top: 7px;
+      margin-left: 4px;
+      background: var(--green-light);
+      color: var(--green);
+      border: 1px solid #bbf7d0;
+    }
+
+    .conversation-context {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      margin: 2px 0 6px;
+    }
+
+    .conversation-context span {
+      color: var(--navy);
+    }
+
+    .chat-context-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+      max-width: 760px;
+    }
+
+    .chat-context-item {
+      background: #f9fafb;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 9px;
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .chat-context-item strong {
+      display: block;
+      color: var(--navy);
+      margin-bottom: 2px;
+      font-size: 12px;
+    }
+
+    .chat-context-item span {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .participant-label {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+    }
+
+    .participant-pill.primary {
+      background: var(--green-light);
+      color: var(--green);
+      border-color: #bbf7d0;
+    }
+
+    .participant-pill.athlete {
+      background: var(--purple-light);
+      color: var(--purple);
+      border-color: #ddd6fe;
+    }
+
+    @media (max-width: 1100px) {
+      .chat-context-grid { grid-template-columns: 1fr; }
+    }
+
     .destination-select { position: relative; display: inline-flex; }
 
     .destination-menu {
@@ -641,7 +720,7 @@
     <div class="page-title">
       <div>
         <h1>Messages</h1>
-        <p>Messages and request updates across personal and organization workspaces.</p>
+        <p>Workspace-athlete conversations, shared request updates, and communication history across personal and organization workspaces.</p>
       </div>
     </div>
 
@@ -658,18 +737,22 @@
         <div class="conversation-list">
           <div class="conversation active">
             <div class="conversation-top">
-              <div class="conversation-name-row"><div class="conversation-name">John Smith</div><span class="mini-badge msg">2</span></div>
+              <div class="conversation-name-row">
+                <div class="conversation-name">John Smith</div>
+                <span class="mini-badge msg">2</span>
+                <span class="mini-badge req">1</span>
+              </div>
               <div class="conversation-time">Now</div>
             </div>
-            <div class="conversation-preview">Uploaded the requested video.</div><span class="workspace-tag">Toronto Academy</span>
+            <span class="workspace-tag">Toronto Academy</span><span class="project-tag">U17 Midfielders</span><span class="project-tag">Ontario Prospects</span>
           </div>
 
           <div class="conversation">
             <div class="conversation-top">
-              <div class="conversation-name-row"><div class="conversation-name">Alex Brown</div></div>
+              <div class="conversation-name-row"><div class="conversation-name">Alex Brown</div><span class="mini-badge req">1</span></div>
               <div class="conversation-time">1h</div>
             </div>
-            <div class="conversation-preview">Responded to an information request.</div><span class="workspace-tag personal">Individual</span>
+            <span class="workspace-tag personal">Individual</span><span class="project-tag">Personal Watchlist</span>
           </div>
 
           <div class="conversation">
@@ -677,7 +760,7 @@
               <div class="conversation-name-row"><div class="conversation-name">Carlos Gomez</div><span class="mini-badge msg">1</span></div>
               <div class="conversation-time">Yesterday</div>
             </div>
-            <div class="conversation-preview">Document upload completed.</div>
+            <span class="workspace-tag">Toronto Academy</span><span class="project-tag">Spain Targets</span>
           </div>
 
           <div class="conversation">
@@ -685,7 +768,7 @@
               <div class="conversation-name">David Lee</div>
               <div class="conversation-time">2d</div>
             </div>
-            <div class="conversation-preview">Awaiting follow-up.</div>
+            <span class="workspace-tag">Toronto Academy</span><span class="project-tag">First Team Watchlist</span>
           </div>
         </div>
       </div>
@@ -694,11 +777,29 @@
         <div class="chat-header">
           <div>
             <h2>John Smith</h2>
-            <p>Midfielder | Toronto Academy | Connected Athlete</p>
-            <div class="participant-row"><span class="participant-pill">Assigned: Mike Brown</span><span class="participant-pill">Workspace: Toronto Academy</span><span class="participant-pill">Sarah Wilson</span><span class="participant-pill">David Lee</span></div>
+            <p>Midfielder | Connected Athlete</p>
+
+            <div class="chat-context-grid">
+              <div class="chat-context-item">
+                <strong>Workspace</strong>
+                <span>Toronto Academy</span>
+              </div>
+              <div class="chat-context-item">
+                <strong>Linked Projects</strong>
+                <span>U17 Midfielders, Ontario Prospects, Spain Targets</span>
+              </div>
+            </div>
+
+            <div class="participant-label">Workspace Conversation Participants</div>
+            <div class="participant-row">
+              <span class="participant-pill athlete">John Smith · Athlete</span>
+              <span class="participant-pill primary">Mike Brown · Scout</span>
+              <span class="participant-pill">Sarah Wilson · Scout</span>
+              <span class="participant-pill">David Lee · Scout</span>
+            </div>
           </div>
           <div class="chat-actions">
-            <a href="profile.html" class="button btn-light">Open Profile</a>
+            <a href="profile.html" class="button btn-light">Open Athlete Profile</a>
             <a href="request_management.html" class="request-shortcut">
               <span>📋 Requests</span>
               <span class="request-badge">2</span>
@@ -712,7 +813,7 @@
           </div>
 
           <div class="message system">
-            Information request sent — Match Footage
+            Toronto Academy request sent — Match Footage
           </div>
 
           <div class="message athlete">
@@ -720,7 +821,7 @@
           </div>
 
           <div class="message system">
-            Athlete uploaded new highlight video
+            Athlete uploaded new highlight video. Available to linked projects in this workspace.
           </div>
         </div>
 

@@ -250,6 +250,45 @@
     transform:rotate(90deg);
   }
 }
+
+.context-flow{
+  display:grid;
+  grid-template-columns:1fr auto 1fr auto 1fr;
+  gap:12px;
+  align-items:stretch;
+  margin-top:18px;
+}
+.context-box{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+}
+.context-box h3{
+  margin:0 0 8px;
+}
+.context-box ul{
+  margin:10px 0 0;
+  padding-left:18px;
+  color:var(--muted);
+  font-size:14px;
+}
+.context-box li{
+  margin:4px 0;
+}
+.context-arrow{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--blue);
+  font-weight:900;
+  font-size:22px;
+}
+@media(max-width:1100px){
+  .context-flow{grid-template-columns:1fr;}
+  .context-arrow{transform:rotate(90deg);}
+}
+
   </style>
 </head>
 
@@ -272,6 +311,7 @@
         <a href="#architecture">Profile Types</a>
         <a href="#professional-work">Workspace Access</a>
         <a href="#workspace-logic">Workspace Logic</a>
+        <a href="#work-contexts">Work Contexts</a>
         <a href="#recruiting-project-work">Project Work</a>
     </div>
   </div>
@@ -440,9 +480,80 @@
   </div>
 </div>
 
+
+  <div class="section" id="work-contexts">
+  <h2>
+    4. Work Contexts
+
+    <button
+      class="info-note"
+      onclick="openBackendNote('work-contexts')">
+      ⓘ
+    </button>
+  </h2>
+
+  <p>
+    Every feature in the platform operates within a specific context. This defines where data is stored,
+    how it is shared, and which users can access it.
+  </p>
+
+  <div class="context-flow">
+    <div class="context-box">
+      <h3>Athlete Context</h3>
+      <p>Represents the athlete's global profile and portfolio.</p>
+      <ul>
+        <li>Profile data</li>
+        <li>Stats</li>
+        <li>Media</li>
+        <li>Documents</li>
+      </ul>
+      <span class="tag blue">Global Athlete Profile</span>
+    </div>
+
+    <div class="context-arrow">→</div>
+
+    <div class="context-box">
+      <h3>Workspace Relationship</h3>
+      <p>Represents one workspace's shared relationship with one athlete.</p>
+      <ul>
+        <li>Messages</li>
+        <li>Information requests</li>
+        <li>Shared workspace activity</li>
+      </ul>
+      <span class="tag purple">WorkspaceAthlete</span>
+    </div>
+
+    <div class="context-arrow">→</div>
+
+    <div class="context-box">
+      <h3>Project Evaluation Context</h3>
+      <p>Represents one athlete being evaluated inside one recruiting project.</p>
+      <ul>
+        <li>Pipeline status</li>
+        <li>Primary Scout</li>
+        <li>Collaborators</li>
+        <li>Evaluations and internal notes</li>
+      </ul>
+      <span class="tag green">ProjectAthlete</span>
+    </div>
+  </div>
+
+  <div class="flow big-flow">
+    <span class="step">Athlete Profile</span>
+    <span class="arrow">→</span>
+    <span class="step">Workspace Relationship</span>
+    <span class="arrow">→</span>
+    <span class="step">Project Evaluation Context</span>
+  </div>
+
+  <div class="note">
+    Requests and messages are shared at the workspace-athlete level. Pipeline status, Primary Scout, collaborators, evaluations, and internal notes are project-specific.
+  </div>
+</div>
+
   <div class="section" id="recruiting-project-work">
   <h2>
-    4. Recruiting Project Work
+    5. Recruiting Project Work
 
     <button
       class="info-note"
@@ -471,6 +582,7 @@
       <h3>Managed Athletes</h3>
       <p>
         Discovered athletes are added to the project when they may fit the recruiting criteria.
+        The same athlete can belong to multiple projects. Requests and conversations are shared at the workspace-athlete level, while each project keeps its own pipeline, scout assignments, evaluations, and internal notes.
       </p>
       <span class="tag green">Candidate Pool</span>
     </div>
@@ -478,7 +590,7 @@
     <div class="card">
       <h3>Scout Collaboration</h3>
       <p>
-        Scouts work together on evaluations, requests, messages, comparisons, notes, and final decisions.
+        Scouts work together on project-specific evaluations, internal notes, and project comparisons, while using shared workspace-level requests and conversations to support recruiting decisions.
       </p>
       <span class="tag purple">Team Workflow</span>
     </div>
@@ -565,8 +677,8 @@
         evaluation coordination, and final recommendation.
       </p>
       <div class="row"><strong>Can evaluate:</strong> Yes</div>
-      <div class="row"><strong>Can request info:</strong> Yes</div>
-      <div class="row"><strong>Can message athlete:</strong> Yes</div>
+      <div class="row"><strong>Can initiate/request info:</strong> Yes, through shared workspace requests</div>
+      <div class="row"><strong>Can message athlete:</strong> Yes, through shared workspace conversation</div>
       <div class="row"><strong>Can compare athletes:</strong> Yes</div>
       <div class="row"><strong>Can request collaborator review:</strong> Yes</div>
     </div>
@@ -579,7 +691,7 @@
         evaluation, comparison, and internal discussion.
       </p>
       <div class="row"><strong>Can evaluate:</strong> Yes</div>
-      <div class="row"><strong>Can review request responses:</strong> Yes</div>
+      <div class="row"><strong>Can review linked request responses:</strong> Yes</div>
       <div class="row"><strong>Can compare athletes:</strong> Yes</div>
       <div class="row"><strong>Can leave internal notes:</strong> Yes</div>
       <div class="row"><strong>Final responsibility:</strong> No, Primary Scout owns this</div>
@@ -621,9 +733,9 @@ const backendNotes = {
     │   ├── Recruiter (MVP)
     │   └── Future Professional Types
     │
-    └── Workspace
-        └── Containers
-            └── MVP: Recruiting Projects`
+    └── Workspace Access
+        ├── Individual Workspace
+        └── Organization Workspace Memberships`
   },
 
   "professional-work": {
@@ -669,34 +781,69 @@ Organization
         └── Future: Other Container Types`
 },
 
+  "work-contexts": {
+  title: "Work Context Architecture",
+  body: `AthleteProfile
+│
+├── Global profile data
+├── Stats
+├── Media
+└── Documents
+
+WorkspaceAthlete
+│
+├── athlete_profile_id
+├── workspace_id
+├── shared_requests
+├── shared_conversation
+└── shared_workspace_activity
+
+ProjectAthlete
+│
+├── workspace_athlete_id
+├── project_id
+├── pipeline_status
+├── primary_scout_id
+├── collaborator_scout_ids
+├── evaluation_management
+└── internal_notes`
+},
+
   "recruiting-project-work": {
   title: "Recruiting Project Work Architecture",
-  body: `RecruitingProject
+  body: `AthleteProfile
+└── WorkspaceAthlete records
+    ├── Workspace A relationship
+    ├── Workspace B relationship
+    └── Workspace C relationship
+
+WorkspaceAthlete
+│
+├── athlete_profile_id
+├── workspace_id
+├── shared_requests
+├── shared_conversation
+└── ProjectAthlete records
+
+RecruitingProject
 │
 ├── project_owner_id
 ├── recruiting_criteria
 ├── project_members
-└── ProjectAthletes
-    │
-    ├── athlete_profile_id
-    ├── pipeline_status
-    │   ├── NEW
-    │   ├── REVIEWING
-    │   ├── CONTACTED
-    │   ├── DISCUSSION
-    │   └── DECISION
-    │
-    ├── primary_scout_id
-    ├── collaborator_scout_ids
-    ├── added_by
-    │
-    ├── evaluations
-    ├── information_requests
-    ├── messages
-    ├── comparisons
-    ├── internal_notes
-    └── decision`
-}
+├── ProjectAthletes
+└── saved_comparisons
+
+ProjectAthlete
+│
+├── workspace_athlete_id
+├── project_id
+├── pipeline_status
+├── primary_scout_id
+├── collaborator_scout_ids
+├── evaluation_management
+└── internal_notes`
+
+},
 
 };
 

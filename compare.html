@@ -343,6 +343,70 @@
       line-height:1.45;
     }
 
+
+
+    .comparison-detail-grid {
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0, 1fr));
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .comparison-detail {
+      background:white;
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:11px;
+      font-size:12px;
+      color:var(--muted);
+      line-height:1.35;
+    }
+
+    .comparison-detail strong {
+      display:block;
+      color:var(--navy);
+      font-size:13px;
+      margin-bottom:3px;
+    }
+
+    .saved-comparison-list {
+      display:grid;
+      gap:10px;
+      margin-top:10px;
+    }
+
+    .saved-comparison-row {
+      border:1px solid var(--border);
+      background:#f9fafb;
+      border-radius:12px;
+      padding:12px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:flex-start;
+    }
+
+    .saved-comparison-row strong {
+      display:block;
+      color:var(--navy);
+      font-size:14px;
+      margin-bottom:4px;
+    }
+
+    .saved-comparison-row span {
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.35;
+    }
+
+    .saved-comparison-row a {
+      color:var(--blue);
+      font-size:12px;
+      font-weight:900;
+      text-decoration:none;
+      white-space:nowrap;
+    }
+
     .mobile-note {
       display:none;
       background:#fff7ed;
@@ -396,16 +460,26 @@
     <div class="context-card">
       <div class="context-top">
         <div>
-          <h2>Comparison Purpose</h2>
+          <h2>Project Comparison Context</h2>
+          <p>
+            This comparison is saved as a project asset inside the selected recruiting project.
+            It compares ProjectAthlete records against the same recruiting criteria.
+          </p>
           <div class="pill-row">
-            <span class="pill">Source: Workspace Group</span>
-            <span class="pill">Group: U17 Midfielders</span>
-            <span class="pill green">Shared Organization Workspace</span>
-            <span class="pill purple">Saved comparison supported</span>
+            <span class="pill green">Workspace: Toronto Academy</span>
+            <span class="pill">Project: U17 Midfielders</span>
+            <span class="pill purple">Saved Comparison</span>
           </div>
         </div>
 
         <a href="workspace_compare_interactive_tray.html" class="button btn-dark">Change Athletes</a>
+      </div>
+
+      <div class="comparison-detail-grid">
+        <div class="comparison-detail"><strong>Comparison Name</strong>U17 Midfielders — Shortlist Review</div>
+        <div class="comparison-detail"><strong>Created By</strong>Mike Brown</div>
+        <div class="comparison-detail"><strong>Created Date</strong>Jun 24, 2026</div>
+        <div class="comparison-detail"><strong>Stored Under</strong>Recruiting Project → Saved Comparisons</div>
       </div>
     </div>
 
@@ -583,18 +657,36 @@
 
     <div class="note-grid">
       <div class="note-card">
-        <h3>Saved Comparisons</h3>
-        <p>Scouts should be able to save this comparison set, reopen it later, share it internally, and export it in future phases.</p>
+        <h3>Save Result</h3>
+        <p>Saving this comparison creates a SavedComparison record under U17 Midfielders, linked to the selected project athletes.</p>
       </div>
 
       <div class="note-card">
         <h3>Access Rights</h3>
-        <p>Individual recruiters, organization admins, head scouts, assigned scouts, and viewer roles can use Compare, but actions should depend on their permissions.</p>
+        <p>Project members can create comparisons. Project Owner and authorized members can reopen, share, or archive saved comparisons.</p>
       </div>
 
       <div class="note-card">
         <h3>Missing Data</h3>
         <p>Missing evaluations, stats, consensus, or request data should not break the view. It should show a clear missing state and allow the scout to request the missing information.</p>
+      </div>
+    </div>
+
+    <div class="note-card">
+      <h3>Saved Comparison History</h3>
+      <div class="saved-comparison-list">
+        <div class="saved-comparison-row">
+          <div><strong>U17 Midfielders — Shortlist Review</strong><span>Compared: John Smith, Carlos Gomez, Alex Brown · Saved by Mike Brown · Jun 24</span></div>
+          <a href="compare.html">Open</a>
+        </div>
+        <div class="saved-comparison-row">
+          <div><strong>Technical Midfielder Review</strong><span>Compared: John Smith, Sarah Malik, Carlos Gomez · Saved by Sarah Wilson · Jun 20</span></div>
+          <a href="compare.html">Open</a>
+        </div>
+        <div class="saved-comparison-row">
+          <div><strong>Final Two Discussion</strong><span>Compared: John Smith, Carlos Gomez · Saved by Mike Brown · Jun 18</span></div>
+          <a href="compare.html">Open</a>
+        </div>
       </div>
     </div>
   </div>

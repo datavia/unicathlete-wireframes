@@ -736,7 +736,7 @@
       <div>
         <a class="back-link" href="profile.html">‹ Back to Athlete Profile</a>
         <h1>Evaluation Management</h1>
-        <p>Review project-specific evaluations, rating history, and collaboration around this athlete.</p>
+        <p>Review project-specific evaluations, rating history, and collaboration around this athlete. Requests and conversations are shared at workspace-athlete level.</p>
       </div>
     </div>
 
@@ -795,20 +795,18 @@
 
     <div class="context-card">
       <h2 class="context-title">Evaluation Context
-        <button class="info-note" type="button" onclick="openBackendNote(this)" data-title="Project-Based Evaluation" data-note="Evaluations are tied to the athlete’s membership in a recruiting project.
+        <button class="info-note" type="button" onclick="openBackendNote(this)" data-title="Project-Based Evaluation" data-note="Evaluation Management is tied to a ProjectAthlete record, not only to the global Athlete Profile.
 
-The same athlete can belong to multiple projects inside one workspace.
+The same athlete can belong to multiple recruiting projects.
 
-Each project can have different criteria, different evaluation history, and a different aggregated rating.
+Each project can have its own criteria, pipeline status, primary scout, collaborators, evaluations, requests, conversation, and shared notes.
 
 Backend relationship:
-Athlete
+AthleteProfile
 ↓
-Workspace Athlete Record
+ProjectAthlete
 ↓
-Project Membership
-↓
-Project Evaluations">ⓘ</button>
+evaluation_management">ⓘ</button>
       </h2>
       <p class="section-subtitle">Choose which recruiting project this evaluation management page is showing.</p>
 
@@ -953,21 +951,8 @@ Project Evaluations">ⓘ</button>
         </div>
 
         <div class="card">
-          <h2 class="section-title">Project Rating Breakdown</h2>
-          <p class="section-subtitle" id="breakdownSubtitle">Current combined rating for U17 Midfielders.</p>
-
-          <div class="rating-breakdown" id="ratingBreakdown">
-            <div class="rating-row"><span>Technical</span><span>8.3 / 10</span></div>
-            <div class="rating-row"><span>Physical</span><span>7.2 / 10</span></div>
-            <div class="rating-row"><span>Tactical</span><span>8.0 / 10</span></div>
-            <div class="rating-row"><span>Mentality</span><span>8.6 / 10</span></div>
-            <div class="rating-row"><span>Potential</span><span>8.1 / 10</span></div>
-          </div>
-        </div>
-
-        <div class="card">
-          <h2 class="section-title">Recent Internal Notes</h2>
-          <p class="section-subtitle">Latest notes from scouts for the selected recruiting project.</p>
+          <h2 class="section-title">Shared Athlete Notes</h2>
+          <p class="section-subtitle">Shared observations and internal discussion for this athlete within the selected recruiting project.</p>
 
           <div class="comment-card">
             <strong>Mike Brown</strong>
@@ -1152,7 +1137,6 @@ Project Evaluations">ⓘ</button>
       document.getElementById("summaryRating").textContent = selected.rating;
       document.getElementById("summaryEvaluations").textContent = selected.evaluations;
       document.getElementById("summaryLastSubmitted").textContent = selected.last;
-      document.getElementById("assignmentProject").textContent = selected.projectName;
       document.getElementById("historySubtitle").textContent = selected.history;
       document.getElementById("breakdownSubtitle").textContent = selected.breakdownSubtitle;
       document.getElementById("evaluationList").innerHTML = selected.evals;

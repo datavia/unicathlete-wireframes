@@ -512,12 +512,103 @@
       line-height: 1.4;
     }
 
+
+
+    .context-card {
+      background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
+      border: 1px solid #bfdbfe;
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+      margin-bottom: 18px;
+    }
+
+    .context-title {
+      margin: 0 0 6px;
+      color: var(--navy);
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    .context-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .context-field label {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+    }
+
+    .context-field select {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--navy);
+      border-radius: 10px;
+      padding: 10px 11px;
+      font-size: 13px;
+      font-weight: 800;
+      outline: none;
+    }
+
+    .context-field select:focus {
+      border-color: #93c5fd;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+    }
+
+    .criteria-box {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+      margin-top: 12px;
+    }
+
+    .criteria-box strong {
+      display: block;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .workspace-marker {
+      display:inline-flex;
+      align-items:center;
+      gap:5px;
+      border-radius:999px;
+      padding:5px 8px;
+      font-size:12px;
+      font-weight:900;
+      background:#f1f5f9;
+      color:#475569;
+      border:1px solid #cbd5e1;
+      margin-top:8px;
+    }
+
+    .workspace-marker::before {
+      content:"🏢";
+      font-size:11px;
+    }
+
     @media (max-width: 1000px) {
       .nav { overflow-x: auto; padding: 14px 18px; }
       .page-title, .athlete-card { flex-direction: column; align-items: flex-start; }
       .athlete-actions { width: 100%; min-width: 0; }
       .secondary-request-actions { grid-template-columns: 1fr; }
-      .summary-grid, .layout, .request-filter-row { grid-template-columns: 1fr; }
+      .summary-grid, .layout, .request-filter-row, .context-grid { grid-template-columns: 1fr; }
       .request-row { grid-template-columns: 1fr; }
       .request-actions { justify-content: flex-start; }
     }
@@ -540,7 +631,7 @@
       <div>
         <a class="back-link" href="messages.html">‹ Back to Messages</a>
         <h1>Request Management</h1>
-        <p>Review request history, track submitted information, and coordinate follow-ups for this athlete.</p>
+        <p>Review project-specific request history, submitted information, and follow-ups for this athlete.</p>
       </div>
     </div>
 
@@ -584,6 +675,24 @@
       </div>
     </div>
 
+    <div class="context-card">
+      <div class="context-grid">
+        <div class="context-field">
+          <label>Workspace</label>
+          <select>
+            <option>Toronto Academy Workspace</option>
+            <option>Mike Brown Individual Workspace</option>
+          </select>
+          <span class="workspace-marker">Toronto Academy</span>
+        </div>
+      </div>
+
+      <div class="criteria-box">
+        <strong>Linked Recruiting Projects</strong>
+        <span>U17 Midfielders · Ontario Prospects · Spain Targets</span>
+      </div>
+    </div>
+
     <div class="summary-grid">
       <div class="summary-card">
         <strong>4</strong>
@@ -610,7 +719,7 @@
       <div>
         <div class="card">
           <h2 class="section-title">Request History</h2>
-          <p class="section-subtitle">Track structured requests, statuses, ownership, and athlete responses.</p>
+          <p class="section-subtitle">Track structured requests, statuses, creators, reviewers, and athlete responses for this workspace-athlete relationship.</p>
 
           <div class="request-filter-row">
             <div class="request-filter">
@@ -648,7 +757,7 @@
             <div class="request-row highlight">
               <div>
                 <div class="request-title">Medical Information Request</div>
-                <div class="request-meta">Sent Jun 14, 2026 · Deadline Jun 20, 2026<br>Created by Mike Brown · Assigned to Sarah Wilson</div>
+                <div class="request-meta">Sent Jun 14, 2026 · Deadline Jun 20, 2026<br>Created by Mike Brown · Linked to U17 Midfielders + Ontario Prospects</div>
                 <span class="status pending">Pending</span>
               </div>
               <div class="request-actions">
@@ -660,7 +769,7 @@
             <div class="request-row">
               <div>
                 <div class="request-title">Match Footage Request</div>
-                <div class="request-meta">Sent Jun 12, 2026 · Submitted Jun 15, 2026<br>Created by Sarah Wilson · Reviewed by Mike Brown</div>
+                <div class="request-meta">Sent Jun 12, 2026 · Submitted Jun 15, 2026<br>Created by Sarah Wilson · Linked to U17 Midfielders</div>
                 <span class="status completed">Completed</span>
               </div>
               <div class="request-actions">
@@ -672,7 +781,7 @@
             <div class="request-row">
               <div>
                 <div class="request-title">Verification Request</div>
-                <div class="request-meta">Sent Jun 9, 2026 · Documents received and reviewed<br>Created by David Lee · Reviewed by Sarah Wilson</div>
+                <div class="request-meta">Sent Jun 9, 2026 · Documents received and reviewed<br>Created by David Lee · Linked to Toronto Academy Workspace</div>
                 <span class="status reviewed">Reviewed</span>
               </div>
               <div class="request-actions">
@@ -683,7 +792,7 @@
             <div class="request-row">
               <div>
                 <div class="request-title">Introductory Call Request</div>
-                <div class="request-meta">Sent Jun 5, 2026 · Athlete confirmed availability<br>Created by Mike Brown · Assigned to Mike Brown</div>
+                <div class="request-meta">Sent Jun 5, 2026 · Athlete confirmed availability<br>Created by Mike Brown · Linked to U17 Midfielders</div>
                 <span class="status completed">Completed</span>
               </div>
               <div class="request-actions">
@@ -695,61 +804,6 @@
       </div>
 
       <div>
-        <div class="card">
-          <h2 class="section-title">Team Assignment</h2>
-          <p class="section-subtitle">Ownership and collaborators for this request process.</p>
-
-          <div class="rating-breakdown">
-            <div class="rating-row"><span>Owner Scout</span><span>Mike Brown</span></div>
-            <div class="rating-row"><span>Organization</span><span>Toronto Academy</span></div>
-            <div class="rating-row"><span>Status</span><span>Info Requested</span></div>
-          </div>
-
-          <div class="team-row">
-            <span class="team-pill owner">Mike Brown</span>
-            <span class="team-pill">Sarah Wilson</span>
-            <span class="team-pill">David Lee</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <h2 class="section-title">Request Breakdown</h2>
-          <p class="section-subtitle">Current structured request activity by type.</p>
-
-          <div class="rating-breakdown">
-            <div class="rating-row"><span>Media</span><span>1 completed</span></div>
-            <div class="rating-row"><span>Medical</span><span>1 pending</span></div>
-            <div class="rating-row"><span>Verification</span><span>1 reviewed</span></div>
-            <div class="rating-row"><span>Introductory Call</span><span>1 completed</span></div>
-            <div class="rating-row"><span>Trial / Assessment</span><span>0 active</span></div>
-          </div>
-        </div>
-
-        <div class="card">
-          <h2 class="section-title">Latest Follow-Up</h2>
-          <p class="section-subtitle">Most recent request-related next step.</p>
-
-          <div class="rating-breakdown">
-            <div class="rating-row"><span>Next Step</span><span>Wait for medical response</span></div>
-            <div class="rating-row"><span>Assigned To</span><span>Sarah Wilson</span></div>
-            <div class="rating-row"><span>Due</span><span>Jun 20, 2026</span></div>
-          </div>
-        </div>
-
-        <div class="card">
-          <h2 class="section-title">Internal Request Notes</h2>
-          <p class="section-subtitle">Visible only to the organization.</p>
-
-          <div class="comment-card">
-            <strong>Mike Brown</strong>
-            <span>Medical information is the only remaining open request before the next evaluation step.</span>
-          </div>
-
-          <div class="comment-card">
-            <strong>Sarah Wilson</strong>
-            <span>I will follow up if the athlete does not respond by the deadline.</span>
-          </div>
-        </div>
       </div>
     </div>
   </div>
