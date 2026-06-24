@@ -266,7 +266,7 @@
 
   <div class="page">
   <div class="hero">
-    <h1>UnicAthlete Athlete Work Ecosystem</h1>
+    <h1>UnicAthlete Ecosystem</h1>
 
     <div class="toc">
         <a href="#architecture">Profile Types</a>
@@ -308,7 +308,7 @@
         <div class="card">
         <h3>Professional Profile</h3>
         <p>
-            A profile for people or organizations that work with athletes. Each professional profile
+            A profile for professionals who work with athletes. Each professional profile
             has access to a workspace where athlete-related work is organized and managed.
         </p>
         <span class="tag purple">Workspace</span>
@@ -345,7 +345,7 @@
       <p>
         Used when a professional works independently and manages their own athlete-related work.
       </p>
-      <span class="tag blue">Optional</span>
+      <span class="tag blue">Personal</span>
     </div>
 
     <div class="card">
@@ -473,7 +473,19 @@
       </p>
       <span class="tag purple">Team Workflow</span>
     </div>
+
+    <div class="card">
+    <h3>Responsibility Model</h3>
+    <p>
+      Project members collaborate on athletes, but each athlete may have one
+      Primary Scout responsible for coordinating evaluation and making the final recommendation.
+      Additional scouts can participate as collaborators.
+    </p>
+    <span class="tag purple">Ownership & Collaboration</span>
   </div>
+  </div>
+
+  
 
   <div class="pipeline-panel">
   <h3>Athlete Pipeline Inside a Recruiting Project</h3>
@@ -647,11 +659,7 @@ const backendNotes = {
     ├── messages
     ├── comparisons
     ├── internal_notes
-    └── decision
-
-Rule:
-NEW can be unassigned.
-REVIEWING and later require primary_scout_id.`
+    └── decision`
 }
 
 };
