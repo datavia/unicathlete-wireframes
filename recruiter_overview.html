@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recruiter System Overview</title>
+  <style>
+    :root{
+      --navy:#111827;--blue:#2563eb;--blue-light:#eff6ff;--green:#16a34a;--green-light:#ecfdf5;
+      --orange:#f97316;--orange-light:#fff7ed;--purple:#7c3aed;--purple-light:#f5f3ff;
+      --gray-bg:#f3f4f6;--border:#e5e7eb;--text:#111827;--muted:#6b7280;--card:#fff;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Arial,sans-serif;margin:0;background:var(--gray-bg);color:var(--text);line-height:1.5}
+    .nav{background:var(--navy);padding:8px 40px;display:flex;gap:10px;align-items:center;box-shadow:0 4px 14px rgba(0,0,0,.12);position:relative;top:auto;z-index:auto;overflow-x:auto;border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav a{color:#d1d5db;text-decoration:none;padding:6px 10px;border-radius:8px;font-size:13px;white-space:nowrap}
+    .nav a.active{background:var(--blue);color:white;font-weight:700}
+    .page{max-width:1380px;margin:28px auto;padding:0 28px 42px}
+    .hero,.section{background:white;border:1px solid var(--border);border-radius:20px;padding:26px;box-shadow:0 6px 18px rgba(15,23,42,.05);margin-bottom:22px}
+    .hero{background:linear-gradient(135deg,#fff 0%,#eff6ff 100%);padding:34px}
+    .label{display:inline-flex;background:var(--blue-light);color:var(--blue);border:1px solid #bfdbfe;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:900;margin-bottom:14px}
+    h1{margin:0 0 10px;color:var(--navy);font-size:34px;letter-spacing:-.4px}
+    h2{margin:0 0 8px;color:var(--navy);font-size:22px}
+    h3{margin:0 0 8px;color:var(--navy);font-size:17px}
+    p{margin:0;color:var(--muted)}
+    .hero p{max-width:900px;font-size:16px}
+    .toc{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:22px}
+    .toc a{background:white;border:1px solid #bfdbfe;color:var(--navy);border-radius:12px;padding:12px;text-decoration:none;font-size:13px;font-weight:800;text-align:center}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:16px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+    .card{background:#f9fafb;border:1px solid var(--border);border-radius:16px;padding:18px}
+    .card p{font-size:14px}
+    .row{border-bottom:1px solid var(--border);padding:10px 0;font-size:14px;color:var(--muted)}
+    .row:last-child{border-bottom:none}
+    .row strong{color:var(--navy)}
+    .tag{display:inline-block;font-size:12px;font-weight:800;padding:5px 8px;border-radius:999px;margin:3px 4px 3px 0}
+    .blue{background:var(--blue-light);color:var(--blue)}
+    .green{background:var(--green-light);color:var(--green)}
+    .purple{background:var(--purple-light);color:var(--purple)}
+    .orange{background:var(--orange-light);color:var(--orange)}
+    .flow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:18px}
+    .step{background:white;border:1px solid var(--border);border-radius:999px;padding:9px 12px;font-size:13px;font-weight:800;color:var(--navy)}
+    .arrow{font-weight:900;color:var(--blue)}
+    .backend{background:#111827;color:white;border-radius:16px;padding:18px;overflow:auto;font-size:14px;line-height:1.6;white-space:pre;margin-top:16px}
+    .note{background:#fff7ed;color:#9a3412;border:1px solid #fed7aa;border-radius:14px;padding:15px;font-size:14px;margin-top:16px}
+    @media(max-width:1100px){.nav{padding:14px 18px}.toc,.grid-2,.grid-3{grid-template-columns:1fr}h1{font-size:28px}}
+    .embedded-system{
+  margin-top:20px;
+}
+
+.embed-level{
+  border-radius:22px;
+  padding:22px;
+  border:1px solid var(--border);
+  margin-top:16px;
+}
+
+.embed-header{
+  margin-bottom:16px;
+}
+
+.embed-header h3{
+  font-size:20px;
+  margin:6px 0 6px;
+}
+
+.level-professional{
+  background:var(--purple-light);
+  border-color:#ddd6fe;
+}
+
+.level-workspace{
+  background:var(--blue-light);
+  border-color:#bfdbfe;
+}
+
+.level-project{
+  background:var(--green-light);
+  border-color:#bbf7d0;
+}
+
+.criteria-box{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+  margin-bottom:16px;
+}
+
+.managed-athletes{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+}
+
+.card.white{
+  background:white;
+}
+
+.big-flow{
+  background:#f9fafb;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+}
+.info-note{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:#eef2ff;
+  color:#2563eb;
+  border:1px solid #bfdbfe;
+  font-size:12px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.backend-modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:rgba(17,24,39,.42);
+  z-index:5000;
+  padding:24px;
+}
+
+.backend-modal.visible{
+  display:flex;
+}
+
+.backend-modal-card{
+  width:min(620px,calc(100vw - 40px));
+  max-height:calc(100vh - 70px);
+  overflow-y:auto;
+  background:white;
+  border-radius:18px;
+  box-shadow:0 24px 60px rgba(15,23,42,.35);
+  border:1px solid var(--border);
+}
+
+.backend-modal-header{
+  padding:18px 20px;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+
+.backend-modal-title{
+  margin:0;
+  color:var(--navy);
+  font-size:18px;
+  font-weight:900;
+}
+
+.backend-modal-close{
+  border:1px solid var(--border);
+  background:#f9fafb;
+  color:var(--navy);
+  border-radius:10px;
+  width:34px;
+  height:34px;
+  font-size:18px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.backend-modal-body{
+  margin:18px 20px 20px;
+  padding:18px;
+  background:#111827;
+  color:white;
+  border-radius:14px;
+  font-family:"Courier New", monospace;
+  font-size:14px;
+  line-height:1.65;
+  white-space:pre;
+  overflow-x:auto;
+}
+
+.pipeline-panel{
+  background:#f9fafb;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+  margin-top:20px;
+}
+
+.pipeline-panel > p{
+  margin-bottom:18px;
+}
+
+.pipeline-steps{
+  display:grid;
+  grid-template-columns:1fr auto 1fr auto 1fr auto 1fr auto 1fr;
+  gap:10px;
+  align-items:stretch;
+}
+
+.pipeline-step{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:14px;
+}
+
+.pipeline-step strong{
+  display:block;
+  color:var(--navy);
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+.pipeline-step p{
+  font-size:13px;
+}
+
+.pipeline-status{
+  display:inline-block;
+  background:var(--blue-light);
+  color:var(--blue);
+  border:1px solid #bfdbfe;
+  border-radius:999px;
+  padding:4px 8px;
+  font-size:11px;
+  font-weight:900;
+  margin-bottom:8px;
+}
+
+.pipeline-arrow{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--blue);
+  font-weight:900;
+  font-size:20px;
+}
+
+@media(max-width:1100px){
+  .pipeline-steps{
+    grid-template-columns:1fr;
+  }
+
+  .pipeline-arrow{
+    transform:rotate(90deg);
+  }
+}
+
+.context-flow{
+  display:grid;
+  grid-template-columns:1fr auto 1fr auto 1fr;
+  gap:12px;
+  align-items:stretch;
+  margin-top:18px;
+}
+.context-box{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+}
+.context-box h3{
+  margin:0 0 8px;
+}
+.context-box ul{
+  margin:10px 0 0;
+  padding-left:18px;
+  color:var(--muted);
+  font-size:14px;
+}
+.context-box li{
+  margin:4px 0;
+}
+.context-arrow{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--blue);
+  font-weight:900;
+  font-size:22px;
+}
+@media(max-width:1100px){
+  .context-flow{grid-template-columns:1fr;}
+  .context-arrow{transform:rotate(90deg);}
+}
+
+
+/* Fixed global application header */
+body{
+  padding-top:56px !important;
+}
+.app-header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:5000;
+  height:56px;
+  background:#0f172a;
+  border-bottom:1px solid rgba(255,255,255,.10);
+  box-shadow:0 4px 14px rgba(0,0,0,.16);
+  padding:0 40px;
+  display:flex;
+  align-items:center;
+}
+.app-header-inner{
+  width:100%;
+  max-width:1480px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+.app-logo{
+  color:white;
+  text-decoration:none;
+  font-size:18px;
+  letter-spacing:.08em;
+  font-weight:900;
+  white-space:nowrap;
+}
+.app-switch{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:999px;
+  padding:4px;
+}
+.app-switch a{
+  color:#cbd5e1;
+  text-decoration:none;
+  border-radius:999px;
+  padding:8px 12px;
+  font-size:13px;
+  font-weight:900;
+  white-space:nowrap;
+}
+.app-switch a.active{
+  background:white;
+  color:#111827;
+}
+@media(max-width:900px){
+  body{padding-top:86px !important;}
+  .app-header{height:auto;min-height:86px;padding:12px 18px;}
+  .app-header-inner{align-items:flex-start;flex-direction:column;gap:10px;}
+  .app-switch{width:100%;overflow-x:auto;justify-content:flex-start;}
+  .app-switch a{font-size:12px;padding:8px 10px;}
+}
+
+</style>
+</head>
+
+<body>
+  <header class="app-header">
+    <div class="app-header-inner">
+      <a class="app-logo" href="index.html">UNICATHLETE</a>
+      <nav class="app-switch" aria-label="Platform view switcher">
+        <a href="index.html">Platform</a>
+        <a href="athlete_overview.html">Athlete View</a>
+        <a href="recruiter_overview.html" class="active">Recruiter View</a>
+      </nav>
+    </div>
+  </header>
+
+
+    <div class="nav">
+    <a href="recruiter_overview.html" class="active">Recruiter Overview</a>
+    <a href="scout-profile.html">Professional Profile</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="discover.html">Discover Athletes</a>
+    <a href="workspace.html">Workspace</a>
+    <a href="profile.html">Athlete Profile</a>
+    <a href="messages.html">Messages</a>
+  </div>
+
+<div class="page">
+  <div class="hero">
+    <h1>Recruiter-side Experience</h1>
+
+    <div class="toc">
+        <a href="#professional-work">Workspace Access</a>
+        <a href="#workspace-logic">Workspace Logic</a>
+        <a href="#work-contexts">Work Contexts</a>
+        <a href="#recruiting-project-work">Project Work</a>
+    </div>
+  </div>
+
+  <div class="section" id="professional-work">
+  <h2>
+    Professional Workspace Access
+
+    <button
+      class="info-note"
+      onclick="openBackendNote('professional-work')">
+      ⓘ
+    </button>
+  </h2>
+
+  <p>
+    A Professional Profile can access workspaces in different ways. Depending on how the professional works,
+    they may have an individual workspace, one or more organization workspaces, or both.
+  </p>
+
+  <div class="grid-3">
+
+    <div class="card">
+      <h3>Individual Workspace</h3>
+      <p>
+        Used when a professional works independently and manages their own athlete-related work.
+      </p>
+      <span class="tag blue">Personal</span>
+    </div>
+
+    <div class="card">
+      <h3>Organization Workspace</h3>
+      <p>
+        Created for an organization and shared by its members for collaborative athlete management.
+      </p>
+      <span class="tag green">Organization-Based</span>
+    </div>
+
+    <div class="card">
+      <h3>Access Management</h3>
+      <p>
+        Organization workspaces are controlled by the Organization Owner and Admins.
+        New members must be approved before gaining workspace access.
+      </p>
+      <span class="tag purple">Permissions</span>
+    </div>
+
+  </div>
+
+  <div class="flow big-flow">
+    <span class="step">Professional Profile</span>
+    <span class="arrow">→</span>
+    <span class="step">Individual Workspace</span>
+    <span class="arrow">and/or</span>
+    <span class="step">Organization Workspace(s)</span>
+  </div>
+
+  <div class="note">
+    Workspace access is flexible: a professional can work independently, through one organization,
+    through multiple organizations, or through both independent and organization workspaces.
+  </div>
+</div>
+
+  <div class="section" id="workspace-logic">
+  <h2>
+    Workspace Logic
+
+    <button
+      class="info-note"
+      onclick="openBackendNote('workspace-logic')">
+      ⓘ
+    </button>
+  </h2>
+
+  <p>
+    A workspace is where professional work with athletes is organized. Inside a workspace,
+    work is divided into containers. The meaning of a container depends on the professional type.
+    For the MVP recruiter profile, containers are Recruiting Projects.
+  </p>
+
+  <div class="grid-3">
+    <div class="card">
+      <h3>Workspace</h3>
+      <p>
+        The operating area where a professional or organization manages athlete-related work.
+      </p>
+      <span class="tag blue">Work Area</span>
+    </div>
+
+    <div class="card">
+      <h3>Containers</h3>
+      <p>
+        Flexible work units inside a workspace. Their meaning depends on the professional profile type.
+      </p>
+      <span class="tag purple">Backend Generic</span>
+    </div>
+
+    <div class="card">
+      <h3>Recruiting Project</h3>
+      <p>
+        For recruiter profiles, each container represents a scouting assignment with specific recruiting criteria.
+      </p>
+      <span class="tag green">MVP Container</span>
+    </div>
+  </div>
+
+  <div class="flow big-flow">
+    <span class="step">Workspace</span>
+    <span class="arrow">→</span>
+    <span class="step">Container</span>
+    <span class="arrow">→</span>
+    <span class="step">Recruiting Project</span>
+    <span class="arrow">→</span>
+    <span class="step">Managed Athletes</span>
+  </div>
+
+  <div class="note">
+    Backend logic: containers should be generic. For recruiters, the container subtype is Recruiting Project.
+    Future professional types can use different container subtypes without changing the workspace structure.
+  </div>
+</div>
+
+
+  <div class="section" id="work-contexts">
+  <h2>
+    Work Contexts
+
+    <button
+      class="info-note"
+      onclick="openBackendNote('work-contexts')">
+      ⓘ
+    </button>
+  </h2>
+
+  <p>
+    Every feature in the platform operates within a specific context. This defines where data is stored,
+    how it is shared, and which users can access it.
+  </p>
+
+  <div class="context-flow">
+    <div class="context-box">
+      <h3>Athlete Context</h3>
+      <p>Represents the athlete's global profile and portfolio.</p>
+      <ul>
+        <li>Profile data</li>
+        <li>Stats</li>
+        <li>Media</li>
+        <li>Documents</li>
+      </ul>
+      <span class="tag blue">Global Athlete Profile</span>
+    </div>
+
+    <div class="context-arrow">→</div>
+
+    <div class="context-box">
+      <h3>Workspace Relationship</h3>
+      <p>Represents the long-term relationship between one workspace and one athlete.</p>
+      <ul>
+        <li>Messages</li>
+        <li>Information requests</li>
+        <li>Shared communication</li>
+        <li>Current recruiting projects</li>
+        <li>Past recruiting projects</li>
+      </ul>
+      <p style="margin-top:10px;font-size:13px;"><strong>One relationship can contain many recruiting projects over time.</strong></p>
+      <span class="tag purple">WorkspaceAthlete</span>
+    </div>
+
+    <div class="context-arrow">→</div>
+
+    <div class="context-box">
+      <h3>Project Recruiting Record</h3>
+      <p>Represents one recruiting campaign for one athlete.</p>
+      <ul>
+        <li>Pipeline progression</li>
+        <li>Primary Scout</li>
+        <li>Collaborators</li>
+        <li>Evaluations</li>
+        <li>Internal notes</li>
+        <li>Final recruiting outcome</li>
+        <li>Decision reason</li>
+      </ul>
+      <p style="margin-top:10px;font-size:13px;"><strong>Once completed, the recruiting record becomes part of the athlete's project history.</strong></p>
+      <span class="tag green">ProjectAthlete</span>
+    </div>
+  </div>
+
+  <div class="flow big-flow">
+    <span class="step">Athlete Profile</span>
+    <span class="arrow">→</span>
+    <span class="step">Workspace Relationship</span>
+    <span class="arrow">→</span>
+    <span class="step">Recruiting Project</span>
+    <span class="arrow">→</span>
+    <span class="step">Project Recruiting Record</span>
+    <span class="arrow">→</span>
+    <span class="step">Past Project History</span>
+  </div>
+
+  <div class="note">
+    The workspace maintains one continuous relationship with an athlete. Each recruiting project creates its own recruiting record containing project-specific evaluations, pipeline progression, and the final recruiting outcome. When a project is completed, its recruiting record becomes part of the athlete's project history while the workspace relationship continues.
+  </div>
+</div>
+
+  <div class="section" id="recruiting-project-work">
+  <h2>
+    Recruiting Project Work
+
+    <button
+      class="info-note"
+      onclick="openBackendNote('recruiting-project-work')">
+      ⓘ
+    </button>
+  </h2>
+
+  <p>
+    Each Recruiting Project is one scouting assignment. It contains recruiting criteria,
+    athletes who may fit those criteria, and the collaborative workflow scouts use to make
+    decisions on each athlete.
+  </p>
+
+  <div class="grid-3">
+    <div class="card">
+      <h3>Recruiting Criteria</h3>
+      <p>
+        The description of the athlete the organization is looking for, such as position,
+        level, age, location, performance profile, media, and other requirements.
+      </p>
+      <span class="tag blue">Player Target</span>
+    </div>
+
+    <div class="card">
+      <h3>Managed Athletes</h3>
+      <p>
+        Discovered athletes are added to the project when they may fit the recruiting criteria.
+        The same athlete can belong to multiple projects. Requests and conversations are shared at the workspace-athlete level, while each project keeps its own pipeline, scout assignments, evaluations, and internal notes.
+      </p>
+      <span class="tag green">Candidate Pool</span>
+    </div>
+
+    <div class="card">
+      <h3>Scout Collaboration</h3>
+      <p>
+        Scouts work together on project-specific evaluations, internal notes, and project comparisons, while using shared workspace-level requests and conversations to support recruiting decisions.
+      </p>
+      <span class="tag purple">Team Workflow</span>
+    </div>
+
+    <div class="card">
+    <h3>Responsibility Model</h3>
+    <p>
+      Project members collaborate on athletes, but each athlete may have one
+      Primary Scout responsible for coordinating evaluation and making the final recommendation.
+      Additional scouts can participate as collaborators.
+    </p>
+    <span class="tag purple">Ownership & Collaboration</span>
+  </div>
+
+  <div class="card">
+    <h3>Ownership & Permissions</h3>
+    <p>
+      Projects are owned by a Project Owner. The Project Owner manages project
+      settings, recruiting criteria, project members, and access controls.
+      Project members can add athletes and work on them, while the Project Owner
+      can override assignments and responsibilities when needed.
+    </p>
+    <span class="tag orange">Access Control</span>
+  </div>
+  </div>
+
+  
+
+  <div class="pipeline-panel">
+  <h3>Athlete Pipeline Inside a Recruiting Project</h3>
+  <p>
+    This shows how one athlete moves through the project from being added as a possible fit
+    to reaching a recruiting decision.
+  </p>
+
+  <div class="pipeline-steps">
+    <div class="pipeline-step">
+      <span class="pipeline-status">NEW</span>
+      <strong>Athlete Added</strong>
+      <p>Added to the project. Can still be unassigned.</p>
+    </div>
+
+    <div class="pipeline-arrow">→</div>
+
+    <div class="pipeline-step">
+      <span class="pipeline-status">REVIEWING</span>
+      <strong>Initial Review</strong>
+      <p>Evaluation starts. Primary Scout required.</p>
+    </div>
+
+    <div class="pipeline-arrow">→</div>
+
+    <div class="pipeline-step">
+      <span class="pipeline-status">CONTACTED</span>
+      <strong>Athlete Contacted</strong>
+      <p>Communication or information request begins.</p>
+    </div>
+
+    <div class="pipeline-arrow">→</div>
+
+    <div class="pipeline-step">
+      <span class="pipeline-status">DISCUSSION</span>
+      <strong>Active Discussion</strong>
+      <p>Scouts review, compare, and discuss fit.</p>
+    </div>
+
+    <div class="pipeline-arrow">→</div>
+
+    <div class="pipeline-step">
+      <span class="pipeline-status">DECISION</span>
+      <strong>Recruiting Decision</strong>
+      <p>Final outcome is recorded.</p>
+    </div>
+  </div>
+</div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Primary Scout</h3>
+      <p>
+        The scout responsible for the athlete inside the project. A scout may assign
+        themselves as Primary Scout when adding an athlete, or be assigned by a
+        Project Owner. The Primary Scout manages follow-up, pipeline movement,
+        evaluation coordination, and final recommendation.
+      </p>
+      <div class="row"><strong>Can evaluate:</strong> Yes</div>
+      <div class="row"><strong>Can initiate/request info:</strong> Yes, through shared workspace requests</div>
+      <div class="row"><strong>Can message athlete:</strong> Yes, through shared workspace conversation</div>
+      <div class="row"><strong>Can compare athletes:</strong> Yes</div>
+      <div class="row"><strong>Can request collaborator review:</strong> Yes</div>
+    </div>
+
+    <div class="card">
+      <h3>Collaborator Scouts</h3>
+      <p>
+        Scouts who support the Primary Scout on a specific athlete. Collaborators
+        can be added by the Primary Scout or Project Owner to assist with review,
+        evaluation, comparison, and internal discussion.
+      </p>
+      <div class="row"><strong>Can evaluate:</strong> Yes</div>
+      <div class="row"><strong>Can review linked request responses:</strong> Yes</div>
+      <div class="row"><strong>Can compare athletes:</strong> Yes</div>
+      <div class="row"><strong>Can leave internal notes:</strong> Yes</div>
+      <div class="row"><strong>Final responsibility:</strong> No, Primary Scout owns this</div>
+    </div>
+  </div>
+
+  <div class="note">
+    Rules:
+    - NEW can be unassigned.
+    - REVIEWING and later require primary_scout_id.
+    - Project members can add athletes.
+    - Project members can self-assign as Primary Scout when adding an athlete.
+    - Project Owner can override assignments.
+  </div>
+</div>
+</div>
+
+<div class="backend-modal" id="backendNoteModal" onclick="closeBackendNote(event)">
+  <div class="backend-modal-card">
+    <div class="backend-modal-header">
+      <h3 class="backend-modal-title" id="backendModalTitle">Architecture Note</h3>
+      <button class="backend-modal-close" onclick="closeBackendNote()">×</button>
+    </div>
+    <div class="backend-modal-body" id="backendModalBody"></div>
+  </div>
+</div>
+
+<script>
+const backendNotes = {
+
+  "profile-architecture": {
+    title: "Profile Architecture",
+    body: `User
+├── Athlete Profile
+│   └── Portfolio Data
+│
+└── Professional Profile
+    ├── Professional Type
+    │   ├── Recruiter (MVP)
+    │   └── Future Professional Types
+    │
+    └── Workspace Access
+        ├── Individual Workspace
+        └── Organization Workspace Memberships`
+  },
+
+  "professional-work": {
+  title: "Professional Workspace Access",
+  body: `ProfessionalProfile
+│
+├── Individual Workspace
+│   └── Personal recruiting work
+│
+└── Organization Workspace Memberships
+    ├── Organization Workspace A
+    ├── Organization Workspace B
+    └── Organization Workspace C
+    
+Organization
+├── Owner
+│   ├── approve members
+│   ├── create projects
+│   └── assign admins
+│
+├── Admin
+│   ├── approve members
+│   └── create projects
+│
+└── Member
+    └── participate in projects`
+},
+
+  "workspace-logic": {
+  title: "Workspace Container Architecture",
+  body: `Workspace
+│
+└── Containers
+    ├── container_type
+    ├── workspace_id
+    └── professional_type_context
+        │
+        ├── MVP: RecruitingProject
+        │   ├── recruiting_criteria
+        │   ├── project_members
+        │   └── managed_athletes
+        │
+        └── Future: Other Container Types`
+},
+
+  "work-contexts": {
+  title: "Work Context Architecture",
+  body: `AthleteProfile
+│
+├── Global profile data
+├── Stats
+├── Media
+└── Documents
+
+WorkspaceAthlete
+│
+├── Shared conversation
+├── Shared requests
+├── Current ProjectAthlete
+│
+├── Project History
+│   ├── ProjectAthlete (Closed)
+│   │   ├── Outcome: Signed
+│   │   └── Decision Reason
+│   ├── ProjectAthlete (Closed)
+│   │   ├── Outcome: Rejected
+│   │   └── Decision Reason
+│   └── ProjectAthlete (Active)
+│       └── Pipeline: Reviewing
+│
+└── Relationship continues`
+},
+
+  "recruiting-project-work": {
+  title: "Recruiting Project Work Architecture",
+  body: `AthleteProfile
+└── WorkspaceAthlete records
+    ├── Workspace A relationship
+    ├── Workspace B relationship
+    └── Workspace C relationship
+
+WorkspaceAthlete
+│
+├── athlete_profile_id
+├── workspace_id
+├── shared_requests
+├── shared_conversation
+└── ProjectAthlete records
+
+RecruitingProject
+│
+├── project_owner_id
+├── recruiting_criteria
+├── project_members
+├── ProjectAthletes
+└── saved_comparisons
+
+ProjectAthlete
+│
+├── workspace_athlete_id
+├── project_id
+├── pipeline_status
+├── primary_scout_id
+├── collaborator_scout_ids
+├── evaluation_management
+└── internal_notes`
+
+},
+
+};
+
+function openBackendNote(noteId){
+  const note = backendNotes[noteId];
+
+  if(!note) return;
+
+  document.getElementById("backendModalTitle").textContent = note.title;
+  document.getElementById("backendModalBody").textContent = note.body;
+  document.getElementById("backendNoteModal").classList.add("visible");
+}
+
+function closeBackendNote(event){
+  const modal = document.getElementById("backendNoteModal");
+
+  if(
+    !event ||
+    event.target === modal ||
+    event.target.classList.contains("backend-modal-close")
+  ){
+    modal.classList.remove("visible");
+  }
+}
+
+document.addEventListener("keydown", function(event){
+  if(event.key === "Escape"){
+    document.getElementById("backendNoteModal").classList.remove("visible");
+  }
+});
+</script>
+
+</body>
+</html>

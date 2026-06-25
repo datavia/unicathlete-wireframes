@@ -508,7 +508,6 @@
     }
 
 
-
     .history-filter-row {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -717,13 +716,111 @@
       .context-grid { grid-template-columns: 1fr; }
     }
 
+/* Global application shell */
+body{
+  padding-top:56px !important;
+}
+.app-header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:5000;
+  height:56px;
+  background:#0f172a;
+  border-bottom:1px solid rgba(255,255,255,.10);
+  box-shadow:0 4px 14px rgba(0,0,0,.16);
+  padding:0 24px;
+  display:flex;
+  align-items:center;
+}
+.app-header-inner{
+  width:100%;
+  max-width:1480px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+.app-logo{
+  color:white;
+  text-decoration:none;
+  font-size:16px;
+  letter-spacing:.06em;
+  font-weight:900;
+  white-space:nowrap;
+}
+.app-switch{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:999px;
+  padding:4px;
+}
+.app-switch a{
+  color:#cbd5e1;
+  text-decoration:none;
+  border-radius:999px;
+  padding:6px 10px;
+  font-size:12px;
+  font-weight:900;
+  white-space:nowrap;
+}
+.app-switch a.active{
+  background:white;
+  color:#111827;
+}
+.nav{
+  position:relative !important;
+  top:auto !important;
+  left:auto !important;
+  right:auto !important;
+  z-index:auto !important;
+  padding:8px 24px !important;
+  overflow-x:auto;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.nav a{
+  padding:6px 10px !important;
+  font-size:13px !important;
+}
+.nav .brand{
+  display:none !important;
+}
+.view-choice-wrap{
+  display:none !important;
+}
+@media(max-width:900px){
+  body{padding-top:86px !important;}
+  .app-header{height:auto;min-height:86px;padding:12px 18px;}
+  .app-header-inner{align-items:flex-start;flex-direction:column;gap:10px;}
+  .app-switch{width:100%;overflow-x:auto;justify-content:flex-start;}
+  .app-switch a{font-size:12px;padding:8px 10px;}
+  .nav{top:auto !important;padding:8px 18px !important;}
+}
+
 </style>
 </head>
 
 <body>
-  <div class="nav">
-    <a href="index.html">System Overview</a>
-    <a href="scout-profile.html">Scout Profile</a>
+  <header class="app-header">
+    <div class="app-header-inner">
+      <a class="app-logo" href="index.html">UNICATHLETE</a>
+      <nav class="app-switch" aria-label="Platform view switcher">
+        <a href="index.html">Platform</a>
+        <a href="athlete_overview.html">Athlete View</a>
+        <a href="recruiter_overview.html" class="active">Recruiter View</a>
+      </nav>
+    </div>
+  </header>
+
+
+    <div class="nav">
+    <a href="recruiter_overview.html">Recruiter Overview</a>
+    <a href="scout-profile.html">Professional Profile</a>
     <a href="dashboard.html">Dashboard</a>
     <a href="discover.html">Discover Athletes</a>
     <a href="workspace.html">Workspace</a>
@@ -731,7 +828,7 @@
     <a href="messages.html">Messages</a>
   </div>
 
-  <div class="page">
+<div class="page">
     <div class="page-title">
       <div>
         <a class="back-link" href="profile.html">‹ Back to Athlete Profile</a>

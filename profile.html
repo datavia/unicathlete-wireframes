@@ -583,7 +583,6 @@
     }
 
 
-
     .workspace-context-pill {
       display: inline-block;
       margin-top: 8px;
@@ -613,7 +612,6 @@
       margin-bottom: 4px;
       font-size: 14px;
     }
-
 
 
     .group-focus-card {
@@ -678,7 +676,6 @@
       line-height: 1.4;
       margin: -4px 0 12px;
     }
-
 
 
     .btn-compare {
@@ -965,6 +962,200 @@
       white-space:pre-line;
     }
 
+
+    .history-summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .history-summary-tile {
+      background: #f9fafb;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 9px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    .history-summary-tile strong {
+      display: block;
+      color: var(--navy);
+      font-size: 15px;
+      margin-bottom: 2px;
+    }
+
+    .history-project-row {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 8px;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .history-project-row strong {
+      display: block;
+      color: var(--navy);
+      margin-bottom: 3px;
+    }
+
+    .history-project-row span {
+      color: var(--muted);
+    }
+
+    .timeline-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 8px;
+      align-items: start;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 8px;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .timeline-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .timeline-date {
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .timeline-text {
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .timeline-meta {
+      display: block;
+      color: var(--muted);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+
+    .current-project-row {
+      border-color: #bfdbfe;
+      background: #eff6ff;
+    }
+
+    .closed-project-row {
+      background: #f9fafb;
+    }
+
+    .outcome-signed {
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .outcome-rejected {
+      color: #dc2626;
+      font-weight: 900;
+    }
+
+    @media (max-width: 700px) {
+      .history-summary-grid { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 1fr; }
+    }
+
+/* Global application shell */
+body{
+  padding-top:56px !important;
+}
+.app-header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:5000;
+  height:56px;
+  background:#0f172a;
+  border-bottom:1px solid rgba(255,255,255,.10);
+  box-shadow:0 4px 14px rgba(0,0,0,.16);
+  padding:0 24px;
+  display:flex;
+  align-items:center;
+}
+.app-header-inner{
+  width:100%;
+  max-width:1480px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+.app-logo{
+  color:white;
+  text-decoration:none;
+  font-size:16px;
+  letter-spacing:.06em;
+  font-weight:900;
+  white-space:nowrap;
+}
+.app-switch{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:999px;
+  padding:4px;
+}
+.app-switch a{
+  color:#cbd5e1;
+  text-decoration:none;
+  border-radius:999px;
+  padding:6px 10px;
+  font-size:12px;
+  font-weight:900;
+  white-space:nowrap;
+}
+.app-switch a.active{
+  background:white;
+  color:#111827;
+}
+.nav{
+  position:relative !important;
+  top:auto !important;
+  left:auto !important;
+  right:auto !important;
+  z-index:auto !important;
+  padding:8px 24px !important;
+  overflow-x:auto;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.nav a{
+  padding:6px 10px !important;
+  font-size:13px !important;
+}
+.nav .brand{
+  display:none !important;
+}
+.view-choice-wrap{
+  display:none !important;
+}
+@media(max-width:900px){
+  body{padding-top:86px !important;}
+  .app-header{height:auto;min-height:86px;padding:12px 18px;}
+  .app-header-inner{align-items:flex-start;flex-direction:column;gap:10px;}
+  .app-switch{width:100%;overflow-x:auto;justify-content:flex-start;}
+  .app-switch a{font-size:12px;padding:8px 10px;}
+  .nav{top:auto !important;padding:8px 18px !important;}
+}
+
 </style>
 </head>
 
@@ -994,9 +1185,21 @@ function assignScout(btn) {
 </script>
 
 <body>
-  <div class="nav">
-    <a href="index.html">System Overview</a>
-    <a href="scout-profile.html">Scout Profile</a>
+  <header class="app-header">
+    <div class="app-header-inner">
+      <a class="app-logo" href="index.html">UNICATHLETE</a>
+      <nav class="app-switch" aria-label="Platform view switcher">
+        <a href="index.html">Platform</a>
+        <a href="athlete_overview.html">Athlete View</a>
+        <a href="recruiter_overview.html" class="active">Recruiter View</a>
+      </nav>
+    </div>
+  </header>
+
+
+    <div class="nav">
+    <a href="recruiter_overview.html">Recruiter Overview</a>
+    <a href="scout-profile.html">Professional Profile</a>
     <a href="dashboard.html">Dashboard</a>
     <a href="discover.html">Discover Athletes</a>
     <a href="workspace.html">Workspace</a>
@@ -1004,7 +1207,7 @@ function assignScout(btn) {
     <a href="messages.html">Messages</a>
   </div>
 
-  <div class="page">
+<div class="page">
     <div class="page-title">
       <h1>Athlete Profile / Scout View</h1>
       <p>Structured athlete profile with workspace-level communication and project-specific evaluation context.</p>
@@ -1154,6 +1357,12 @@ Evaluations, pipeline status, Primary Scout, collaborators, and project ratings 
               <span class="workspace-badge">4</span>
           </a>
 
+          <a href="#past-projects" class="workspace-btn workspace-btn-secondary">
+            <span class="workspace-btn-icon">🗂</span>
+            Past Projects
+            <span class="workspace-badge">2</span>
+          </a>
+
           <a href="requests.html"
              class="workspace-btn workspace-btn-secondary">
             <span class="workspace-btn-icon">+</span>
@@ -1164,7 +1373,7 @@ Evaluations, pipeline status, Primary Scout, collaborators, and project ratings 
         <div class="section-divider"></div>
 
         <div class="status-card">
-          <div class="status-label">Recruiting Projects / Evaluation Contexts</div>
+          <div class="status-label">Current Projects / Evaluation Contexts</div>
 
           <div class="project-card active" data-project="u17" onclick="selectProjectContext('u17')">
             <div class="project-name">U17 Midfielders</div>
@@ -1222,12 +1431,28 @@ Evaluations, pipeline status, Primary Scout, collaborators, and project ratings 
             <div class="rating-context-note" id="ratingMeta">Organization average for U17 Midfielders · 3 evaluations</div>
         </div>
 
+        <div class="section-divider"></div>
+
+        <div class="status-card" id="past-projects">
+          <div class="status-value">Past Projects</div>
+
+          <div class="history-project-row closed-project-row">
+            <strong>Canada Games</strong>
+            <span>Closed · <span class="outcome-signed">Signed</span> · Reason: Strong trial performance</span>
+            <a href="evaluation_management.html" class="mini-action">View Project History</a>
+          </div>
+          <div class="history-project-row closed-project-row">
+            <strong>2025 Ontario Showcase</strong>
+            <span>Closed · <span class="outcome-rejected">Rejected</span> · Reason: Tactical fit</span>
+            <a href="evaluation_management.html" class="mini-action">View Project History</a>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
 
   
-
 
 
   <div class="backend-modal" id="backendNoteModal" onclick="closeBackendNote(event)">
