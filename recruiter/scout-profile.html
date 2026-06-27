@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>
+   Professional Profile
+  </title>
+  <style>
+   :root {
+  --navy: #111827;
+  --blue: #2563eb;
+  --blue-light: #eff6ff;
+  --green: #16a34a;
+  --green-light: #ecfdf5;
+  --orange: #f97316;
+  --orange-light: #fff7ed;
+  --purple: #7c3aed;
+  --purple-light: #f5f3ff;
+  --gray-bg: #f3f4f6;
+  --border: #e5e7eb;
+  --text: #111827;
+  --muted: #6b7280;
+  --card: #ffffff;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: var(--gray-bg);
+  color: var(--text);
+}
+.nav {
+  background: var(--navy);
+  padding: 16px 40px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  overflow-x: auto;
+}
+.nav a {
+  color: #d1d5db;
+  text-decoration: none;
+  padding: 9px 13px;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: 0.2s;
+  white-space: nowrap;
+}
+.nav a:hover {
+  background: rgba(255,255,255,0.10);
+  color: white;
+}
+.nav a.active {
+  background: var(--blue);
+  color: white;
+  font-weight: 600;
+}
+.page {
+  max-width: 1360px;
+  margin: 28px auto;
+  padding: 0 28px 40px;
+}
+.page-title {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+}
+.page-title h1 {
+  margin: 0;
+  font-size: 28px;
+  color: var(--navy);
+}
+.page-title p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.button {
+  border: none;
+  padding: 10px 14px;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--blue);
+  color: white;
+}
+.btn-light {
+  background: white;
+  color: var(--navy);
+  border: 1px solid var(--border);
+}
+.btn-dark {
+  background: var(--navy);
+  color: white;
+}
+.hero {
+  background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: center;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+  margin-bottom: 22px;
+}
+.profile-main {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+.avatar {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+.profile-main h2 {
+  margin: 0 0 6px;
+  font-size: 26px;
+  color: var(--navy);
+}
+.profile-main p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.hero-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.badge-row {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.badge {
+  background: white;
+  color: var(--blue);
+  border: 1px solid #bfdbfe;
+  padding: 5px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+}
+.badge.green {
+  color: var(--green);
+  border-color: #bbf7d0;
+  background: var(--green-light);
+}
+.badge.purple {
+  color: var(--purple);
+  border-color: #ddd6fe;
+  background: var(--purple-light);
+}
+.badge.orange {
+  color: var(--orange);
+  border-color: #fed7aa;
+  background: var(--orange-light);
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+}
+.section-title {
+  margin: 0 0 14px;
+  font-size: 18px;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+.section-subtitle {
+  margin: -6px 0 14px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.4;
+}
+.info-list {
+  display: grid;
+  gap: 10px;
+}
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 9px;
+  font-size: 14px;
+}
+.info-row span:first-child {
+  color: var(--muted);
+}
+.info-row span:last-child {
+  font-weight: 700;
+  text-align: right;
+  color: var(--navy);
+}
+.workspace-membership-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.workspace-summary-tile {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 13px;
+  text-align: center;
+}
+.workspace-summary-tile strong {
+  display: block;
+  color: var(--blue);
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+.workspace-summary-tile span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+.workspace-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.workspace-subsection {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+}
+.workspace-subsection h3 {
+  margin: 0 0 12px;
+  color: var(--navy);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.workspace-card-list {
+  display: grid;
+  gap: 12px;
+}
+.workspace-membership-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 15px;
+}
+.workspace-membership-card.organization {
+  border-color: #bfdbfe;
+  background: #eff6ff;
+}
+.workspace-membership-card.individual {
+  border-color: #ddd6fe;
+  background: #f5f3ff;
+}
+.workspace-membership-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+.workspace-membership-name {
+  font-weight: 900;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.workspace-membership-meta {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+.workspace-type-pill {
+  border-radius: 999px;
+  padding: 5px 8px;
+  font-size: 11px;
+  font-weight: 900;
+  background: white;
+  color: var(--blue);
+  border: 1px solid #bfdbfe;
+  white-space: nowrap;
+}
+.workspace-type-pill.personal {
+  color: var(--purple);
+  border-color: #ddd6fe;
+}
+.workspace-stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+}
+.workspace-stat {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 9px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.workspace-stat strong {
+  display: block;
+  color: var(--navy);
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+.workspace-action-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+.project-card {
+  background: #f9fafb;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+.project-name {
+  font-weight: 900;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.project-meta {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+.project-purpose {
+  margin-top: 8px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 9px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.4;
+}
+.role-grid {
+  display: grid;
+  gap: 10px;
+}
+.role-card {
+  border: 1px solid var(--border);
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 14px;
+}
+.role-card strong {
+  display: block;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.role-card span {
+  color: var(--muted);
+  line-height: 1.4;
+}
+@media (max-width: 1100px) {
+  .nav {
+  padding: 14px 18px;
+}
+.page-title, .hero {
+  flex-direction: column;
+  align-items: flex-start;
+}
+.hero-actions {
+  justify-content: flex-start;
+}
+.grid-2, .workspace-grid, .workspace-membership-summary, .workspace-stat-row {
+  grid-template-columns: 1fr;
+}
+}
+  </style>
+  <link href="../shared/backend-modal.css" rel="stylesheet"/>
+  <link href="../shared/app-shell.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <header class="app-header">
+   <div class="app-header-inner">
+    <a class="app-logo" href="../index.html">
+     UNICATHLETE
+    </a>
+    <nav aria-label="Platform view switcher" class="app-switch">
+     <a href="../index.html">
+      Platform
+     </a>
+     <a href="../athlete/overview.html">
+      Athlete View
+     </a>
+     <a class="active" href="overview.html">
+      Recruiter View
+     </a>
+    </nav>
+   </div>
+  </header>
+  <div class="nav">
+   <a href="overview.html">
+    Recruiter Overview
+   </a>
+   <a class="active" href="scout-profile.html">
+    Professional Profile
+   </a>
+   <a href="dashboard.html">
+    Dashboard
+   </a>
+   <a href="discover.html">
+    Discover Athletes
+   </a>
+   <a href="workspace.html">
+    Workspace
+   </a>
+   <a href="profile.html">
+    Athlete Profile
+   </a>
+   <a href="messages.html">
+    Messages
+   </a>
+  </div>
+  <div class="page">
+   <div class="page-title">
+    <div>
+     <h1>
+      Professional Profile
+      <button class="info-note" onclick="openBackendNote('profile-architecture')">
+       ⓘ
+      </button>
+     </h1>
+     <p>
+      Identity, verification, expertise, and workspace memberships for a sports recruiting professional.
+     </p>
+    </div>
+   </div>
+   <div class="hero">
+    <div class="profile-main">
+     <div class="avatar">
+      MB
+     </div>
+     <div>
+      <h2>
+       Mike Brown
+      </h2>
+      <p>
+       Sports Recruiter &middot; Toronto Academy &middot; Canada / Spain network
+      </p>
+      <div class="badge-row">
+       <span class="badge green">
+        Verified Professional
+       </span>
+       <span class="badge">
+        Organization Owner
+       </span>
+       <span class="badge purple">
+        Individual Workspace Active
+       </span>
+      </div>
+     </div>
+    </div>
+    <div class="hero-actions">
+     <a class="button btn-light" href="#">
+      Edit Profile
+     </a>
+     <a class="button btn-dark" href="#">
+      Account Settings
+     </a>
+    </div>
+   </div>
+   <div class="grid-2">
+    <div class="card">
+     <h2 class="section-title">
+      Professional Details
+     </h2>
+     <div class="info-list">
+      <div class="info-row">
+       <span>
+        Professional Type
+       </span>
+       <span>
+        Sports Recruiter
+       </span>
+      </div>
+      <div class="info-row">
+       <span>
+        Current Organization
+       </span>
+       <span>
+        Toronto Academy
+       </span>
+      </div>
+      <div class="info-row">
+       <span>
+        Location
+       </span>
+       <span>
+        Toronto, Canada
+       </span>
+      </div>
+      <div class="info-row">
+       <span>
+        Experience
+       </span>
+       <span>
+        8 years
+       </span>
+      </div>
+      <div class="info-row">
+       <span>
+        Languages
+       </span>
+       <span>
+        English, Turkish, Spanish
+       </span>
+      </div>
+     </div>
+    </div>
+    <div class="card">
+     <h2 class="section-title">
+      Professional Expertise
+      <button class="info-note" onclick="openBackendNote('professional-expertise')">
+       ⓘ
+      </button>
+     </h2>
+     <p class="section-subtitle">
+      This section describes the recruiter's long-term professional background. Actual player requirements are defined separately inside each Recruiting Project.
+     </p>
+     <div class="info-list">
+      <div class="info-row">
+       <span>
+        Sport
+       </span>
+       <span>
+        Football / Soccer
+       </span>
+      </div>
+      <div class="info-row">
+       <span>
+        Regions Known
+       </span>
+       <span>
+        Canada, Spain, Turkey
+       </span>
+      </div>
+      <div class="info-row">
+       <span>
+        Age Groups
+       </span>
+       <span>
+        U15&ndash;U21
+       </span>
+      </div>
+      <div class="info-row">
+       <span>
+        Specialization
+       </span>
+       <span>
+        Youth scouting, midfielders, wingers
+       </span>
+      </div>
+      <div class="info-row">
+       <span>
+        Evaluation Strengths
+       </span>
+       <span>
+        Technical ability, mentality, potential
+       </span>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="card" style="margin-bottom:18px;">
+    <h2 class="section-title">
+     Verification Details
+     <button class="info-note" onclick="openBackendNote('verification')">
+      ⓘ
+     </button>
+    </h2>
+    <div class="info-list">
+     <div class="info-row">
+      <span>
+       Verification Status
+      </span>
+      <span>
+       Verified
+      </span>
+     </div>
+     <div class="info-row">
+      <span>
+       Verification Method
+      </span>
+      <span>
+       Organization email + manual review
+      </span>
+     </div>
+     <div class="info-row">
+      <span>
+       Verified Organization
+      </span>
+      <span>
+       Toronto Academy
+      </span>
+     </div>
+     <div class="info-row">
+      <span>
+       Last Reviewed
+      </span>
+      <span>
+       Jun 12, 2026
+      </span>
+     </div>
+    </div>
+   </div>
+   <div class="card" style="margin-bottom:18px;">
+    <h2 class="section-title">
+     Workspace Memberships
+     <button class="info-note" onclick="openBackendNote('workspace-architecture')">
+      ⓘ
+     </button>
+    </h2>
+    <p class="section-subtitle">
+     Workspaces this professional can use for organization collaboration and individual recruiting work.
+    </p>
+    <div class="workspace-grid">
+     <div class="workspace-subsection">
+      <h3>
+       Organization Workspace
+       <button class="info-note" onclick="openBackendNote('organization-workspace')">
+        ⓘ
+       </button>
+      </h3>
+      <div class="workspace-card-list">
+       <div class="workspace-membership-card organization">
+        <div class="workspace-membership-top">
+         <div>
+          <div class="workspace-membership-name">
+           Toronto Academy
+          </div>
+          <div class="workspace-membership-meta">
+           Organization Type: Academy
+           <br/>
+           Workspace Role: Owner / Admin
+           <br/>
+           Access Status: Active
+          </div>
+         </div>
+         <span class="workspace-type-pill">
+          Organization
+         </span>
+        </div>
+        <div class="workspace-stat-row">
+         <div class="workspace-stat">
+          <strong>
+           5
+          </strong>
+          Members
+         </div>
+         <div class="workspace-stat">
+          <strong>
+           72
+          </strong>
+          Managed Athletes
+         </div>
+         <div class="workspace-stat">
+          <strong>
+           4
+          </strong>
+          Recruiting Projects
+         </div>
+        </div>
+        <div class="workspace-action-row">
+         <a class="button btn-primary" href="workspace.html">
+          Open Workspace
+         </a>
+         <a class="button btn-light" href="create_group.html">
+          Create Recruiting Project
+         </a>
+         <a class="button btn-light" href="#">
+          Manage Members
+         </a>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="workspace-subsection">
+      <h3>
+       Individual Workspace
+       <button class="info-note" onclick="openBackendNote('individual-workspace')">
+        ⓘ
+       </button>
+      </h3>
+      <div class="workspace-card-list">
+       <div class="workspace-membership-card individual">
+        <div class="workspace-membership-top">
+         <div>
+          <div class="workspace-membership-name">
+           Mike Brown Individual Workspace
+          </div>
+          <div class="workspace-membership-meta">
+           Private recruiting workspace
+           <br/>
+           Workspace Role: Owner
+           <br/>
+           Access Status: Active
+          </div>
+         </div>
+         <span class="workspace-type-pill personal">
+          Individual
+         </span>
+        </div>
+        <div class="workspace-stat-row">
+         <div class="workspace-stat">
+          <strong>
+           1
+          </strong>
+          Member
+         </div>
+         <div class="workspace-stat">
+          <strong>
+           14
+          </strong>
+          Managed Athletes
+         </div>
+         <div class="workspace-stat">
+          <strong>
+           3
+          </strong>
+          Recruiting Projects
+         </div>
+        </div>
+        <div class="workspace-action-row">
+         <a class="button btn-primary" href="workspace.html">
+          Open Workspace
+         </a>
+         <a class="button btn-light" href="create_group.html">
+          Create Recruiting Project
+         </a>
+         <a class="button btn-light" href="#">
+          Workspace Settings
+         </a>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="backend-modal" id="backendNoteModal" onclick="closeBackendNote(event)">
+   <div class="backend-modal-card">
+    <div class="backend-modal-header">
+     <h3 class="backend-modal-title" id="backendModalTitle">
+      Architecture Note
+     </h3>
+     <button class="backend-modal-close" onclick="closeBackendNote()">
+      &times;
+     </button>
+    </div>
+    <div class="backend-modal-body" id="backendModalBody">
+    </div>
+   </div>
+  </div>
+  <script>
+   const backendNotes = {
+  "profile-architecture": {
+    title: "Profile Architecture",
+    body: `User
+├── Athlete Profile
+│   └── Portfolio Data
+│
+└── Professional Profile
+    ├── Professional Type
+    │   ├── Recruiter (MVP)
+    │   └── Future Professional Types
+    │
+    └── Workspace Access
+        ├── Individual Workspace
+        └── Organization Workspace Memberships
+
+Professional profiles can:
+• Create an Individual Workspace
+• Join Organization Workspaces
+• Hold different roles in different workspaces
+• Manage Recruiting Projects inside each workspace`
+  },
+  "professional-expertise": {
+    title: "Professional Expertise",
+    body: `Professional Expertise
+│
+├── Sport background
+├── Regions known
+├── Age groups
+├── Specialization
+└── Evaluation strengths
+
+This describes the professional's long-term background and strengths.
+
+It is not the same as recruiting criteria.
+
+Recruiting criteria live inside Recruiting Projects because each project may search for a different type of athlete.`
+  },
+  "verification": {
+    title: "Verification Architecture",
+    body: `ProfessionalProfile
+│
+├── Verification Status
+├── Verification Method
+├── Verified Organization
+└── Last Reviewed
+
+Verification belongs to the professional profile.
+
+Organization verification may be separate later.
+
+For MVP, a professional can be verified by:
+• Organization email
+• Club / academy document
+• Admin approval
+• Manual platform review`
+  },
+  "workspace-architecture": {
+    title: "Workspace Architecture",
+    body: `ProfessionalProfile
+│
+├── Individual Workspace
+│   └── Personal recruiting work
+│
+└── Organization Workspace Memberships
+    ├── Role: Owner / Admin / Member
+    ├── Access Status: Pending / Approved / Suspended
+    └── Organization Workspace Access
+
+Workspace types:
+• Organization Workspace
+• Individual Workspace
+
+Each workspace can contain:
+• Members
+• Recruiting Projects
+• Managed athletes
+• Evaluations
+• Requests
+• Messages
+• Notes
+• Activity history`
+  },
+  "organization-workspace": {
+    title: "Organization Workspace",
+    body: `Organization Workspace
+│
+├── Organization profile
+├── Workspace members
+│   ├── Owner
+│   ├── Admin
+│   └── Member
+│
+├── Recruiting Projects
+├── Managed athletes
+├── Shared evaluations
+├── Shared requests
+├── Shared messages
+└── Internal collaboration
+
+Used for team recruiting.
+
+Access is controlled through membership records and roles.`
+  },
+  "individual-workspace": {
+    title: "Individual Workspace",
+    body: `Individual Workspace
+│
+├── Owner: ProfessionalProfile
+├── Personal Recruiting Projects
+├── Personal managed athletes
+├── Individual evaluations
+├── Private notes
+└── Personal activity history
+
+Owned by one professional profile.
+
+This lets a professional work outside an organization while using the same workspace structure.`
+  }
+};
+  </script>
+  <script src="../shared/app.js">
+  </script>
+ </body>
+</html>

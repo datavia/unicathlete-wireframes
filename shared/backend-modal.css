@@ -1,0 +1,90 @@
+/* =========================================================
+   Shared backend notes modal
+   ========================================================= */
+
+.info-note {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #eef2ff;
+  color: #2563eb;
+  border: 1px solid #bfdbfe;
+  font-size: 12px;
+  font-weight: 900;
+  cursor: pointer;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.info-note:hover {
+  background: #dbeafe;
+}
+
+.backend-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(17, 24, 39, 0.42);
+  z-index: 6000;
+  padding: 24px;
+}
+
+.backend-modal.visible {
+  display: flex;
+}
+
+.backend-modal-card {
+  width: min(620px, calc(100vw - 40px));
+  max-height: calc(100vh - 70px);
+  overflow-y: auto;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.35);
+  border: 1px solid var(--border, #e5e7eb);
+}
+
+.backend-modal-header {
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border, #e5e7eb);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.backend-modal-title {
+  margin: 0;
+  color: var(--navy, #111827);
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.backend-modal-close {
+  border: 1px solid var(--border, #e5e7eb);
+  background: #f9fafb;
+  color: var(--navy, #111827);
+  border-radius: 10px;
+  width: 34px;
+  height: 34px;
+  font-size: 18px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.backend-modal-body {
+  margin: 18px 20px 20px;
+  padding: 18px;
+  background: #111827;
+  color: white;
+  border-radius: 14px;
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.65;
+  white-space: pre;
+  overflow-x: auto;
+}

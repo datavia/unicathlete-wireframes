@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>
+   Compare Athletes
+  </title>
+  <style>
+   :root {
+  --navy:#111827;
+  --blue:#2563eb;
+  --blue-light:#eff6ff;
+  --green:#16a34a;
+  --green-light:#ecfdf5;
+  --orange:#f97316;
+  --orange-light:#fff7ed;
+  --purple:#7c3aed;
+  --purple-light:#f5f3ff;
+  --red:#dc2626;
+  --red-light:#fee2e2;
+  --gray-bg:#f3f4f6;
+  --border:#e5e7eb;
+  --text:#111827;
+  --muted:#6b7280;
+  --card:#ffffff;
+}
+* {
+  box-sizing:border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin:0;
+  background:var(--gray-bg);
+  color:var(--text);
+}
+.nav {
+  background:var(--navy);
+  padding:16px 40px;
+  display:flex;
+  gap:10px;
+  align-items:center;
+  box-shadow:0 4px 14px rgba(0,0,0,.12);
+  position:sticky;
+  top:0;
+  z-index:10;
+  overflow-x:auto;
+}
+.nav a {
+  color:#d1d5db;
+  text-decoration:none;
+  padding:9px 13px;
+  border-radius:8px;
+  font-size:14px;
+  white-space:nowrap;
+}
+.nav a.active {
+  background:var(--blue);
+  color:white;
+  font-weight:600;
+}
+.page {
+  max-width:1480px;
+  margin:28px auto;
+  padding:0 28px 40px;
+}
+.page-title {
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  align-items:flex-end;
+  margin-bottom:20px;
+}
+.page-title h1 {
+  margin:8px 0 6px;
+  font-size:28px;
+  color:var(--navy);
+}
+.page-title p {
+  margin:0;
+  color:var(--muted);
+  line-height:1.4;
+}
+.back-link {
+  color:var(--blue);
+  text-decoration:none;
+  font-size:14px;
+  font-weight:800;
+}
+.button {
+  border:none;
+  padding:10px 14px;
+  border-radius:9px;
+  font-size:14px;
+  font-weight:800;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  text-decoration:none;
+  white-space:nowrap;
+}
+.btn-primary {
+  background:var(--blue);
+  color:white;
+}
+.btn-light {
+  background:white;
+  color:var(--navy);
+  border:1px solid var(--border);
+}
+.btn-dark {
+  background:var(--navy);
+  color:white;
+}
+.summary-grid {
+  display:grid;
+  grid-template-columns:repeat(4, minmax(0, 1fr));
+  gap:14px;
+  margin-bottom:18px;
+}
+.summary-card {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:16px;
+  box-shadow:0 6px 18px rgba(15,23,42,.05);
+}
+.summary-card strong {
+  display:block;
+  color:var(--blue);
+  font-size:24px;
+  margin-bottom:4px;
+}
+.summary-card span {
+  color:var(--muted);
+  font-size:13px;
+  font-weight:800;
+  line-height:1.35;
+}
+.context-card {
+  background:linear-gradient(135deg,#ffffff 0%,#eff6ff 100%);
+  border:1px solid #bfdbfe;
+  border-radius:18px;
+  padding:18px;
+  margin-bottom:18px;
+  box-shadow:0 6px 18px rgba(15,23,42,.05);
+}
+.context-top {
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  align-items:flex-start;
+  margin-bottom:12px;
+}
+.context-card h2 {
+  margin:0 0 5px;
+  color:var(--navy);
+  font-size:20px;
+}
+.context-card p {
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.45;
+}
+.pill-row {
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  margin-top:12px;
+}
+.pill {
+  display:inline-flex;
+  align-items:center;
+  border-radius:999px;
+  padding:6px 9px;
+  font-size:12px;
+  font-weight:900;
+  background:white;
+  color:var(--blue);
+  border:1px solid #bfdbfe;
+}
+.pill.green {
+  color:var(--green);
+  border-color:#bbf7d0;
+  background:var(--green-light);
+}
+.pill.orange {
+  color:var(--orange);
+  border-color:#fed7aa;
+  background:var(--orange-light);
+}
+.pill.purple {
+  color:var(--purple);
+  border-color:#ddd6fe;
+  background:var(--purple-light);
+}
+.pill.red {
+  color:var(--red);
+  border-color:#fecaca;
+  background:var(--red-light);
+}
+.comparison-shell {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:18px;
+  box-shadow:0 6px 18px rgba(15,23,42,.05);
+  overflow:auto;
+  margin-bottom:18px;
+}
+.comparison-grid {
+  min-width:1180px;
+  display:grid;
+  grid-template-columns:230px repeat(4, minmax(220px, 1fr));
+}
+.cell {
+  border-right:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:14px;
+  min-height:54px;
+  font-size:14px;
+  line-height:1.4;
+}
+.cell:last-child {
+  border-right:none;
+}
+.metric {
+  background:#f9fafb;
+  color:var(--muted);
+  font-weight:900;
+  position:sticky;
+  left:0;
+  z-index:2;
+}
+.section-row {
+  grid-column:1 / -1;
+  background:var(--navy);
+  color:white;
+  font-weight:900;
+  padding:12px 14px;
+  letter-spacing:.01em;
+  border-bottom:1px solid var(--navy);
+}
+.athlete-header {
+  background:linear-gradient(135deg,#ffffff 0%,#eff6ff 100%);
+  min-height:184px;
+  position:sticky;
+  top:56px;
+  z-index:5;
+}
+.metric.athlete-header {
+  z-index:6;
+}
+.avatar {
+  width:52px;
+  height:52px;
+  border-radius:16px;
+  background:var(--blue);
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  font-size:18px;
+  margin-bottom:10px;
+}
+.athlete-name {
+  font-size:18px;
+  color:var(--navy);
+  font-weight:900;
+  margin-bottom:5px;
+}
+.athlete-meta {
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.4;
+  margin-bottom:10px;
+}
+.score-main {
+  font-size:28px;
+  line-height:1;
+  font-weight:900;
+  color:var(--blue);
+  margin-bottom:4px;
+}
+.score-label {
+  color:var(--muted);
+  font-size:12px;
+  font-weight:800;
+}
+.missing {
+  color:var(--muted);
+  background:#f9fafb;
+  border:1px dashed #cbd5e1;
+  border-radius:10px;
+  padding:9px;
+  font-size:13px;
+  line-height:1.4;
+}
+.request-btn {
+  display:inline-flex;
+  margin-top:8px;
+  font-size:12px;
+  font-weight:900;
+  text-decoration:none;
+  color:var(--blue);
+  background:var(--blue-light);
+  border:1px solid #bfdbfe;
+  border-radius:999px;
+  padding:5px 8px;
+}
+.note-grid {
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:14px;
+  margin-top:18px;
+}
+.note-card {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:16px;
+  box-shadow:0 6px 18px rgba(15,23,42,.05);
+}
+.note-card h3 {
+  margin:0 0 8px;
+  color:var(--navy);
+  font-size:16px;
+}
+.note-card p {
+  margin:0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.45;
+}
+.comparison-detail-grid {
+  display:grid;
+  grid-template-columns:repeat(4, minmax(0, 1fr));
+  gap:10px;
+  margin-top:14px;
+}
+.comparison-detail {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:11px;
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.35;
+}
+.comparison-detail strong {
+  display:block;
+  color:var(--navy);
+  font-size:13px;
+  margin-bottom:3px;
+}
+.saved-comparison-list {
+  display:grid;
+  gap:10px;
+  margin-top:10px;
+}
+.saved-comparison-row {
+  border:1px solid var(--border);
+  background:#f9fafb;
+  border-radius:12px;
+  padding:12px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
+}
+.saved-comparison-row strong {
+  display:block;
+  color:var(--navy);
+  font-size:14px;
+  margin-bottom:4px;
+}
+.saved-comparison-row span {
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.35;
+}
+.saved-comparison-row a {
+  color:var(--blue);
+  font-size:12px;
+  font-weight:900;
+  text-decoration:none;
+  white-space:nowrap;
+}
+.mobile-note {
+  display:none;
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  color:#9a3412;
+  border-radius:14px;
+  padding:14px;
+  font-size:13px;
+  font-weight:800;
+  margin-bottom:18px;
+  line-height:1.4;
+}
+@media (max-width: 900px) {
+  .page {
+  padding:0 18px 34px;
+}
+.page-title {
+  flex-direction:column;
+  align-items:flex-start;
+}
+.summary-grid, .note-grid {
+  grid-template-columns:1fr;
+}
+.context-top {
+  flex-direction:column;
+}
+.mobile-note {
+  display:block;
+}
+.comparison-grid {
+  min-width:980px;
+}
+.athlete-header {
+  position:static;
+}
+}
+  </style>
+  <link href="../shared/backend-modal.css" rel="stylesheet"/>
+  <link href="../shared/app-shell.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <header class="app-header">
+   <div class="app-header-inner">
+    <a class="app-logo" href="../index.html">
+     UNICATHLETE
+    </a>
+    <nav aria-label="Platform view switcher" class="app-switch">
+     <a href="../index.html">
+      Platform
+     </a>
+     <a href="../athlete/overview.html">
+      Athlete View
+     </a>
+     <a class="active" href="overview.html">
+      Recruiter View
+     </a>
+    </nav>
+   </div>
+  </header>
+  <div class="nav">
+   <a href="overview.html">
+    Recruiter Overview
+   </a>
+   <a href="scout-profile.html">
+    Professional Profile
+   </a>
+   <a href="dashboard.html">
+    Dashboard
+   </a>
+   <a href="discover.html">
+    Discover Athletes
+   </a>
+   <a class="active" href="workspace.html">
+    Workspace
+   </a>
+   <a href="profile.html">
+    Athlete Profile
+   </a>
+   <a href="messages.html">
+    Messages
+   </a>
+  </div>
+  <div class="page">
+   <div class="page-title">
+    <div>
+     <a class="back-link" href="workspace.html">
+      &lsaquo; Back to Workspace
+     </a>
+     <h1>
+      Compare Athletes
+     </h1>
+    </div>
+    <div>
+     <a class="button btn-light" href="#">
+      Save Comparison
+     </a>
+     <a class="button btn-light" href="#">
+      Share Internally
+     </a>
+     <a class="button btn-primary" href="#">
+      Export Later
+     </a>
+    </div>
+   </div>
+   <div class="context-card">
+    <div class="context-top">
+     <div>
+      <h2>
+       Project Comparison Context
+      </h2>
+      <p>
+       This comparison is saved as a project asset inside the selected recruiting project.
+            It compares ProjectAthlete records against the same recruiting criteria.
+      </p>
+      <div class="pill-row">
+       <span class="pill green">
+        Workspace: Toronto Academy
+       </span>
+       <span class="pill">
+        Project: U17 Midfielders
+       </span>
+       <span class="pill purple">
+        Saved Comparison
+       </span>
+      </div>
+     </div>
+     <a class="button btn-dark" href="workspace_compare_interactive_tray.html">
+      Change Athletes
+     </a>
+    </div>
+    <div class="comparison-detail-grid">
+     <div class="comparison-detail">
+      <strong>
+       Comparison Name
+      </strong>
+      U17 Midfielders &mdash; Shortlist Review
+     </div>
+     <div class="comparison-detail">
+      <strong>
+       Created By
+      </strong>
+      Mike Brown
+     </div>
+     <div class="comparison-detail">
+      <strong>
+       Created Date
+      </strong>
+      Jun 24, 2026
+     </div>
+     <div class="comparison-detail">
+      <strong>
+       Stored Under
+      </strong>
+      Recruiting Project &rarr; Saved Comparisons
+     </div>
+    </div>
+   </div>
+   <div class="mobile-note">
+    Mobile behavior: this comparison should become swipeable athlete columns with collapsible sections, evaluation scores first, and sticky athlete headers.
+   </div>
+   <div class="comparison-shell">
+    <div class="comparison-grid">
+     <div class="cell metric athlete-header">
+      Selected Athletes
+     </div>
+     <div class="cell athlete-header">
+      <div class="avatar">
+       JS
+      </div>
+      <div class="athlete-name">
+       John Smith
+      </div>
+      <div class="athlete-meta">
+       Midfielder &middot; 17 &middot; Canada
+       <br/>
+       Toronto Academy
+      </div>
+      <a class="button btn-light" href="discover.html">
+       Replace Athlete
+      </a>
+     </div>
+     <div class="cell athlete-header">
+      <div class="avatar">
+       CG
+      </div>
+      <div class="athlete-name">
+       Carlos Gomez
+      </div>
+      <div class="athlete-meta">
+       Winger &middot; 17 &middot; Spain
+       <br/>
+       Valencia Youth
+      </div>
+      <a class="button btn-light" href="discover.html">
+       Replace Athlete
+      </a>
+     </div>
+     <div class="cell athlete-header">
+      <div class="avatar">
+       AB
+      </div>
+      <div class="athlete-name">
+       Alex Brown
+      </div>
+      <div class="athlete-meta">
+       Goalkeeper &middot; 18 &middot; Canada
+       <br/>
+       Mississauga Academy
+      </div>
+      <a class="button btn-light" href="discover.html">
+       Replace Athlete
+      </a>
+     </div>
+     <div class="cell athlete-header">
+      <div class="avatar">
+       +
+      </div>
+      <div class="athlete-name">
+       Empty Slot
+      </div>
+      <div class="athlete-meta">
+       Add one more athlete
+       <br/>
+       Maximum 4 total
+      </div>
+      <a class="button btn-light" href="workspace_compare_interactive_tray.html">
+       Add Athlete
+      </a>
+     </div>
+     <div class="section-row">
+      Evaluation Score First
+     </div>
+     <div class="cell metric">
+      Organization Average
+     </div>
+     <div class="cell">
+      <div class="score-main">
+       8.0
+      </div>
+      <div class="score-label">
+       Average of 3 scout evaluations
+      </div>
+     </div>
+     <div class="cell">
+      <div class="score-main">
+       8.3
+      </div>
+      <div class="score-label">
+       Average of 2 scout evaluations
+      </div>
+     </div>
+     <div class="cell">
+      <div class="score-main">
+       7.6
+      </div>
+      <div class="score-label">
+       Average of 1 scout evaluation
+      </div>
+     </div>
+     <div class="cell">
+      &mdash;
+     </div>
+     <div class="cell metric">
+      Latest Scout Evaluation
+     </div>
+     <div class="cell">
+      Mike Brown &middot; 8.0 / 10
+      <br/>
+      <span class="pill green">
+       Submitted
+      </span>
+     </div>
+     <div class="cell">
+      Sarah Wilson &middot; 8.5 / 10
+      <br/>
+      <span class="pill green">
+       Submitted
+      </span>
+     </div>
+     <div class="cell">
+      No latest evaluation
+      <br/>
+      <div class="missing">
+       No evaluation submitted yet.
+      </div>
+      <a class="request-btn" href="evaluation_management.html">
+       Create Evaluation
+      </a>
+     </div>
+     <div class="cell">
+      &mdash;
+     </div>
+     <div class="cell metric">
+      Individual Scout View
+     </div>
+     <div class="cell">
+      Mike: 8.0
+      <br/>
+      Sarah: 8.5
+      <br/>
+      David: 7.5
+     </div>
+     <div class="cell">
+      Mike: 8.0
+      <br/>
+      Sarah: 8.5
+     </div>
+     <div class="cell">
+      Sarah: 7.6
+     </div>
+     <div class="cell">
+      &mdash;
+     </div>
+     <div class="cell metric">
+      Organization Consensus
+     </div>
+     <div class="cell">
+      <span class="pill green">
+       Strong Prospect
+      </span>
+     </div>
+     <div class="cell">
+      <span class="pill green">
+       Advance Review
+      </span>
+     </div>
+     <div class="cell">
+      <div class="missing">
+       No organization consensus yet.
+      </div>
+     </div>
+     <div class="cell">
+      &mdash;
+     </div>
+     <div class="section-row">
+      Profile Overview
+     </div>
+     <div class="cell metric">
+      Position
+     </div>
+     <div class="cell">
+      Midfielder
+     </div>
+     <div class="cell">
+      Winger
+     </div>
+     <div class="cell">
+      Goalkeeper
+     </div>
+     <div class="cell">
+      &mdash;
+     </div>
+     <div class="cell metric">
+      Age / Country
+     </div>
+     <div class="cell">
+      17 &middot; Canada
+     </div>
+     <div class="cell">
+      17 &middot; Spain
+     </div>
+     <div class="cell">
+      18 &middot; Canada
+     </div>
+     <div class="cell">
+      &mdash;
+     </div>
+     <div class="cell metric">
+      Club / Organization
+     </div>
+     <div class="cell">
+      Toronto Academy
+     </div>
+     <div class="cell">
+      Valencia Youth
+     </div>
+     <div class="cell">
+      Mississauga Academy
+     </div>
+     <div class="cell">
+      &mdash;
+     </div>
+     <div class="cell metric">
+      Profile State
+     </div>
+     <div class="cell">
+      <span class="pill green">
+       Verified
+      </span>
+     </div>
+     <div class="cell">
+      <span class="pill green">
+       Verified
+      </span>
+     </div>
+     <div class="cell">
+      <span class="pill orange">
+       Verification Needed
+      </span>
+     </div>
+     <div class="cell">
+      &mdash;
+     </div>
+     <div class="section-row">
+      Physical Metrics
+     </div>
+     <div class="cell metric">
+      Height / Weight
+     </div>
+     <div class="cell">
+      183 cm &middot; 76 kg
+     </div>
+     <div class="cell">
+      176 cm &middot; 70 kg
+     </div>
+     <div class="cell">
+      188 cm &middot; 82 kg
+     </div>
+     <div class="cell">
+      &mdash;
+     </div>
+     <div class="cell metric">
+      Speed / Jump
+     </div>
+     <div class="cell">
+      Sprint: 5.1 sec
+      <br/>
+      Vertical: 72 cm
+     </div>
+     <div class="cell">
+      Sprint: 4.9 sec
+      <br/>
+      Vertical: 69 cm
+     </div>
+     <div class="cell">
+      <div class="missing">
+       Missing physical testing data.
+      </div>
+      <a class="request-btn" href="requests.html">
+       Request Metrics
+      </a>
+     </div>
+     <div class="cell">
+      &mdash;
+     </div>
+     <div class="section-row">
+      Sport-Specific Stats
+     </div>
+     <div class="cell metric">
+      Games / Minutes
+     </div>
+     <div class="cell">
+      28 games
+      <br/>
+      2140 minutes
+     </div>
+     <div class="cell">
+      25 games
+      <br/>
+      1900 minutes
+     </div>
+     <div class="cell">
+      22 games
+      <br/>
+      1980 minutes
+     </div>
+     <div class="cell">
+      &mdash;
+     </div>
+     <div class="cell metric">
+      Key Output
+     </div>
+     <div class="cell">
+      14 goals
+      <br/>
+      9 assists
+     </div>
+     <div class="cell">
+      11 goals
+      <br/>
+      12 assists
+     </div>
+     <div class="cell">
+      8 clean sheets
+      <br/>
+      78% save rate
+     </div>
+     <div class="cell">
+      &mdash;
+     </div>
+     <div class="section-row">
+      CRM Status
+     </div>
+     <div class="cell metric">
+      Workspace / Group
+     </div>
+     <div class="cell">
+      <span class="pill">
+       Toronto Academy
+      </span>
+      <br/>
+      <span class="pill">
+       U17 Midfielders
+      </span>
+     </div>
+     <div class="cell">
+      <span class="pill">
+       Toronto Academy
+      </span>
+      <br/>
+      <span class="pill">
+       Spain Targets
+      </span>
+     </div>
+     <div class="cell">
+      <span class="pill purple">
+       Individual Workspace
+      </span>
+      <br/>
+      <span class="pill">
+       Personal Watchlist
+      </span>
+     </div>
+     <div class="cell">
+      &mdash;
+     </div>
+     <div class="cell metric">
+      Pipeline Status
+     </div>
+     <div class="cell">
+      <span class="pill orange">
+       Reviewing
+      </span>
+     </div>
+     <div class="cell">
+      <span class="pill orange">
+       Reviewing
+      </span>
+     </div>
+     <div class="cell">
+      <span class="pill">
+       New
+      </span>
+     </div>
+     <div class="cell">
+      &mdash;
+     </div>
+     <div class="cell metric">
+      Athlete Owner
+     </div>
+     <div class="cell">
+      Mike Brown
+     </div>
+     <div class="cell">
+      Sarah Wilson
+     </div>
+     <div class="cell">
+      Mike Brown
+     </div>
+     <div class="cell">
+      &mdash;
+     </div>
+     <div class="section-row">
+      Requests
+     </div>
+     <div class="cell metric">
+      Medical
+     </div>
+     <div class="cell">
+      <span class="pill orange">
+       Pending
+      </span>
+      <br/>
+      Due Jun 20
+     </div>
+     <div class="cell">
+      <span class="pill green">
+       Completed
+      </span>
+     </div>
+     <div class="cell">
+      <div class="missing">
+       No medical request sent.
+      </div>
+      <a class="request-btn" href="requests.html">
+       Request Medical
+      </a>
+     </div>
+     <div class="cell">
+      &mdash;
+     </div>
+     <div class="cell metric">
+      Verification
+     </div>
+     <div class="cell">
+      <span class="pill green">
+       Reviewed
+      </span>
+     </div>
+     <div class="cell">
+      <span class="pill green">
+       Verified
+      </span>
+     </div>
+     <div class="cell">
+      <span class="pill orange">
+       Missing
+      </span>
+      <br/>
+      <a class="request-btn" href="requests.html">
+       Request Verification
+      </a>
+     </div>
+     <div class="cell">
+      &mdash;
+     </div>
+     <div class="cell metric">
+      Trial / Assessment
+     </div>
+     <div class="cell">
+      <span class="pill">
+       Not requested
+      </span>
+     </div>
+     <div class="cell">
+      <span class="pill green">
+       Recommended
+      </span>
+     </div>
+     <div class="cell">
+      <span class="pill">
+       Not requested
+      </span>
+     </div>
+     <div class="cell">
+      &mdash;
+     </div>
+     <div class="section-row">
+      Shared Workspace Logic
+     </div>
+     <div class="cell metric">
+      Internal Notes
+     </div>
+     <div class="cell">
+      Sarah: Request recent trial footage before decision.
+     </div>
+     <div class="cell">
+      Mike: Strong attacking profile; verify consistency.
+     </div>
+     <div class="cell">
+      Mike: Needs more evaluation before advancing.
+     </div>
+     <div class="cell">
+      &mdash;
+     </div>
+     <div class="cell metric">
+      Recommended CRM Action
+     </div>
+     <div class="cell">
+      <a class="request-btn" href="request_management.html">
+       Review pending medical
+      </a>
+     </div>
+     <div class="cell">
+      <a class="request-btn" href="evaluation_management.html">
+       Advance to discussion
+      </a>
+     </div>
+     <div class="cell">
+      <a class="request-btn" href="requests.html">
+       Request missing info
+      </a>
+     </div>
+     <div class="cell">
+      &mdash;
+     </div>
+    </div>
+   </div>
+   <div class="note-grid">
+    <div class="note-card">
+     <h3>
+      Save Result
+     </h3>
+     <p>
+      Saving this comparison creates a SavedComparison record under U17 Midfielders, linked to the selected project athletes.
+     </p>
+    </div>
+    <div class="note-card">
+     <h3>
+      Access Rights
+     </h3>
+     <p>
+      Project members can create comparisons. Project Owner and authorized members can reopen, share, or archive saved comparisons.
+     </p>
+    </div>
+    <div class="note-card">
+     <h3>
+      Missing Data
+     </h3>
+     <p>
+      Missing evaluations, stats, consensus, or request data should not break the view. It should show a clear missing state and allow the scout to request the missing information.
+     </p>
+    </div>
+   </div>
+   <div class="note-card">
+    <h3>
+     Saved Comparison History
+    </h3>
+    <div class="saved-comparison-list">
+     <div class="saved-comparison-row">
+      <div>
+       <strong>
+        U17 Midfielders &mdash; Shortlist Review
+       </strong>
+       <span>
+        Compared: John Smith, Carlos Gomez, Alex Brown &middot; Saved by Mike Brown &middot; Jun 24
+       </span>
+      </div>
+      <a href="compare.html">
+       Open
+      </a>
+     </div>
+     <div class="saved-comparison-row">
+      <div>
+       <strong>
+        Technical Midfielder Review
+       </strong>
+       <span>
+        Compared: John Smith, Sarah Malik, Carlos Gomez &middot; Saved by Sarah Wilson &middot; Jun 20
+       </span>
+      </div>
+      <a href="compare.html">
+       Open
+      </a>
+     </div>
+     <div class="saved-comparison-row">
+      <div>
+       <strong>
+        Final Two Discussion
+       </strong>
+       <span>
+        Compared: John Smith, Carlos Gomez &middot; Saved by Mike Brown &middot; Jun 18
+       </span>
+      </div>
+      <a href="compare.html">
+       Open
+      </a>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script src="../shared/app.js">
+  </script>
+ </body>
+</html>

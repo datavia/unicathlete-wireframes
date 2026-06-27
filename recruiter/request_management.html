@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>
+   Request Management
+  </title>
+  <style>
+   :root {
+  --navy: #111827;
+  --blue: #2563eb;
+  --blue-light: #eff6ff;
+  --green: #16a34a;
+  --green-light: #ecfdf5;
+  --orange: #f97316;
+  --orange-light: #fff7ed;
+  --purple: #7c3aed;
+  --purple-light: #f5f3ff;
+  --red: #dc2626;
+  --red-light: #fee2e2;
+  --yellow: #ca8a04;
+  --yellow-light: #fefce8;
+  --gray-bg: #f3f4f6;
+  --border: #e5e7eb;
+  --text: #111827;
+  --muted: #6b7280;
+  --card: #ffffff;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: var(--gray-bg);
+  color: var(--text);
+}
+.nav {
+  background: var(--navy);
+  padding: 16px 40px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.nav a {
+  color: #d1d5db;
+  text-decoration: none;
+  padding: 9px 13px;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: 0.2s;
+  white-space: nowrap;
+}
+.nav a:hover {
+  background: rgba(255,255,255,0.10);
+  color: white;
+}
+.nav a.active {
+  background: var(--blue);
+  color: white;
+  font-weight: 600;
+}
+.page {
+  max-width: 1240px;
+  margin: 28px auto;
+  padding: 0 28px 40px;
+}
+.page-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.page-title h1 {
+  margin: 10px 0 6px;
+  font-size: 28px;
+  color: var(--navy);
+}
+.page-title p {
+  margin: 0;
+  color: var(--muted);
+}
+.back-link {
+  color: var(--blue);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+}
+.button {
+  border: none;
+  padding: 11px 16px;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  min-width: 120px;
+}
+.btn-primary {
+  background: var(--blue);
+  color: white;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.20);
+}
+.btn-light {
+  background: white;
+  color: var(--navy);
+  border: 1px solid var(--border);
+}
+.btn-outline {
+  background: white;
+  color: var(--blue);
+  border: 1px solid #93c5fd;
+}
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+  margin-bottom: 18px;
+}
+.search-switch-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+  margin-bottom: 18px;
+}
+.search-switch-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  align-items: center;
+}
+.search-box {
+  position: relative;
+  width: 100%;
+}
+.search-icon {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  pointer-events: none;
+  z-index: 2;
+}
+.athlete-search-top {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: #f9fafb;
+  color: var(--navy);
+  border-radius: 10px;
+  padding: 12px 13px 12px 40px;
+  font-size: 14px;
+  font-weight: 700;
+  outline: none;
+}
+.athlete-search-top:focus {
+  border-color: #93c5fd;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+.athlete-card {
+  min-height: 118px;
+  background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.athlete-card:hover {
+  border-color: #bfdbfe;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+.athlete-main {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: var(--blue);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.athlete-main h2 {
+  margin: 0 0 5px;
+  color: var(--navy);
+  font-size: 22px;
+}
+.athlete-main p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+.athlete-actions {
+  width: 340px;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.primary-request-action {
+  text-decoration: none;
+  background: var(--blue);
+  color: white;
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+  min-height: 56px;
+}
+.primary-request-action:hover {
+  background: #1d4ed8;
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.22);
+}
+.primary-request-action strong {
+  display: block;
+  font-size: 15px;
+  line-height: 1.2;
+}
+.primary-request-action span {
+  font-size: 12px;
+  opacity: 0.9;
+  line-height: 1.25;
+}
+.primary-request-action > span:last-child {
+  font-size: 16px;
+  font-weight: 900;
+  margin-left: 12px;
+}
+.secondary-request-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.secondary-request-action {
+  text-decoration: none;
+  background: white;
+  color: var(--navy);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 800;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.secondary-request-action:hover {
+  border-color: #bfdbfe;
+  background: #f8fafc;
+  color: var(--blue);
+}
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.summary-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+}
+.summary-card strong {
+  display: block;
+  font-size: 28px;
+  color: var(--blue);
+  margin-bottom: 4px;
+}
+.summary-card span {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+.layout {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 18px;
+  align-items: start;
+}
+.section-title {
+  margin: 0 0 6px;
+  color: var(--navy);
+  font-size: 18px;
+}
+.section-subtitle {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.4;
+}
+.request-filter-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 12px 0 14px;
+  padding: 10px;
+  background: #f9fafb;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.request-filter select {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: white;
+  color: var(--navy);
+  border-radius: 9px;
+  padding: 9px 10px;
+  font-size: 12px;
+  font-weight: 800;
+  outline: none;
+}
+.request-filter select:focus {
+  border-color: #93c5fd;
+}
+.request-list {
+  display: grid;
+  gap: 12px;
+}
+.request-row {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  background: #f9fafb;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+  align-items: center;
+}
+.request-row.highlight {
+  background: var(--orange-light);
+  border-color: #fed7aa;
+}
+.request-title {
+  font-weight: 900;
+  color: var(--navy);
+  margin-bottom: 4px;
+  font-size: 15px;
+}
+.request-meta {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+.request-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.status {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 5px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+}
+.pending {
+  background: #fed7aa;
+  color: var(--orange);
+}
+.completed {
+  background: #bbf7d0;
+  color: var(--green);
+}
+.reviewed {
+  background: var(--blue-light);
+  color: var(--blue);
+}
+.closed {
+  background: #f3f4f6;
+  color: var(--muted);
+}
+.rating-breakdown {
+  display: grid;
+  gap: 10px;
+}
+.rating-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 9px;
+  font-size: 14px;
+}
+.rating-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.rating-row span:first-child {
+  color: var(--muted);
+}
+.rating-row span:last-child {
+  color: var(--navy);
+  font-weight: 800;
+  text-align: right;
+}
+.team-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.team-pill {
+  border-radius: 999px;
+  padding: 6px 9px;
+  font-size: 12px;
+  font-weight: 800;
+  background: var(--blue-light);
+  color: var(--blue);
+  border: 1px solid #bfdbfe;
+}
+.team-pill.owner {
+  background: var(--green-light);
+  color: var(--green);
+  border-color: #bbf7d0;
+}
+.comment-card {
+  border: 1px solid #dbeafe;
+  background: white;
+  border-radius: 12px;
+  padding: 13px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.comment-card strong {
+  display: block;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.comment-card span {
+  color: var(--muted);
+  line-height: 1.4;
+}
+.context-card {
+  background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
+  border: 1px solid #bfdbfe;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+  margin-bottom: 18px;
+}
+.context-title {
+  margin: 0 0 6px;
+  color: var(--navy);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+.context-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 14px;
+}
+.context-field label {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 900;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+}
+.context-field select {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: white;
+  color: var(--navy);
+  border-radius: 10px;
+  padding: 10px 11px;
+  font-size: 13px;
+  font-weight: 800;
+  outline: none;
+}
+.context-field select:focus {
+  border-color: #93c5fd;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+.criteria-box {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+  margin-top: 12px;
+}
+.criteria-box strong {
+  display: block;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.workspace-marker {
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  border-radius:999px;
+  padding:5px 8px;
+  font-size:12px;
+  font-weight:900;
+  background:#f1f5f9;
+  color:#475569;
+  border:1px solid #cbd5e1;
+  margin-top:8px;
+}
+.workspace-marker::before {
+  content:"🏢";
+  font-size:11px;
+}
+@media (max-width: 1000px) {
+  .nav {
+  overflow-x: auto;
+  padding: 14px 18px;
+}
+.page-title, .athlete-card {
+  flex-direction: column;
+  align-items: flex-start;
+}
+.athlete-actions {
+  width: 100%;
+  min-width: 0;
+}
+.secondary-request-actions {
+  grid-template-columns: 1fr;
+}
+.summary-grid, .layout, .request-filter-row, .context-grid {
+  grid-template-columns: 1fr;
+}
+.request-row {
+  grid-template-columns: 1fr;
+}
+.request-actions {
+  justify-content: flex-start;
+}
+}
+  </style>
+  <link href="../shared/backend-modal.css" rel="stylesheet"/>
+  <link href="../shared/app-shell.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <header class="app-header">
+   <div class="app-header-inner">
+    <a class="app-logo" href="../index.html">
+     UNICATHLETE
+    </a>
+    <nav aria-label="Platform view switcher" class="app-switch">
+     <a href="../index.html">
+      Platform
+     </a>
+     <a href="../athlete/overview.html">
+      Athlete View
+     </a>
+     <a class="active" href="overview.html">
+      Recruiter View
+     </a>
+    </nav>
+   </div>
+  </header>
+  <div class="nav">
+   <a href="overview.html">
+    Recruiter Overview
+   </a>
+   <a href="scout-profile.html">
+    Professional Profile
+   </a>
+   <a href="dashboard.html">
+    Dashboard
+   </a>
+   <a href="discover.html">
+    Discover Athletes
+   </a>
+   <a href="workspace.html">
+    Workspace
+   </a>
+   <a class="active" href="profile.html">
+    Athlete Profile
+   </a>
+   <a href="messages.html">
+    Messages
+   </a>
+  </div>
+  <div class="page">
+   <div class="page-title">
+    <div>
+     <a class="back-link" href="messages.html">
+      &lsaquo; Back to Messages
+     </a>
+     <h1>
+      Request Management
+     </h1>
+     <p>
+      Review project-specific request history, submitted information, and follow-ups for this athlete.
+     </p>
+    </div>
+   </div>
+   <div class="search-switch-card">
+    <div class="search-switch-row">
+     <div class="search-box">
+      <span class="search-icon">
+       🔍
+      </span>
+      <input class="athlete-search-top" placeholder="Search athlete by name, position, or organization..." type="text"/>
+     </div>
+    </div>
+   </div>
+   <div class="card athlete-card" data-click-target="profile.html" role="link" tabindex="0">
+    <div class="athlete-main">
+     <div class="avatar">
+      JS
+     </div>
+     <div>
+      <h2>
+       John Smith
+      </h2>
+      <p>
+       Midfielder | 17 | Toronto Academy | Connected Athlete
+      </p>
+     </div>
+    </div>
+    <div class="athlete-actions">
+     <a class="primary-request-action" href="requests.html">
+      <div>
+       <strong>
+        + New Request
+       </strong>
+      </div>
+     </a>
+     <div class="secondary-request-actions">
+      <a class="secondary-request-action" href="messages.html">
+       Message Athlete
+      </a>
+      <a class="secondary-request-action" href="#">
+       Assign Follow-Up
+      </a>
+     </div>
+    </div>
+   </div>
+   <div class="context-card">
+    <div class="context-grid">
+     <div class="context-field">
+      <label>
+       Workspace
+      </label>
+      <select>
+       <option>
+        Toronto Academy Workspace
+       </option>
+       <option>
+        Mike Brown Individual Workspace
+       </option>
+      </select>
+      <span class="workspace-marker">
+       Toronto Academy
+      </span>
+     </div>
+    </div>
+    <div class="criteria-box">
+     <strong>
+      Linked Recruiting Projects
+     </strong>
+     <span>
+      U17 Midfielders &middot; Ontario Prospects &middot; Spain Targets
+     </span>
+    </div>
+   </div>
+   <div class="summary-grid">
+    <div class="summary-card">
+     <strong>
+      4
+     </strong>
+     <span>
+      Total Requests
+     </span>
+    </div>
+    <div class="summary-card">
+     <strong>
+      1
+     </strong>
+     <span>
+      Pending
+     </span>
+    </div>
+    <div class="summary-card">
+     <strong>
+      2
+     </strong>
+     <span>
+      Submitted
+     </span>
+    </div>
+    <div class="summary-card">
+     <strong>
+      1
+     </strong>
+     <span>
+      Reviewed
+     </span>
+    </div>
+   </div>
+   <div class="layout">
+    <div>
+     <div class="card">
+      <h2 class="section-title">
+       Request History
+      </h2>
+      <p class="section-subtitle">
+       Track structured requests, statuses, creators, reviewers, and athlete responses for this workspace-athlete relationship.
+      </p>
+      <div class="request-filter-row">
+       <div class="request-filter">
+        <select>
+         <option>
+          All requests
+         </option>
+         <option>
+          Pending
+         </option>
+         <option>
+          Submitted
+         </option>
+         <option>
+          Reviewed
+         </option>
+         <option>
+          Closed
+         </option>
+        </select>
+       </div>
+       <div class="request-filter">
+        <select>
+         <option>
+          All request types
+         </option>
+         <option>
+          Media Request
+         </option>
+         <option>
+          Medical Information
+         </option>
+         <option>
+          Verification
+         </option>
+         <option>
+          Introductory Call
+         </option>
+         <option>
+          Assessment / Trial
+         </option>
+        </select>
+       </div>
+       <div class="request-filter">
+        <select>
+         <option>
+          Newest first
+         </option>
+         <option>
+          Oldest first
+         </option>
+         <option>
+          Deadline soonest
+         </option>
+         <option>
+          Created by scout
+         </option>
+        </select>
+       </div>
+      </div>
+      <div class="request-list">
+       <div class="request-row highlight">
+        <div>
+         <div class="request-title">
+          Medical Information Request
+         </div>
+         <div class="request-meta">
+          Sent Jun 14, 2026 &middot; Deadline Jun 20, 2026
+          <br/>
+          Created by Mike Brown &middot; Linked to U17 Midfielders + Ontario Prospects
+         </div>
+         <span class="status pending">
+          Pending
+         </span>
+        </div>
+        <div class="request-actions">
+         <a class="button btn-light" href="requests.html">
+          Open
+         </a>
+         <a class="button btn-primary" href="messages.html">
+          Message
+         </a>
+        </div>
+       </div>
+       <div class="request-row">
+        <div>
+         <div class="request-title">
+          Match Footage Request
+         </div>
+         <div class="request-meta">
+          Sent Jun 12, 2026 &middot; Submitted Jun 15, 2026
+          <br/>
+          Created by Sarah Wilson &middot; Linked to U17 Midfielders
+         </div>
+         <span class="status completed">
+          Completed
+         </span>
+        </div>
+        <div class="request-actions">
+         <a class="button btn-light" href="profile.html">
+          Review Media
+         </a>
+         <a class="button btn-primary" href="messages.html">
+          Message
+         </a>
+        </div>
+       </div>
+       <div class="request-row">
+        <div>
+         <div class="request-title">
+          Verification Request
+         </div>
+         <div class="request-meta">
+          Sent Jun 9, 2026 &middot; Documents received and reviewed
+          <br/>
+          Created by David Lee &middot; Linked to Toronto Academy Workspace
+         </div>
+         <span class="status reviewed">
+          Reviewed
+         </span>
+        </div>
+        <div class="request-actions">
+         <a class="button btn-light" href="requests.html">
+          View Details
+         </a>
+        </div>
+       </div>
+       <div class="request-row">
+        <div>
+         <div class="request-title">
+          Introductory Call Request
+         </div>
+         <div class="request-meta">
+          Sent Jun 5, 2026 &middot; Athlete confirmed availability
+          <br/>
+          Created by Mike Brown &middot; Linked to U17 Midfielders
+         </div>
+         <span class="status completed">
+          Completed
+         </span>
+        </div>
+        <div class="request-actions">
+         <a class="button btn-light" href="messages.html">
+          View Conversation
+         </a>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div>
+    </div>
+   </div>
+  </div>
+  <script>
+   document.addEventListener("DOMContentLoaded", function () {
+      const clickableCards = document.querySelectorAll("[data-click-target]");
+
+      clickableCards.forEach(function (card) {
+        card.addEventListener("click", function (event) {
+          if (event.target.closest("a, button, input, select, textarea")) {
+            return;
+          }
+
+          window.location.href = card.dataset.clickTarget;
+        });
+
+        card.addEventListener("keydown", function (event) {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            window.location.href = card.dataset.clickTarget;
+          }
+        });
+      });
+    });
+  </script>
+  <script src="../shared/app.js">
+  </script>
+ </body>
+</html>
