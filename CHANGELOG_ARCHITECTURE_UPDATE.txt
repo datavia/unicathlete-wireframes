@@ -1,0 +1,11 @@
+UnicAthlete architecture update
+
+Implemented adjustments across the current HTML wireframes:
+- Standardized user-facing language around Workspace -> Recruiting Projects.
+- Removed mixed Product Architecture wording such as Container and Project / Group from current pages.
+- Clarified WorkspaceAthlete vs ProjectAthlete responsibilities in backend notes.
+- Added external_status as the athlete-facing opportunity status layer.
+- Clarified that pipeline_status is internal and outcome is separate: signed / rejected / withdrawn / archived.
+- Added ActivityLog/activity history language so reporting can be supported later without making management reporting an MVP feature.
+- Tightened workspace member permissions: Owner, Admin, Scout/Member.
+- Updated Discover, Workspace, Create Recruiting Project, Athlete Overview, Recruiter Overview, and top-level architecture notes.

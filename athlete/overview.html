@@ -562,14 +562,8 @@ p {
    <a href="profile.html">
     Athlete Profile
    </a>
-   <a href="requests.html">
-    Requests
-   </a>
    <a href="messages.html">
     Messages
-   </a>
-   <a href="opportunities.html">
-    Opportunities
    </a>
   </div>
   <main class="page">
@@ -577,16 +571,10 @@ p {
     <h1>
      Athlete-side Experience
     </h1>
-    <p>
-     The athlete side helps players build a structured recruiting profile, manage media and documents, respond to professional requests, communicate with professionals, and track external-facing opportunities.
-    </p>
    </div>
    <div class="section">
     <h2>
-     Athlete-side System
-     <button class="info-note" onclick="openBackendNote('athlete-architecture')">
-      ⓘ
-     </button>
+     Components
     </h2>
     <div class="grid-3">
      <div class="card">
@@ -594,32 +582,32 @@ p {
        Athlete Profile
       </h3>
       <p>
-       The athlete's public-facing portfolio: identity, sport info, physical profile, stats, bio, media, and documents.
+       The athlete's recruiting portfolio: identity, soccer profile, playing history, football media, documents, and visibility status.
       </p>
       <span class="tag blue">
-       Global Profile
+       Recruiting Portfolio
       </span>
      </div>
      <div class="card">
       <h3>
-       Media &amp; Documents
+       Dashboard
       </h3>
       <p>
-       Central storage for highlights, full matches, clips, photos, verification files, and academic/medical documents.
+       The athlete's activity hub for profile readiness, recruiter messages, profile/media views, and action cards.
       </p>
       <span class="tag purple">
-       Portfolio Assets
+       Activity Hub
       </span>
      </div>
      <div class="card">
       <h3>
-       Recruiting Activity
+       Messages
       </h3>
       <p>
-       Athletes do not manage recruiter projects. They see external opportunity statuses, requests, and messages.
+       Workspace-level communication with recruiters. Media and document requests are handled inside message threads.
       </p>
       <span class="tag green">
-       Opportunity View
+       Recruiter Communication
       </span>
      </div>
     </div>
@@ -631,63 +619,257 @@ p {
       &rarr;
      </span>
      <span class="step">
-      Upload Media
+      Complete Recruiter-Ready Checklist
      </span>
      <span class="arrow">
       &rarr;
      </span>
      <span class="step">
-      Become Discoverable
+      Become Searchable
      </span>
      <span class="arrow">
       &rarr;
      </span>
      <span class="step">
-      Receive Request
+      Receive Recruiter Message
      </span>
      <span class="arrow">
       &rarr;
      </span>
      <span class="step">
-      Track Opportunity
+      Respond / Share Media or Documents
      </span>
     </div>
    </div>
+
    <div class="section">
     <h2>
-     External Opportunity Logic
-     <button class="info-note" onclick="openBackendNote('opportunity-model')">
-      ⓘ
-     </button>
+     Profile Completion &amp; Recruiter-Ready
     </h2>
     <p>
-     Recruiters work with Recruiting Projects internally. Athletes see simplified opportunity progress so the experience feels understandable and not overly technical.
+     Athletes must complete a basic Player Profile during onboarding before reaching the dashboard.
+     Recruiter-Ready is a separate marketplace status that unlocks recruiter discovery once the profile
+     includes the minimum information needed for a recruiter to evaluate the athlete.
     </p>
-    <div class="grid-2">
+
+    <div class="grid-3" style="margin-top:16px;">
      <div class="card">
-      <h3>
-       Recruiter Internal
-      </h3>
+      <h3>Player Profile</h3>
       <p>
-       Project, ProjectAthlete, primary scout, collaborators, evaluations, internal notes, decision reason.
+       Required during onboarding. Includes identity, soccer profile, physical information, and basic player context.
       </p>
-      <span class="tag orange">
-       Not fully visible to athlete
-      </span>
+      <span class="tag blue">Dashboard Access</span>
      </div>
+
      <div class="card">
-      <h3>
-       Athlete External
-      </h3>
+      <h3>Recruiter-Ready</h3>
       <p>
-       Interested, contacted, info requested, discussion, trial invited, offer/signed, closed.
+       Unlocks search visibility after the athlete adds a profile photo and at least one football video.
       </p>
-      <span class="tag green">
-       Visible to athlete
-      </span>
+      <span class="tag green">Searchable</span>
+     </div>
+
+     <div class="card">
+      <h3>Profile Completion</h3>
+      <p>
+       A 0–100% progress score showing how complete and competitive the athlete's profile is.
+       It improves profile quality, but does not by itself unlock recruiter search.
+      </p>
+      <span class="tag purple">Progress Score</span>
      </div>
     </div>
+
+    <div class="grid-2" style="margin-top:18px;">
+     <div class="card">
+      <h3>Recruiter Status</h3>
+      <p>
+       Recruiter-Ready is not determined by the percentage score alone.
+       It is a checklist-based visibility status.
+      </p>
+      <div class="row"><span>Player Profile completed</span><span>Required</span></div>
+      <div class="row"><span>Profile photo uploaded</span><span>Required</span></div>
+      <div class="row"><span>At least one football video</span><span>Required</span></div>
+      <div class="row"><span>Visibility setting</span><span>Visible to recruiters</span></div>
+      <div class="row"><span>Result</span><span>Searchable</span></div>
+     </div>
+
+     <div class="card">
+      <h3>Score Breakdown</h3>
+      <div class="row"><span>Player Profile / Onboarding</span><span>35%</span></div>
+      <div class="row"><span>Profile Photo</span><span>10%</span></div>
+      <div class="row"><span>One Football Video</span><span>15%</span></div>
+      <div class="row"><span>Statistics</span><span>10%</span></div>
+      <div class="row"><span>Achievements</span><span>10%</span></div>
+      <div class="row"><span>Additional Media</span><span>10%</span></div>
+      <div class="row"><span>Documents &amp; Verification</span><span>5%</span></div>
+      <div class="row"><span>Opportunity Preferences</span><span>5%</span></div>
+     </div>
+    </div>
+
+    <div class="note">
+     Access Logic: athletes cannot reach the dashboard until the Player Profile onboarding is complete.
+     Profiles remain hidden from recruiter search until the Recruiter-Ready checklist is complete:
+     Player Profile completed, profile photo uploaded, at least one football video uploaded, and visibility set to recruiters.
+     Profile Completion is a separate progress score that continues to increase as athletes add statistics,
+     achievements, additional media, documents, verification, and opportunity preferences.
+    </div>
+
+    <div class="flow">
+     <span class="step">Register Account</span>
+     <span class="arrow">&rarr;</span>
+     <span class="step">Complete Player Profile</span>
+     <span class="arrow">&rarr;</span>
+     <span class="step">Reach Dashboard</span>
+     <span class="arrow">&rarr;</span>
+     <span class="step">Complete Recruiter-Ready Checklist</span>
+     <span class="arrow">&rarr;</span>
+     <span class="step">Searchable by Recruiters</span>
+    </div>
    </div>
+
+   <div class="section">
+  <h2>
+    Playing History
+  </h2>
+
+  <p>
+    Playing History organizes an athlete's career into individual seasons. Each season stores club, competition,
+    position, and match participation, allowing recruiters to evaluate the athlete's experience over time.
+  </p>
+
+  <div class="grid-3" style="margin-top:16px;">
+
+    <div class="card">
+      <h3>Season-Based Records</h3>
+      <p>
+        Every season is stored independently. Athletes can add new seasons while preserving previous playing history.
+      </p>
+
+      <span class="tag blue">
+        Career Timeline
+      </span>
+    </div>
+
+    <div class="card">
+      <h3>Match Statistics</h3>
+      <p>
+        Each season tracks universal football statistics including matches played, starts, minutes played,
+        disciplinary records, and the primary position for that season.
+      </p>
+
+      <span class="tag green">
+        Universal Statistics
+      </span>
+    </div>
+
+    <div class="card">
+      <h3>Season Progression</h3>
+      <p>
+        Athletes can continually add matches throughout the season, keeping statistics and playing history
+        up to date as their career progresses.
+      </p>
+
+      <span class="tag purple">
+        Ongoing Updates
+      </span>
+    </div>
+
+  </div>
+
+  </div>
+
+</div>
+
+   <div class="section">
+  <h2>
+    Documents & Information Requests
+  </h2>
+
+  <p>
+    Athletes can upload documents proactively or provide them later in response to recruiter requests.
+    Documents remain private by default and are only shared with recruiters when the athlete approves or
+    submits them through an Information Request.
+  </p>
+
+  <div class="grid-3" style="margin-top:16px;">
+
+    <div class="card">
+      <h3>Academic</h3>
+      <p>
+        Education-related documents used primarily for university recruitment.
+      </p>
+
+      <span class="tag blue">
+        Standard Category
+      </span>
+    </div>
+
+    <div class="card">
+      <h3>Medical</h3>
+      <p>
+        Medical clearance and health-related documents required by clubs or organizations.
+      </p>
+
+      <span class="tag blue">
+        Standard Category
+      </span>
+    </div>
+
+    <div class="card">
+      <h3>Custom</h3>
+      <p>
+        Flexible documents defined by the athlete or requested by recruiters
+        (for example: Coach Recommendation, Club Release, Parent Consent).
+      </p>
+
+      <span class="tag purple">
+        Flexible Category
+      </span>
+    </div>
+
+  </div>
+
+  <div class="flow">
+
+    <span class="step">
+      Upload Document
+    </span>
+
+    <span class="arrow">→</span>
+
+    <span class="step">
+      Stored Privately
+    </span>
+
+    <span class="arrow">→</span>
+
+    <span class="step">
+      Recruiter Request
+    </span>
+
+    <span class="arrow">→</span>
+
+    <span class="step">
+      Athlete Shares Document
+    </span>
+
+  </div>
+
+  <div class="note">
+
+    <strong>Privacy Logic</strong><br><br>
+
+    Documents are never publicly visible.
+
+    Recruiters cannot browse an athlete's private documents.
+
+    Documents become accessible only after the athlete shares them through the Information Request workflow.
+
+  </div>
+
+</div>
+
+
   </main>
   <div class="backend-modal" id="backendNoteModal" onclick="closeBackendNote(event)">
    <div class="backend-modal-card">
@@ -704,7 +886,9 @@ p {
    </div>
   </div>
   <script>
-   const backendNotes={"athlete-architecture": {"title": "Athlete Architecture", "body": "AthleteProfile\n\u251c\u2500\u2500 Profile Data\n\u251c\u2500\u2500 Sport Data\n\u251c\u2500\u2500 Stats\n\u251c\u2500\u2500 Media\n\u251c\u2500\u2500 Documents\n\u251c\u2500\u2500 Visibility Settings\n\u2502\n\u251c\u2500\u2500 Workspace Relationships\n\u2502   \u251c\u2500\u2500 Messages\n\u2502   \u251c\u2500\u2500 Requests\n\u2502   \u2514\u2500\u2500 Opportunity Status\n\u2502\n\u2514\u2500\u2500 Recruiting Activity\n    \u251c\u2500\u2500 Active Opportunities\n    \u251c\u2500\u2500 Past Opportunities\n    \u2514\u2500\u2500 Submitted Information"}, "opportunity-model": {"title": "Athlete Opportunity Model", "body": "WorkspaceAthlete\n\u251c\u2500\u2500 visible_opportunity_status\n\u251c\u2500\u2500 recruiter_workspace_name\n\u251c\u2500\u2500 external_progress_label\n\u251c\u2500\u2500 messages\n\u251c\u2500\u2500 requests\n\u2514\u2500\u2500 submitted_information\n\nProjectAthlete remains internal to recruiters.\nAthletes see only the external recruiting activity."}};function openBackendNote(id){const n=backendNotes[id];if(!n)return;document.getElementById("backendModalTitle").textContent=n.title;document.getElementById("backendModalBody").textContent=n.body;document.getElementById("backendNoteModal").classList.add("visible");}function closeBackendNote(event){const m=document.getElementById("backendNoteModal");if(!event||event.target===m||event.target.classList.contains("backend-modal-close"))m.classList.remove("visible");}document.addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("backendNoteModal").classList.remove("visible");});
+    const backendNotes = {
+      
+    };
   </script>
   <script src="../shared/app.js">
   </script>

@@ -357,130 +357,54 @@ h1 {
   </div>
   <script>
    const backendNotes = {
-
   "profile-architecture": {
-    title: "Profile Architecture",
-    body: `User
-├── Athlete Profile
-│   └── Portfolio Data
+  title: "Platform Data Model",
+  body: `User
+├── AthleteProfile (0..1)
+│   ├── profile_data
+│   ├── sport_profiles
+│   ├── playing_history
+│   ├── media
+│   ├── documents
+│   └── visibility_settings
 │
-└── Professional Profile
-    ├── Professional Type
-    │   ├── Recruiter (MVP)
-    │   └── Future Professional Types
+└── ProfessionalProfile (0..1)
+    ├── professional_types[]
+    │   ├── recruiter
+    │   ├── nutritionist
+    │   ├── physiotherapist
+    │   ├── agent
+    │   └── future_professional_types
     │
-    └── Workspace Access
-        ├── Individual Workspace
-        └── Organization Workspace Memberships`
-  },
+    └── WorkspaceMemberships[]
 
-  "professional-work": {
-  title: "Professional Workspace Access",
-  body: `ProfessionalProfile
-│
-├── Individual Workspace
-│   └── Personal recruiting work
-│
-└── Organization Workspace Memberships
-    ├── Organization Workspace A
-    ├── Organization Workspace B
-    └── Organization Workspace C
-    
-Organization
-├── Owner
-│   ├── approve members
-│   ├── create projects
-│   └── assign admins
-│
-├── Admin
-│   ├── approve members
-│   └── create projects
-│
-└── Member
-    └── participate in projects`
-},
+Workspace
+├── workspace_type
+│   ├── individual
+│   └── organization
+├── members
+├── permissions
+└── Projects[]
 
-  "workspace-logic": {
-  title: "Workspace Container Architecture",
-  body: `Workspace
-│
-└── Containers
-    ├── container_type
-    ├── workspace_id
-    └── professional_type_context
-        │
-        ├── MVP: RecruitingProject
-        │   ├── recruiting_criteria
-        │   ├── project_members
-        │   └── managed_athletes
-        │
-        └── Future: Other Container Types`
-},
+Project
+├── project_type
+├── members
+├── athlete_records
+├── tasks
+├── notes
+└── activity_log
 
-  "work-contexts": {
-  title: "Work Context Architecture",
-  body: `AthleteProfile
-│
-├── Global profile data
-├── Stats
-├── Media
-└── Documents
+Important rules:
+- One User can have at most one AthleteProfile.
+- One User can have at most one ProfessionalProfile.
+- A ProfessionalProfile can support multiple professional_types.
+- Workspace is the shared operating layer.
+- Project meaning depends on professional_type.
 
-WorkspaceAthlete
-│
-├── Shared conversation
-├── Shared requests
-├── Current ProjectAthlete
-│
-├── Project History
-│   ├── ProjectAthlete (Closed)
-│   │   ├── Outcome: Signed
-│   │   └── Decision Reason
-│   ├── ProjectAthlete (Closed)
-│   │   ├── Outcome: Rejected
-│   │   └── Decision Reason
-│   └── ProjectAthlete (Active)
-│       └── Pipeline: Reviewing
-│
-└── Relationship continues`
-},
-
-  "recruiting-project-work": {
-  title: "Recruiting Project Work Architecture",
-  body: `AthleteProfile
-└── WorkspaceAthlete records
-    ├── Workspace A relationship
-    ├── Workspace B relationship
-    └── Workspace C relationship
-
-WorkspaceAthlete
-│
-├── athlete_profile_id
-├── workspace_id
-├── shared_requests
-├── shared_conversation
-└── ProjectAthlete records
-
-RecruitingProject
-│
-├── project_owner_id
-├── recruiting_criteria
-├── project_members
-├── ProjectAthletes
-└── saved_comparisons
-
-ProjectAthlete
-│
-├── workspace_athlete_id
-├── project_id
-├── pipeline_status
-├── primary_scout_id
-├── collaborator_scout_ids
-├── evaluation_management
-└── internal_notes`
-
-},
-
+MVP implementation:
+professional_type = recruiter
+project_type = recruiting_project`
+}
 };
   </script>
   <script src="shared/app.js">

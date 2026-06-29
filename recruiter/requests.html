@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html>
- <head>
-  <title>
+<head>
+<title>
    Request Information
   </title>
-  <style>
+<style>
    :root {
   --navy: #111827;
   --blue: #2563eb;
@@ -523,489 +524,372 @@ textarea {
   flex-wrap: wrap;
 }
 }
-  </style>
-  <link href="../shared/backend-modal.css" rel="stylesheet"/>
-  <link href="../shared/app-shell.css" rel="stylesheet"/>
- </head>
- <body>
-  <header class="app-header">
-   <div class="app-header-inner">
-    <a class="app-logo" href="../index.html">
+  
+.custom-field {
+  margin-bottom: 22px;
+}
+.custom-field label {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.custom-field input {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  padding: 13px 14px;
+  font-size: 14px;
+  color: var(--navy);
+}
+</style>
+<link href="../shared/backend-modal.css" rel="stylesheet"/>
+<link href="../shared/app-shell.css" rel="stylesheet"/>
+</head>
+<body>
+<header class="app-header">
+<div class="app-header-inner">
+<a class="app-logo" href="../index.html">
      UNICATHLETE
     </a>
-    <nav aria-label="Platform view switcher" class="app-switch">
-     <a href="../index.html">
+<nav aria-label="Platform view switcher" class="app-switch">
+<a href="../index.html">
       Platform
      </a>
-     <a href="../athlete/overview.html">
+<a href="../athlete/overview.html">
       Athlete View
      </a>
-     <a class="active" href="overview.html">
+<a class="active" href="overview.html">
       Recruiter View
      </a>
-    </nav>
-   </div>
-  </header>
-  <div class="nav">
-   <a href="overview.html">
+</nav>
+</div>
+</header>
+<div class="nav">
+<a href="overview.html">
     Recruiter Overview
    </a>
-   <a href="scout-profile.html">
+<a href="scout-profile.html">
     Professional Profile
    </a>
-   <a href="dashboard.html">
+<a href="dashboard.html">
     Dashboard
    </a>
-   <a href="discover.html">
+<a href="discover.html">
     Discover Athletes
    </a>
-   <a href="workspace.html">
+<a href="workspace.html">
     Workspace
    </a>
-   <a class="active" href="profile.html">
+<a class="active" href="profile.html">
     Athlete Profile
    </a>
-   <a href="messages.html">
+<a href="messages.html">
     Messages
    </a>
-  </div>
-  <div class="page">
-   <div class="page-title">
-    <a class="back-link" href="profile.html">
-     &lsaquo; Back to Athlete Profile
+</div>
+<div class="page">
+<div class="page-title">
+<a class="back-link" href="profile.html">
+     ‹ Back to Athlete Profile
     </a>
-    <h1>
+<h1>
      Request Information
     </h1>
-    <p>
-     Choose the request type first. The relevant form will appear below.
-    </p>
-   </div>
-   <div class="card athlete-context">
-    <div class="athlete-main">
-     <div class="avatar">
+<p>Request media or documents from the athlete. Calls and trials belong to the opportunity workflow, not information requests.</p>
+</div>
+<div class="card athlete-context">
+<div class="athlete-main">
+<div class="avatar">
       JS
      </div>
-     <div>
-      <h2>
+<div>
+<h2>
        John Smith
       </h2>
-      <p>
+<p>
        Midfielder | 17 | Toronto Academy | Canada
       </p>
-     </div>
-    </div>
-    <span class="status-pill">
+</div>
+</div>
+<span class="status-pill">
      Connected Athlete
     </span>
-   </div>
-   <a class="request-history-btn" href="request_management.html">
-    <span class="history-icon">
+</div>
+<a class="request-history-btn" href="request_management.html">
+<span class="history-icon">
      📋
     </span>
-    <div>
-     <div class="history-title">
+<div>
+<div class="history-title">
       Request History
      </div>
-     <div class="history-subtitle">
+<div class="history-subtitle">
       View previous requests, statuses and responses
      </div>
-    </div>
-    <span class="history-arrow">
-     &rarr;
+</div>
+<span class="history-arrow">
+     →
     </span>
-   </a>
-   <div class="card selector-card">
-    <h2>
+</a>
+<div class="card selector-card">
+<h2>
      Choose Request Type
     </h2>
-    <p>
+<p>
      Select what information you want to request from the athlete.
     </p>
-    <div class="selector-wrapper">
-     <button class="selector-button" onclick="toggleDropdown()">
-      <div class="type-icon empty-icon" id="selectedIcon">
+<div class="selector-wrapper">
+<button class="selector-button" onclick="toggleDropdown()">
+<div class="type-icon empty-icon" id="selectedIcon">
        ＋
       </div>
-      <div>
-       <div class="selector-title" id="selectedTitle">
+<div>
+<div class="selector-title" id="selectedTitle">
         Choose request type
        </div>
-       <div class="selector-description" id="selectedDescription">
-        Media, medical, verification, call, trial, or transcript request.
-       </div>
-      </div>
-      <div class="chevron" id="selectorChevron">
+<div class="selector-description" id="selectedDescription">Media, academic document, medical document, or custom document request.</div>
+</div>
+<div class="chevron" id="selectorChevron">
        ⌄
       </div>
-     </button>
-     <div class="dropdown" id="requestDropdown">
-      <button class="dropdown-option" onclick="selectRequest('media')">
-       <div class="type-icon media-icon">
-        🎥
-       </div>
-       <div>
-        <div class="selector-title">
-         Media Request
-        </div>
-        <div class="selector-description">
-         Request videos, footage, highlights, or recent match clips.
-        </div>
-       </div>
-       <div class="request-count completed">
-        3 Sent
-       </div>
-      </button>
-      <button class="dropdown-option" onclick="selectRequest('medical')">
-       <div class="type-icon medical-icon">
-        ✚
-       </div>
-       <div>
-        <div class="selector-title">
-         Medical Information Request
-        </div>
-        <div class="selector-description">
-         Request injury history, current status, or clearance.
-        </div>
-       </div>
-      </button>
-      <button class="dropdown-option" onclick="selectRequest('verification')">
-       <div class="type-icon blue-icon">
-        &checkmark;
-       </div>
-       <div>
-        <div class="selector-title">
-         Verification Request
-        </div>
-        <div class="selector-description">
-         Request profile, club, or identity verification.
-        </div>
-       </div>
-      </button>
-      <button class="dropdown-option" onclick="selectRequest('call')">
-       <div class="type-icon orange-icon">
-        &phone;
-       </div>
-       <div>
-        <div class="selector-title">
-         Introductory Call Request
-        </div>
-        <div class="selector-description">
-         Request a call to discuss background and availability.
-        </div>
-       </div>
-      </button>
-      <button class="dropdown-option" onclick="selectRequest('trial')">
-       <div class="type-icon red-icon">
-        ⚽
-       </div>
-       <div>
-        <div class="selector-title">
-         Assessment / Trial Request
-        </div>
-        <div class="selector-description">
-         Invite athlete to trial, assessment, or evaluation.
-        </div>
-       </div>
-      </button>
-      <button class="dropdown-option" onclick="selectRequest('academic')">
-       <div class="type-icon blue-icon">
-        🎓
-       </div>
-       <div>
-        <div class="selector-title">
-         Academic Transcript Request
-        </div>
-        <div class="selector-description">
-         Request transcripts for university recruiting.
-        </div>
-       </div>
-      </button>
-     </div>
-    </div>
-   </div>
-   <div class="card form-card" id="mediaForm">
-    <div class="form-header">
-     <div class="form-header-main">
-      <div class="type-icon media-icon">
-       🎥
-      </div>
-      <div>
-       <h2>
-        Media Request
-       </h2>
-       <p>
-        Request specific footage or media from the athlete.
-       </p>
-      </div>
-     </div>
-    </div>
-    <div class="form-body">
-     <div class="step-title">
-      1. Select the type of media you need
-     </div>
-     <div class="choice-list">
-      <div class="choice-card selected-purple">
-       <span class="radio purple-selected">
-       </span>
-       <div class="choice-icon media-icon">
-        ▣
-       </div>
-       <div>
-        <div class="choice-title">
-         Highlight Video
-        </div>
-        <div class="choice-text">
-         Short highlight reel showcasing best moments and skills.
-        </div>
-       </div>
-      </div>
-      <div class="choice-card">
-       <span class="radio">
-       </span>
-       <div class="choice-icon media-icon">
-        ▥
-       </div>
-       <div>
-        <div class="choice-title">
-         Full Match Footage
-        </div>
-        <div class="choice-text">
-         Full unedited match footage.
-        </div>
-       </div>
-      </div>
-      <div class="choice-card">
-       <span class="radio">
-       </span>
-       <div class="choice-icon media-icon">
-        ◎
-       </div>
-       <div>
-        <div class="choice-title">
-         Position-Specific Footage
-        </div>
-        <div class="choice-text">
-         Footage focused on a specific position or role.
-        </div>
-       </div>
-      </div>
-      <div class="choice-card">
-       <span class="radio">
-       </span>
-       <div class="choice-icon media-icon">
-        &xutri;
-       </div>
-       <div>
-        <div class="choice-title">
-         Training Footage
-        </div>
-        <div class="choice-text">
-         Training sessions, drills, or practice footage.
-        </div>
-       </div>
-      </div>
-      <div class="choice-card">
-       <span class="radio">
-       </span>
-       <div class="choice-icon media-icon">
-        ◷
-       </div>
-       <div>
-        <div class="choice-title">
-         Recent Footage
-        </div>
-        <div class="choice-text">
-         Most recent matches or performances from the last 2&ndash;4 weeks.
-        </div>
-       </div>
-      </div>
-     </div>
-     <div class="step-title">
-      2. Add a message (optional)
-     </div>
-     <textarea placeholder="Add any specific instructions or details about what you'd like to see in the footage..."></textarea>
-     <div class="info-box purple-info">
-      <div class="info-mini-icon">
-       i
-      </div>
-      <div>
-       <strong>
-        What happens next?
-       </strong>
-       <p>
-        The athlete will be notified and can upload the requested media directly to the shared workspace.
-       </p>
-      </div>
-     </div>
-     <div class="form-actions">
-      <a class="button btn-light" href="profile.html">
-       Cancel
-      </a>
-      <span class="button btn-purple">
-       Send Media Request
-      </span>
-     </div>
-    </div>
-   </div>
-   <div class="card form-card" id="medicalForm">
-    <div class="form-header">
-     <div class="form-header-main">
-      <div class="type-icon medical-icon">
-       ✚
-      </div>
-      <div>
-       <h2>
-        Medical Information Request
-       </h2>
-       <p>
-        Request medical or injury-related information from the athlete.
-       </p>
-      </div>
-     </div>
-    </div>
-    <div class="form-body">
-     <div class="step-title">
-      1. Select the type of medical information you need
-     </div>
-     <div class="choice-list">
-      <div class="choice-card selected-green">
-       <span class="radio green-selected">
-       </span>
-       <div class="choice-icon medical-icon">
-        ✚
-       </div>
-       <div>
-        <div class="choice-title">
-         Injury History
-        </div>
-        <div class="choice-text">
-         Complete history of past injuries, including dates, details, and recovery time.
-        </div>
-       </div>
-      </div>
-      <div class="choice-card">
-       <span class="radio">
-       </span>
-       <div class="choice-icon medical-icon">
-        ♙
-       </div>
-       <div>
-        <div class="choice-title">
-         Current Injury Status
-        </div>
-        <div class="choice-text">
-         Information about current injuries, treatment, and expected return to play.
-        </div>
-       </div>
-      </div>
-      <div class="choice-card">
-       <span class="radio">
-       </span>
-       <div class="choice-icon medical-icon">
-        &checkmark;
-       </div>
-       <div>
-        <div class="choice-title">
-         Medical Clearance
-        </div>
-        <div class="choice-text">
-         Medical clearance or fitness-to-play confirmation from a healthcare professional.
-        </div>
-       </div>
-      </div>
-     </div>
-     <div class="step-title">
-      2. Add a message (optional)
-     </div>
-     <textarea placeholder="Add any specific information or documentation you're requesting..."></textarea>
-     <div class="info-box green-info">
-      <div class="info-mini-icon">
-       i
-      </div>
-      <div>
-       <strong>
-        Secure &amp; Confidential
-       </strong>
-       <p>
-        Medical information is handled securely and only visible to authorized members of your organization.
-       </p>
-      </div>
-     </div>
-     <div class="form-actions">
-      <a class="button btn-light" href="profile.html">
-       Cancel
-      </a>
-      <span class="button btn-green">
-       Send Medical Request
-      </span>
-     </div>
-    </div>
-   </div>
-   <div class="card form-card" id="placeholderForm">
-    <div class="form-header">
-     <div class="form-header-main">
-      <div class="type-icon blue-icon" id="placeholderIcon">
-       &checkmark;
-      </div>
-      <div>
-       <h2 id="placeholderTitle">
-        Request Form
-       </h2>
-       <p id="placeholderSubtitle">
-        This request type will use a structured form in the full MVP.
-       </p>
-      </div>
-     </div>
-    </div>
-    <div class="form-body">
-     <div class="placeholder-form" id="placeholderText">
-      Select a request type to preview the related request form.
-     </div>
-    </div>
-   </div>
-  </div>
-  <script>
+</button>
+<div class="dropdown" id="requestDropdown">
+<button class="dropdown-option" onclick="selectRequest('media')">
+<div class="type-icon media-icon">🎥</div>
+<div>
+<div class="selector-title">Media Request</div>
+<div class="selector-description">Request highlight video, skill clip, or full match footage.</div>
+</div>
+<div class="request-count completed">3 Sent</div>
+</button>
+<button class="dropdown-option" onclick="selectRequest('academic')">
+<div class="type-icon blue-icon">🎓</div>
+<div>
+<div class="selector-title">Academic Document Request</div>
+<div class="selector-description">Request transcript or education-related document.</div>
+</div>
+<div class="request-count none">Document</div>
+</button>
+<button class="dropdown-option" onclick="selectRequest('medical')">
+<div class="type-icon medical-icon">✚</div>
+<div>
+<div class="selector-title">Medical Document Request</div>
+<div class="selector-description">Request medical clearance or health-related document.</div>
+</div>
+<div class="request-count none">Document</div>
+</button>
+<button class="dropdown-option" onclick="selectRequest('custom')">
+<div class="type-icon orange-icon">📄</div>
+<div>
+<div class="selector-title">Custom Document Request</div>
+<div class="selector-description">Name any other document needed from the athlete.</div>
+</div>
+<div class="request-count pending">Flexible</div>
+</button>
+</div>
+</div>
+</div>
+
+<div class="card form-card" id="mediaForm">
+<div class="form-header">
+<div class="form-header-main">
+<div class="type-icon media-icon">🎥</div>
+<div>
+<h2>Media Request</h2>
+<p>Request structured football portfolio media from the athlete.</p>
+</div>
+</div>
+</div>
+<div class="form-body">
+<div class="step-title">1. Select the type of media you need</div>
+<div class="choice-list">
+<div class="choice-card selected-purple">
+<span class="radio purple-selected"></span>
+<div class="choice-icon media-icon">★</div>
+<div>
+<div class="choice-title">Main Highlight Video</div>
+<div class="choice-text">Request the athlete's primary highlight video. MVP limit: 1 item, max 5 minutes.</div>
+</div>
+</div>
+<div class="choice-card">
+<span class="radio"></span>
+<div class="choice-icon media-icon">◎</div>
+<div>
+<div class="choice-title">Skill Clip</div>
+<div class="choice-text">Request one short skill clip, such as speed, 1v1, passing, finishing, crossing, defending, first touch, or movement.</div>
+</div>
+</div>
+<div class="choice-card">
+<span class="radio"></span>
+<div class="choice-icon media-icon">▥</div>
+<div>
+<div class="choice-title">Full Match Footage</div>
+<div class="choice-text">Request one full match video with athlete-added timestamps. MVP limit: 1 item, max 45 minutes.</div>
+</div>
+</div>
+</div>
+<div class="step-title">2. Add a message (optional)</div>
+<textarea placeholder="Add specific instructions, such as which match, position role, or skill category you want to review..."></textarea>
+<div class="info-box purple-info">
+<div class="info-mini-icon">i</div>
+<div>
+<strong>What happens next?</strong>
+<p>The athlete can upload new media or share existing portfolio media with this workspace.</p>
+</div>
+</div>
+<div class="form-actions">
+<a class="button btn-light" href="profile.html">Cancel</a>
+<span class="button btn-purple">Send Media Request</span>
+</div>
+</div>
+</div>
+
+
+<div class="card form-card" id="medicalForm">
+<div class="form-header">
+<div class="form-header-main">
+<div class="type-icon medical-icon">✚</div>
+<div>
+<h2>Medical Document Request</h2>
+<p>Request a private medical document from the athlete.</p>
+</div>
+</div>
+</div>
+<div class="form-body">
+<div class="step-title">1. Requested document</div>
+<div class="choice-list">
+<div class="choice-card selected-green">
+<span class="radio green-selected"></span>
+<div class="choice-icon medical-icon">✚</div>
+<div>
+<div class="choice-title">Medical Clearance</div>
+<div class="choice-text">Medical clearance, fit-to-play confirmation, injury clearance, or similar health-related document.</div>
+</div>
+</div>
+</div>
+<div class="step-title">2. Add a message (optional)</div>
+<textarea placeholder="Explain why the document is needed, deadline, or any specific medical clearance requirements..."></textarea>
+<div class="info-box green-info">
+<div class="info-mini-icon">i</div>
+<div>
+<strong>Private by default</strong>
+<p>The athlete must approve or submit the document before your workspace can access it.</p>
+</div>
+</div>
+<div class="form-actions">
+<a class="button btn-light" href="profile.html">Cancel</a>
+<span class="button btn-green">Send Medical Request</span>
+</div>
+</div>
+</div>
+
+
+<div class="card form-card" id="academicForm">
+<div class="form-header">
+<div class="form-header-main">
+<div class="type-icon blue-icon">🎓</div>
+<div>
+<h2>Academic Document Request</h2>
+<p>Request education-related documents for university or eligibility review.</p>
+</div>
+</div>
+</div>
+<div class="form-body">
+<div class="step-title">1. Select the academic document you need</div>
+<div class="choice-list">
+<div class="choice-card selected-purple">
+<span class="radio purple-selected"></span>
+<div class="choice-icon blue-icon">🎓</div>
+<div>
+<div class="choice-title">Academic Transcript</div>
+<div class="choice-text">Request the athlete's school transcript or latest academic record.</div>
+</div>
+</div>
+<div class="choice-card">
+<span class="radio"></span>
+<div class="choice-icon blue-icon">▣</div>
+<div>
+<div class="choice-title">Other Academic Document</div>
+<div class="choice-text">Request enrollment confirmation, diploma, graduation status, or another education-related file.</div>
+</div>
+</div>
+</div>
+<div class="step-title">2. Add a message (optional)</div>
+<textarea placeholder="Add academic requirements, deadline, or which school year/term is needed..."></textarea>
+<div class="info-box purple-info">
+<div class="info-mini-icon">i</div>
+<div>
+<strong>Document sharing</strong>
+<p>The athlete can upload a new file or share an existing academic document already stored privately on their profile.</p>
+</div>
+</div>
+<div class="form-actions">
+<a class="button btn-light" href="profile.html">Cancel</a>
+<span class="button btn-purple">Send Academic Request</span>
+</div>
+</div>
+</div>
+<div class="card form-card" id="customForm">
+<div class="form-header">
+<div class="form-header-main">
+<div class="type-icon orange-icon">📄</div>
+<div>
+<h2>Custom Document Request</h2>
+<p>Request a document that does not fit the standard Academic or Medical categories.</p>
+</div>
+</div>
+</div>
+<div class="form-body">
+<div class="step-title">1. Name the document you need</div>
+<div class="custom-field">
+<label>Document Title</label>
+<input value="Coach Recommendation"/>
+</div>
+<div class="step-title">2. Add a message (optional)</div>
+<textarea placeholder="Describe the document, why it is needed, and any format or deadline requirements..."></textarea>
+<div class="info-box purple-info">
+<div class="info-mini-icon">i</div>
+<div>
+<strong>Flexible document request</strong>
+<p>Custom requests are useful for coach recommendations, parent consent, club release letters, league registration, or other recruiter-specific documents.</p>
+</div>
+</div>
+<div class="form-actions">
+<a class="button btn-light" href="profile.html">Cancel</a>
+<span class="button btn-purple">Send Custom Request</span>
+</div>
+</div>
+</div>
+
+</div>
+<script>
    const requestData = {
       media: {
         title: 'Media Request',
-        description: 'Request videos, footage, highlights, or recent match clips.',
+        description: 'Request highlight video, skill clip, or full match footage.',
         icon: '🎥',
         iconClass: 'type-icon media-icon'
       },
+      academic: {
+        title: 'Academic Document Request',
+        description: 'Request transcript or education-related document.',
+        icon: '🎓',
+        iconClass: 'type-icon blue-icon'
+      },
       medical: {
-        title: 'Medical Information Request',
-        description: 'Request injury history, current status, or clearance.',
+        title: 'Medical Document Request',
+        description: 'Request medical clearance or health-related document.',
         icon: '✚',
         iconClass: 'type-icon medical-icon'
       },
-      verification: {
-        title: 'Verification Request',
-        description: 'Request profile, club, or identity verification.',
-        icon: '✓',
-        iconClass: 'type-icon blue-icon',
-        placeholder: 'Verification request form placeholder: request identity confirmation, club affiliation, athlete documents, or verified profile information.'
-      },
-      call: {
-        title: 'Introductory Call Request',
-        description: 'Request a call to discuss background and availability.',
-        icon: '☎',
-        iconClass: 'type-icon orange-icon',
-        placeholder: 'Introductory call request form placeholder: propose date, time, topic, and call purpose.'
-      },
-      trial: {
-        title: 'Assessment / Trial Request',
-        description: 'Invite athlete to trial, assessment, or evaluation.',
-        icon: '⚽',
-        iconClass: 'type-icon red-icon',
-        placeholder: 'Assessment / trial request form placeholder: trial date, location, expectations, documents needed, and RSVP deadline.'
-      },
-      academic: {
-        title: 'Academic Transcript Request',
-        description: 'Request transcripts for university recruiting.',
-        icon: '🎓',
-        iconClass: 'type-icon blue-icon',
-        placeholder: 'Academic transcript request form placeholder: request school records, GPA, graduation year, and eligibility documents.'
+      custom: {
+        title: 'Custom Document Request',
+        description: 'Name any other document needed from the athlete.',
+        icon: '📄',
+        iconClass: 'type-icon orange-icon'
       }
     };
 
@@ -1015,6 +899,35 @@ textarea {
 
       dropdown.classList.toggle('open');
       chevron.textContent = dropdown.classList.contains('open') ? '⌃' : '⌄';
+    }
+
+    function selectRequest(type) {
+      const data = requestData[type];
+
+      document.getElementById('selectedTitle').textContent = data.title;
+      document.getElementById('selectedDescription').textContent = data.description;
+
+      const selectedIcon = document.getElementById('selectedIcon');
+      selectedIcon.textContent = data.icon;
+      selectedIcon.className = data.iconClass;
+
+      document.getElementById('requestDropdown').classList.remove('open');
+      document.getElementById('selectorChevron').textContent = '⌄';
+
+      document.getElementById('mediaForm').classList.remove('visible');
+      document.getElementById('academicForm').classList.remove('visible');
+      document.getElementById('medicalForm').classList.remove('visible');
+      document.getElementById('customForm').classList.remove('visible');
+
+      if (type === 'media') {
+        document.getElementById('mediaForm').classList.add('visible');
+      } else if (type === 'academic') {
+        document.getElementById('academicForm').classList.add('visible');
+      } else if (type === 'medical') {
+        document.getElementById('medicalForm').classList.add('visible');
+      } else if (type === 'custom') {
+        document.getElementById('customForm').classList.add('visible');
+      }
     }
 
     function selectRequest(type) {
@@ -1048,7 +961,7 @@ textarea {
       }
     }
   </script>
-  <script src="../shared/app.js">
-  </script>
- </body>
+<script src="../shared/app.js">
+</script>
+</body>
 </html>

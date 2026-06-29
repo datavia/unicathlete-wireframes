@@ -669,6 +669,196 @@ h2 {
   color: white;
   border-color: #2563eb;
 }
+
+.portfolio-summary-row {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-bottom:12px;
+}
+.portfolio-summary-box {
+  background:#f9fafb;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:9px;
+  text-align:center;
+  font-size:12px;
+  color:var(--muted);
+}
+.portfolio-summary-box strong {
+  display:block;
+  color:var(--blue);
+  font-size:16px;
+  margin-bottom:2px;
+}
+.portfolio-item {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:12px;
+  margin:10px 0;
+}
+.portfolio-item-head {
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:flex-start;
+}
+.portfolio-item-title {
+  color:var(--navy);
+  font-weight:900;
+  margin-bottom:4px;
+}
+.portfolio-item-meta {
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.4;
+}
+.media-type-pill {
+  background:var(--blue-light);
+  color:var(--blue);
+  border:1px solid #bfdbfe;
+  border-radius:999px;
+  padding:5px 8px;
+  font-size:11px;
+  font-weight:900;
+  white-space:nowrap;
+}
+.skill-mini-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  margin-top:10px;
+}
+.skill-mini {
+  background:#f9fafb;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:8px;
+  text-align:center;
+  font-size:11px;
+  color:var(--muted);
+  font-weight:800;
+}
+.skill-mini.filled {
+  background:var(--blue-light);
+  color:var(--blue);
+  border-color:#bfdbfe;
+}
+.timestamp-mini {
+  display:grid;
+  gap:6px;
+  margin-top:10px;
+}
+.timestamp-mini div {
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  border-top:1px solid #f1f5f9;
+  padding-top:6px;
+  font-size:12px;
+  color:var(--muted);
+}
+.timestamp-mini strong {
+  color:var(--blue);
+}
+.season-tabs {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:8px 0 12px;
+}
+.season-tab {
+  border:1px solid var(--border);
+  background:white;
+  color:var(--navy);
+  border-radius:999px;
+  padding:7px 10px;
+  font-size:12px;
+  font-weight:900;
+  text-decoration:none;
+}
+.season-tab.active {
+  background:var(--blue);
+  color:white;
+  border-color:var(--blue);
+}
+.playing-card {
+  background:#f9fafb;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:13px;
+}
+.playing-card-head {
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:flex-start;
+  margin-bottom:10px;
+}
+.source-pill {
+  background:white;
+  border:1px solid var(--border);
+  color:var(--muted);
+  border-radius:999px;
+  padding:5px 8px;
+  font-size:11px;
+  font-weight:900;
+  white-space:nowrap;
+}
+.stat-list {
+  display:grid;
+  gap:8px;
+}
+.stat-row {
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  border-top:1px solid #eef2f7;
+  padding-top:8px;
+  font-size:13px;
+}
+.stat-row span:first-child { color:var(--muted); }
+.stat-row span:last-child { color:var(--navy); font-weight:900; }
+.document-row {
+  background:#f9fafb;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:12px;
+  margin:10px 0;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
+}
+.document-title {
+  font-weight:900;
+  color:var(--navy);
+  margin-bottom:4px;
+}
+.document-meta {
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.4;
+}
+.document-status {
+  border-radius:999px;
+  padding:5px 8px;
+  font-size:11px;
+  font-weight:900;
+  white-space:nowrap;
+  background:var(--purple-light);
+  color:var(--purple);
+  border:1px solid #ddd6fe;
+}
+@media (max-width: 700px) {
+  .portfolio-summary-row,
+  .skill-mini-grid { grid-template-columns:1fr 1fr; }
+  .portfolio-item-head,
+  .playing-card-head,
+  .document-row { flex-direction:column; }
+}
+
 @media (max-width: 1100px) {
   .profile-layout {
   grid-template-columns: 1fr;
@@ -1031,12 +1221,6 @@ function assignScout(btn) {
       </p>
       <div class="badge-row">
        <span class="badge">
-        Verified Profile
-       </span>
-       <span class="badge">
-        Open to Trials
-       </span>
-       <span class="badge">
         Profile 86% Complete
        </span>
       </div>
@@ -1136,136 +1320,144 @@ function assignScout(btn) {
       </div>
       <div class="info-row">
        <span>
-        Sprint
+        Preferred Foot
        </span>
        <span>
-        5.1 sec
+        Right
        </span>
       </div>
       <div class="info-row">
        <span>
-        Vertical Jump
+        Recruiting Status
        </span>
        <span>
-        72 cm
+        Open to Opportunities
        </span>
       </div>
-     </div>
-     <div class="section-divider">
-     </div>
-     <h2>
-      Achievements
-     </h2>
-     <div class="card">
-      Ontario U18 Champion
-     </div>
-     <div class="card">
-      Academy Player of the Year
      </div>
     </div>
+
     <div class="profile-column">
      <h2>
-      Media
+      Football Portfolio
      </h2>
-     <div class="card media-card">
-      <div>
-       <div class="media-title">
-        Full Match Video
+
+     <div class="portfolio-item">
+      <div class="portfolio-item-head">
+       <div>
+        <div class="portfolio-item-title">
+         U17 Season Highlights
+        </div>
+        <div class="portfolio-item-meta">
+         4:36 &middot; Main highlight video &middot; Max 5 min
+        </div>
        </div>
-       <div class="media-meta">
-        90 min | Match footage
+       <span class="media-type-pill">
+        View
+       </span>
+      </div>
+     </div>
+
+     <div class="portfolio-item">
+      <div class="portfolio-item-head">
+       <div>
+        <div class="portfolio-item-title">
+         Skill Clips
+        </div>
+
        </div>
       </div>
-      <span class="play-pill">
-       View
-      </span>
-     </div>
-     <div class="card media-card">
-      <div>
-       <div class="media-title">
-        Highlight Video 1
-       </div>
-       <div class="media-meta">
-        4 min | Attacking actions
-       </div>
+      <div class="skill-mini-grid">
+       <div class="skill-mini filled">Speed</div>
+       <div class="skill-mini filled">1v1</div>
+       <div class="skill-mini filled">Passing</div>
+       <div class="skill-mini filled">Finishing</div>
+       <div class="skill-mini filled">Crossing</div>
+       <div class="skill-mini">Defending</div>
+       <div class="skill-mini filled">First Touch</div>
+       <div class="skill-mini">Movement</div>
       </div>
-      <span class="play-pill">
-       View
-      </span>
      </div>
-     <div class="card media-card">
-      <div>
-       <div class="media-title">
-        Highlight Video 2
+
+     <div class="portfolio-item">
+      <div class="portfolio-item-head">
+       <div>
+        <div class="portfolio-item-title">
+         North Toronto vs East York
+        </div>
+        <div class="portfolio-item-meta">
+         44:52 &middot; Full match footage &middot; Manual timestamps included
+        </div>
        </div>
-       <div class="media-meta">
-        3 min | Passing &amp; positioning
-       </div>
+       <span class="media-type-pill">
+        View Match
+       </span>
       </div>
-      <span class="play-pill">
-       View
-      </span>
+      <div class="timestamp-mini">
+       <div><strong>03:15</strong><span>1v1 dribble and cross</span></div>
+       <div><strong>14:08</strong><span>Assist / chance creation</span></div>
+       <div><strong>27:42</strong><span>Defensive recovery run</span></div>
+      </div>
      </div>
+
      <div class="section-divider">
      </div>
      <h2>
-      Statistics
+      Playing History
      </h2>
-     <div class="stats-grid">
-      <div class="stat-box">
-       <strong>
-        28
-       </strong>
-       <span>
-        Games
+     <div class="season-tabs">
+      <a class="season-tab active" href="#">2025/26</a>
+      <a class="season-tab" href="#">2024/25</a>
+      <a class="season-tab" href="#">2023/24</a>
+     </div>
+     <div class="playing-card">
+      <div class="playing-card-head">
+       <div>
+        <div class="portfolio-item-title">
+         2025/26 Season
+        </div>
+        <div class="portfolio-item-meta">
+         Toronto Academy &middot; OPDL U17 &middot; Midfielder
+        </div>
+       </div>
+       <span class="source-pill">
+        Athlete-entered
        </span>
       </div>
-      <div class="stat-box">
-       <strong>
-        14
-       </strong>
-       <span>
-        Goals
-       </span>
-      </div>
-      <div class="stat-box">
-       <strong>
-        9
-       </strong>
-       <span>
-        Assists
-       </span>
-      </div>
-      <div class="stat-box">
-       <strong>
-        2140
-       </strong>
-       <span>
-        Minutes
-       </span>
+      <div class="stat-list">
+       <div class="stat-row"><span>Matches Played</span><span>28</span></div>
+       <div class="stat-row"><span>Starts</span><span>24</span></div>
+       <div class="stat-row"><span>Minutes Played</span><span>2,140</span></div>
+       <div class="stat-row"><span>Yellow Cards</span><span>2</span></div>
+       <div class="stat-row"><span>Red Cards</span><span>0</span></div>
       </div>
      </div>
-     <div class="section-divider">
-     </div>
-     <h2>
-      Athletic History
-     </h2>
-     <div class="card">
-      2025 - Present | Toronto Academy
-     </div>
-     <div class="card">
-      2023 - 2025 | Mississauga Academy
-     </div>
+
      <div class="section-divider">
      </div>
      <h2>
       Documents
      </h2>
-     <div class="card">
-      Academic Transcript
+     <div class="document-row">
+      <div>
+       <div class="document-title">Academic Transcript</div>
+       <div class="document-meta">Category: Academic &middot; Shared with approved recruiters only.</div>
+      </div>
+      <span class="document-status">Available</span>
      </div>
-     <div class="card">
-      Medical Clearance
+     <div class="document-row">
+      <div>
+       <div class="document-title">Medical Clearance</div>
+       <div class="document-meta">Category: Medical &middot; Private unless submitted to a request.</div>
+      </div>
+      <span class="document-status">Request</span>
+     </div>
+     <div class="document-row">
+      <div>
+       <div class="document-title">Coach Recommendation</div>
+       <div class="document-meta">Category: Custom &middot; Requested by Toronto Academy.</div>
+      </div>
+      <span class="document-status">Pending</span>
      </div>
     </div>
     <div class="profile-column scout-column">
@@ -1367,19 +1559,7 @@ Evaluations, pipeline status, Primary Scout, collaborators, and project ratings 
        </a>
       </div>
      </div>
-     <div class="section-divider">
-     </div>
-     <div class="status-card">
-      <div class="status-label">
-       Selected Project
-      </div>
-      <div class="status-value" id="selectedProjectName">
-       U17 Midfielders
-      </div>
-      <div class="rating-context-note" id="selectedProjectCriteria">
-       Criteria: Midfielder &middot; Age 15&ndash;17 &middot; Ontario &middot; Academy level
-      </div>
-     </div>
+
      <div class="status-card">
       <div class="status-label">
        Pipeline Status

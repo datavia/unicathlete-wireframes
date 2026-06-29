@@ -539,17 +539,6 @@ select:focus, input:focus {
     <div>
      <h1>
       Discover Athletes
-      <button class="info-note" data-note="Discover is where scouts search the wider athlete database.
-
-The same filters used to create a recruiting project can be reused here.
-
-This allows a scout to:
-&bull; Search manually
-&bull; Apply project criteria
-&bull; Compare athletes before saving
-&bull; Add athletes directly to a workspace project/group" data-title="Discover Architecture" onclick="openBackendNote(this)" type="button">
-       ⓘ
-      </button>
      </h1>
     </div>
     <a class="button btn-primary" href="#">
@@ -561,22 +550,6 @@ This allows a scout to:
      <div class="project-filter-card">
       <div class="project-filter-title">
        Apply Workspace / Project Criteria
-       <button class="info-note" data-note="Discover should let scouts choose the workspace first, then apply criteria from a project inside that workspace.
-
-This matches the backend structure:
-
-Professional Profile
-&darr;
-Workspace
-&darr;
-Project / Group
-&darr;
-Athlete search criteria
-
-Workspace selection decides where the athlete will be saved.
-Project selection decides which recruiting criteria are applied." data-title="Workspace + Project Filters" onclick="openBackendNote(this)" type="button">
-        ⓘ
-       </button>
       </div>
       <div class="workspace-select-row" style="margin-top:10px;">
        <select id="workspaceSelect" onchange="updateWorkspaceProjects()">
@@ -610,23 +583,6 @@ Project selection decides which recruiting criteria are applied." data-title="Wo
      </div>
      <h2 class="section-title">
       Search Filters
-      <button class="info-note" data-note="Search filters mirror project recruiting criteria.
-
-Important filters:
-&bull; Sport
-&bull; Position
-&bull; Age range
-&bull; Gender / category
-&bull; Country / region
-&bull; Current level
-&bull; Recruiting class
-&bull; Availability
-&bull; Physical metrics
-&bull; Sport-specific stats
-&bull; Media requirements
-&bull; Verification requirements" data-title="Search Filters" onclick="openBackendNote(this)" type="button">
-       ⓘ
-      </button>
      </h2>
      <div class="filter-section">
       <div class="filter-label">

@@ -424,6 +424,60 @@ p {
 .field textarea {
   min-height:94px
 }
+.readiness-card {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+}
+.readiness-card.featured {
+  background:var(--green-light);
+  border-color:#bbf7d0;
+}
+.readiness-card.warning {
+  background:var(--orange-light);
+  border-color:#fed7aa;
+}
+.readiness-status {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+}
+.readiness-icon {
+  width:34px;
+  height:34px;
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:white;
+  border:1px solid var(--border);
+  font-weight:900;
+}
+.checklist {
+  display:grid;
+  gap:8px;
+  margin-top:12px;
+}
+.check-item {
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  font-size:13px;
+  color:var(--muted);
+}
+.check-item strong {
+  color:var(--navy);
+}
+.completion-large {
+  font-size:34px;
+  line-height:1;
+  font-weight:900;
+  color:var(--blue);
+  margin:8px 0 10px;
+}
+
 .media-grid {
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -529,6 +583,124 @@ p {
   max-width:100%
 }
 }
+  
+.status-panel {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:18px;
+  box-shadow:0 6px 18px rgba(15,23,42,.05);
+  padding:18px;
+  margin-bottom:20px;
+}
+.status-panel-head {
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  align-items:flex-start;
+  margin-bottom:14px;
+}
+.status-panel-head p {
+  font-size:14px;
+  margin-top:3px;
+}
+.status-toggle {
+  border:1px solid var(--border);
+  background:white;
+  border-radius:999px;
+  padding:7px 11px;
+  font-size:12px;
+  font-weight:900;
+  color:var(--navy);
+  cursor:pointer;
+  white-space:nowrap;
+}
+.readiness-demo .state-not-ready {
+  display:none;
+}
+.readiness-demo.show-not-ready .state-ready {
+  display:none;
+}
+.readiness-demo.show-not-ready .state-not-ready {
+  display:block;
+}
+.status-compact {
+  background:var(--green-light);
+  border:1px solid #bbf7d0;
+  border-radius:16px;
+  padding:14px;
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  align-items:center;
+}
+.status-compact strong {
+  display:block;
+  color:var(--navy);
+  font-size:15px;
+  margin-bottom:3px;
+}
+.status-compact span {
+  color:var(--muted);
+  font-size:13px;
+}
+.status-pill {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  border-radius:999px;
+  padding:7px 10px;
+  font-size:12px;
+  font-weight:900;
+  white-space:nowrap;
+}
+.status-pill.ready {
+  background:var(--green-light);
+  color:var(--green);
+  border:1px solid #bbf7d0;
+}
+.status-pill.warning {
+  background:var(--orange-light);
+  color:var(--orange);
+  border:1px solid #fed7aa;
+}
+.missing-list {
+  display:grid;
+  gap:8px;
+  margin-top:12px;
+}
+.missing-item {
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  background:white;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:10px 12px;
+  font-size:13px;
+}
+.missing-item strong {
+  color:var(--navy);
+}
+.completion-mini {
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-end;
+  margin-bottom:8px;
+}
+.completion-mini strong {
+  font-size:30px;
+  line-height:1;
+  color:var(--blue);
+}
+@media (max-width: 1000px) {
+  .status-panel-head,
+  .status-compact {
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+
   </style>
   <link href="../shared/backend-modal.css" rel="stylesheet"/>
   <link href="../shared/app-shell.css" rel="stylesheet"/>
@@ -560,16 +732,10 @@ p {
     Dashboard
    </a>
    <a href="profile.html">
-    Athletes Profile
-   </a>
-   <a href="requests.html">
-    Requests
+    Athlete Profile
    </a>
    <a href="messages.html">
     Messages
-   </a>
-   <a href="opportunities.html">
-    Opportunities
    </a>
   </div>
   <main class="page">
@@ -583,100 +749,124 @@ p {
        Welcome back, Alex
       </h1>
       <p>
-       Track profile readiness, recruiter activity, pending requests, and opportunity updates.
+       See what needs your attention today: profile readiness, recruiter messages, profile views, and media activity.
       </p>
      </div>
     </div>
-    <a class="button btn-primary" href="profile.html">
-     Edit Profile
-    </a>
    </div>
-   <div class="grid-4">
-    <div class="card metric">
-     <strong>
-      82%
-     </strong>
-     <span>
-      Profile Complete
-     </span>
-     <div class="progress" style="margin-top:10px">
-      <div style="width:82%">
+
+   <div class="status-panel readiness-demo" id="dashboard-readiness-demo">
+    <div class="status-panel-head">
+     <div>
+      <h2>Recruiter Status &amp; Profile Completion</h2>
+     </div>
+     <button class="status-toggle" onclick="toggleReadinessDemo('dashboard-readiness-demo')">
+      Toggle ready / not ready
+     </button>
+    </div>
+
+    <div class="state-ready">
+     <div class="grid-2">
+      <div class="status-compact">
+       <div>
+        <strong>Recruiter-Ready</strong>
+        <span>Visible in recruiter search. Checklist requirements are complete.</span>
+       </div>
+       <span class="status-pill ready">✓ Searchable</span>
+      </div>
+
+      <div class="readiness-card">
+       <div class="completion-mini">
+        <div>
+         <h3>Profile Completion</h3>
+         <p>Used for profile quality, recommendations, and visibility signals.</p>
+        </div>
+        <strong>82%</strong>
+       </div>
+       <div class="progress"><div style="width:82%"></div></div>
       </div>
      </div>
     </div>
-    <div class="card metric">
-     <strong>
-      2
-     </strong>
-     <span>
-      Pending Requests
-     </span>
-    </div>
-    <div class="card metric">
-     <strong>
-      1
-     </strong>
-     <span>
-      Unread Message
-     </span>
-    </div>
-    <div class="card metric">
-     <strong>
-      3
-     </strong>
-     <span>
-      Active Opportunities
-     </span>
+
+    <div class="state-not-ready">
+     <div class="grid-2">
+      <div class="readiness-card warning">
+       <div class="readiness-status">
+        <div class="readiness-icon">!</div>
+        <div>
+         <h2>Not Recruiter-Ready</h2>
+         <p>Your profile is hidden from recruiter search until the missing checklist items are completed.</p>
+        </div>
+       </div>
+       <div class="missing-list">
+        <div class="missing-item"><strong>Profile Photo</strong><span>Missing</span></div>
+        <div class="missing-item"><strong>Football Video</strong><span>Missing</span></div>
+       </div>
+       <div class="actions">
+        <a class="button btn-primary" href="profile.html#soccer-profile">Add Photo</a>
+        <a class="button btn-light" href="profile.html#media">Upload Video</a>
+       </div>
+      </div>
+
+      <div class="readiness-card">
+       <div class="completion-mini">
+        <div>
+         <h3>Profile Completion</h3>
+         <p>The player profile is complete, but search visibility is still locked.</p>
+        </div>
+        <strong>35%</strong>
+       </div>
+       <div class="progress"><div style="width:35%"></div></div>
+       <p style="margin-top:10px;">Completion score and Recruiter-Ready status are related, but separate.</p>
+      </div>
+     </div>
     </div>
    </div>
+
+  
    <div class="split" style="margin-top:18px">
     <div class="section">
      <h2>
-      Priority Actions
+      Needs Your Attention
      </h2>
      <div class="list">
       <div class="item highlight">
        <div class="item-head">
         <div>
          <div class="item-title">
-          Upload full match video
+          Toronto Academy requested a full match video
          </div>
          <div class="item-meta">
-          Requested by Toronto Academy &middot; Due Jun 30
+          Upload or share a full match from your Football Portfolio. Conversation is handled in Messages.
          </div>
         </div>
         <span class="status orange">
-         Pending
+         Action Needed
         </span>
        </div>
        <div class="actions">
-        <a class="button btn-primary" href="requests.html">
-         Respond
-        </a>
-        <a class="button btn-light" href="media.html">
+        <a class="button btn-primary" href="profile.html#media">
          Upload Media
         </a>
-       </div>
-      </div>
-      <div class="item">
-       <div class="item-title">
-        Complete physical profile
-       </div>
-       <div class="item-meta">
-        Height, weight, preferred foot, and position details improve discoverability.
-       </div>
-       <div class="actions">
-        <a class="button btn-light" href="profile.html">
-         Complete Section
+        <a class="button btn-light" href="messages.html">
+         Open Conversation
         </a>
        </div>
       </div>
+
       <div class="item">
-       <div class="item-title">
-        New message from Mike Brown
-       </div>
-       <div class="item-meta">
-        Toronto Academy asked about trial availability next month.
+       <div class="item-head">
+        <div>
+         <div class="item-title">
+          New message from Mike Brown
+         </div>
+         <div class="item-meta">
+          Toronto Academy asked about your availability next month.
+         </div>
+        </div>
+        <span class="status blue">
+         New
+        </span>
        </div>
        <div class="actions">
         <a class="button btn-light" href="messages.html">
@@ -684,41 +874,71 @@ p {
         </a>
        </div>
       </div>
+
+      <div class="item">
+       <div class="item-title">
+        Improve profile strength
+       </div>
+       <div class="item-meta">
+        Add another skill clip, update your playing history, or upload optional documents to make your profile stronger.
+       </div>
+       <div class="actions">
+        <a class="button btn-light" href="profile.html">
+         Improve Profile
+        </a>
+       </div>
+      </div>
      </div>
     </div>
+
     <div class="section">
      <h2>
-      Recent Activity
+      Recruiter Activity
      </h2>
      <div class="list">
       <div class="item">
        <div class="item-title">
-        Profile viewed
+        Toronto Academy viewed your profile
        </div>
        <div class="item-meta">
-        Toronto Academy viewed your profile and highlights.
+        Viewed your Soccer Profile Information and Football Portfolio today.
        </div>
       </div>
       <div class="item">
        <div class="item-title">
-        Opportunity updated
+        U17 Season Highlights viewed
        </div>
        <div class="item-meta">
-        Spanish Partnership moved to In Discussion.
+        Your main highlight video was watched 2 times this week.
        </div>
       </div>
       <div class="item">
        <div class="item-title">
-        Media viewed
+        University Recruiting Office viewed documents
        </div>
        <div class="item-meta">
-        U17 Final Highlights watched 2 times this week.
+        Your shared Academic Transcript was reviewed.
+       </div>
+      </div>
+      <div class="item">
+       <div class="item-title">
+        Profile appeared in recruiter search
+       </div>
+       <div class="item-meta">
+        Your profile matched a search for U17 wingers in Ontario.
        </div>
       </div>
      </div>
     </div>
    </div>
   </main>
+
+  <script>
+   function toggleReadinessDemo(id){
+    const el=document.getElementById(id);
+    if(el) el.classList.toggle('show-not-ready');
+   }
+  </script>
   <script src="../shared/app.js">
   </script>
  </body>

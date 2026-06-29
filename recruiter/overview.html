@@ -463,9 +463,6 @@ h1 {
    <div class="section" id="professional-work">
     <h2>
      Professional Workspace Access
-     <button class="info-note" onclick="openBackendNote('professional-work')">
-      ⓘ
-     </button>
     </h2>
     <p>
      A Professional Profile can access workspaces in different ways. Depending on how the professional works,
@@ -520,9 +517,6 @@ h1 {
    <div class="section" id="workspace-logic">
     <h2>
      Workspace Logic
-     <button class="info-note" onclick="openBackendNote('workspace-logic')">
-      ⓘ
-     </button>
     </h2>
     <p>
      A workspace is where professional work with athletes is organized. Inside a workspace,
@@ -740,9 +734,6 @@ h1 {
    <div class="section" id="recruiting-project-work">
     <h2>
      Recruiting Project Work
-     <button class="info-note" onclick="openBackendNote('recruiting-project-work')">
-      ⓘ
-     </button>
     </h2>
     <p>
      Each Recruiting Project is one scouting assignment. It contains recruiting criteria,
@@ -901,129 +892,42 @@ h1 {
   <script>
    const backendNotes = {
 
-  "profile-architecture": {
-    title: "Profile Architecture",
-    body: `User
-├── Athlete Profile
-│   └── Portfolio Data
-│
-└── Professional Profile
-    ├── Professional Type
-    │   ├── Recruiter (MVP)
-    │   └── Future Professional Types
-    │
-    └── Workspace Access
-        ├── Individual Workspace
-        └── Organization Workspace Memberships`
-  },
-
-  "professional-work": {
-  title: "Professional Workspace Access",
-  body: `ProfessionalProfile
-│
-├── Individual Workspace
-│   └── Personal recruiting work
-│
-└── Organization Workspace Memberships
-    ├── Organization Workspace A
-    ├── Organization Workspace B
-    └── Organization Workspace C
-    
-Organization
-├── Owner
-│   ├── approve members
-│   ├── create projects
-│   └── assign admins
-│
-├── Admin
-│   ├── approve members
-│   └── create projects
-│
-└── Member
-    └── participate in projects`
-},
-
-  "workspace-logic": {
-  title: "Workspace Container Architecture",
-  body: `Workspace
-│
-└── Containers
-    ├── container_type
-    ├── workspace_id
-    └── professional_type_context
-        │
-        ├── MVP: RecruitingProject
-        │   ├── recruiting_criteria
-        │   ├── project_members
-        │   └── managed_athletes
-        │
-        └── Future: Other Container Types`
-},
-
-  "work-contexts": {
-  title: "Work Context Architecture",
+"work-contexts": {
+  title: "Recruiter Athlete Data Model",
   body: `AthleteProfile
-│
-├── Global profile data
-├── Stats
-├── Media
-└── Documents
+├── global athlete-owned profile
+├── sport_profiles
+├── playing_history
+├── media
+└── documents
 
 WorkspaceAthlete
-│
-├── Shared conversation
-├── Shared requests
-├── Current ProjectAthlete
-│
-├── Project History
-│   ├── ProjectAthlete (Closed)
-│   │   ├── Outcome: Signed
-│   │   └── Decision Reason
-│   ├── ProjectAthlete (Closed)
-│   │   ├── Outcome: Rejected
-│   │   └── Decision Reason
-│   └── ProjectAthlete (Active)
-│       └── Pipeline: Reviewing
-│
-└── Relationship continues`
-},
-
-  "recruiting-project-work": {
-  title: "Recruiting Project Work Architecture",
-  body: `AthleteProfile
-└── WorkspaceAthlete records
-    ├── Workspace A relationship
-    ├── Workspace B relationship
-    └── Workspace C relationship
-
-WorkspaceAthlete
-│
 ├── athlete_profile_id
 ├── workspace_id
-├── shared_requests
-├── shared_conversation
-└── ProjectAthlete records
-
-RecruitingProject
-│
-├── project_owner_id
-├── recruiting_criteria
-├── project_members
-├── ProjectAthletes
-└── saved_comparisons
+├── relationship_status
+├── shared_messages
+├── shared_information_requests
+├── external_status
+└── recruiter_activity
 
 ProjectAthlete
-│
 ├── workspace_athlete_id
 ├── project_id
 ├── pipeline_status
+├── priority
 ├── primary_scout_id
-├── collaborator_scout_ids
-├── evaluation_management
-└── internal_notes`
+├── collaborators
+├── evaluations
+├── internal_notes
+└── outcome
 
-},
-
+Important rules:
+- AthleteProfile is global.
+- WorkspaceAthlete represents one workspace's relationship with the athlete.
+- ProjectAthlete represents one athlete inside one recruiting project.
+- The same athlete can exist in multiple projects.
+- Athletes do not see ProjectAthlete internals.`
+}
 };
   </script>
   <script src="../shared/app.js">

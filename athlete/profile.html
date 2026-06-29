@@ -442,6 +442,378 @@ p {
   line-height:1.4;
 }
 
+.readiness-card {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+}
+.readiness-card.featured {
+  background:var(--green-light);
+  border-color:#bbf7d0;
+}
+.readiness-card.warning {
+  background:var(--orange-light);
+  border-color:#fed7aa;
+}
+.readiness-status {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+}
+.readiness-icon {
+  width:34px;
+  height:34px;
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:white;
+  border:1px solid var(--border);
+  font-weight:900;
+}
+.checklist {
+  display:grid;
+  gap:8px;
+  margin-top:12px;
+}
+.check-item {
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  font-size:13px;
+  color:var(--muted);
+}
+.check-item strong {
+  color:var(--navy);
+}
+.completion-large {
+  font-size:34px;
+  line-height:1;
+  font-weight:900;
+  color:var(--blue);
+  margin:8px 0 10px;
+}
+
+
+.football-portfolio-summary {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin:18px 0;
+}
+.portfolio-block {
+  background:#f9fafb;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+  margin-top:16px;
+}
+.portfolio-block-head {
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  align-items:flex-start;
+  margin-bottom:14px;
+}
+.portfolio-block-head p {
+  font-size:14px;
+  margin-top:4px;
+}
+.limit-note {
+  display:inline-flex;
+  align-items:center;
+  background:white;
+  border:1px solid var(--border);
+  color:var(--muted);
+  border-radius:999px;
+  padding:7px 10px;
+  font-size:12px;
+  font-weight:900;
+  white-space:nowrap;
+}
+.highlight-card {
+  display:grid;
+  grid-template-columns:220px 1fr auto;
+  gap:16px;
+  align-items:center;
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:16px;
+}
+.highlight-thumb {
+  height:126px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#111827,#2563eb);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-size:30px;
+  font-weight:900;
+}
+.skill-strip {
+  display:grid;
+  grid-template-columns:repeat(8,1fr);
+  gap:12px;
+  margin-top:14px;
+}
+.skill-card {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:12px;
+  text-align:center;
+  min-height:120px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.skill-card.empty {
+  border-style:dashed;
+  background:#fff;
+}
+.skill-icon {
+  width:54px;
+  height:54px;
+  border-radius:18px;
+  background:linear-gradient(135deg,#111827,#2563eb);
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 8px;
+  font-weight:900;
+  font-size:18px;
+}
+.skill-card.empty .skill-icon {
+  background:#f3f4f6;
+  color:var(--muted);
+  border:1px dashed var(--border);
+}
+.skill-name {
+  font-size:12px;
+  font-weight:900;
+  color:var(--navy);
+}
+.skill-time {
+  font-size:11px;
+  color:var(--muted);
+  margin-top:4px;
+}
+.match-layout {
+  display:grid;
+  grid-template-columns:1fr .9fr;
+  gap:16px;
+  align-items:start;
+}
+.timestamp-list {
+  display:grid;
+  gap:8px;
+}
+.timestamp-item {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:10px 12px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  font-size:13px;
+}
+.timestamp-item strong {
+  color:var(--blue);
+}
+@media (max-width: 1000px) {
+  .football-portfolio-summary,
+  .skill-strip,
+  .match-layout,
+  .highlight-card {
+    grid-template-columns:1fr;
+  }
+  .highlight-card {
+    align-items:stretch;
+  }
+}
+
+.season-tabs {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:14px 0 16px;
+}
+.season-tab {
+  border:1px solid var(--border);
+  background:white;
+  color:var(--navy);
+  border-radius:999px;
+  padding:8px 11px;
+  font-size:12px;
+  font-weight:900;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+}
+.season-tab.active {
+  background:var(--blue);
+  color:white;
+  border-color:var(--blue);
+}
+.season-tab.add {
+  background:var(--green-light);
+  color:var(--green);
+  border-color:#bbf7d0;
+}
+.season-card {
+  background:#f9fafb;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:16px;
+  margin-top:12px;
+}
+.season-card.current {
+  background:var(--blue-light);
+  border-color:#bfdbfe;
+}
+.season-card-head {
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  align-items:flex-start;
+  margin-bottom:14px;
+}
+.season-card-head p {
+  font-size:13px;
+  margin-top:3px;
+}
+.season-stat-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+.season-stat {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:12px;
+  text-align:center;
+}
+.season-stat strong {
+  display:block;
+  color:var(--blue);
+  font-size:22px;
+  line-height:1;
+  margin-bottom:5px;
+}
+.season-stat span {
+  display:block;
+  color:var(--muted);
+  font-size:12px;
+  font-weight:900;
+}
+.season-history-list {
+  display:grid;
+  gap:10px;
+  margin-top:12px;
+}
+.season-history-row {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:12px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:center;
+  font-size:13px;
+}
+.season-history-row strong {
+  display:block;
+  color:var(--navy);
+  margin-bottom:3px;
+}
+.season-history-row span {
+  color:var(--muted);
+}
+.source-note {
+  margin-top:12px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.4;
+}
+@media (max-width: 1000px) {
+  .season-card-head,
+  .season-history-row {
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .season-stat-grid {
+    grid-template-columns:1fr;
+  }
+}
+
+.season-list {
+  display:grid;
+  gap:12px;
+  margin-top:14px;
+}
+.source-badge {
+  display:inline-flex;
+  align-items:center;
+  background:white;
+  color:var(--blue);
+  border:1px solid #bfdbfe;
+  border-radius:999px;
+  padding:7px 10px;
+  font-size:12px;
+  font-weight:900;
+  white-space:nowrap;
+}
+.season-stat-list {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:14px;
+  overflow:hidden;
+}
+.season-stat-row {
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  padding:11px 14px;
+  border-bottom:1px solid #f1f5f9;
+  font-size:14px;
+}
+.season-stat-row:last-child {
+  border-bottom:none;
+}
+.season-stat-row span {
+  color:var(--muted);
+}
+.season-stat-row strong {
+  color:var(--navy);
+  text-align:right;
+}
+.season-card.collapsed {
+  background:white;
+}
+.season-preview {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.season-preview span {
+  display:inline-flex;
+  background:#f3f4f6;
+  color:var(--muted);
+  border:1px solid var(--border);
+  border-radius:999px;
+  padding:6px 9px;
+  font-size:12px;
+  font-weight:900;
+}
+
 .media-grid {
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -547,6 +919,116 @@ p {
   max-width:100%
 }
 }
+  
+.status-panel {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:18px;
+  box-shadow:0 6px 18px rgba(15,23,42,.05);
+  padding:18px;
+  margin-bottom:20px;
+}
+.status-panel-head {
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  align-items:flex-start;
+  margin-bottom:14px;
+}
+.status-panel-head p {
+  font-size:14px;
+  margin-top:3px;
+}
+.status-toggle {
+  border:1px solid var(--border);
+  background:white;
+  border-radius:999px;
+  padding:7px 11px;
+  font-size:12px;
+  font-weight:900;
+  color:var(--navy);
+  cursor:pointer;
+  white-space:nowrap;
+}
+.readiness-demo .state-not-ready { display:none; }
+.readiness-demo.show-not-ready .state-ready { display:none; }
+.readiness-demo.show-not-ready .state-not-ready { display:block; }
+.status-compact {
+  background:var(--green-light);
+  border:1px solid #bbf7d0;
+  border-radius:16px;
+  padding:14px;
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  align-items:center;
+}
+.status-compact strong {
+  display:block;
+  color:var(--navy);
+  font-size:15px;
+  margin-bottom:3px;
+}
+.status-compact span {
+  color:var(--muted);
+  font-size:13px;
+}
+.status-pill {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  border-radius:999px;
+  padding:7px 10px;
+  font-size:12px;
+  font-weight:900;
+  white-space:nowrap;
+}
+.status-pill.ready {
+  background:var(--green-light);
+  color:var(--green);
+  border:1px solid #bbf7d0;
+}
+.status-pill.warning {
+  background:var(--orange-light);
+  color:var(--orange);
+  border:1px solid #fed7aa;
+}
+.missing-list {
+  display:grid;
+  gap:8px;
+  margin-top:12px;
+}
+.missing-item {
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  background:white;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:10px 12px;
+  font-size:13px;
+}
+.missing-item strong { color:var(--navy); }
+.completion-mini {
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-end;
+  margin-bottom:8px;
+}
+.completion-mini strong {
+  font-size:30px;
+  line-height:1;
+  color:var(--blue);
+}
+@media (max-width: 1000px) {
+  .status-panel-head,
+  .status-compact {
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+
   </style>
   <link href="../shared/backend-modal.css" rel="stylesheet"/>
   <link href="../shared/app-shell.css" rel="stylesheet"/>
@@ -580,14 +1062,8 @@ p {
    <a class="active" href="profile.html">
     Athlete Profile
    </a>
-   <a href="requests.html">
-    Requests
-   </a>
    <a href="messages.html">
     Messages
-   </a>
-   <a href="opportunities.html">
-    Opportunities
    </a>
   </div>
   <main class="page">
@@ -604,10 +1080,13 @@ p {
        Winger &middot; U17 &middot; Toronto, Canada &middot; Open to academy and semi-pro opportunities.
       </p>
       <span class="tag green">
-       Validation score
+       Recruiter-Ready
       </span>
       <span class="tag blue">
-       Profile 82% Complete
+       Searchable by recruiters
+      </span>
+      <span class="tag purple">
+       Profile Completion 82%
       </span>
      </div>
     </div>
@@ -618,6 +1097,77 @@ p {
      <a class="button btn-light" href="profile.html">
       Preview Recruiter View
      </a>
+    </div>
+   </div>
+
+   <div class="status-panel readiness-demo" id="profile-readiness-demo">
+    <div class="status-panel-head">
+     <div>
+      <h2>Recruiter Status &amp; Profile Completion</h2>
+      <p>
+       Recruiter-Ready controls search visibility. Profile Completion measures the strength of the full athlete profile.
+      </p>
+     </div>
+     <button class="status-toggle" onclick="toggleReadinessDemo('profile-readiness-demo')">
+      Toggle ready / not ready
+     </button>
+    </div>
+
+    <div class="state-ready">
+     <div class="grid-2">
+      <div class="status-compact">
+       <div>
+        <strong>Recruiter-Ready</strong>
+        <span>Searchable by verified recruiters. Required checklist is complete.</span>
+       </div>
+       <span class="status-pill ready">✓ Visible</span>
+      </div>
+
+      <div class="readiness-card">
+       <div class="completion-mini">
+        <div>
+         <h3>Profile Completion</h3>
+         <p>Next improvements: verification, documents, and achievements.</p>
+        </div>
+        <strong>82%</strong>
+       </div>
+       <div class="progress"><div style="width:82%"></div></div>
+      </div>
+     </div>
+    </div>
+
+    <div class="state-not-ready">
+     <div class="grid-2">
+      <div class="readiness-card warning">
+       <div class="readiness-status">
+        <div class="readiness-icon">!</div>
+        <div>
+         <h2>Not Recruiter-Ready</h2>
+         <p>The profile exists, but it is hidden from recruiter search until the evaluation checklist is complete.</p>
+        </div>
+       </div>
+       <div class="missing-list">
+        <div class="missing-item"><strong>Profile Photo</strong><span>Missing</span></div>
+        <div class="missing-item"><strong>Football Video</strong><span>Missing</span></div>
+       </div>
+       <div class="actions">
+        <a class="button btn-primary" href="#visibility">Add Photo</a>
+        <a class="button btn-light" href="#media">Upload Video</a>
+       </div>
+      </div>
+
+      <div class="readiness-card">
+       <div class="completion-mini">
+        <div>
+         <h3>Profile Completion</h3>
+         <p>Basic player profile is complete, but Recruiter-Ready is still locked.</p>
+        </div>
+        <strong>35%</strong>
+       </div>
+       <div class="progress"><div style="width:35%"></div></div>
+       <p style="margin-top:10px;">Completion score can improve independently from search visibility.</p>
+      </div>
+     </div>
     </div>
    </div>
 
@@ -695,85 +1245,61 @@ p {
       </div>
      </div>
     </div>
-    <div class="section" id="visibility">
-     <h2>
-      Visibility &amp; Verification
-     </h2>
-     <div class="row">
-      <span>
-       Profile Visibility
-      </span>
-      <span>
-       Discoverable
-      </span>
+     <div class="section" id="stats">
+      <div class="section-head">
+       <div>
+        <h2>
+         Playing History
+        </h2>
+        <p>
+         Season-based football record. Athletes select a season, add match entries, and the season totals are generated from those matches.
+        </p>
+       </div>
+      </div>
+
+      <div class="season-tabs">
+       <a class="season-tab active" href="#">2025/26</a>
+       <a class="season-tab" href="#">2024/25</a>
+       <a class="season-tab" href="#">2023/24</a>
+       <a class="season-tab add" href="#">+ Add Season</a>
+      </div>
+
+      <div class="season-card current">
+       <div class="season-card-head">
+        <div>
+         <h3>2025/26 Season</h3>
+         <p>North Toronto FC &middot; OPDL U17 &middot; Right Winger</p>
+        </div>
+        <div class="actions">
+         <a class="button btn-primary" href="#">+ Add Match</a>
+        </div>
+       </div>
+
+       <div class="season-stat-list">
+        <div class="season-stat-row">
+         <span>Matches Played</span>
+         <strong>31</strong>
+        </div>
+        <div class="season-stat-row">
+         <span>Starts</span>
+         <strong>28</strong>
+        </div>
+        <div class="season-stat-row">
+         <span>Minutes Played</span>
+         <strong>2,140</strong>
+        </div>
+        <div class="season-stat-row">
+         <span>Yellow Cards</span>
+         <strong>2</strong>
+        </div>
+        <div class="season-stat-row">
+         <span>Red Cards</span>
+         <strong>0</strong>
+        </div>
+       </div>
+
+      </div>
      </div>
-     <div class="row">
-      <span>
-       Recruiter Messages
-      </span>
-      <span>
-       Allowed
-      </span>
-     </div>
-     <div class="row">
-      <span>
-       Document Visibility
-      </span>
-      <span>
-       Request only
-      </span>
-     </div>
-     <div class="row">
-      <span>
-       Verification Status
-      </span>
-      <span>
-       Basic verified
-      </span>
-     </div>
-     <div class="note">
-      Sensitive documents should only become visible after an athlete responds to a request or approves access.
-     </div>
-    </div>
-   </div>
-   <div class="section" id="stats">
-    <h2>
-     Stats Snapshot
-    </h2>
-    <div class="grid-4">
-     <div class="card metric">
-      <strong>
-       14
-      </strong>
-      <span>
-       Goals
-      </span>
-     </div>
-     <div class="card metric">
-      <strong>
-       11
-      </strong>
-      <span>
-       Assists
-      </span>
-     </div>
-     <div class="card metric">
-      <strong>
-       31
-      </strong>
-      <span>
-       Matches
-      </span>
-     </div>
-     <div class="card metric">
-      <strong>
-       87%
-      </strong>
-      <span>
-       Availability
-      </span>
-     </div>
-    </div>
    </div>
 
 
@@ -784,77 +1310,111 @@ p {
        Media
       </h2>
       <p>
-       Videos, clips, photos, and match materials connected to the athlete's soccer profile.
+       Curated football media used by recruiters to evaluate the athlete. MVP limits keep the portfolio focused and comparable across athletes.
       </p>
-     </div>
-     <a class="button btn-primary" href="#">
-      Upload Media
-     </a>
-    </div>
-
-    <div class="grid-4" style="margin-bottom:18px">
-     <div class="card metric">
-      <strong>3</strong>
-      <span>Highlight Videos</span>
-     </div>
-     <div class="card metric">
-      <strong>1</strong>
-      <span>Full Match</span>
-     </div>
-     <div class="card metric">
-      <strong>6</strong>
-      <span>Training Clips</span>
-     </div>
-     <div class="card metric">
-      <strong>14</strong>
-      <span>Recruiter Views</span>
      </div>
     </div>
 
-    <div class="media-grid">
-     <div class="card">
-      <div class="media-thumb">
-       ▶
+    <div class="portfolio-block">
+     <div class="portfolio-block-head">
+      <div>
+       <h3>Main Highlight Video</h3>
+       <p>One primary video recruiters can watch first for a quick overview of the athlete.</p>
       </div>
-      <h3>
-       U17 Final Highlights
-      </h3>
-      <p>
-       8:42 &middot; Public to verified recruiters
-      </p>
-      <span class="tag green">
-       Viewed 14 times
-      </span>
+      <span class="limit-note">Limit: 1 item · max 5 min</span>
      </div>
 
-     <div class="card">
-      <div class="media-thumb">
-       ▶
+     <div class="highlight-card">
+      <div class="highlight-thumb">▶</div>
+      <div>
+       <h3>U17 Season Highlights</h3>
+       <p>4:36</p>
+       <span class="tag blue">Viewed 14 times</span>
       </div>
-      <h3>
-       Full Match vs East York
-      </h3>
-      <p>
-       74:00 &middot; Shared with Toronto Academy request
-      </p>
-      <span class="tag orange">
-       Request-linked
-      </span>
+      <div class="actions">
+       <a class="button btn-light" href="#">Replace</a>
+       <a class="button btn-primary" href="#">Preview</a>
+      </div>
+     </div>
+    </div>
+
+    <div class="portfolio-block">
+     <div class="portfolio-block-head">
+      <div>
+       <h3>Skill Clips</h3>
+       <p>Short Instagram-style clips organized by skill category. MVP allows one clip per category.</p>
+      </div>
+      <span class="limit-note">Limit: 8 items · 15–60 sec each</span>
      </div>
 
-     <div class="card">
-      <div class="media-thumb">
-       +
+     <div class="skill-strip">
+      <div class="skill-card">
+       <div><div class="skill-icon">▶</div><div class="skill-name">Speed</div></div>
+       <div class="skill-time">0:32</div>
       </div>
-      <h3>
-       Upload New Video
-      </h3>
-      <p>
-       Add highlight, full match, or training clip.
-      </p>
-      <a class="button btn-primary" href="#" style="margin-top:12px">
-       Upload
-      </a>
+      <div class="skill-card">
+       <div><div class="skill-icon">▶</div><div class="skill-name">1v1</div></div>
+       <div class="skill-time">0:46</div>
+      </div>
+      <div class="skill-card">
+       <div><div class="skill-icon">▶</div><div class="skill-name">Passing</div></div>
+       <div class="skill-time">0:38</div>
+      </div>
+      <div class="skill-card">
+       <div><div class="skill-icon">▶</div><div class="skill-name">Finishing</div></div>
+       <div class="skill-time">0:55</div>
+      </div>
+      <div class="skill-card">
+       <div><div class="skill-icon">▶</div><div class="skill-name">Crossing</div></div>
+       <div class="skill-time">0:29</div>
+      </div>
+      <div class="skill-card empty">
+       <div><div class="skill-icon">+</div><div class="skill-name">Defending</div></div>
+       <div class="skill-time">Add clip</div>
+      </div>
+      <div class="skill-card">
+       <div><div class="skill-icon">▶</div><div class="skill-name">First Touch</div></div>
+       <div class="skill-time">0:41</div>
+      </div>
+      <div class="skill-card empty">
+       <div><div class="skill-icon">+</div><div class="skill-name">Movement</div></div>
+       <div class="skill-time">Add clip</div>
+      </div>
+     </div>
+    </div>
+
+    <div class="portfolio-block">
+     <div class="portfolio-block-head">
+      <div>
+       <h3>Full Match Footage</h3>
+       <p>One longer match video for deeper evaluation. Athletes manually add timestamps to guide recruiter attention.</p>
+      </div>
+      <span class="limit-note">Limit: 1 item · max 45 min</span>
+     </div>
+
+     <div class="match-layout">
+      <div class="highlight-card" style="grid-template-columns:180px 1fr;">
+       <div class="highlight-thumb">▶</div>
+       <div>
+        <h3>North Toronto vs East York</h3>
+        <p>44:52</p>
+        <div class="actions">
+         <a class="button btn-light" href="#">Replace Match</a>
+         <a class="button btn-primary" href="#">Edit Timestamps</a>
+        </div>
+       </div>
+      </div>
+
+      <div class="card">
+       <h3>Highlighted Moments</h3>
+       <p>Manual timestamps added by athlete.</p>
+       <div class="timestamp-list" style="margin-top:12px;">
+        <div class="timestamp-item"><strong>03:15</strong><span>1v1 dribble and cross</span></div>
+        <div class="timestamp-item"><strong>14:08</strong><span>Assist / chance creation</span></div>
+        <div class="timestamp-item"><strong>27:42</strong><span>Defensive recovery run</span></div>
+        <div class="timestamp-item"><strong>39:10</strong><span>Key pass into final third</span></div>
+       </div>
+      </div>
      </div>
     </div>
    </div>
@@ -866,65 +1426,79 @@ p {
        Documents
       </h2>
       <p>
-       Verification, academic, and private documents. Sensitive files stay hidden unless shared through a request.
+        Private documents can be uploaded proactively or requested by recruiters
+        through Information Requests. Documents remain private until shared by the athlete.
       </p>
      </div>
      <a class="button btn-light" href="#">
       Upload Document
      </a>
     </div>
+     <div class="list">
 
-    <div class="list">
-     <div class="item">
+    <div class="item">
       <div class="item-head">
-       <div>
-        <div class="item-title">
-         Player ID / Verification
+        <div>
+          <div class="item-title">
+            Academic Transcript
+          </div>
+          <div class="item-meta">
+            Category: Academic • Shared only with approved recruiters.
+          </div>
         </div>
-        <div class="item-meta">
-         Visible only after approved request.
-        </div>
-       </div>
-       <span class="status green">
-        Uploaded
-       </span>
-      </div>
-     </div>
 
-     <div class="item">
-      <div class="item-head">
-       <div>
-        <div class="item-title">
-         Academic Transcript
-        </div>
-        <div class="item-meta">
-         Requested by University Recruiter &middot; not submitted yet.
-        </div>
-       </div>
-       <span class="status orange">
-        Pending
-       </span>
+        <span class="status green">
+          Uploaded
+        </span>
       </div>
-     </div>
+    </div>
 
-     <div class="item">
+    <div class="item">
       <div class="item-head">
-       <div>
-        <div class="item-title">
-         Medical Clearance
+        <div>
+          <div class="item-title">
+            Medical Clearance
+          </div>
+          <div class="item-meta">
+            Category: Medical • Private until shared through a request.
+          </div>
         </div>
-        <div class="item-meta">
-         Private unless submitted to a request.
-        </div>
-       </div>
-       <span class="status purple">
-        Private
-       </span>
+
+        <span class="status purple">
+          Private
+        </span>
       </div>
-     </div>
+    </div>
+
+    <div class="item">
+      <div class="item-head">
+        <div>
+          <div class="item-title">
+            Coach Recommendation
+          </div>
+          <div class="item-meta">
+            Category: Custom • Requested by Toronto FC Academy.
+          </div>
+        </div>
+
+        <span class="status orange">
+          Pending
+        </span>
+      </div>
+    </div>
+
+  </div>
+
     </div>
    </div>
   </main>
+
+  <script>
+   function toggleReadinessDemo(id){
+    const el=document.getElementById(id);
+    if(el) el.classList.toggle('show-not-ready');
+   }
+  </script>
   <script src="../shared/app.js">
   </script>
  </body>
