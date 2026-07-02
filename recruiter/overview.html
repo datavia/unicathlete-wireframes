@@ -394,6 +394,24 @@ h1 {
 #recruiting-project-work .card .tag {
   margin-top:auto;
 }
+
+#history-storage .archive-panel {
+  background:linear-gradient(135deg,#ffffff 0%,#fff7ed 100%);
+  border-color:#fed7aa;
+}
+#history-storage .archive-record-grid {
+  margin-top:16px;
+}
+#history-storage .archive-card {
+  background:white;
+}
+#history-storage .archive-card h3 {
+  margin-top:8px;
+}
+#history-storage .archive-flow {
+  margin-top:18px;
+}
+
   </style>
   <link href="../shared/backend-modal.css" rel="stylesheet"/>
   <link href="../shared/app-shell.css" rel="stylesheet"/>
@@ -455,6 +473,9 @@ h1 {
      <a href="#work-contexts">
       Work Contexts
      </a>
+     <a href="#history-storage">
+      History Storage
+     </a>
      <a href="#recruiting-project-work">
       Project Work
      </a>
@@ -510,8 +531,7 @@ h1 {
      </span>
     </div>
     <div class="note">
-     Access Management: Organization workspaces are controlled by the Organization Owner and Admins.
-        New members must be approved before gaining workspace access..
+     Access: Organization Owners and Admins manage workspace membership and permissions.
     </div>
    </div>
    <div class="section" id="workspace-logic">
@@ -597,7 +617,7 @@ h1 {
      </span>
     </div>
     <div class="note">
-     Access Management: Projects are owned by a Project Owner. The Project Owner manages project
+     Ownership model: Projects are owned by a Project Owner. The Project Owner manages project
      settings, recruiting criteria, project members, and access controls.
      Project members can add athletes and work on them, while the Project Owner
      can override assignments and responsibilities when needed.
@@ -652,10 +672,10 @@ h1 {
       </p>
       <ul>
        <li>
-        Messages
+        Shared messages
        </li>
        <li>
-        Information requests
+        Shared information requests
        </li>
       </ul>
       <p style="margin-top:10px;font-size:13px;">
@@ -690,7 +710,7 @@ h1 {
       </ul>
       <p style="margin-top:10px;font-size:13px;">
        <strong>
-        Once completed, the recruiting record becomes part of the athlete's project history.
+        Project-specific record for one athlete inside one recruiting project.
        </strong>
       </p>
       <span class="tag green">
@@ -698,38 +718,91 @@ h1 {
       </span>
      </div>
     </div>
-    <div class="flow big-flow">
-     <span class="step">
-      Athlete Profile
-     </span>
-     <span class="arrow">
-      &rarr;
-     </span>
-     <span class="step">
-      Workspace Relationship
-     </span>
-     <span class="arrow">
-      &rarr;
-     </span>
-     <span class="step">
-      Recruiting Project
-     </span>
-     <span class="arrow">
-      &rarr;
-     </span>
-     <span class="step">
-      Project Recruiting Record
-     </span>
-     <span class="arrow">
-      &rarr;
-     </span>
-     <span class="step">
-      Past Project History
-     </span>
-    </div>
+   
     <div class="note">
-     The workspace maintains one continuous relationship with an athlete. Each recruiting project creates its own recruiting record containing project-specific evaluations, pipeline progression, and the final recruiting outcome. When a project is completed, its recruiting record becomes part of the athlete's project history while the workspace relationship continues.
+     It allows one athlete to participate in multiple recruiting projects without duplicating conversations or requests shared with an organization.
     </div>
+   </div>
+   <div class="section" id="history-storage">
+    <h2>
+     History Storage &amp; Project Archive
+     <button class="info-note" onclick="openBackendNote('history-storage')">
+      ⓘ
+     </button>
+    </h2>
+    <p>
+     Work Contexts define where active data lives. This section defines what happens to
+     that data over time, especially when a Recruiting Project is closed.
+    </p>
+
+    <div class="pipeline-panel archive-panel">
+     <h3>
+      Proposed Addition: Project Archive
+     </h3>
+     <p>
+      Closing a Recruiting Project should create a read-only archive. The archive keeps
+      the overall project record separate from each athlete's individual recruiting history.
+     </p>
+
+     <div class="grid-2 archive-record-grid">
+      <div class="card archive-card project-archive-card">
+       <span class="tag orange">
+        Project-Level Record
+       </span>
+       <h3>
+        Archived Recruiting Project
+       </h3>
+       <p>
+        Stores the closed project's structure and overall activity.
+       </p>
+       <div class="row"><strong>Includes:</strong> Criteria snapshot</div>
+       <div class="row"><strong>Includes:</strong> Owner and members</div>
+       <div class="row"><strong>Includes:</strong> Project-level timeline</div>
+       <div class="row"><strong>Includes:</strong> Reviewed athlete list</div>
+      </div>
+
+      <div class="card archive-card athlete-archive-card">
+       <span class="tag green">
+        Athlete-Level Record
+       </span>
+       <h3>
+        Archived Athlete Record
+       </h3>
+       <p>
+        Stores one athlete's outcome and history inside that closed project.
+       </p>
+       <div class="row"><strong>Includes:</strong> Athlete snapshot</div>
+       <div class="row"><strong>Includes:</strong> Final outcome and reason</div>
+       <div class="row"><strong>Includes:</strong> Evaluations and notes</div>
+       <div class="row"><strong>Includes:</strong> Athlete-specific timeline</div>
+      </div>
+     </div>
+    </div>
+
+    <div class="flow big-flow archive-flow">
+     <span class="step">
+      Active Recruiting Project
+     </span>
+     <span class="arrow">
+      &rarr;
+     </span>
+     <span class="step">
+      Project Closed
+     </span>
+     <span class="arrow">
+      &rarr;
+     </span>
+     <span class="step">
+      Project Archive
+     </span>
+     <span class="arrow">
+      contains
+     </span>
+     <span class="step">
+      Archived Athlete Records
+     </span>
+    </div>
+    
    </div>
    <div class="section" id="recruiting-project-work">
     <h2>
@@ -890,7 +963,52 @@ h1 {
    </div>
   </div>
   <script>
-   const backendNotes = {
+   const backendNotes = window.backendNotes = {
+
+"history-storage": {
+  title: "Project Archive Data Model",
+  body: `Active sources
+├── WorkspaceAthlete
+│   ├── messages
+│   └── information_requests
+│
+└── ProjectAthlete
+    ├── pipeline_status
+    ├── primary_scout_id
+    ├── collaborators
+    ├── evaluations
+    ├── internal_notes
+    ├── outcome
+    └── activity_log
+
+ArchivedProject
+├── project_snapshot
+├── recruiting_criteria_snapshot
+├── owner_and_members_snapshot
+├── project_activity_log
+├── reviewed_athletes[]
+├── completed_at
+└── archive_status
+
+ArchivedProjectAthlete
+├── archived_project_id
+├── project_athlete_id
+├── athlete_snapshot
+├── final_outcome
+├── closure_reason
+├── project_specific_activity_log
+├── evaluations_reference
+├── internal_notes_reference
+└── linked_workspace_athlete
+
+Important rules:
+- Work Contexts define the active records.
+- Project Archive defines what happens after closure.
+- Project activity and athlete-specific activity stay separate.
+- One ArchivedProject contains many ArchivedProjectAthlete records.
+- Archived records are read-only.
+- This supports future review and reporting without making reporting an MVP feature.`
+},
 
 "work-contexts": {
   title: "Recruiter Athlete Data Model",
@@ -904,11 +1022,8 @@ h1 {
 WorkspaceAthlete
 ├── athlete_profile_id
 ├── workspace_id
-├── relationship_status
-├── shared_messages
-├── shared_information_requests
-├── external_status
-└── recruiter_activity
+├── messages
+└── information_requests
 
 ProjectAthlete
 ├── workspace_athlete_id
@@ -929,6 +1044,29 @@ Important rules:
 - Athletes do not see ProjectAthlete internals.`
 }
 };
+  </script>
+
+  <script>
+   if (typeof window.openBackendNote !== "function") {
+     window.openBackendNote = function(noteKey) {
+       const note = window.backendNotes && window.backendNotes[noteKey];
+       const modal = document.getElementById("backendNoteModal");
+       const title = document.getElementById("backendModalTitle");
+       const body = document.getElementById("backendModalBody");
+       if (!note || !modal || !title || !body) return;
+       title.textContent = note.title || "Architecture Note";
+       body.textContent = note.body || "";
+       modal.style.display = "flex";
+     };
+   }
+   if (typeof window.closeBackendNote !== "function") {
+     window.closeBackendNote = function(event) {
+       const modal = document.getElementById("backendNoteModal");
+       if (!modal) return;
+       if (event && event.target !== modal) return;
+       modal.style.display = "none";
+     };
+   }
   </script>
   <script src="../shared/app.js">
   </script>
