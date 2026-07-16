@@ -196,6 +196,130 @@ p {
   margin-top:14px;
   padding:12px
 }
+.lifecycle {
+  display:grid;
+  gap:18px;
+  margin-top:18px
+}
+.lifecycle-card {
+  background:#f9fafb;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px
+}
+.lifecycle-card.state {
+  background:#fff;
+  border-left:5px solid var(--blue)
+}
+.lifecycle-card.state.guardian {
+  border-left-color:var(--orange)
+}
+.lifecycle-card.state.supervised {
+  border-left-color:var(--blue)
+}
+.lifecycle-card.state.connected {
+  border-left-color:var(--purple)
+}
+.lifecycle-card.state.adult {
+  border-left-color:var(--green)
+}
+.lifecycle-kicker {
+  display:block;
+  color:var(--muted);
+  font-size:11px;
+  font-weight:900;
+  text-transform:uppercase;
+  margin-bottom:4px
+}
+.lifecycle-card h3 {
+  margin-bottom:6px
+}
+.lifecycle-card p {
+  font-size:14px
+}
+.lifecycle-arrow {
+  text-align:center;
+  color:var(--blue);
+  font-size:22px;
+  font-weight:900;
+  line-height:1
+}
+.decision-card {
+  background:#eef2ff;
+  border:1px solid #c7d2fe;
+  border-radius:16px;
+  padding:18px
+}
+.decision-question {
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
+  margin-bottom:14px
+}
+.decision-question h3 {
+  margin:0
+}
+.decision-badge {
+  background:white;
+  border:1px solid #c7d2fe;
+  border-radius:999px;
+  color:#3730a3;
+  font-size:11px;
+  font-weight:900;
+  padding:6px 9px;
+  text-transform:uppercase;
+  white-space:nowrap
+}
+.decision-branches {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px
+}
+.branch {
+  background:white;
+  border:1px solid #e0e7ff;
+  border-radius:14px;
+  padding:14px
+}
+.branch.yes {
+  border-color:#bbf7d0
+}
+.branch.no {
+  border-color:#fed7aa
+}
+.branch-label {
+  display:inline-flex;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:900;
+  padding:5px 8px;
+  margin-bottom:8px;
+  text-transform:uppercase
+}
+.branch.yes .branch-label {
+  background:#dcfce7;
+  color:#166534
+}
+.branch.no .branch-label {
+  background:#fff7ed;
+  color:#9a3412
+}
+.branch strong {
+  display:block;
+  color:var(--navy);
+  font-size:14px;
+  margin-bottom:5px
+}
+.branch ul {
+  margin:8px 0 0;
+  padding-left:18px;
+  color:var(--muted);
+  font-size:13px
+}
+.branch li {
+  margin:4px 0
+}
 .tag {
   display:inline-block;
   font-size:12px;
@@ -257,7 +381,7 @@ p {
   .view-choice-wrap {
   padding:14px 18px
 }
-.view-choice-inner,.grid-2,.grid-3 {
+.view-choice-inner,.grid-2,.grid-3,.decision-branches {
   grid-template-columns:1fr
 }
 .view-choice-tabs {
@@ -422,6 +546,240 @@ h1 {
 	    <div class="note">
 	     Core platform split: athletes present themselves through public structured portfolios, while scouts work through private professional tools.
 	    </div>
+   </div>
+   <div class="section" id="athlete-lifecycle">
+    <h2>
+     Athlete Account Lifecycle
+    </h2>
+    <p>
+     This diagram shows how one athlete profile can evolve from guardian-managed under 14 to independent adult control. Birthdays unlock review actions; they do not change permissions automatically.
+    </p>
+    <div class="lifecycle">
+     <div class="lifecycle-card state guardian">
+      <span class="lifecycle-kicker">
+       Starting State
+      </span>
+      <h3>
+       Athlete joins under 14
+      </h3>
+      <p>
+       Guardian creates and manages the athlete profile. Athlete has no login in the MVP, and guardian handles messages and information requests.
+      </p>
+     </div>
+     <div class="lifecycle-arrow">
+      &darr; turns 14
+     </div>
+     <div class="decision-card">
+      <div class="decision-question">
+       <div>
+        <span class="lifecycle-kicker">
+         Decision At 14
+        </span>
+        <h3>
+         Invite athlete to login?
+        </h3>
+       </div>
+       <span class="decision-badge">
+        No automatic change
+       </span>
+      </div>
+      <div class="decision-branches">
+       <div class="branch yes">
+        <span class="branch-label">
+         Yes
+        </span>
+        <strong>
+         Supervised access starts
+        </strong>
+        <ul>
+         <li>
+          Athlete creates own login.
+         </li>
+         <li>
+          Athlete can edit basic profile fields.
+         </li>
+         <li>
+          Guardian approves sensitive actions.
+         </li>
+        </ul>
+       </div>
+       <div class="branch no">
+        <span class="branch-label">
+         No
+        </span>
+        <strong>
+         Guardian-managed continues
+        </strong>
+        <ul>
+         <li>
+          No athlete login yet.
+         </li>
+         <li>
+          Guardian continues managing profile and communication.
+         </li>
+         <li>
+          Invitation can be sent later.
+         </li>
+        </ul>
+       </div>
+      </div>
+     </div>
+     <div class="lifecycle-card state supervised">
+      <span class="lifecycle-kicker">
+       Possible State
+      </span>
+      <h3>
+       Age 14-15 supervised account
+      </h3>
+      <p>
+       Athlete may have a login, but guardian approval remains required for messages, information request responses, visibility settings, and other sensitive actions.
+      </p>
+     </div>
+     <div class="lifecycle-arrow">
+      &darr; turns 16
+     </div>
+     <div class="decision-card">
+      <div class="decision-question">
+       <div>
+        <span class="lifecycle-kicker">
+         Decision At 16
+        </span>
+        <h3>
+         Switch to independent communication?
+        </h3>
+       </div>
+       <span class="decision-badge">
+        Both sides confirm
+       </span>
+      </div>
+      <div class="decision-branches">
+       <div class="branch yes">
+        <span class="branch-label">
+         Yes
+        </span>
+        <strong>
+         Independent communication starts
+        </strong>
+        <ul>
+         <li>
+          Guardian consents.
+         </li>
+         <li>
+          Athlete accepts from secure email.
+         </li>
+         <li>
+          Athlete handles messages and requests directly.
+         </li>
+         <li>
+          Guardian remains connected.
+         </li>
+        </ul>
+       </div>
+       <div class="branch no">
+        <span class="branch-label">
+         No
+        </span>
+        <strong>
+         Supervised mode continues
+        </strong>
+        <ul>
+         <li>
+          Guardian approval remains required.
+         </li>
+         <li>
+          Athlete can keep supervised login.
+         </li>
+         <li>
+          Independent mode can be requested later.
+         </li>
+        </ul>
+       </div>
+      </div>
+     </div>
+     <div class="lifecycle-card state connected">
+      <span class="lifecycle-kicker">
+       Possible State
+      </span>
+      <h3>
+       Age 16-17 connected account
+      </h3>
+      <p>
+       The account is either supervised or independent with guardian connection. Guardian access remains until adult transfer or another explicit relationship change.
+      </p>
+     </div>
+     <div class="lifecycle-arrow">
+      &darr; turns 18
+     </div>
+     <div class="decision-card">
+      <div class="decision-question">
+       <div>
+        <span class="lifecycle-kicker">
+         Decision At 18
+        </span>
+        <h3>
+         Complete adult transfer?
+        </h3>
+       </div>
+       <span class="decision-badge">
+        Explicit decision
+       </span>
+      </div>
+      <div class="decision-branches">
+       <div class="branch yes">
+        <span class="branch-label">
+         Yes
+        </span>
+        <strong>
+         Athlete becomes adult owner
+        </strong>
+        <ul>
+         <li>
+          Athlete confirms adult control.
+         </li>
+         <li>
+          Adult terms and verification apply.
+         </li>
+         <li>
+          Guardian access is removed or changed only by explicit choice.
+         </li>
+        </ul>
+       </div>
+       <div class="branch no">
+        <span class="branch-label">
+         No
+        </span>
+        <strong>
+         Previous safe state remains
+        </strong>
+        <ul>
+         <li>
+          No silent permission switch.
+         </li>
+         <li>
+          Guardian access does not disappear automatically.
+         </li>
+         <li>
+          Adult transfer prompt remains pending.
+         </li>
+        </ul>
+       </div>
+      </div>
+     </div>
+     <div class="lifecycle-card state adult">
+      <span class="lifecycle-kicker">
+       Final Adult State
+      </span>
+      <h3>
+       18+ independent adult account
+      </h3>
+      <p>
+       The athlete controls the account, profile, visibility, messages, and information requests after adult transfer is completed.
+      </p>
+     </div>
+    </div>
+    <div class="note">
+     Age unlocks an option. Age does not automatically change permissions.
+    </div>
    </div>
    <div class="section" id="access-workspaces">
     <h2>
