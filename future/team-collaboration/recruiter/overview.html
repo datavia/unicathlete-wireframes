@@ -334,80 +334,8 @@ h1 {
   font-weight:900;
   font-size:20px;
 }
-.priority-panel {
-  background:#ffffff;
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:18px;
-  margin-top:18px;
-}
-.priority-panel h3 {
-  margin:0 0 6px;
-}
-.priority-grid {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:14px;
-}
-.priority-card {
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:14px;
-  background:#f9fafb;
-}
-.priority-card strong {
-  display:block;
-  color:var(--navy);
-  margin-bottom:6px;
-}
-.priority-badge {
-  display:inline-flex;
-  border-radius:999px;
-  padding:5px 9px;
-  font-size:11px;
-  font-weight:900;
-  margin-bottom:10px;
-}
-.priority-card.high {
-  background:#fef2f2;
-  border-color:#fecaca;
-}
-.priority-card.high .priority-badge {
-  background:#fee2e2;
-  color:#b91c1c;
-  border:1px solid #fecaca;
-}
-.priority-card.medium {
-  background:#fffbeb;
-  border-color:#fde68a;
-}
-.priority-card.medium .priority-badge {
-  background:#fef3c7;
-  color:#b45309;
-  border:1px solid #fde68a;
-}
-.priority-card.low {
-  background:#f0fdf4;
-  border-color:#bbf7d0;
-}
-.priority-card.low .priority-badge {
-  background:#dcfce7;
-  color:#15803d;
-  border:1px solid #bbf7d0;
-}
-.priority-filter-rule {
-  margin-top:14px;
-  background:#eff6ff;
-  border:1px solid #bfdbfe;
-  color:#1d4ed8;
-  border-radius:12px;
-  padding:12px;
-  font-size:13px;
-  font-weight:800;
-}
 @media (max-width: 1100px) {
-  .pipeline-steps, .priority-grid {
+  .pipeline-steps {
   grid-template-columns:1fr;
 }
 .pipeline-arrow {
@@ -483,52 +411,6 @@ h1 {
 #history-storage .archive-flow {
   margin-top:18px;
 }
-#history-storage .lifecycle-grid {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-  margin-top:16px;
-}
-#history-storage .lifecycle-card {
-  background:white;
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:16px;
-}
-#history-storage .lifecycle-card h3 {
-  margin:8px 0 8px;
-}
-#history-storage .lifecycle-card.active-state {
-  border-color:#bfdbfe;
-  background:#eff6ff;
-}
-#history-storage .lifecycle-card.archive-state {
-  border-color:#fed7aa;
-  background:#fff7ed;
-}
-#history-storage .lifecycle-card.delete-state {
-  border-color:#fecaca;
-  background:#fef2f2;
-}
-#history-storage .lifecycle-badge {
-  display:inline-flex;
-  border-radius:999px;
-  padding:5px 9px;
-  font-size:11px;
-  font-weight:900;
-}
-#history-storage .active-state .lifecycle-badge {
-  background:#dbeafe;
-  color:#1d4ed8;
-}
-#history-storage .archive-state .lifecycle-badge {
-  background:#ffedd5;
-  color:#c2410c;
-}
-#history-storage .delete-state .lifecycle-badge {
-  background:#fee2e2;
-  color:#b91c1c;
-}
 
   </style>
   <link href="../shared/backend-modal.css" rel="stylesheet"/>
@@ -544,9 +426,6 @@ h1 {
      <a href="../index.html">
       Platform
      </a>
-     <a href="../signup.html">
-      Create Account
-     </a>
      <a href="../athlete/overview.html">
       Athlete View
      </a>
@@ -561,7 +440,7 @@ h1 {
     Recruiter Overview
    </a>
    <a href="scout-profile.html">
-    Scout Profile
+    Professional Profile
    </a>
    <a href="dashboard.html">
     Dashboard
@@ -604,71 +483,65 @@ h1 {
    </div>
    <div class="section" id="professional-work">
     <h2>
-     MVP Scout Workspace Model
+     Professional Workspace Access
     </h2>
-	    <p>
-	     Every verified scout gets the same private scout workspace flow. A scout can have multiple organization affiliations, and each recruiting project can be independent or linked to one affiliation as context.
+    <p>
+     A Professional Profile can access workspaces in different ways. Depending on how the professional works,
+    they may have an individual workspace, one or more organization workspaces, or both.
     </p>
     <div class="grid-3">
      <div class="card">
-	      <h3>
-	       Scout Workspace
-	      </h3>
-	      <p>
-	       Created by default for a verified scout. This is the MVP operating surface behind the athlete-facing showcase.
+      <h3>
+       Individual Workspace
+      </h3>
+      <p>
+       Used when a professional works independently and manages their own athlete-related work.
       </p>
       <span class="tag blue">
-       MVP
+       One-person workspace
       </span>
      </div>
      <div class="card">
       <h3>
-       Agency Affiliation
+       Organization Workspace
       </h3>
       <p>
-       Optional grouping layer for agencies, clubs, or companies. Agency scouts use the same flow as independent scouts, and project context does not change messaging in MVP.
+       Created for an organization and shared by its members for collaborative athlete management.
       </p>
       <span class="tag green">
-       Skeleton Only
+       Organization-Based
       </span>
      </div>
     </div>
     <div class="flow big-flow">
-	     <span class="step">
-	      Scout Profile
-	     </span>
-	     <span class="arrow">
-	      &rarr;
-	     </span>
-	     <span class="step">
-	      Dashboard
-	     </span>
-	     <span class="arrow">
-	      &rarr;
-	     </span>
-	     <span class="step">
-	      Scout Workspace
-	     </span>
+     <span class="step">
+      Professional Profile
+     </span>
+     <span class="arrow">
+      &rarr;
+     </span>
+     <span class="step">
+      Individual Workspace
+     </span>
      <span class="arrow">
       and/or
      </span>
      <span class="step">
-      Agency entity
+      Organization Workspace(s)
      </span>
     </div>
-	    <div class="note">
-	     MVP rule: the Scout Profile is private identity and trust information; the Dashboard contains the private scout portfolio/activity summary. Project context does not create shared organization chats, permission management, or reporting. Those arrive later as Line 2 subscription features.
-	     In the UI, context should behave as a filter: selecting Toronto Academy, Global Soccer Partners, or Independent shows only projects, conversations, requests, and updates related to that context.
-	    </div>
+    <div class="note">
+     Access: Organization Owners and Admins manage workspace membership and permissions.
+    </div>
    </div>
    <div class="section" id="workspace-logic">
     <h2>
      Workspace Logic
     </h2>
     <p>
-     A scout workspace is where a verified scout manages athlete-related work. Inside it,
-    work is divided into recruiting projects. Each project can be independent or linked
-    to one active organization affiliation as project context.
+     A workspace is where professional work with athletes is organized. Inside a workspace,
+    work is divided into projects. The meaning of a project depends on the professional type.
+    For the MVP recruiter profile, projects are Recruiting Projects.
     </p>
     <div class="grid-3">
      <div class="card">
@@ -676,7 +549,7 @@ h1 {
        Workspace
       </h3>
       <p>
-       The operating area where a verified scout manages athlete-related work.
+       The operating area where a professional or organization manages athlete-related work.
       </p>
       <span class="tag blue">
        Work Area
@@ -744,9 +617,10 @@ h1 {
      </span>
     </div>
     <div class="note">
-     Responsibility model: each project has a Lead Scout. Messages and requests stay
-     between the Lead Scout and athlete. Future collaboration can allow permissioned
-     scouts to view information or support evaluation without replacing the direct chat.
+     Ownership model: Projects are owned by a Project Owner. The Project Owner manages project
+     settings, recruiting criteria, project members, and access controls.
+     Project members can add athletes and work on them, while the Project Owner
+     can override assignments and responsibilities when needed.
     </div>
    </div>
    <div class="section" id="work-contexts">
@@ -791,23 +665,23 @@ h1 {
      </div>
      <div class="context-box">
       <h3>
-       Scout-Athlete Relationship
+       Workspace Relationship
       </h3>
       <p>
-       Represents the long-term relationship between one scout and one athlete.
+       Represents the long-term relationship between one workspace and one athlete.
       </p>
       <ul>
        <li>
-        Scout-athlete messages
+        Shared messages
        </li>
        <li>
-        Scout-athlete information requests
+        Shared information requests
        </li>
       </ul>
       <p style="margin-top:10px;font-size:13px;">
       </p>
       <span class="tag purple">
-       ScoutAthleteRelationship
+       WorkspaceAthlete
       </span>
      </div>
      <div class="context-arrow">
@@ -825,7 +699,7 @@ h1 {
         Pipeline progression
        </li>
        <li>
-        Lead Scout
+        Primary Scout and Collaborators
        </li>
        <li>
         Evaluations
@@ -846,49 +720,29 @@ h1 {
     </div>
    
     <div class="note">
-     It allows one athlete to participate in multiple recruiting projects without duplicating the same scout-athlete conversation for the same scout.
+     It allows one athlete to participate in multiple recruiting projects without duplicating conversations or requests shared with an organization.
     </div>
    </div>
-	   <div class="section" id="history-storage">
-	    <h2>
-	     History Storage &amp; Project Archive
-	     <button class="info-note" onclick="openBackendNote('history-storage')">
-	      ⓘ
-	     </button>
-	    </h2>
-	    <p>
-	     Work Contexts define where active data lives. This section defines what happens to
-	     that data over time, especially when a Recruiting Project is closed.
-	    </p>
-	    <div class="note">
-	     Preservation principle: nothing is lost unless the user explicitly chooses a permanent delete action. Saved athletes, pipeline records, project history, evaluations, notes, and archived projects remain available or recoverable by default.
-	    </div>
+   <div class="section" id="history-storage">
+    <h2>
+     History Storage &amp; Project Archive
+     <button class="info-note" onclick="openBackendNote('history-storage')">
+      ⓘ
+     </button>
+    </h2>
+    <p>
+     Work Contexts define where active data lives. This section defines what happens to
+     that data over time, especially when a Recruiting Project is closed.
+    </p>
 
-	    <div class="pipeline-panel archive-panel">
+    <div class="pipeline-panel archive-panel">
      <h3>
-      Project Lifecycle
+      Proposed Addition: Project Archive
      </h3>
      <p>
-      Projects have three states. Archive is the safe default when closing a project;
-      delete is the only irreversible operation and must be a separate deliberate action.
+      Closing a Recruiting Project should create a read-only archive. The archive keeps
+      the overall project record separate from each athlete's individual recruiting history.
      </p>
-     <div class="lifecycle-grid">
-      <div class="lifecycle-card active-state">
-       <span class="lifecycle-badge">ACTIVE</span>
-       <h3>Active</h3>
-       <p>In progress and editable. Scouts can update criteria, athletes, priority, stage, evaluations, notes, and results.</p>
-      </div>
-      <div class="lifecycle-card archive-state">
-       <span class="lifecycle-badge">ARCHIVED</span>
-       <h3>Archived</h3>
-       <p>Closed and read-only. Preserves criteria, context, timeline, evaluations, notes, athlete outcomes, and results. Can be reactivated at any time.</p>
-      </div>
-      <div class="lifecycle-card delete-state">
-       <span class="lifecycle-badge">DELETED</span>
-       <h3>Deleted</h3>
-       <p>Permanent removal. Requires a clear confirmation and is separate from closing or archiving.</p>
-      </div>
-     </div>
 
      <div class="grid-2 archive-record-grid">
       <div class="card archive-card project-archive-card">
@@ -902,10 +756,9 @@ h1 {
         Stores the closed project's structure and overall activity.
        </p>
        <div class="row"><strong>Includes:</strong> Criteria snapshot</div>
-       <div class="row"><strong>Includes:</strong> Context and Lead Scout</div>
+       <div class="row"><strong>Includes:</strong> Owner and members</div>
        <div class="row"><strong>Includes:</strong> Project-level timeline</div>
        <div class="row"><strong>Includes:</strong> Reviewed athlete list</div>
-       <div class="row"><strong>MVP action:</strong> Reactivate same project</div>
       </div>
 
       <div class="card archive-card athlete-archive-card">
@@ -924,9 +777,6 @@ h1 {
        <div class="row"><strong>Includes:</strong> Athlete-specific timeline</div>
       </div>
      </div>
-	     <div class="note">
-	      Archive preserves work. Delete is the only irreversible action. MVP rule: Reactivate the same archived project. Duplicate as Template can be added later as a future enhancement while leaving the original archive intact.
-	     </div>
     </div>
 
     <div class="flow big-flow archive-flow">
@@ -937,13 +787,13 @@ h1 {
       &rarr;
      </span>
      <span class="step">
-      Archive Project
+      Project Closed
      </span>
      <span class="arrow">
       &rarr;
      </span>
      <span class="step">
-      Archived Project
+      Project Archive
      </span>
      <span class="arrow">
       contains
@@ -960,73 +810,61 @@ h1 {
     </h2>
     <p>
      Each Recruiting Project is one scouting assignment. It contains recruiting criteria,
-     athletes who may fit those criteria, and the scout workflow used to make
-     decisions on each athlete. In MVP this is the scout's own workflow; team collaboration is a future scale layer.
+     athletes who may fit those criteria, and the collaborative workflow scouts use to make
+     decisions on each athlete.
     </p>
 
     <div class="grid-2">
      <div class="card">
       <h3>Recruiting Criteria</h3>
       <p>
-       The description of the athlete the scout is looking for, such as position,
+       The description of the athlete the organization is looking for, such as position,
        level, age, location, performance profile, media, and other requirements.
       </p>
       <span class="tag blue">Player Target</span>
      </div>
 
-	     <div class="card">
-	      <h3>Saved Athletes</h3>
-	      <p>
-	       Discovered athletes are saved to a project longlist before they enter the pipeline.
-	       The same athlete can be saved or active in multiple recruiting projects.
-	      </p>
-	      <span class="tag green">Project Longlist</span>
-	     </div>
+     <div class="card">
+      <h3>Managed Athletes</h3>
+      <p>
+       Discovered athletes are added to the project when they may fit the recruiting criteria.
+       The same athlete can belong to multiple recruiting projects.
+      </p>
+      <span class="tag green">Candidate Pool</span>
+     </div>
 
      <div class="card">
       <h3>Scout Actions</h3>
       <p>
-       Scouts work on athletes using project-specific actions and scout-level follow-up actions.
+       Scouts work on athletes using both project-specific actions and workspace-shared actions.
       </p>
       <div class="row">
        <strong>Project-specific:</strong>
        Evaluate, compare, internal notes
       </div>
       <div class="row">
-       <strong>Scout-level:</strong>
+       <strong>Workspace-shared:</strong>
        Message, request information
       </div>
-      <span class="tag purple">Scout Workflow</span>
+      <span class="tag purple">Team Workflow</span>
      </div>
 
      <div class="card">
-      <h3>Lead Scout</h3>
+      <h3>Primary Scout</h3>
       <p>
-       Each active athlete should have one Lead Scout responsible for coordinating evaluation and making the final recommendation.
+       Project members can collaborate on athletes, but each active athlete should have one
+       Primary Scout responsible for coordinating evaluation and making the final recommendation.
       </p>
-      <span class="tag purple">Responsibility Model</span>
+      <span class="tag purple">Responsibility model</span>
      </div>
-	    </div>
-	
-	    <div class="flow big-flow">
-	     <span class="step">Discovery</span>
-	     <span class="arrow">&rarr;</span>
-	     <span class="step">Save to Project</span>
-	     <span class="arrow">&rarr;</span>
-	     <span class="step">Saved Athletes</span>
-	     <span class="arrow">&rarr;</span>
-	     <span class="step">Add to Pipeline: New</span>
-	    </div>
-		    <div class="note">
-		     MVP screening rule: Saved Athletes is the project longlist. It can be filtered by All Saved, Not in Pipeline, and In Pipeline. Athletes are not archived/disliked in MVP; they stay saved unless the scout explicitly removes them, and moving an athlete into the pipeline does not erase the saved record.
-		    </div>
+    </div>
 
-	    <div class="pipeline-panel">
-	     <h3>Recruiting Pipeline</h3>
-	     <p>
-	      This shows how one athlete moves through a Recruiting Project after the scout promotes them from Saved Athletes.
-	      Saved Athletes is the pre-pipeline longlist; once inside the pipeline, each athlete has both a pipeline stage and a priority level.
-	     </p>
+    <div class="pipeline-panel">
+     <h3>Recruiting Pipeline</h3>
+     <p>
+      This shows how one athlete moves through a Recruiting Project from being added as a possible fit
+      to reaching a final recruiting decision.
+     </p>
 
      <div class="pipeline-steps">
       <div class="pipeline-step">
@@ -1040,7 +878,7 @@ h1 {
       <div class="pipeline-step">
        <span class="pipeline-status">REVIEWING</span>
        <strong>Initial Review</strong>
-       <p>Evaluation starts. Lead Scout required.</p>
+       <p>Evaluation starts. Primary Scout required.</p>
       </div>
 
       <div class="pipeline-arrow">&rarr;</div>
@@ -1055,8 +893,8 @@ h1 {
 
       <div class="pipeline-step">
        <span class="pipeline-status">DISCUSSION</span>
-       <strong>Active Review</strong>
-       <p>The scout reviews, compares, and records fit.</p>
+       <strong>Active Discussion</strong>
+       <p>Scouts review, compare, and discuss fit.</p>
       </div>
 
       <div class="pipeline-arrow">&rarr;</div>
@@ -1067,78 +905,46 @@ h1 {
        <p>Final outcome is recorded.</p>
       </div>
      </div>
-	    </div>
-    <div class="priority-panel">
-     <h3>Priority Levels</h3>
-     <p>
-      Priority is separate from pipeline stage. Stage answers where the athlete is in the process;
-      priority answers how much focus the athlete deserves.
-     </p>
-     <div class="priority-grid">
-      <div class="priority-card high">
-       <span class="priority-badge">HIGH</span>
-       <strong>High Priority</strong>
-       <p>
-        Strong fit or urgent opportunity. Should appear first inside each pipeline stage.
-       </p>
-      </div>
-      <div class="priority-card medium">
-       <span class="priority-badge">MEDIUM</span>
-       <strong>Medium Priority</strong>
-       <p>
-        Worth active review, but not the top focus. Useful for follow-up queues and comparisons.
-       </p>
-      </div>
-      <div class="priority-card low">
-       <span class="priority-badge">LOW</span>
-       <strong>Low Priority</strong>
-       <p>
-        Monitor or keep as backup. Still in the pipeline, but lower focus than stronger fits.
-       </p>
-      </div>
-     </div>
-     <div class="priority-filter-rule">
-      Required pipeline control: scouts must be able to filter and sort by priority within any stage, for example showing only High Priority athletes in Reviewing.
-     </div>
     </div>
 
-	    <div class="grid-2">
+    <div class="grid-2">
      <div class="card">
-      <h3>Lead Scout</h3>
+      <h3>Primary Scout</h3>
       <p>
        The scout responsible for the athlete inside the project. A scout may assign
-       themselves as Lead Scout when adding an athlete. The Lead Scout manages follow-up, pipeline movement,
+       themselves as Primary Scout when adding an athlete, or be assigned by a
+       Project Owner. The Primary Scout manages follow-up, pipeline movement,
        evaluation coordination, and final recommendation.
       </p>
       <div class="row"><strong>Can evaluate:</strong> Yes</div>
-      <div class="row"><strong>Can initiate/request info:</strong> Yes, through scout-athlete requests</div>
-      <div class="row"><strong>Can message athlete:</strong> Yes, through scout-athlete conversation</div>
+      <div class="row"><strong>Can initiate/request info:</strong> Yes, through shared workspace requests</div>
+      <div class="row"><strong>Can message athlete:</strong> Yes, through shared workspace conversation</div>
       <div class="row"><strong>Can compare athletes:</strong> Yes</div>
-      <div class="row"><strong>Can request collaborator review:</strong> Future scale feature</div>
+      <div class="row"><strong>Can request collaborator review:</strong> Yes</div>
      </div>
 
      <div class="card">
       <h3>Collaborator Scouts</h3>
       <p>
-       Post-MVP feature. Collaborator scouts can later support the Lead Scout
-       with review, evaluation, comparison, and internal discussion.
+       Scouts who support the Primary Scout on a specific athlete. Collaborators
+       can be added by the Primary Scout or Project Owner to assist with review,
+       evaluation, comparison, and internal discussion.
       </p>
       <div class="row"><strong>Can evaluate:</strong> Yes</div>
       <div class="row"><strong>Can review linked request responses:</strong> Yes</div>
       <div class="row"><strong>Can compare athletes:</strong> Yes</div>
       <div class="row"><strong>Can leave internal notes:</strong> Yes</div>
-      <div class="row"><strong>MVP status:</strong> Deferred until team collaboration is validated</div>
+      <div class="row"><strong>Final responsibility:</strong> No, Primary Scout owns this</div>
      </div>
     </div>
 
     <div class="note">
      Rules:
      - NEW can be unassigned.
-     - REVIEWING and later require lead_scout_id.
-     - priority_level = high / medium / low and can change independently from pipeline_status.
-     - Pipeline views must support stage filtering plus priority filtering/sorting.
-     - In MVP, the verified scout is the default Lead Scout.
-     - Project members, collaborator reviews, and override rules are post-MVP.
+     - REVIEWING and later require primary_scout_id.
+     - Project members can add athletes.
+     - Project members can self-assign as Primary Scout when adding an athlete.
+     - Project Owner can override assignments.
     </div>
    </div>
   </div>
@@ -1162,29 +968,26 @@ h1 {
 "history-storage": {
   title: "Project Archive Data Model",
   body: `Active sources
-├── ScoutAthleteRelationship
+├── WorkspaceAthlete
 │   ├── messages
 │   └── information_requests
 │
 └── ProjectAthlete
     ├── pipeline_status
-    ├── priority_level
-    ├── lead_scout_id
-    ├── collaborators (future)
+    ├── primary_scout_id
+    ├── collaborators
     ├── evaluations
     ├── internal_notes
     ├── outcome
     └── activity_log
 
 ArchivedProject
-├── project_status: archived
 ├── project_snapshot
 ├── recruiting_criteria_snapshot
-├── context_and_lead_scout_snapshot
+├── owner_and_members_snapshot
 ├── project_activity_log
 ├── reviewed_athletes[]
 ├── completed_at
-├── reactivated_at
 └── archive_status
 
 ArchivedProjectAthlete
@@ -1196,75 +999,48 @@ ArchivedProjectAthlete
 ├── project_specific_activity_log
 ├── evaluations_reference
 ├── internal_notes_reference
-└── linked_scout_athlete_relationship
+└── linked_workspace_athlete
 
 Important rules:
 - Work Contexts define the active records.
-- Preservation principle: nothing is lost unless the user explicitly chooses permanent delete.
-- Project status states: active / archived / deleted.
-- Archive is the safe default when closing a project.
-- Archived projects are read-only and can be reactivated at any time.
-- MVP reactivation restores the same project.
-- Duplicate as Template is future, not MVP.
-- Delete is permanent, separate, and requires explicit confirmation.
+- Project Archive defines what happens after closure.
 - Project activity and athlete-specific activity stay separate.
 - One ArchivedProject contains many ArchivedProjectAthlete records.
+- Archived records are read-only.
 - This supports future review and reporting without making reporting an MVP feature.`
 },
 
 "work-contexts": {
   title: "Recruiter Athlete Data Model",
   body: `AthleteProfile
-├── global athlete showcase profile
+├── global athlete-owned profile
 ├── sport_profiles
 ├── playing_history
 ├── media
-├── documents
-└── ProfileUsers[]
-    ├── athlete user
-    ├── guardian user
-    └── future additional guardian / manager
+└── documents
 
-ScoutAthleteRelationship
+WorkspaceAthlete
 ├── athlete_profile_id
-├── scout_id
+├── workspace_id
 ├── messages
 └── information_requests
 
 ProjectAthlete
-├── scout_athlete_relationship_id
+├── workspace_athlete_id
 ├── project_id
-├── optional_affiliation_id
 ├── pipeline_status
 ├── priority
-├── lead_scout_id
-├── collaborators (future)
+├── primary_scout_id
+├── collaborators
 ├── evaluations
 ├── internal_notes
 └── outcome
 
-ProjectSavedAthlete
-├── project_id
-├── athlete_profile_id
-├── saved_by_scout_id
-├── saved_at
-├── note (optional)
-└── linked_project_athlete_id (nullable)
-
 Important rules:
 - AthleteProfile is global.
-- AthleteProfile can be associated with multiple User accounts through ProfileUsers[].
-- ProfileUsers[] stores relationship, permissions, consent state, and age-based access mode.
-- For supervised 14-15 accounts, athlete and guardian are separate logins linked to the same AthleteProfile.
-- ScoutAthleteRelationship represents one scout's direct relationship with the athlete.
-- ProjectSavedAthlete represents the pre-pipeline project longlist.
-- ProjectAthlete represents one athlete inside one recruiting project pipeline.
+- WorkspaceAthlete represents one workspace's relationship with the athlete.
+- ProjectAthlete represents one athlete inside one recruiting project.
 - The same athlete can exist in multiple projects.
-- Saved Athletes can be filtered by All Saved, Not in Pipeline, and In Pipeline.
-- Adding an athlete to the pipeline creates or links a ProjectAthlete record with pipeline_status = New.
-- Moving an athlete into the pipeline does not erase the ProjectSavedAthlete record.
-- A project can be independent or linked to one organization affiliation.
-- Line 2 can grant other scouts permissioned visibility without changing message ownership.
 - Athletes do not see ProjectAthlete internals.`
 }
 };

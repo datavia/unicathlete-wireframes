@@ -330,9 +330,6 @@ textarea {
      <a href="../index.html">
       Platform
      </a>
-     <a href="../signup.html">
-      Create Account
-     </a>
      <a href="../athlete/overview.html">
       Athlete View
      </a>
@@ -347,7 +344,7 @@ textarea {
     Recruiter Overview
    </a>
    <a href="scout-profile.html">
-    Scout Profile
+    Professional Profile
    </a>
    <a href="dashboard.html">
     Dashboard
@@ -380,8 +377,10 @@ They are not just folders.
 A project can define:
 &bull; Objective
 &bull; Recruiting criteria
-&bull; Lead scout
+&bull; Project owner
+&bull; Assigned scouts
 &bull; Athletes
+&bull; Access rules
 &bull; Pipeline work
 
 Backend relationship:
@@ -399,11 +398,9 @@ Workspace &rarr; RecruitingProject &rarr; ProjectAthlete records" data-title="Re
      <div class="card">
       <h2 class="section-title">
        Basic Information
-       <button class="info-note" data-note="Basic Information defines what this project is and which context it uses.
+       <button class="info-note" data-note="Basic Information defines what this project is and where it lives.
 
-Every verified scout creates projects inside the same scout workspace flow. A project can be independent or linked to one of the scout's active organization affiliations.
-
-The selected project context is attribution metadata in MVP. It does not create shared messaging, shared requests, or organization permissions yet.
+The workspace determines whether the project belongs to an organization or to an individual professional.
 
 The project name should describe the recruiting focus, not the scout creating it." data-title="Basic Information" onclick="openBackendNote(this)" type="button">
         ⓘ
@@ -412,22 +409,19 @@ The project name should describe the recruiting focus, not the scout creating it
       <div class="form-grid">
        <div class="form-row">
         <div class="form-label">
-         Project Context
+         Workspace
         </div>
         <div>
          <select>
           <option>
-           Independent / personal project
-          </option>
-          <option selected="">
-           Toronto Academy
+           Toronto Academy Workspace
           </option>
           <option>
-           Global Soccer Partners
+           Mike Brown Individual Workspace
           </option>
          </select>
          <div class="workspace-marker">
-          Selected affiliation: Toronto Academy
+          Organization Workspace
          </div>
         </div>
        </div>
@@ -465,7 +459,7 @@ Important MVP criteria:
 &bull; Key sport-specific stats
 &bull; Media requirements
 &bull; Verification requirements
-&bull; Default athlete priority
+&bull; Priority
 
 Future criteria can become more sport-specific." data-title="Recruiting Criteria" onclick="openBackendNote(this)" type="button">
         ⓘ
@@ -763,7 +757,7 @@ Future criteria can become more sport-specific." data-title="Recruiting Criteria
        </div>
        <div class="field-block">
         <label>
-         Default Athlete Priority
+         Project Priority
         </label>
         <select>
          <option>
@@ -784,24 +778,27 @@ Future criteria can become more sport-specific." data-title="Recruiting Criteria
      </div>
      <div class="card">
       <h2 class="section-title">
-       Lead Scout
-       <button class="info-note" data-note="In MVP, project responsibility is simple.
+       Ownership &amp; Assigned Scouts
+       <button class="info-note" data-note="Project ownership and athlete ownership are separate.
 
-Lead Scout:
-Manages the recruiting project and athlete follow-up.
+Project Owner:
+Manages the recruiting project.
 
-Agency affiliation:
-Stored as context only. It does not create a separate project workflow.
+Assigned Scouts:
+Can work inside the project.
 
-Future:
-Assigned scouts, collaborators, and role-based permissions can be added after team collaboration is validated." data-title="Lead Scout" onclick="openBackendNote(this)" type="button">
+Primary Scout:
+One person responsible for an individual athlete's follow-up and final recommendation.
+
+Collaborating Scouts:
+Support the Primary Scout with reviews, notes, evaluations, media review, and comments." data-title="Ownership &amp; Assigned Scouts" onclick="openBackendNote(this)" type="button">
         ⓘ
        </button>
       </h2>
       <div class="form-grid">
        <div class="form-row">
         <div class="form-label">
-         Lead Scout
+         Project Owner
         </div>
         <select>
          <option>
@@ -875,33 +872,36 @@ Assigned scouts, collaborators, and role-based permissions can be added after te
        </div>
        <div class="form-row">
         <div class="form-label">
-         Default Athlete Lead
+         Default Athlete Owner
         </div>
         <select>
          <option>
           No default &mdash; assign manually
          </option>
          <option>
-          Lead Scout
+          Project Owner
          </option>
          <option>
-          Assign manually per athlete
+          Round-robin between assigned scouts
          </option>
         </select>
        </div>
        <div class="form-row">
         <div class="form-label">
-         MVP Access
+         Project Access
         </div>
         <select>
          <option>
-          Lead scout can work on this project
+          Assigned scouts can work; other workspace members can view only
          </option>
          <option>
-          Project context is stored as attribution metadata
+          Only assigned scouts can view and work
          </option>
          <option>
-          Future collaboration permissions are post-MVP
+          Entire workspace can view and work
+         </option>
+         <option>
+          Owner/admin only
          </option>
         </select>
        </div>
@@ -914,24 +914,25 @@ Assigned scouts, collaborators, and role-based permissions can be added after te
       <button class="info-note" data-note="The summary previews how this project will appear in the Workspace page.
 
 It should show only the most important operational details:
-	&bull; Project context
+&bull; Workspace
 &bull; Project name
 &bull; Objective
 &bull; Criteria summary
-&bull; Lead scout
+&bull; Project owner
+&bull; Assigned scouts
 &bull; Next step" data-title="Project Summary" onclick="openBackendNote(this)" type="button">
        ⓘ
       </button>
      </h2>
      <div class="summary-item">
       <div class="summary-label">
-       Project Context
+       Workspace
       </div>
       <div class="summary-value">
        Toronto Academy
       </div>
       <div class="workspace-marker">
-       Agency affiliation
+       Organization Workspace
       </div>
      </div>
      <div class="summary-item">
@@ -960,7 +961,7 @@ It should show only the most important operational details:
      </div>
      <div class="summary-item">
       <div class="summary-label">
-       Lead Scout
+       Project Owner
       </div>
       <div class="summary-value">
        Mike Brown

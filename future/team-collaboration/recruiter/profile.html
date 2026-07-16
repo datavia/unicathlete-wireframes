@@ -288,24 +288,6 @@ h2 {
   font-weight: 700;
   color: var(--navy);
 }
-.priority-value {
-  display: inline-flex;
-  align-items: center;
-  border-radius: 999px;
-  padding: 5px 9px;
-  font-size: 12px;
-  font-weight: 900;
-  background: #fee2e2;
-  color: #b91c1c;
-}
-.priority-value.medium {
-  background: #fef3c7;
-  color: #b45309;
-}
-.priority-value.low {
-  background: #ecfdf5;
-  color: #15803d;
-}
 .note-card {
   background: #fff7ed;
   border: 1px solid #fed7aa;
@@ -1184,9 +1166,6 @@ function assignScout(btn) {
      <a href="../index.html">
       Platform
      </a>
-     <a href="../signup.html">
-      Create Account
-     </a>
      <a href="../athlete/overview.html">
       Athlete View
      </a>
@@ -1201,7 +1180,7 @@ function assignScout(btn) {
     Recruiter Overview
    </a>
    <a href="scout-profile.html">
-    Scout Profile
+    Professional Profile
    </a>
    <a href="dashboard.html">
     Dashboard
@@ -1225,7 +1204,7 @@ function assignScout(btn) {
      Athlete Profile / Scout View
     </h1>
     <p>
-     Structured athlete profile with scout-athlete communication and project-specific evaluation context.
+     Structured athlete profile with workspace-level communication and project-specific evaluation context.
     </p>
    </div>
    <div class="hero">
@@ -1250,19 +1229,19 @@ function assignScout(btn) {
     <div class="actions">
      <div class="destination-select">
       <button class="button btn-primary" style="background:#16a34a;">
-       &checkmark; In My Scout Workspace
+       &checkmark; In Toronto Academy
       </button>
       <div class="destination-menu">
-       <button class="destination-option" onclick="addToWorkspace(this, 'My Scout Workspace')">
-        Add to My Scout Workspace
+       <button class="destination-option" onclick="addToWorkspace(this, 'My Individual Workspace')">
+        Add to My Individual Workspace
         <small>
          Also save as a private prospect
         </small>
        </button>
        <button class="destination-option" onclick="addToWorkspace(this, 'Toronto Academy')">
-        Agency affiliation: Toronto Academy
+        Already in Toronto Academy
         <small>
-         Context only in MVP
+         Shared organization recruiting pipeline
         </small>
        </button>
       </div>
@@ -1484,22 +1463,20 @@ function assignScout(btn) {
     <div class="profile-column scout-column">
      <div class="workspace-header">
       <h2>
-       Scout-Athlete Relationship
-       <button class="info-note" data-note="This section shows the permanent Scout-Athlete Relationship.
+       Workspace Relationship
+       <button class="info-note" data-note="This section shows the relationship between this athlete and the selected workspace.
 
-Messages and information requests stay between this scout and this athlete, even when the related project has an organization context.
+Requests and messages are shared at the workspace-athlete level, so the same organization does not duplicate communication or information requests across projects.
 
-Project context, evaluations, pipeline status, Lead Scout, and project ratings remain project-specific.
-
-Line 2 later adds permissions around this relationship, such as allowing another scout in the same organization to view submitted information. It does not replace the scout-athlete conversation with an organization-athlete conversation." data-title="Scout Athlete Relationship" onclick="openBackendNote(this)" type="button">
+Evaluations, pipeline status, Primary Scout, collaborators, and project ratings remain project-specific." data-title="Workspace Athlete Relationship" onclick="openBackendNote(this)" type="button">
         ⓘ
        </button>
       </h2>
       <p>
-       Mike Brown's direct relationship with this athlete
+       Toronto Academy's shared relationship with this athlete
       </p>
       <span class="workspace-marker">
-       Linked project context: Toronto Academy
+       Toronto Academy
       </span>
      </div>
      <div class="workspace-actions">
@@ -1551,17 +1528,11 @@ Line 2 later adds permissions around this relationship, such as allowing another
         Criteria: Midfielder &middot; Age 15&ndash;17 &middot; Ontario &middot; Academy level
        </div>
        <div class="project-chip-row">
-        <span class="project-chip secondary">
-         Context: Toronto Academy
-        </span>
         <span class="project-chip">
          Selected Context
         </span>
         <span class="project-chip secondary">
          Reviewing
-        </span>
-        <span class="project-chip secondary">
-         Priority: High
         </span>
        </div>
        <a class="mini-action" href="evaluation_management.html">
@@ -1577,16 +1548,10 @@ Line 2 later adds permissions around this relationship, such as allowing another
        </div>
        <div class="project-chip-row">
         <span class="project-chip secondary">
-         Context: Independent
-        </span>
-        <span class="project-chip secondary">
          Additional Context
         </span>
         <span class="project-chip secondary">
          New
-        </span>
-        <span class="project-chip secondary">
-         Priority: Medium
         </span>
        </div>
        <a class="mini-action" href="evaluation_management.html">
@@ -1605,17 +1570,7 @@ Line 2 later adds permissions around this relationship, such as allowing another
      </div>
      <div class="status-card">
       <div class="status-label">
-       Priority Level
-      </div>
-      <div>
-       <span class="priority-value" id="priorityLevel">
-        High
-       </span>
-      </div>
-     </div>
-     <div class="status-card">
-      <div class="status-label">
-       Lead Scout
+       Primary Scout
       </div>
       <div class="status-value" id="primaryScout">
        Mike Brown
@@ -1623,7 +1578,7 @@ Line 2 later adds permissions around this relationship, such as allowing another
      </div>
      <div class="status-card">
       <div class="status-label">
-       Future Collaborators
+       Collaborators
       </div>
       <div class="team-chip-row" id="collaboratorList">
        <span class="team-chip">
@@ -1634,18 +1589,18 @@ Line 2 later adds permissions around this relationship, such as allowing another
        </span>
       </div>
       <a class="mini-action" href="#">
-       Future: Add Collaborator
+       + Add Collaborator
       </a>
      </div>
      <div class="status-card">
       <div class="status-label">
-       Project Rating
+       Aggregated Project Rating
       </div>
       <div class="status-value" id="ratingScore" style="font-size:24px;">
        8.0 / 10
       </div>
       <div class="rating-context-note" id="ratingMeta">
-       Scout rating for U17 Midfielders &middot; 3 evaluations
+       Organization average for U17 Midfielders &middot; 3 evaluations
       </div>
      </div>
      <div class="section-divider">
@@ -1733,26 +1688,20 @@ Line 2 later adds permissions around this relationship, such as allowing another
   u17: {
     name: "U17 Midfielders",
     criteria: "Criteria: Midfielder · Age 15–17 · Ontario · Academy level",
-    context: "Toronto Academy",
     pipelineStatus: "Reviewing",
-    priority: "High",
-    priorityClass: "",
     primaryScout: "Mike Brown",
-    collaborators: [],
+    collaborators: ["Sarah Wilson", "David Lee"],
     rating: "8.0 / 10",
-    ratingMeta: "Scout rating for U17 Midfielders · 3 evaluations"
+    ratingMeta: "Organization average for U17 Midfielders · 3 evaluations"
   },
   ontario: {
     name: "Ontario Prospects",
     criteria: "Criteria: Any position · Ontario · Academy level",
-    context: "Independent",
     pipelineStatus: "New",
-    priority: "Medium",
-    priorityClass: "medium",
-    primaryScout: "Mike Brown",
-    collaborators: [],
+    primaryScout: "Sarah Wilson",
+    collaborators: ["Mike Brown"],
     rating: "7.4 / 10",
-    ratingMeta: "Scout rating for Ontario Prospects · 2 evaluations"
+    ratingMeta: "Organization average for Ontario Prospects · 2 evaluations"
   }
 };
 
@@ -1763,7 +1712,7 @@ function selectProjectContext(projectKey) {
   document.querySelectorAll(".project-card[data-project]").forEach(function(card) {
     card.classList.toggle("active", card.dataset.project === projectKey);
 
-    const firstChip = card.querySelector(".project-chip-row .project-chip:nth-child(2)");
+    const firstChip = card.querySelector(".project-chip-row .project-chip:first-child");
     if (firstChip) {
       firstChip.textContent = card.dataset.project === projectKey ? "Selected Context" : "Additional Context";
       firstChip.classList.toggle("secondary", card.dataset.project !== projectKey);
@@ -1773,9 +1722,6 @@ function selectProjectContext(projectKey) {
   document.getElementById("selectedProjectName").textContent = project.name;
   document.getElementById("selectedProjectCriteria").textContent = project.criteria;
   document.getElementById("pipelineStatus").textContent = project.pipelineStatus;
-  const priorityLevel = document.getElementById("priorityLevel");
-  priorityLevel.textContent = project.priority;
-  priorityLevel.className = "priority-value" + (project.priorityClass ? " " + project.priorityClass : "");
   document.getElementById("primaryScout").textContent = project.primaryScout;
   document.getElementById("ratingScore").textContent = project.rating;
   document.getElementById("ratingMeta").textContent = project.ratingMeta;
@@ -1786,7 +1732,7 @@ function selectProjectContext(projectKey) {
   if (project.collaborators.length === 0) {
     const empty = document.createElement("span");
     empty.className = "rating-context-note";
-    empty.textContent = "Collaborator review is post-MVP";
+    empty.textContent = "No collaborators assigned yet";
     collaboratorList.appendChild(empty);
   } else {
     project.collaborators.forEach(function(name) {

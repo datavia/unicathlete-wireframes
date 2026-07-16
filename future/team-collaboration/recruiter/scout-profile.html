@@ -2,7 +2,7 @@
 <html>
  <head>
   <title>
-   Scout Profile
+   Professional Profile
   </title>
   <style>
    :root {
@@ -256,80 +256,10 @@ body {
   font-size: 12px;
   font-weight: 800;
 }
-.trust-preview-toggle summary {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  list-style: none;
-  width: fit-content;
-}
-.trust-preview-toggle summary::-webkit-details-marker {
-  display: none;
-}
-.trust-preview-toggle summary::after {
-  content: "Show";
-  border: 1px solid #bfdbfe;
-  background: white;
-  color: var(--blue);
-  border-radius: 999px;
-  padding: 5px 9px;
-  font-size: 11px;
-  font-weight: 900;
-}
-.trust-preview-toggle[open] summary::after {
-  content: "Hide";
-  background: var(--blue);
-  color: white;
-}
-.trust-card-preview {
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-  background: #f9fafb;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 16px;
-  margin-top: 14px;
-}
-.trust-card-preview h3 {
-  margin: 0 0 4px;
-  color: var(--navy);
-  font-size: 17px;
-}
-.trust-card-preview p {
-  margin: 0 0 10px;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.4;
-}
-.trust-avatar {
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background: var(--navy);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 900;
-}
-.visibility-note {
-  margin-top: 12px;
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
-  color: #1d4ed8;
-  border-radius: 12px;
-  padding: 12px;
-  font-size: 13px;
-  line-height: 1.45;
-  font-weight: 700;
-}
 .workspace-grid {
   display: grid;
-  grid-template-columns: 1.05fr 1.35fr;
+  grid-template-columns: 1fr 1fr;
   gap: 18px;
-  align-items: start;
 }
 .workspace-subsection {
   background: white;
@@ -347,7 +277,7 @@ body {
 }
 .workspace-card-list {
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 .workspace-membership-card {
   background: white;
@@ -356,55 +286,12 @@ body {
   padding: 15px;
 }
 .workspace-membership-card.organization {
-  border-color: #dbeafe;
-  background: #f8fafc;
+  border-color: #bfdbfe;
+  background: #eff6ff;
 }
 .workspace-membership-card.individual {
   border-color: #ddd6fe;
   background: #f5f3ff;
-}
-.workspace-membership-card.primary-workspace {
-  min-height: 100%;
-  border-color: #c4b5fd;
-}
-.affiliation-row {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 14px;
-  align-items: center;
-}
-.affiliation-meta-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
-  margin-top: 12px;
-}
-.affiliation-row .affiliation-meta-grid {
-  grid-column: 1 / -1;
-}
-.affiliation-meta {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 9px;
-  font-size: 12px;
-  color: var(--muted);
-}
-.affiliation-meta strong {
-  display: block;
-  color: var(--navy);
-  font-size: 13px;
-  margin-bottom: 2px;
-}
-.workspace-note {
-  background: #f9fafb;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 12px;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.45;
-  margin-bottom: 14px;
 }
 .workspace-membership-top {
   display: flex;
@@ -521,11 +408,8 @@ body {
 .hero-actions {
   justify-content: flex-start;
 }
-.grid-2, .workspace-grid, .workspace-membership-summary, .workspace-stat-row, .affiliation-meta-grid, .affiliation-row {
+.grid-2, .workspace-grid, .workspace-membership-summary, .workspace-stat-row {
   grid-template-columns: 1fr;
-}
-.trust-card-preview {
-  flex-direction: column;
 }
 }
   </style>
@@ -542,9 +426,6 @@ body {
      <a href="../index.html">
       Platform
      </a>
-     <a href="../signup.html">
-      Create Account
-     </a>
      <a href="../athlete/overview.html">
       Athlete View
      </a>
@@ -559,7 +440,7 @@ body {
     Recruiter Overview
    </a>
    <a class="active" href="scout-profile.html">
-    Scout Profile
+    Professional Profile
    </a>
    <a href="dashboard.html">
     Dashboard
@@ -580,12 +461,12 @@ body {
   <div class="page">
    <div class="page-title">
     <div>
-	     <h1>
-	      Scout Profile
-	     </h1>
-	     <p>
-	      Private identity, verification, affiliation, and scouting focus for the verified scout.
-	     </p>
+     <h1>
+      Professional Profile
+     </h1>
+     <p>
+      Identity, verification, expertise, and workspace memberships for a sports recruiting professional.
+     </p>
     </div>
    </div>
    <div class="hero">
@@ -597,36 +478,36 @@ body {
       <h2>
        Mike Brown
       </h2>
-	      <p>
-	       Sports Recruiter &middot; Toronto Academy &middot; Canada / Spain network
-	      </p>
-	      <div class="badge-row">
-	       <span class="badge green">
-	        Verified Professional
-	       </span>
-	       <span class="badge">
-	        Limited athlete-visible trust card
-	       </span>
-	       <span class="badge purple">
-	        Scout Workspace Active
-	       </span>
+      <p>
+       Sports Recruiter &middot; Toronto Academy &middot; Canada / Spain network
+      </p>
+      <div class="badge-row">
+       <span class="badge green">
+        Verified Professional
+       </span>
+       <span class="badge">
+        Organization Owner
+       </span>
+       <span class="badge purple">
+        Individual Workspace Active
+       </span>
       </div>
      </div>
     </div>
     <div class="hero-actions">
-	     <a class="button btn-light" href="#">
-	      Edit Details
-	     </a>
+     <a class="button btn-light" href="#">
+      Edit Profile
+     </a>
      <a class="button btn-dark" href="#">
       Account Settings
      </a>
     </div>
-	   </div>
-	   <div class="grid-2">
-	    <div class="card">
-	     <h2 class="section-title">
-	      Private Scout Details
-	     </h2>
+   </div>
+   <div class="grid-2">
+    <div class="card">
+     <h2 class="section-title">
+      Professional Details
+     </h2>
      <div class="info-list">
       <div class="info-row">
        <span>
@@ -638,7 +519,7 @@ body {
       </div>
       <div class="info-row">
        <span>
-        Agency Affiliation
+        Current Organization
        </span>
        <span>
         Toronto Academy
@@ -670,13 +551,13 @@ body {
       </div>
      </div>
     </div>
-		<div class="card">
-		 <h2 class="section-title">
-		  Scout Expertise
-		 </h2>
-		 <p class="section-subtitle">
-		  This defines the scout's background and evaluation strengths. It is not a public profile and does not replace project-specific athlete criteria.
-		 </p>
+    <div class="card">
+     <h2 class="section-title">
+      Professional Expertise
+     </h2>
+     <p class="section-subtitle">
+      This section describes the recruiter's long-term professional background. Actual player requirements are defined separately inside each Recruiting Project.
+     </p>
      <div class="info-list">
       <div class="info-row">
        <span>
@@ -721,10 +602,10 @@ body {
      </div>
     </div>
    </div>
-	   <div class="card" style="margin-bottom:18px;">
-	    <h2 class="section-title">
-	     Verification &amp; Trust
-	    </h2>
+   <div class="card" style="margin-bottom:18px;">
+    <h2 class="section-title">
+     Verification Details
+    </h2>
     <div class="info-list">
      <div class="info-row">
       <span>
@@ -757,71 +638,95 @@ body {
       <span>
        Jun 12, 2026
       </span>
-	     </div>
-	    </div>
-	   </div>
-	   <div class="card" style="margin-bottom:18px;">
-	    <details class="trust-preview-toggle">
-	     <summary>
-	      <h2 class="section-title">
-	       Athlete-visible Trust Card Preview
-	      </h2>
-	     </summary>
-	     <p class="section-subtitle">
-	      Athletes do not browse scout profiles publicly. This limited card appears only when this scout contacts or requests information from the athlete.
-	     </p>
-	     <div class="trust-card-preview">
-	      <div class="trust-avatar">
-	       MB
-	      </div>
-	      <div>
-	       <h3>
-	        Mike Brown
-	       </h3>
-		       <p>
-		        Sports Recruiter &middot; Toronto Academy &middot; Toronto, Canada
-		       </p>
-		       <div class="badge-row">
-		        <span class="badge green">
-		         Verified by UnicAthlete
-		        </span>
-		       </div>
-	      </div>
-	     </div>
-	    </details>
-	   </div>
-	   <div class="card" style="margin-bottom:18px;">
-	    <h2 class="section-title">
-		     Scout Workspace &amp; Agency Affiliation
-	    </h2>
-	    <p class="section-subtitle">
-	     The scout works behind the scenes. Organization affiliation is a private project context, while the athlete profile remains the only public showcase.
-	    </p>
-   <div class="workspace-grid">
+     </div>
+    </div>
+   </div>
+   <div class="card" style="margin-bottom:18px;">
+    <h2 class="section-title">
+     Workspace Memberships
+    </h2>
+    <p class="section-subtitle">
+     Workspaces this professional can use for organization collaboration and individual recruiting work.
+    </p>
+    <div class="workspace-grid">
      <div class="workspace-subsection">
       <h3>
-       Scout Workspace
+       Organization Workspace
       </h3>
-      <div class="workspace-note">
-       This is the default operating area for the scout. Messages and information requests stay between this scout and the athlete, regardless of project context.
-      </div>
       <div class="workspace-card-list">
-       <div class="workspace-membership-card individual primary-workspace">
+       <div class="workspace-membership-card organization">
         <div class="workspace-membership-top">
          <div>
           <div class="workspace-membership-name">
-           Mike Brown Scout Workspace
+           Toronto Academy
           </div>
           <div class="workspace-membership-meta">
-           Created automatically after verification
+           Organization Type: Academy
            <br/>
-           Owner: Mike Brown
+           Workspace Role: Owner / Admin
            <br/>
-           Used for independent and organization-context projects
+           Access Status: Active
+          </div>
+         </div>
+         <span class="workspace-type-pill">
+          Organization
+         </span>
+        </div>
+        <div class="workspace-stat-row">
+         <div class="workspace-stat">
+          <strong>
+           5
+          </strong>
+          Members
+         </div>
+         <div class="workspace-stat">
+          <strong>
+           72
+          </strong>
+          Managed Athletes
+         </div>
+         <div class="workspace-stat">
+          <strong>
+           4
+          </strong>
+          Recruiting Projects
+         </div>
+        </div>
+        <div class="workspace-action-row">
+         <a class="button btn-primary" href="workspace.html">
+          Open Workspace
+         </a>
+         <a class="button btn-light" href="create_group.html">
+          Create Recruiting Project
+         </a>
+         <a class="button btn-light" href="#">
+          Manage Members
+         </a>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="workspace-subsection">
+      <h3>
+       Individual Workspace
+      </h3>
+      <div class="workspace-card-list">
+       <div class="workspace-membership-card individual">
+        <div class="workspace-membership-top">
+         <div>
+          <div class="workspace-membership-name">
+           Mike Brown Individual Workspace
+          </div>
+          <div class="workspace-membership-meta">
+           Private recruiting workspace
+           <br/>
+           Workspace Role: Owner
+           <br/>
+           Access Status: Active
           </div>
          </div>
          <span class="workspace-type-pill personal">
-          Default
+          Individual
          </span>
         </div>
         <div class="workspace-stat-row">
@@ -829,7 +734,7 @@ body {
           <strong>
            1
           </strong>
-          Scout
+          Member
          </div>
          <div class="workspace-stat">
           <strong>
@@ -852,84 +757,8 @@ body {
           Create Recruiting Project
          </a>
          <a class="button btn-light" href="#">
-          Workspace Details
+          Workspace Settings
          </a>
-        </div>
-       </div>
-      </div>
-     </div>
-     <div class="workspace-subsection">
-      <h3>
-       Organization Contexts
-      </h3>
-      <div class="workspace-note">
-       These are selectable project filters. They do not create shared chats, shared requests, or organization permissions in MVP.
-      </div>
-      <div class="workspace-card-list">
-       <div class="workspace-membership-card organization affiliation-row">
-         <div>
-          <div class="workspace-membership-name">
-           Toronto Academy
-          </div>
-          <div class="workspace-membership-meta">
-           Academy &middot; Active affiliation &middot; Project context only
-          </div>
-         </div>
-         <span class="workspace-type-pill">
-          4 Projects
-         </span>
-        <div class="affiliation-meta-grid">
-         <div class="affiliation-meta">
-          <strong>
-           5
-          </strong>
-          Scouts in org
-         </div>
-         <div class="affiliation-meta">
-          <strong>
-           Context
-          </strong>
-          Filter only
-         </div>
-         <div class="affiliation-meta">
-          <strong>
-           Later
-          </strong>
-          Permissions layer
-         </div>
-        </div>
-       </div>
-       <div class="workspace-membership-card organization affiliation-row">
-        <div>
-         <div class="workspace-membership-name">
-          Global Soccer Partners
-         </div>
-         <div class="workspace-membership-meta">
-          Recruiting Agency &middot; Active affiliation &middot; Project context only
-         </div>
-        </div>
-        <span class="workspace-type-pill">
-         2 Projects
-        </span>
-        <div class="affiliation-meta-grid">
-         <div class="affiliation-meta">
-          <strong>
-           8
-          </strong>
-          Scouts in org
-         </div>
-         <div class="affiliation-meta">
-          <strong>
-           Context
-          </strong>
-          Filter only
-         </div>
-         <div class="affiliation-meta">
-          <strong>
-           Later
-          </strong>
-          Reporting layer
-         </div>
         </div>
        </div>
       </div>
@@ -957,45 +786,26 @@ body {
     title: "Profile Architecture",
     body: `User
 ├── Athlete Profile
-│   ├── Public showcase profile
-│   └── Portfolio data
+│   └── Portfolio Data
 │
-└── ProfessionalProfile
+└── Professional Profile
     ├── Professional Type
     │   ├── Recruiter (MVP)
     │   └── Future Professional Types
     │
-    ├── Private Scout Profile UI
-    │   ├── Identity
-    │   ├── Verification
-    │   ├── Affiliation
-    │   ├── Scout expertise
-    │   └── Athlete-visible trust card preview
-    │
-    ├── Private Dashboard UI
-    │   └── Scout activity summary
-    │
-    └── Scout Workspace
-        ├── Default scout workspace
-        └── Agency affiliations[]
+    └── Workspace Access
+        ├── Individual Workspace
+        └── Organization Workspace Memberships
 
-MVP visibility rule:
-• Athlete Profile is the public showcase
-• Scout Profile is private and not publicly searchable
-• Athlete-visible scout information is limited to a trust card after interaction
-• Scout activity summary belongs on the Dashboard, not the Profile
-
-ProfessionalProfile records can:
-• Receive a default Scout Workspace after verification
-• Be linked to multiple Agency entities
-• Choose one project context per Recruiting Project
-• Keep messages and requests in Scout-Athlete Relationships
-• Manage Recruiting Projects inside the same scout flow
-• Scale later into roles, permissions, and collaboration without rebuilding the base model`
+Professional profiles can:
+• Create an Individual Workspace
+• Join Organization Workspaces
+• Hold different roles in different workspaces
+• Manage Recruiting Projects inside each workspace`
   },
   "professional-expertise": {
-    title: "Scout Expertise",
-    body: `Scout Expertise
+    title: "Professional Expertise",
+    body: `Professional Expertise
 │
 ├── Sport background
 ├── Regions known
@@ -1003,9 +813,7 @@ ProfessionalProfile records can:
 ├── Specialization
 └── Evaluation strengths
 
-This describes the scout's background and evaluation strengths.
-
-It is not a public professional profile or athlete-facing page.
+This describes the professional's long-term background and strengths.
 
 It is not the same as recruiting criteria.
 
@@ -1031,69 +839,66 @@ For MVP, a professional can be verified by:
 • Manual platform review`
   },
   "workspace-architecture": {
-    title: "MVP Workspace Architecture",
+    title: "Workspace Architecture",
     body: `ProfessionalProfile
 │
-├── Scout Workspace
-│   └── Default MVP recruiting work
+├── Individual Workspace
+│   └── Personal recruiting work
 │
-└── Agency Affiliations[]
-    ├── Agency profile
-    ├── Scout affiliation record
-    └── Access Status: Pending / Approved / Suspended
+└── Organization Workspace Memberships
+    ├── Role: Owner / Admin / Member
+    ├── Access Status: Pending / Approved / Suspended
+    └── Organization Workspace Access
 
-MVP workspace rule:
-• Every scout uses the same Scout Workspace flow
-• Agency affiliation is project context metadata only
-• One project can link to one affiliation or remain independent
-• Scout-athlete messages and requests do not move to the agency
-• No advanced agency roles, permissions, or reporting in MVP
+Workspace types:
+• Organization Workspace
+• Individual Workspace
 
-Each scout workspace can contain:
+Each workspace can contain:
+• Members
 • Recruiting Projects
 • Managed athletes
 • Evaluations
-• Scout-athlete requests
-• Scout-athlete messages
+• Requests
+• Messages
 • Notes
 • ActivityLog / activity history`
   },
   "organization-workspace": {
-    title: "Agency Skeleton",
-    body: `Agency Skeleton
+    title: "Organization Workspace",
+    body: `Organization Workspace
 │
-├── Agency profile
-├── Agency type
-├── Verification status
-└── Linked scouts
-
-Used in MVP only to group scouts under an agency, club, or company and provide selectable project context.
-
-Each linked scout still works through the exact same Scout Workspace flow.
-
-Messages and requests remain between the Lead Scout and athlete.
-
-Post-MVP expansion can add:
-• Roles and permissions
-• Shared pipelines
-• Permissioned access to request responses and submitted documents
-• Aggregated reporting
-• Agency-athlete traceability`
-  },
-  "individual-workspace": {
-    title: "Scout Workspace",
-    body: `Scout Workspace
+├── Organization profile
+├── Workspace members
+│   ├── Owner
+│   ├── Admin
+│   └── Member
 │
-├── Scout: ProfessionalProfile
 ├── Recruiting Projects
 ├── Managed athletes
-├── Evaluations
-├── Notes
-└── Activity history
+├── Shared evaluations
+├── Shared requests
+├── Shared messages
+└── Internal collaboration
 
-Created by default for one verified scout.
+Used for team recruiting.
 
-This same flow is used whether the scout is independent or agency-affiliated.`
+Access is controlled through membership records and roles.`
+  },
+  "individual-workspace": {
+    title: "Individual Workspace",
+    body: `Individual Workspace
+│
+├── Owner: ProfessionalProfile
+├── Personal Recruiting Projects
+├── Personal managed athletes
+├── Individual evaluations
+├── Private notes
+└── Personal activity history
+
+Owned by one professional profile.
+
+This lets a professional work outside an organization while using the same workspace structure.`
   }
 };
   </script>

@@ -104,12 +104,6 @@ body {
   border: 1px solid var(--border);
   box-shadow: none;
 }
-.btn-danger {
-  background: #fef2f2;
-  color: #b91c1c;
-  border: 1px solid #fecaca;
-  box-shadow: none;
-}
 .card {
   background: white;
   border: 1px solid var(--border);
@@ -420,95 +414,9 @@ a {
   font-size:12px;
   line-height:1.35;
 }
-.saved-athletes-card {
-  background:white;
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:16px;
-  box-shadow:0 6px 18px rgba(15,23,42,0.05);
-  margin-bottom:18px;
-}
-.saved-athletes-top {
-  display:flex;
-  justify-content:space-between;
-  gap:14px;
-  align-items:flex-start;
-  margin-bottom:12px;
-}
-.saved-athletes-top h2 {
-  margin:0 0 5px;
-  color:var(--navy);
-  font-size:18px;
-}
-.saved-athletes-top p {
-  margin:0;
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.4;
-}
-.saved-filter-row {
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  justify-content:flex-end;
-}
-.saved-filter-row .filter-pill.active {
-  color:var(--blue);
-  background:var(--blue-light);
-  border-color:#bfdbfe;
-}
-.saved-athletes-grid {
-  display:grid;
-  grid-template-columns:repeat(3, minmax(0,1fr));
-  gap:10px;
-}
-.saved-athlete-item {
-  border:1px solid var(--border);
-  background:#f9fafb;
-  border-radius:12px;
-  padding:12px;
-  color:inherit;
-}
-.saved-athlete-name {
-  font-weight:900;
-  color:var(--navy);
-  font-size:14px;
-  margin-bottom:4px;
-}
-.saved-athlete-meta {
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.35;
-  margin-bottom:9px;
-}
-.pipeline-state {
-  display:inline-flex;
-  border-radius:999px;
-  padding:4px 7px;
-  font-size:11px;
-  font-weight:900;
-  background:var(--blue-light);
-  color:var(--blue);
-  border:1px solid #bfdbfe;
-}
-.pipeline-state.none {
-  background:#f3f4f6;
-  color:var(--muted);
-  border-color:var(--border);
-}
-.saved-athlete-actions {
-  display:flex;
-  gap:7px;
-  flex-wrap:wrap;
-  margin-top:10px;
-}
 @media (max-width: 1100px) {
-  .saved-comparison-grid,
-  .saved-athletes-grid {
+  .saved-comparison-grid {
   grid-template-columns:1fr
-}
-.saved-athletes-top {
-  flex-direction:column
 }
 }
 .compare-action {
@@ -678,43 +586,11 @@ a {
   overflow-x: auto;
 }
 .pipeline-toolbar {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 16px;
-  align-items: start;
-  margin-bottom: 18px;
-}
-.pipeline-controls {
   display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
-.filter-pill {
-  display: inline-flex;
+  justify-content: space-between;
+  gap: 16px;
   align-items: center;
-  border: 1px solid var(--border);
-  background: white;
-  color: var(--muted);
-  border-radius: 999px;
-  padding: 8px 11px;
-  font-size: 12px;
-  font-weight: 800;
-  white-space: nowrap;
-}
-.filter-pill.active {
-  color: #991b1b;
-  background: #fee2e2;
-  border-color: #fecaca;
-}
-.sort-select {
-  background: #f9fafb;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 8px 10px;
-  color: var(--navy);
-  font-size: 12px;
-  font-weight: 800;
+  margin-bottom: 18px;
 }
 .search-box {
   min-width: 260px;
@@ -823,14 +699,6 @@ a {
 .tag-priority {
   background: #fee2e2;
   color: #dc2626;
-}
-.tag-priority.medium {
-  background: #fef3c7;
-  color: #b45309;
-}
-.tag-priority.low {
-  background: #ecfdf5;
-  color: #15803d;
 }
 .tag-video {
   background: var(--blue-light);
@@ -1069,9 +937,6 @@ a {
      <a href="../index.html">
       Platform
      </a>
-     <a href="../signup.html">
-      Create Account
-     </a>
      <a href="../athlete/overview.html">
       Athlete View
      </a>
@@ -1086,7 +951,7 @@ a {
     Recruiter Overview
    </a>
    <a href="scout-profile.html">
-    Scout Profile
+    Professional Profile
    </a>
    <a href="dashboard.html">
     Dashboard
@@ -1108,7 +973,7 @@ a {
    <div class="page-title">
     <div>
      <h1>
-      My Scouting Workspace
+      Workspace
      </h1>
     </div>
     <a class="button btn-primary" href="create_group.html">
@@ -1116,17 +981,14 @@ a {
     </a>
    </div>
    <div class="workspace-tabs">
-    <a class="workspace-tab" href="#">
-     All contexts
-    </a>
     <a class="workspace-tab active" href="#">
-     Toronto Academy
-    </a>
-    <a class="workspace-tab" href="#">
-     Global Soccer Partners
+     All Workspaces
     </a>
     <a class="workspace-tab personal" href="#">
-     Independent
+     👤 My Individual Workspace
+    </a>
+    <a class="workspace-tab" href="#">
+     🏢 Toronto Academy
     </a>
    </div>
    <div class="layout">
@@ -1134,9 +996,6 @@ a {
      <h2>
       Recruiting Projects
      </h2>
-     <div class="group-project-meta" style="margin:0 0 12px;color:var(--muted);">
-      Showing projects for Toronto Academy context only.
-     </div>
      <div class="group-list">
       <a class="group-project active" href="#">
        <div class="group-project-name">
@@ -1146,7 +1005,29 @@ a {
         Toronto Academy
        </div>
        <div class="group-project-meta">
-        18 athletes &middot; Lead: Mike
+        18 athletes &middot; Owner: Mike &middot; 2 scouts
+       </div>
+      </a>
+      <a class="group-project" href="#">
+       <div class="group-project-name">
+        Spain Targets
+       </div>
+       <div class="group-workspace-marker">
+        Toronto Academy
+       </div>
+       <div class="group-project-meta">
+        9 athletes &middot; Owner: Mike &middot; 2 scouts
+       </div>
+      </a>
+      <a class="group-project" href="#">
+       <div class="group-project-name">
+        Ontario Prospects
+       </div>
+       <div class="group-workspace-marker">
+        Toronto Academy
+       </div>
+       <div class="group-project-meta">
+        15 athletes &middot; Owner: Sarah &middot; 3 scouts
        </div>
       </a>
       <a class="group-project" href="#">
@@ -1157,29 +1038,29 @@ a {
         Toronto Academy
        </div>
        <div class="group-project-meta">
-        12 athletes &middot; Lead: Mike
+        12 athletes &middot; Owner: David &middot; 2 scouts
        </div>
       </a>
       <a class="group-project" href="#">
        <div class="group-project-name">
-        Scholarship Candidates
+        Archived
        </div>
        <div class="group-workspace-marker">
         Toronto Academy
        </div>
        <div class="group-project-meta">
-        7 athletes &middot; Lead: Mike
+        12 athletes
        </div>
       </a>
       <a class="group-project" href="#">
        <div class="group-project-name">
-        Archived Projects
+        Personal Watchlist
        </div>
-       <div class="group-workspace-marker">
-        Toronto Academy
+       <div class="group-workspace-marker personal">
+        Individual Workspace
        </div>
        <div class="group-project-meta">
-        12 athletes &middot; Read-only
+        14 athletes &middot; Owner: Mike
        </div>
       </a>
      </div>
@@ -1199,24 +1080,19 @@ a {
         <div class="group-workspace-marker">
          Toronto Academy
         </div>
-        <span class="workspace-type-marker">
-         Filtered context
-        </span>
         <span class="owner-pill">
-         Lead Scout: Mike Brown
+         Project Owner: Mike Brown
+        </span>
+        <span class="scout-pill">
+         Sarah Wilson
+        </span>
+        <span class="scout-pill">
+         David Lee
         </span>
        </div>
-       <div class="workspace-action-row">
-        <a class="button btn-light" href="create_group.html">
-         Edit Project
-        </a>
-        <a class="button btn-light" href="#">
-         Archive Project
-        </a>
-        <a class="button btn-danger" href="#">
-         Delete
-        </a>
-       </div>
+       <a class="button btn-light" href="create_group.html">
+        Edit Project
+       </a>
       </div>
       <div class="overview-grid">
        <div class="overview-tile">
@@ -1225,140 +1101,27 @@ a {
         </strong>
         Football &middot; Midfielder &middot; Age 15&ndash;17 &middot; Canada
        </div>
-	       <div class="overview-tile">
-	        <strong>
-	         Saved Athletes
-	        </strong>
-	        18 total &middot; 11 not in pipeline
-	       </div>
-	       <div class="overview-tile">
-	        <strong>
-	         Pipeline
-	        </strong>
-	        7 active athletes
-	       </div>
-	       <div class="overview-tile">
-	        <strong>
-	         Closed Outcomes
-	        </strong>
-	        1 signed &middot; 1 rejected
+       <div class="overview-tile">
+        <strong>
+         Saved Comparisons
+        </strong>
+        3 saved comparison sets
        </div>
-	     </div>
-	    </div>
-	    <div class="saved-athletes-card">
-	     <div class="saved-athletes-top">
-	      <div>
-	       <h2>
-	        Saved Athletes
-	       </h2>
-	       <p>
-	        Project longlist from Discovery. Saved athletes stay available unless explicitly removed, and can remain saved after they enter the pipeline.
-	       </p>
-	      </div>
-	      <div class="saved-filter-row">
-	       <a class="filter-pill active" href="#">
-	        All Saved
-	       </a>
-	       <a class="filter-pill" href="#">
-	        Not in Pipeline
-	       </a>
-	       <a class="filter-pill" href="#">
-	        In Pipeline
-	       </a>
-	      </div>
-	     </div>
-	     <div class="saved-athletes-grid">
-	      <div class="saved-athlete-item">
-	       <div class="saved-athlete-name">
-	        Ethan White
-	       </div>
-	       <div class="saved-athlete-meta">
-	        Midfielder &middot; 16 &middot; Canada &middot; Saved from Discovery
-	       </div>
-	       <span class="pipeline-state none">
-	        Not in Pipeline
-	       </span>
-	       <div class="saved-athlete-actions">
-	        <a class="small-action primary" href="#">
-	         Add to Pipeline
-	        </a>
-	        <a class="small-action" href="profile.html">
-	         View Profile
-	        </a>
-	       </div>
-	      </div>
-	      <div class="saved-athlete-item">
-	       <div class="saved-athlete-name">
-	        John Smith
-	       </div>
-	       <div class="saved-athlete-meta">
-	        Midfielder &middot; 17 &middot; Canada &middot; Saved before pipeline
-	       </div>
-	       <span class="pipeline-state">
-	        In Pipeline &middot; New
-	       </span>
-	       <div class="saved-athlete-actions">
-	        <a class="small-action" href="profile.html">
-	         Open Pipeline Record
-	        </a>
-	       </div>
-	      </div>
-	      <div class="saved-athlete-item">
-	       <div class="saved-athlete-name">
-	        Marco Silva
-	       </div>
-	       <div class="saved-athlete-meta">
-	        Winger &middot; 17 &middot; Spain &middot; Saved for later review
-	       </div>
-	       <span class="pipeline-state none">
-	        Not in Pipeline
-	       </span>
-	       <div class="saved-athlete-actions">
-	        <a class="small-action primary" href="#">
-	         Add to Pipeline
-	        </a>
-	        <a class="small-action" href="profile.html">
-	         View Profile
-	        </a>
-	       </div>
-	      </div>
-	     </div>
-	    </div>
-	     <div class="pipeline-toolbar">
-	      <div>
-	       <h2 class="section-title">
+       <div class="overview-tile">
+        <strong>
+         Closed Outcomes
+        </strong>
+        1 signed &middot; 1 rejected
+       </div>
+      </div>
+     </div>
+     <div class="pipeline-toolbar">
+      <div>
+       <h2 class="section-title">
         Project Pipeline
        </h2>
-	       <p style="margin:4px 0 0;color:var(--muted);font-size:13px;">
-	        Active recruiting process only. Athletes enter here from Saved Athletes as New; priority shows how much focus they deserve.
-	       </p>
       </div>
-      <div class="pipeline-controls">
-       <a class="filter-pill" href="#">
-        All priorities
-       </a>
-       <a class="filter-pill active" href="#">
-        High only
-       </a>
-       <a class="filter-pill" href="#">
-        Medium
-       </a>
-       <a class="filter-pill" href="#">
-        Low
-       </a>
-       <select class="sort-select">
-        <option>
-         Sort: Priority first
-        </option>
-        <option>
-         Sort: Recently updated
-        </option>
-        <option>
-         Sort: Match score
-        </option>
-       </select>
-       <input class="search-box" placeholder="Search saved athletes..."/>
-      </div>
+      <input class="search-box" placeholder="Search saved athletes..."/>
      </div>
      <div class="pipeline">
       <div class="column">
@@ -1380,16 +1143,8 @@ a {
         <div class="prospect-meta">
          Midfielder &bull; 17 &bull; Canada
         </div>
-        <div class="tag-row">
-         <span class="tag tag-priority">
-          High priority
-         </span>
-         <span class="tag tag-video">
-          Match score 94%
-         </span>
-        </div>
         <div class="primary-scout">
-         Lead Scout: Mike Brown
+         Primary Scout: Mike Brown
         </div>
         <div class="card-footer tidy">
          <button class="compare-action" onclick="toggleCompare(this)">
@@ -1408,14 +1163,6 @@ a {
         </div>
         <div class="prospect-meta">
          Goalkeeper &bull; 18 &bull; Canada
-        </div>
-        <div class="tag-row">
-         <span class="tag tag-priority medium">
-          Medium priority
-         </span>
-         <span class="tag tag-video">
-          Match score 82%
-         </span>
         </div>
         <div class="primary-scout unassigned">
          Unassigned
@@ -1446,16 +1193,8 @@ a {
         <div class="prospect-meta">
          Winger &bull; 17 &bull; Spain
         </div>
-        <div class="tag-row">
-         <span class="tag tag-priority">
-          High priority
-         </span>
-         <span class="tag tag-request">
-          Needs evaluation
-         </span>
-        </div>
         <div class="primary-scout">
-         Lead Scout: Mike Brown
+         Primary Scout: Mike Brown
         </div>
         <div class="active-projects">
          <strong>
@@ -1489,16 +1228,8 @@ a {
         <div class="prospect-meta">
          Centre Back &bull; 18 &bull; Canada
         </div>
-        <div class="tag-row">
-         <span class="tag tag-priority medium">
-          Medium priority
-         </span>
-         <span class="tag tag-request">
-          Request open
-         </span>
-        </div>
         <div class="primary-scout">
-         Lead Scout: Mike Brown
+         Primary Scout: Sarah Wilson
         </div>
         <div class="card-footer tidy">
          <button class="compare-action" onclick="toggleCompare(this)">
@@ -1526,16 +1257,8 @@ a {
         <div class="prospect-meta">
          Striker &bull; 19 &bull; Canada
         </div>
-        <div class="tag-row">
-         <span class="tag tag-priority">
-          High priority
-         </span>
-         <span class="tag tag-video">
-          Compare shortlist
-         </span>
-        </div>
         <div class="primary-scout">
-         Lead Scout: Mike Brown
+         Primary Scout: Mike Brown
         </div>
         <div class="card-footer tidy">
          <button class="compare-action" onclick="toggleCompare(this)">
@@ -1562,11 +1285,6 @@ a {
         </div>
         <div class="prospect-meta">
          Fullback &bull; 18 &bull; Canada
-        </div>
-        <div class="tag-row">
-         <span class="tag tag-priority">
-          High priority
-         </span>
         </div>
         <div class="primary-scout">
          Closed by: Mike Brown
@@ -1611,11 +1329,6 @@ a {
         <div class="prospect-meta">
          Midfielder &bull; 17 &bull; Canada
         </div>
-        <div class="tag-row">
-         <span class="tag tag-priority low">
-          Low priority
-         </span>
-        </div>
         <div class="primary-scout">
          Closed by: Sarah Wilson
         </div>
@@ -1647,32 +1360,6 @@ a {
          </a>
         </div>
        </div>
-      </div>
-	     </div>
-     <div class="saved-comparisons-card">
-      <div class="saved-comparisons-top">
-       <div>
-        <h2>
-         Archived Project Example
-        </h2>
-        <p>
-         Archived projects are closed and read-only, but can be consulted and reactivated without losing criteria, athletes, evaluations, notes, or results.
-        </p>
-       </div>
-      </div>
-      <div class="group-project-meta" style="margin-bottom:12px;">
-       Status: Archived &middot; Closed Jun 25, 2026 &middot; Context: Toronto Academy
-      </div>
-      <div class="workspace-action-row">
-       <a class="button btn-light" href="#">
-        View Archive
-       </a>
-       <a class="button btn-primary" href="#">
-        Reactivate Project
-       </a>
-       <a class="button btn-light" href="#">
-        Duplicate as Template (Future)
-       </a>
       </div>
      </div>
      <div class="saved-comparisons-card">

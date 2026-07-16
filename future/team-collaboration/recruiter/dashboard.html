@@ -192,24 +192,6 @@ body {
   font-weight:900;
   line-height:1.35;
 }
-.portfolio-summary {
-  margin-bottom:18px;
-}
-.portfolio-summary .focus-tile strong {
-  color:var(--navy);
-}
-.portfolio-summary .focus-tile:nth-child(1) strong {
-  color:var(--blue);
-}
-.portfolio-summary .focus-tile:nth-child(2) strong {
-  color:var(--purple);
-}
-.portfolio-summary .focus-tile:nth-child(3) strong {
-  color:var(--orange);
-}
-.portfolio-summary .focus-tile:nth-child(4) strong {
-  color:var(--green);
-}
 .view-link {
   color:var(--blue);
   text-decoration:none;
@@ -330,16 +312,6 @@ body {
   color:var(--green);
   border-color:#bbf7d0;
 }
-.context-pill.priority {
-  background:#fee2e2;
-  color:#b91c1c;
-  border-color:#fecaca;
-}
-.context-pill.priority.medium {
-  background:#fef3c7;
-  color:#b45309;
-  border-color:#fde68a;
-}
 .context-pill.personal {
   background:#f8fafc;
   color:#475569;
@@ -437,9 +409,6 @@ body {
      <a href="../index.html">
       Platform
      </a>
-     <a href="../signup.html">
-      Create Account
-     </a>
      <a href="../athlete/overview.html">
       Athlete View
      </a>
@@ -454,7 +423,7 @@ body {
     Recruiter Overview
    </a>
    <a href="scout-profile.html">
-    Scout Profile
+    Professional Profile
    </a>
    <a class="active" href="dashboard.html">
     Dashboard
@@ -478,58 +447,47 @@ body {
      <h1>
       Dashboard
      </h1>
-	     <p>
-	      Your private scouting dashboard. It summarizes your work and routes you to the right athlete, request, message, or recruiting project.
-	     </p>
-	    </div>
-	   </div>
-	   <div class="panel portfolio-summary">
-	    <div class="panel-head">
-	     <div>
-	      <h2>
-	       Scout Portfolio Summary
-	      </h2>
-	      <p>
-	       Private activity summary for the scout's own tracking. This is not visible to athletes or publicly searchable.
-	      </p>
-	     </div>
-	    </div>
-	    <div class="focus-grid">
-	     <div class="focus-tile">
-	      <strong>
-	       42
-	      </strong>
-	      <span>
-	       Athletes Followed
-	      </span>
-	     </div>
-	     <div class="focus-tile">
-	      <strong>
-	       18
-	      </strong>
-	      <span>
-	       In Pipeline
-	      </span>
-	     </div>
-	     <div class="focus-tile">
-	      <strong>
-	       7
-	      </strong>
-	      <span>
-	       Contacted Athletes
-	      </span>
-	     </div>
-	     <div class="focus-tile">
-	      <strong>
-	       6
-	      </strong>
-	      <span>
-	       Active Projects
-	      </span>
-	     </div>
-	    </div>
-	   </div>
-
+     <p>
+      Your personal work inbox across all workspaces. It shows what needs attention and routes you to the right workspace or project page.
+     </p>
+    </div>
+   </div>
+   <div class="hero">
+    <div class="focus-grid">
+     <div class="focus-tile">
+      <strong>
+       6
+      </strong>
+      <span>
+       New Matches
+      </span>
+     </div>
+     <div class="focus-tile">
+      <strong>
+       5
+      </strong>
+      <span>
+       Tasks
+      </span>
+     </div>
+     <div class="focus-tile">
+      <strong>
+       3
+      </strong>
+      <span>
+       New Responses
+      </span>
+     </div>
+     <div class="focus-tile">
+      <strong>
+       2
+      </strong>
+      <span>
+       Unread Messages
+      </span>
+     </div>
+    </div>
+   </div>
    
    <div class="inbox-grid">
     <div class="panel">
@@ -539,7 +497,7 @@ body {
         New Talent Matches
        </h2>
        <p>
-        Automated alerts from saved recruiting criteria. Agency affiliation appears only as context when it applies.
+        Automated alerts from saved recruiting criteria. Each alert shows its workspace and project.
        </p>
       </div>
       <a class="view-link" href="discover.html">
@@ -559,13 +517,10 @@ body {
        </div>
        <div class="context-stack">
         <span class="context-pill workspace">
-         Context: Toronto Academy
+         Workspace: Toronto Academy
         </span>
         <span class="context-pill project">
          Project: U17 Midfielders
-        </span>
-        <span class="context-pill priority">
-         Priority: High
         </span>
        </div>
       </div>
@@ -586,13 +541,10 @@ body {
        </div>
        <div class="context-stack">
         <span class="context-pill workspace">
-         Context: Global Soccer Partners
+         Workspace: Toronto Academy
         </span>
         <span class="context-pill project">
          Project: First Team Watchlist
-        </span>
-        <span class="context-pill priority medium">
-         Priority: Medium
         </span>
        </div>
       </div>
@@ -613,13 +565,10 @@ body {
        </div>
        <div class="context-stack">
         <span class="context-pill workspace">
-         Context: Toronto Academy
+         Workspace: Toronto Academy
         </span>
         <span class="context-pill project">
          Project: Spain Targets
-        </span>
-        <span class="context-pill priority">
-         Priority: High
         </span>
        </div>
       </div>
@@ -640,13 +589,10 @@ body {
        </div>
        <div class="context-stack">
         <span class="context-pill personal">
-         Independent scout
+         Workspace: Individual
         </span>
         <span class="context-pill project">
          Project: Ontario Prospects
-        </span>
-        <span class="context-pill priority medium">
-         Priority: Medium
         </span>
        </div>
       </div>
@@ -662,7 +608,7 @@ body {
         My Pending Actions
        </h2>
        <p>
-        Actions assigned to you in your scout workflow.
+        Assigned tasks with clear workspace, project, and feature context.
        </p>
       </div>
       <a class="view-link" href="#">
@@ -682,7 +628,7 @@ body {
        </div>
        <div class="context-stack">
         <span class="context-pill workspace">
-         Context: Toronto Academy
+         Workspace: Toronto Academy
         </span>
         <span class="context-pill feature">
          Area: Information Requests
@@ -706,7 +652,7 @@ body {
        </div>
        <div class="context-stack">
         <span class="context-pill workspace">
-         Context: Global Soccer Partners
+         Workspace: Toronto Academy
         </span>
         <span class="context-pill project">
          Project: Spain Targets
@@ -733,7 +679,7 @@ body {
        </div>
        <div class="context-stack">
         <span class="context-pill personal">
-         Independent scout
+         Workspace: Individual
         </span>
         <span class="context-pill feature">
          Area: Messages
@@ -750,14 +696,14 @@ body {
       </div>
       <div>
        <div class="item-title">
-        Start athlete review
+        Assign Primary Scout
        </div>
        <div class="item-meta">
         New athlete
        </div>
        <div class="context-stack">
         <span class="context-pill workspace">
-         Context: Toronto Academy
+         Workspace: Toronto Academy
         </span>
         <span class="context-pill project">
          Project: U17 Midfielders
@@ -777,10 +723,10 @@ body {
     <div class="panel-head">
      <div>
       <h2>
-       Scout Updates
+       Workspace Updates
       </h2>
       <p>
-       Passive awareness from your scouting activity.
+       Passive awareness from your workspaces.
       </p>
      </div>
     </div>
@@ -798,7 +744,7 @@ body {
        Alex Brown uploaded requested verification documents.
       </div>
       <div class="update-meta">
-       Independent scout &middot; Information Requests &middot; 1h ago
+       Individual Workspace &middot; Information Requests &middot; 1h ago
       </div>
      </div>
      <div class="update-card">
@@ -806,7 +752,7 @@ body {
        Mike Brown saved a new comparison: U17 Midfielder Shortlist.
       </div>
       <div class="update-meta">
-       Global Soccer Partners &middot; Saved Comparisons &middot; Yesterday
+       Toronto Academy &middot; Saved Comparisons &middot; Yesterday
       </div>
      </div>
     </div>

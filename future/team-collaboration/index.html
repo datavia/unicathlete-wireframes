@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>
+   UnicAthlete Platform Architecture
+  </title>
+  <style>
+   :root {
+  --navy:#111827;
+  --blue:#2563eb;
+  --blue-light:#eff6ff;
+  --green:#16a34a;
+  --green-light:#ecfdf5;
+  --orange:#f97316;
+  --orange-light:#fff7ed;
+  --purple:#7c3aed;
+  --purple-light:#f5f3ff;
+  --gray-bg:#f3f4f6;
+  --border:#e5e7eb;
+  --text:#111827;
+  --muted:#6b7280;
+  --card:#fff;
+}
+* {
+  box-sizing:border-box
+}
+body {
+  font-family:Arial,sans-serif;
+  margin:0;
+  background:var(--gray-bg);
+  color:var(--text);
+  line-height:1.5
+}
+.page {
+  max-width:1380px;
+  margin:28px auto;
+  padding:0 28px 42px
+}
+.view-choice-wrap {
+  background:#0f172a;
+  border-bottom:1px solid rgba(255,255,255,.10);
+  padding:18px 40px;
+  position:static;
+  box-shadow:0 4px 14px rgba(0,0,0,.16)
+}
+.view-choice-inner {
+  max-width:1380px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:18px;
+  align-items:center
+}
+.view-brand {
+  color:white
+}
+.view-brand strong {
+  display:block;
+  font-size:16px;
+  letter-spacing:.02em;
+  margin-bottom:3px
+}
+.view-brand span {
+  color:#cbd5e1;
+  font-size:13px
+}
+.view-choice-tabs {
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:flex-end
+}
+.view-choice-tab {
+  display:block;
+  min-width:220px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.14);
+  color:#d1d5db;
+  text-decoration:none;
+  border-radius:14px;
+  padding:12px 14px;
+  transition:.15s ease
+}
+.view-choice-tab:hover {
+  background:rgba(255,255,255,.10);
+  color:white
+}
+.view-choice-tab.active {
+  background:white;
+  color:var(--navy);
+  border-color:white
+}
+.view-choice-tab strong {
+  display:block;
+  font-size:14px;
+  margin-bottom:2px
+}
+.view-choice-tab span {
+  display:block;
+  font-size:12px;
+  color:inherit;
+  opacity:.78;
+  line-height:1.35
+}
+.hero,.section {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:26px;
+  box-shadow:0 6px 18px rgba(15,23,42,.05);
+  margin-bottom:22px
+}
+.hero {
+  background:linear-gradient(135deg,#fff 0%,#eff6ff 100%);
+  padding:36px
+}
+.label {
+  display:inline-flex;
+  background:var(--blue-light);
+  color:var(--blue);
+  border:1px solid #bfdbfe;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:900;
+  margin-bottom:14px
+}
+h1 {
+  margin:0 0 10px;
+  color:var(--navy);
+  font-size:36px;
+  letter-spacing:-.4px
+}
+h2 {
+  margin:0 0 8px;
+  color:var(--navy);
+  font-size:22px
+}
+h3 {
+  margin:0 0 8px;
+  color:var(--navy);
+  font-size:17px
+}
+p {
+  margin:0;
+  color:var(--muted)
+}
+.hero p {
+  max-width:860px;
+  font-size:16px
+}
+.grid-2 {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+  margin-top:16px
+}
+.grid-3 {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-top:16px
+}
+.card {
+  background:#f9fafb;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+  text-decoration:none;
+  color:inherit;
+  display:block
+}
+.card:hover {
+  border-color:#bfdbfe;
+  box-shadow:0 10px 24px rgba(15,23,42,.08)
+}
+.card p {
+  font-size:14px
+}
+.tag {
+  display:inline-block;
+  font-size:12px;
+  font-weight:800;
+  padding:5px 8px;
+  border-radius:999px;
+  margin:10px 4px 0 0
+}
+.blue {
+  background:var(--blue-light);
+  color:var(--blue)
+}
+.green {
+  background:var(--green-light);
+  color:var(--green)
+}
+.purple {
+  background:var(--purple-light);
+  color:var(--purple)
+}
+.orange {
+  background:var(--orange-light);
+  color:var(--orange)
+}
+.flow {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+  margin-top:18px;
+  background:#f9fafb;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px
+}
+.step {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:999px;
+  padding:9px 12px;
+  font-size:13px;
+  font-weight:900;
+  color:var(--navy)
+}
+.arrow {
+  font-weight:900;
+  color:var(--blue)
+}
+.note {
+  background:#fff7ed;
+  color:#9a3412;
+  border:1px solid #fed7aa;
+  border-radius:14px;
+  padding:15px;
+  font-size:14px;
+  margin-top:16px
+}
+@media (max-width: 900px) {
+  .view-choice-wrap {
+  padding:14px 18px
+}
+.view-choice-inner,.grid-2,.grid-3 {
+  grid-template-columns:1fr
+}
+.view-choice-tabs {
+  justify-content:flex-start
+}
+.view-choice-tab {
+  min-width:100%
+}
+h1 {
+  font-size:28px
+}
+}
+  </style>
+  <link href="shared/backend-modal.css" rel="stylesheet"/>
+  <link href="shared/app-shell.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <header class="app-header">
+   <div class="app-header-inner">
+    <a class="app-logo" href="index.html">
+     UNICATHLETE
+    </a>
+    <nav aria-label="Platform view switcher" class="app-switch">
+     <a class="active" href="index.html">
+      Platform
+     </a>
+     <a href="athlete/overview.html">
+      Athlete View
+     </a>
+     <a href="recruiter/overview.html">
+      Recruiter View
+     </a>
+    </nav>
+   </div>
+  </header>
+  <div class="page">
+   <div class="hero">
+    <span class="label">
+     Platform Architecture
+    </span>
+    <h1>
+     UnicAthlete Ecosystem
+    </h1>
+   </div>
+   <div class="section" id="architecture">
+    <h2>
+     Profile Types
+     <button class="info-note" onclick="openBackendNote('profile-architecture')">
+      ⓘ
+     </button>
+    </h2>
+    <p>
+     The platform is built around two main profile types: Athlete Profiles and Professional Profiles.
+        These two profile types create the foundation of the ecosystem.
+    </p>
+    <div class="grid-2">
+     <div class="card">
+      <h3>
+       Athlete Profile
+      </h3>
+      <p>
+       A structured athlete portfolio that represents the athlete inside the platform.
+            It contains the athlete&rsquo;s identity, sport information, stats, media, documents,
+            and other materials needed by professionals.
+      </p>
+      <span class="tag blue">
+       Portfolio
+      </span>
+      <span class="tag green">
+       Stats
+      </span>
+      <span class="tag orange">
+       Media
+      </span>
+      <span class="tag purple">
+       Documents
+      </span>
+     </div>
+     <div class="card">
+      <h3>
+       Professional Profile
+      </h3>
+      <p>
+       A profile for professionals who work with athletes. Each professional profile
+            has access to a workspace where athlete-related work is organized and managed.
+      </p>
+      <span class="tag purple">
+       Workspace
+      </span>
+      <span class="tag blue">
+       Projects
+      </span>
+      <span class="tag green">
+       Athlete Management
+      </span>
+     </div>
+    </div>
+    <div class="note">
+     Core platform split: athletes present themselves through structured portfolios, while professionals use workspaces to manage their work with athletes.
+    </div>
+   </div>
+  </div>
+  <div class="backend-modal" id="backendNoteModal" onclick="closeBackendNote(event)">
+   <div class="backend-modal-card">
+    <div class="backend-modal-header">
+     <h3 class="backend-modal-title" id="backendModalTitle">
+      Architecture Note
+     </h3>
+     <button class="backend-modal-close" onclick="closeBackendNote()">
+      &times;
+     </button>
+    </div>
+    <div class="backend-modal-body" id="backendModalBody">
+    </div>
+   </div>
+  </div>
+  <script>
+   const backendNotes = {
+  "profile-architecture": {
+  title: "Platform Data Model",
+  body: `User
+├── AthleteProfile (0..1)
+│   ├── profile_data
+│   ├── sport_profiles
+│   ├── playing_history
+│   ├── media
+│   ├── documents
+│   └── visibility_settings
+│
+└── ProfessionalProfile (0..1)
+    ├── professional_types[]
+    │   ├── recruiter
+    │   ├── nutritionist
+    │   ├── physiotherapist
+    │   ├── agent
+    │   └── future_professional_types
+    │
+    └── WorkspaceMemberships[]
+
+Workspace
+├── workspace_type
+│   ├── individual
+│   └── organization
+├── members
+├── permissions
+└── Projects[]
+
+Project
+├── project_type
+├── members
+├── athlete_records
+├── tasks
+├── notes
+└── activity_log
+
+Important rules:
+- One User can have at most one AthleteProfile.
+- One User can have at most one ProfessionalProfile.
+- A ProfessionalProfile can support multiple professional_types.
+- Workspace is the shared operating layer.
+- Project meaning depends on professional_type.
+
+MVP implementation:
+professional_type = recruiter
+project_type = recruiting_project`
+}
+};
+  </script>
+  <script src="shared/app.js">
+  </script>
+ </body>
+</html>

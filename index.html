@@ -177,6 +177,25 @@ p {
 .card p {
   font-size:14px
 }
+.decision-list {
+  margin:12px 0 0;
+  padding-left:18px;
+  color:var(--muted);
+  font-size:14px
+}
+.decision-list li {
+  margin:6px 0
+}
+.future-note {
+  background:white;
+  border:1px solid #dbeafe;
+  border-radius:12px;
+  color:#1d4ed8;
+  font-size:13px;
+  font-weight:800;
+  margin-top:14px;
+  padding:12px
+}
 .tag {
   display:inline-block;
   font-size:12px;
@@ -265,6 +284,9 @@ h1 {
      <a class="active" href="index.html">
       Platform
      </a>
+     <a href="signup.html">
+      Create Account
+     </a>
      <a href="athlete/overview.html">
       Athlete View
      </a>
@@ -282,63 +304,212 @@ h1 {
     <h1>
      UnicAthlete Ecosystem
     </h1>
+    <p>
+     Platform-level decisions for the MVP and the architecture choices we want to preserve for later scaling.
+    </p>
    </div>
    <div class="section" id="architecture">
     <h2>
-     Profile Types
+     MVP Platform Scope
      <button class="info-note" onclick="openBackendNote('profile-architecture')">
       ⓘ
      </button>
     </h2>
-    <p>
-     The platform is built around two main profile types: Athlete Profiles and Professional Profiles.
-        These two profile types create the foundation of the ecosystem.
+	    <p>
+	     The MVP focuses on the athlete showcase and the recruiter/scout workflow. The model stays open for additional profile and professional types later.
     </p>
     <div class="grid-2">
      <div class="card">
       <h3>
-       Athlete Profile
+       MVP Profile Types
       </h3>
-      <p>
-       A structured athlete portfolio that represents the athlete inside the platform.
-            It contains the athlete&rsquo;s identity, sport information, stats, media, documents,
-            and other materials needed by professionals.
+	      <p>
+	       The platform starts with two profile types only: Athlete Profile and Professional Profile.
       </p>
+      <ul class="decision-list">
+       <li>
+        Athlete Profile is the athlete-facing public showcase.
+       </li>
+       <li>
+        Professional Profile is the private operating identity for professionals.
+       </li>
+      </ul>
       <span class="tag blue">
-       Portfolio
+       Athlete
       </span>
       <span class="tag green">
-       Stats
+       Professional
       </span>
-      <span class="tag orange">
-       Media
-      </span>
+      <div class="future-note">
+       Future scaling plans: add Fan Profile, Coach Profile, Guardian-facing profile surfaces, or other role-specific profiles without changing the base User model.
+      </div>
+     </div>
+     <div class="card">
+	      <h3>
+	       MVP Professional Type
+	      </h3>
+	      <p>
+	       For the MVP, the Professional Profile supports one active professional type: Recruiter / Scout.
+      </p>
+      <ul class="decision-list">
+       <li>
+        Recruiter / Scout gets the first professional workflow.
+       </li>
+       <li>
+        Scout Profile stores identity, affiliation, expertise, and professional context.
+       </li>
+       <li>
+        Scout activity summaries live in the dashboard, not as a public portfolio.
+       </li>
+      </ul>
       <span class="tag purple">
-       Documents
+       Recruiter
       </span>
+      <span class="tag blue">
+       Scout
+      </span>
+      <div class="future-note">
+       Future scaling plans: add nutritionists, physicians, physiotherapists, agents, coaches, and other professional categories as additional professional_type values.
+      </div>
+     </div>
+    </div>
+    <div class="grid-2">
+     <div class="card">
+      <h3>
+       User And Profile Model
+      </h3>
+      <p>
+       User is the account/auth identity. Profiles are role-specific product identities connected to that user.
+      </p>
+      <ul class="decision-list">
+       <li>
+        One user can have one or more profile types.
+       </li>
+       <li>
+        A user can have an Athlete Profile, a Professional Profile, or future profile types.
+       </li>
+       <li>
+        Profile-user relationships define which users are connected to each profile.
+       </li>
+      </ul>
+      <div class="future-note">
+       Future scaling plans: new profile types should plug into the same User/Profile relationship instead of requiring a new auth model.
+      </div>
      </div>
      <div class="card">
       <h3>
-       Professional Profile
+       Public vs Private Profiles
       </h3>
       <p>
-       A profile for professionals who work with athletes. Each professional profile
-            has access to a workspace where athlete-related work is organized and managed.
+       The athlete is the public showcase. Professionals work behind the scenes.
       </p>
-      <span class="tag purple">
-       Workspace
-      </span>
-      <span class="tag blue">
-       Projects
-      </span>
-      <span class="tag green">
-       Athlete Management
-      </span>
+      <ul class="decision-list">
+       <li>
+        Athlete Profile is the public showcase profile in the MVP.
+       </li>
+       <li>
+        Professional / Scout Profile is private and not publicly searchable.
+       </li>
+       <li>
+        Athletes may see a limited scout card only after interaction.
+       </li>
+      </ul>
+      <div class="future-note">
+       Future scaling plans: professional public visibility can be considered later, but it is not part of the MVP platform posture.
+      </div>
      </div>
     </div>
-    <div class="note">
-     Core platform split: athletes present themselves through structured portfolios, while professionals use workspaces to manage their work with athletes.
+	    <div class="note">
+	     Core platform split: athletes present themselves through public structured portfolios, while scouts work through private professional tools.
+	    </div>
+   </div>
+   <div class="section" id="access-workspaces">
+    <h2>
+     Access And Workspace Decisions
+    </h2>
+    <p>
+     The MVP keeps onboarding and workspaces simple while preserving the architecture needed for organizations later.
+    </p>
+    <div class="grid-2">
+     <div class="card">
+      <h3>
+       Signup And Access
+      </h3>
+      <p>
+       Signup is free for everyone in the MVP.
+      </p>
+      <ul class="decision-list">
+       <li>
+        Free signup does not automatically mean public visibility.
+       </li>
+       <li>
+        Product access and visibility can still depend on profile readiness and profile settings.
+       </li>
+      </ul>
+      <div class="future-note">
+       Future scaling plans: paid plans can be layered around advanced professional and organization features without changing free account creation.
+      </div>
+     </div>
+     <div class="card">
+      <h3>
+       Scout Workspace Model
+      </h3>
+      <p>
+       MVP work happens inside individual scout workspaces.
+      </p>
+      <ul class="decision-list">
+       <li>
+        Every scout gets an individual workspace.
+       </li>
+       <li>
+        Agency, club, or company affiliation can exist as lightweight project context.
+       </li>
+       <li>
+        Affiliation groups scouts structurally but does not create a separate MVP workflow.
+       </li>
+      </ul>
+      <div class="future-note">
+       Future scaling plans: organization workspaces can add team collaboration, roles, hierarchical permissions, reporting, and shared visibility as an advanced layer.
+      </div>
+     </div>
     </div>
+   </div>
+   <div class="section" id="preservation-principle">
+    <h2>
+     Cross-Cutting Preservation Principle
+    </h2>
+    <p>
+     Nothing is permanently deleted unless the user deliberately chooses delete.
+    </p>
+    <div class="grid-2">
+     <div class="card">
+      <h3>
+       MVP Behavior
+      </h3>
+      <ul class="decision-list">
+       <li>
+        Archive / recover is the safe default.
+       </li>
+       <li>
+        Delete is separate, deliberate, and irreversible.
+       </li>
+       <li>
+        Saved athletes, project history, notes, evaluations, and archived projects remain available unless explicitly deleted.
+       </li>
+      </ul>
+     </div>
+     <div class="card">
+      <h3>
+       Future Scaling Plans
+      </h3>
+      <p>
+       The same preservation rule should support audit history, organization reporting, collaboration history, and future compliance needs.
+      </p>
+     </div>
+    </div>
+	    <div class="note">
+	     Platform rule: archive and recover by default; permanently delete only after explicit user intent.
+	    </div>
    </div>
   </div>
   <div class="backend-modal" id="backendNoteModal" onclick="closeBackendNote(event)">
@@ -360,14 +531,8 @@ h1 {
   "profile-architecture": {
   title: "Platform Data Model",
   body: `User
-├── AthleteProfile (0..1)
-│   ├── profile_data
-│   ├── sport_profiles
-│   ├── playing_history
-│   ├── media
-│   ├── documents
-│   └── visibility_settings
-│
+├── auth_identity
+├── AthleteProfile memberships through ProfileUsers[]
 └── ProfessionalProfile (0..1)
     ├── professional_types[]
     │   ├── recruiter
@@ -376,29 +541,52 @@ h1 {
     │   ├── agent
     │   └── future_professional_types
     │
-    └── WorkspaceMemberships[]
+    └── ScoutWorkspace
+        └── AgencyAffiliations[]
 
-Workspace
-├── workspace_type
-│   ├── individual
-│   └── organization
-├── members
-├── permissions
-└── Projects[]
+AthleteProfile
+├── profile_data
+├── sport_profiles
+├── playing_history
+├── media
+├── documents
+├── visibility_settings
+└── ProfileUsers[]
+    ├── athlete user
+    ├── guardian user
+    └── future additional guardian / manager
+
+ScoutWorkspace
+├── scout_id
+├── RecruitingProjects[]
+├── AgencyAffiliations[]
+└── activity_log
+
+Agency
+├── agency_profile
+└── linked_scouts[]
 
 Project
 ├── project_type
-├── members
+├── lead_scout_id
+├── optional affiliation_id
 ├── athlete_records
 ├── tasks
 ├── notes
 └── activity_log
 
-Important rules:
-- One User can have at most one AthleteProfile.
-- One User can have at most one ProfessionalProfile.
-- A ProfessionalProfile can support multiple professional_types.
-- Workspace is the shared operating layer.
+	Important rules:
+	- One User can be linked to one or more profile types.
+	- One User can have at most one ProfessionalProfile.
+	- AthleteProfile can have one or more associated User accounts through ProfileUsers[].
+	- ProfileUsers[] stores relationship and permission context.
+	- AthleteProfile is the public showcase profile in MVP.
+		- ProfessionalProfile is private; Scout Profile is its identity and professional context UI.
+		- Recruiter Dashboard shows the private scout activity summary.
+	- A ProfessionalProfile can support multiple professional_types.
+	- ScoutWorkspace is the MVP operating layer.
+- Agency is a grouping skeleton in MVP, not a separate workflow.
+- Line 2 adds permissions, visibility, reporting, and audit logs around linked scout work.
 - Project meaning depends on professional_type.
 
 MVP implementation:

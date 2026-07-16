@@ -596,9 +596,6 @@ body {
      <a href="../index.html">
       Platform
      </a>
-     <a href="../signup.html">
-      Create Account
-     </a>
      <a href="../athlete/overview.html">
       Athlete View
      </a>
@@ -613,7 +610,7 @@ body {
     Recruiter Overview
    </a>
    <a href="scout-profile.html">
-    Scout Profile
+    Professional Profile
    </a>
    <a href="dashboard.html">
     Dashboard
@@ -641,7 +638,7 @@ body {
       Evaluation Management
      </h1>
      <p>
-      Review project-specific evaluations, rating history, and scout follow-up around this athlete. Requests and conversations stay tied to this scout-athlete relationship.
+      Review project-specific evaluations, rating history, and collaboration around this athlete. Requests and conversations are shared at workspace-athlete level.
      </p>
     </div>
    </div>
@@ -700,7 +697,7 @@ body {
 
 The same athlete can belong to multiple recruiting projects.
 
-Each project can have its own criteria, pipeline status, priority level, lead scout, evaluations, requests, conversation, and notes. Collaborator review is a future scale feature.
+Each project can have its own criteria, pipeline status, primary scout, collaborators, evaluations, requests, conversation, and shared notes.
 
 Backend relationship:
 AthleteProfile
@@ -775,11 +772,11 @@ evaluation_management" data-title="Project-Based Evaluation" onclick="openBacken
      </span>
     </div>
     <div class="summary-card">
-     <strong id="summaryPriority">
-      High
+     <strong>
+      1
      </strong>
      <span>
-      Priority Level
+      Active Draft
      </span>
     </div>
     <div class="summary-card">
@@ -930,12 +927,12 @@ evaluation_management" data-title="Project-Based Evaluation" onclick="openBacken
        Project Assignment
       </h2>
       <p class="section-subtitle">
-       Lead scout responsibility for this athlete within the selected recruiting project.
+       Ownership and collaborators for this athlete within the selected recruiting project.
       </p>
       <div class="rating-breakdown">
        <div class="rating-row">
         <span>
-         Lead Scout
+         Primary Scout
         </span>
         <span>
          Mike Brown
@@ -943,10 +940,10 @@ evaluation_management" data-title="Project-Based Evaluation" onclick="openBacken
        </div>
        <div class="rating-row">
         <span>
-         Future Collaborators
+         Collaborators
         </span>
         <span>
-         Deferred until team collaboration is validated
+         Sarah Wilson, David Lee
         </span>
        </div>
        <div class="rating-row">
@@ -1021,7 +1018,6 @@ evaluation_management" data-title="Project-Based Evaluation" onclick="openBacken
           criteria: "Midfielder · Age 15–17 · Ontario · Academy level · Highlight video required",
           rating: "8.0",
           evaluations: "3",
-          priority: "High",
           last: "Jun 12",
           projectName: "U17 Midfielders",
           history: "Evaluations submitted for this athlete within U17 Midfielders. Scores are combined into the project-specific team rating.",
@@ -1078,7 +1074,6 @@ evaluation_management" data-title="Project-Based Evaluation" onclick="openBacken
           criteria: "Any position · Ontario · Academy level · Verified profile preferred",
           rating: "7.4",
           evaluations: "2",
-          priority: "Medium",
           last: "Jun 10",
           projectName: "Ontario Prospects",
           history: "Evaluations submitted for this athlete within Ontario Prospects. This rating is separate from U17 Midfielders.",
@@ -1127,7 +1122,6 @@ evaluation_management" data-title="Project-Based Evaluation" onclick="openBacken
           criteria: "Spain-based scouting list · Attacking roles · Age 16–19 · Full match preferred",
           rating: "No rating",
           evaluations: "0",
-          priority: "Low",
           last: "—",
           projectName: "Spain Targets",
           history: "This athlete is listed in Spain Targets, but no evaluations have been submitted in this project context yet.",
@@ -1163,7 +1157,6 @@ evaluation_management" data-title="Project-Based Evaluation" onclick="openBacken
       document.getElementById("criteriaText").textContent = selected.criteria;
       document.getElementById("summaryRating").textContent = selected.rating;
       document.getElementById("summaryEvaluations").textContent = selected.evaluations;
-      document.getElementById("summaryPriority").textContent = selected.priority;
       document.getElementById("summaryLastSubmitted").textContent = selected.last;
       document.getElementById("historySubtitle").textContent = selected.history;
       document.getElementById("breakdownSubtitle").textContent = selected.breakdownSubtitle;

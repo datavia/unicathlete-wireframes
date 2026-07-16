@@ -1,0 +1,2740 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>
+   Create Account
+  </title>
+  <style>
+   :root {
+  --navy:#111827;
+  --blue:#2563eb;
+  --blue-light:#eff6ff;
+  --green:#16a34a;
+  --green-light:#ecfdf5;
+  --orange:#f97316;
+  --orange-light:#fff7ed;
+  --purple:#7c3aed;
+  --purple-light:#f5f3ff;
+  --yellow:#ca8a04;
+  --yellow-light:#fefce8;
+  --gray-bg:#f3f4f6;
+  --border:#e5e7eb;
+  --text:#111827;
+  --muted:#6b7280;
+  --card:#fff
+}
+* {
+  box-sizing:border-box
+}
+body {
+  font-family:Arial,sans-serif;
+  margin:0;
+  background:var(--gray-bg);
+  color:var(--text);
+  line-height:1.45;
+  padding-top:56px!important
+}
+.app-header {
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:5000;
+  height:56px;
+  background:#0f172a;
+  border-bottom:1px solid rgba(255,255,255,.10);
+  box-shadow:0 4px 14px rgba(0,0,0,.16);
+  padding:0 24px;
+  display:flex;
+  align-items:center
+}
+.app-header-inner {
+  width:100%;
+  max-width:1380px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px
+}
+.app-logo {
+  color:white;
+  text-decoration:none;
+  font-size:16px;
+  letter-spacing:.06em;
+  font-weight:900;
+  white-space:nowrap
+}
+.app-switch {
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:999px;
+  padding:4px
+}
+.app-switch a {
+  color:#cbd5e1;
+  text-decoration:none;
+  border-radius:999px;
+  padding:6px 10px;
+  font-size:12px;
+  font-weight:900;
+  white-space:nowrap
+}
+.app-switch a.active {
+  background:white;
+  color:#111827
+}
+.page {
+  max-width:980px;
+  margin:28px auto;
+  padding:0 28px 42px
+}
+.signup-card {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:18px;
+  box-shadow:0 6px 18px rgba(15,23,42,.05);
+  overflow:hidden
+}
+.signup-header {
+  padding:22px 24px;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  align-items:flex-start
+}
+.signup-header h1 {
+  margin:0 0 6px;
+  color:var(--navy);
+  font-size:28px;
+  letter-spacing:-.3px
+}
+.signup-header p {
+  margin:0;
+  color:var(--muted);
+  max-width:620px
+}
+.step-count {
+  background:var(--blue-light);
+  color:var(--blue);
+  border:1px solid #bfdbfe;
+  border-radius:999px;
+  padding:7px 10px;
+  font-size:12px;
+  font-weight:900;
+  white-space:nowrap
+}
+.progress {
+  height:8px;
+  background:#e5e7eb;
+  overflow:hidden
+}
+.progress div {
+  height:100%;
+  width:16%;
+  background:var(--blue);
+  transition:.2s ease
+}
+.screen {
+  display:none;
+  padding:26px 24px 24px
+}
+.screen.active {
+  display:block
+}
+.label {
+  display:inline-flex;
+  background:var(--blue-light);
+  color:var(--blue);
+  border:1px solid #bfdbfe;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:900;
+  margin-bottom:12px
+}
+h2 {
+  margin:0 0 8px;
+  color:var(--navy);
+  font-size:22px
+}
+p {
+  margin:0;
+  color:var(--muted)
+}
+.choice-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:18px
+}
+.choice {
+  width:100%;
+  min-height:130px;
+  background:#f9fafb;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+  text-align:left;
+  cursor:pointer;
+  font-family:Arial,sans-serif
+}
+.choice:hover,.choice.selected {
+  background:white;
+  border-color:#bfdbfe;
+  box-shadow:0 10px 24px rgba(37,99,235,.12)
+}
+.choice strong {
+  display:block;
+  color:var(--navy);
+  font-size:17px;
+  margin-bottom:6px
+}
+.choice span {
+  display:block;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.4
+}
+.age-step-intro {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 260px;
+  gap:18px;
+  align-items:start;
+  margin-bottom:20px
+}
+.age-step-note {
+  background:#f8fafc;
+  border:1px solid #dbeafe;
+  border-radius:14px;
+  padding:14px;
+  color:#1e3a8a;
+  font-size:13px;
+  line-height:1.45
+}
+.age-step-note strong {
+  display:block;
+  color:#1d4ed8;
+  font-size:12px;
+  text-transform:uppercase;
+  margin-bottom:5px
+}
+.age-band-section {
+  margin-top:22px
+}
+.section-label {
+  display:block;
+  color:var(--muted);
+  font-size:12px;
+  font-weight:900;
+  text-transform:uppercase;
+  margin-bottom:10px
+}
+.age-band-grid {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px
+}
+.age-band-grid .choice {
+  min-height:150px;
+  padding:16px;
+  border-radius:14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between
+}
+.age-band-grid .choice strong {
+  font-size:19px
+}
+.age-band-grid .choice small {
+  display:inline-flex;
+  align-self:flex-start;
+  background:white;
+  border:1px solid var(--border);
+  border-radius:999px;
+  padding:5px 8px;
+  color:var(--muted);
+  font-size:11px;
+  font-weight:900;
+  text-transform:uppercase;
+  margin-top:12px
+}
+.form-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:18px
+}
+.field {
+  display:grid;
+  gap:6px
+}
+.field label {
+  color:var(--muted);
+  font-size:12px;
+  font-weight:900;
+  text-transform:uppercase
+}
+.required {
+  color:#dc2626;
+  font-weight:900
+}
+.field input,.field select {
+  width:100%;
+  border:1px solid var(--border);
+  background:#f9fafb;
+  color:var(--navy);
+  border-radius:10px;
+  padding:11px 12px;
+  font-size:14px;
+  font-family:Arial,sans-serif
+}
+.field-help {
+  margin:0;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.35
+}
+.field-help strong {
+  color:var(--navy)
+}
+.field-help-link {
+  border:0;
+  background:transparent;
+  color:var(--blue);
+  padding:0;
+  font:inherit;
+  font-weight:900;
+  text-align:left;
+  cursor:pointer
+}
+.field-help-link:hover {
+  text-decoration:underline
+}
+.field.full {
+  grid-column:1 / -1
+}
+.path-form {
+  background:#f9fafb;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:16px;
+  margin-top:18px
+}
+.path-form h3 {
+  margin:0 0 4px;
+  color:var(--navy);
+  font-size:15px
+}
+.path-form > p {
+  margin:0 0 14px;
+  color:var(--muted);
+  font-size:13px
+}
+.path-form .form-grid {
+  margin-top:0
+}
+.info-box {
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  color:#9a3412;
+  border-radius:14px;
+  padding:14px;
+  font-size:14px;
+  font-weight:800;
+  margin-top:16px
+}
+.required-note {
+  background:#fef2f2;
+  border:1px solid #fecaca;
+  color:#991b1b;
+  border-radius:12px;
+  padding:12px;
+  font-size:13px;
+  font-weight:900;
+  margin-top:14px
+}
+.email-consent-preview {
+  background:#f8fafc;
+  border:1px solid #cbd5e1;
+  border-radius:16px;
+  padding:16px;
+  margin-top:18px;
+  box-shadow:0 12px 30px rgba(15,23,42,.08)
+}
+.email-preview-head {
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
+  border-bottom:1px solid #e2e8f0;
+  padding-bottom:12px;
+  margin-bottom:12px
+}
+.email-preview-head span {
+  display:block;
+  color:var(--muted);
+  font-size:11px;
+  font-weight:900;
+  text-transform:uppercase;
+  margin-bottom:4px
+}
+.email-preview-head strong {
+  display:block;
+  color:var(--navy);
+  font-size:15px
+}
+.email-badge {
+  background:#dcfce7;
+  border:1px solid #bbf7d0;
+  color:#166534;
+  border-radius:999px;
+  padding:5px 9px;
+  font-size:11px;
+  font-weight:900;
+  text-transform:uppercase;
+  white-space:nowrap
+}
+.email-consent-preview p {
+  margin:0 0 14px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.45
+}
+.email-preview-mode .consent-form-shell {
+  background:#f8fafc;
+  border:1px solid #cbd5e1;
+  border-radius:16px;
+  padding:16px;
+  margin-top:18px;
+  box-shadow:0 12px 30px rgba(15,23,42,.08)
+}
+.email-preview-mode .consent-form-shell p {
+  margin:0 0 14px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.45
+}
+.email-preview-only {
+  display:none
+}
+.email-preview-mode .required-note {
+  background:#eff6ff;
+  border-color:#bfdbfe;
+  color:#1d4ed8
+}
+.email-preview-mode .email-preview-only {
+  display:block
+}
+.email-preview-mode .consent-list {
+  background:white;
+  border:1px solid #dbeafe;
+  border-radius:16px;
+  padding:14px;
+  box-shadow:0 12px 30px rgba(37,99,235,.08)
+}
+.email-preview-mode .consent-item {
+  background:#f8fafc
+}
+.email-envelope-card {
+  display:none
+}
+.email-preview-mode .consent-email-frame {
+  background:linear-gradient(180deg,#eff6ff 0%,#f8fafc 100%);
+  border:2px solid #93c5fd;
+  border-radius:16px;
+  padding:16px;
+  box-shadow:0 16px 38px rgba(37,99,235,.16)
+}
+.email-preview-mode .consent-email-frame .label {
+  background:#dcfce7;
+  border-color:#bbf7d0;
+  color:#166534
+}
+.email-preview-mode .email-envelope-card {
+  display:grid;
+  gap:8px;
+  background:white;
+  border:1px solid #bfdbfe;
+  border-radius:14px;
+  padding:14px;
+  margin-bottom:16px;
+  box-shadow:0 8px 20px rgba(37,99,235,.10)
+}
+.email-envelope-row {
+  display:grid;
+  grid-template-columns:72px 1fr;
+  gap:10px;
+  color:var(--navy);
+  font-size:13px
+}
+.email-envelope-row span {
+  color:var(--muted);
+  font-size:11px;
+  font-weight:900;
+  text-transform:uppercase
+}
+.inline-email-preview {
+  background:linear-gradient(180deg,#eff6ff 0%,#f8fafc 100%);
+  border:2px solid #93c5fd;
+  border-radius:16px;
+  padding:16px;
+  margin-top:16px;
+  box-shadow:0 12px 28px rgba(37,99,235,.14)
+}
+.inline-email-preview h3 {
+  margin:0 0 8px;
+  color:#1d4ed8;
+  font-size:15px
+}
+.inline-email-preview p {
+  margin:0 0 12px;
+  color:#1e3a8a;
+  font-size:13px
+}
+.consent-version-pill {
+  display:inline-flex;
+  background:#dbeafe;
+  border:1px solid #93c5fd;
+  border-radius:999px;
+  color:#1d4ed8;
+  font-size:12px;
+  font-weight:900;
+  padding:6px 10px;
+  margin:12px 0
+}
+.filtered-consent-heading {
+  display:block;
+  color:#1d4ed8;
+  font-size:12px;
+  font-weight:900;
+  text-transform:uppercase;
+  margin:12px 0 0
+}
+.email-verification-step {
+  background:white;
+  border:1px solid #bfdbfe;
+  border-radius:16px;
+  padding:14px;
+  margin-top:14px;
+  box-shadow:0 10px 24px rgba(37,99,235,.10)
+}
+.email-verification-step header {
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
+  margin-bottom:12px
+}
+.email-verification-step h4 {
+  margin:0;
+  color:var(--navy);
+  font-size:14px
+}
+.email-verification-step p {
+  margin:4px 0 0;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.45
+}
+.verification-status {
+  background:#ecfeff;
+  border:1px solid #a5f3fc;
+  color:#0e7490;
+  border-radius:999px;
+  padding:5px 9px;
+  font-size:11px;
+  font-weight:900;
+  text-transform:uppercase;
+  white-space:nowrap
+}
+.verification-mini-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px
+}
+.verification-mini-item {
+  background:#f8fafc;
+  border:1px solid #e2e8f0;
+  border-radius:12px;
+  padding:10px
+}
+.verification-mini-item span {
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+  font-weight:900;
+  text-transform:uppercase;
+  margin-bottom:4px
+}
+.verification-mini-item strong {
+  display:block;
+  color:var(--navy);
+  font-size:12px;
+  line-height:1.25
+}
+.verification-later-note {
+  background:#eff6ff;
+  border:1px solid #bfdbfe;
+  color:#1d4ed8;
+  border-radius:12px;
+  padding:10px;
+  font-size:12px;
+  font-weight:800;
+  margin-top:10px
+}
+.email-preview-mode .consent-email-frame .consent-form-shell {
+  background:transparent;
+  border:0;
+  border-radius:0;
+  padding:0;
+  margin-top:14px;
+  box-shadow:none
+}
+.rule-list {
+  background:#f9fafb;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:16px;
+  margin-top:14px
+}
+.rule-note-header {
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  align-items:flex-start;
+  margin-bottom:12px
+}
+.rule-list h3 {
+  margin:0;
+  color:var(--navy);
+  font-size:15px
+}
+.rule-list p {
+  margin:0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.45
+}
+.rule-chip {
+  flex:0 0 auto;
+  background:#e0f2fe;
+  color:#075985;
+  border:1px solid #bae6fd;
+  border-radius:999px;
+  padding:5px 9px;
+  font-size:11px;
+  font-weight:900;
+  text-transform:uppercase;
+  white-space:nowrap
+}
+.rule-card-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px
+}
+.rule-card {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:12px
+}
+.rule-card strong {
+  display:block;
+  color:var(--navy);
+  font-size:13px;
+  margin-bottom:6px
+}
+.rule-card ul {
+  margin:0;
+  padding-left:18px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.5
+}
+.rule-card.approval {
+  border-color:#fed7aa;
+  background:#fff7ed
+}
+.rule-card.allowed {
+  border-color:#bbf7d0;
+  background:#f0fdf4
+}
+.consent-list {
+  display:grid;
+  gap:10px;
+  margin-top:18px
+}
+.consent-item {
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:10px;
+  align-items:flex-start;
+  background:#f9fafb;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:12px
+}
+.consent-item input {
+  margin-top:3px
+}
+.consent-item span {
+  color:var(--navy);
+  font-size:14px;
+  font-weight:800;
+  line-height:1.4
+}
+.consent-item small {
+  display:block;
+  color:var(--muted);
+  font-size:12px;
+  font-weight:400;
+  margin-top:3px;
+  line-height:1.35
+}
+.summary-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:18px
+}
+.summary-item {
+  background:#f9fafb;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:14px
+}
+.summary-item span {
+  display:block;
+  color:var(--muted);
+  font-size:12px;
+  font-weight:900;
+  text-transform:uppercase;
+  margin-bottom:5px
+}
+.summary-item strong {
+  color:var(--navy);
+  font-size:15px
+}
+.actions {
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:center;
+  padding:18px 24px 24px;
+  border-top:1px solid var(--border)
+}
+.button {
+  border:none;
+  border-radius:10px;
+  padding:11px 15px;
+  font-size:13px;
+  font-weight:900;
+  cursor:pointer;
+  font-family:Arial,sans-serif
+}
+.button:disabled {
+  opacity:.45;
+  cursor:not-allowed
+}
+.btn-primary {
+  background:var(--blue);
+  color:white
+}
+.btn-light {
+  background:white;
+  color:var(--navy);
+  border:1px solid var(--border)
+}
+.spec-link {
+  display:inline-flex;
+  margin-top:16px;
+  color:var(--blue);
+  font-size:13px;
+  font-weight:900;
+  text-decoration:none
+}
+.spec-link:hover {
+  text-decoration:underline
+}
+.path-hidden {
+  display:none!important
+}
+@media (max-width: 820px) {
+  body {
+  padding-top:86px!important
+}
+.app-header {
+  height:auto;
+  min-height:86px;
+  padding:12px 18px
+}
+.app-header-inner {
+  align-items:flex-start;
+  flex-direction:column;
+  gap:10px
+}
+.app-switch {
+  width:100%;
+  overflow-x:auto;
+  justify-content:flex-start
+}
+.page {
+  padding:0 18px 36px
+}
+.signup-header {
+  flex-direction:column
+}
+.choice-grid,.form-grid,.summary-grid,.rule-card-grid,.age-step-intro,.age-band-grid,.verification-mini-grid {
+  grid-template-columns:1fr
+}
+.rule-note-header {
+  flex-direction:column
+}
+.field.full {
+  grid-column:auto
+}
+}
+  </style>
+ </head>
+ <body>
+  <header class="app-header">
+   <div class="app-header-inner">
+    <a class="app-logo" href="index.html">
+     UNICATHLETE
+    </a>
+    <nav aria-label="Platform view switcher" class="app-switch">
+     <a href="index.html">
+      Platform
+     </a>
+     <a class="active" href="signup.html">
+      Create Account
+     </a>
+     <a href="athlete/overview.html">
+      Athlete View
+     </a>
+     <a href="recruiter/overview.html">
+      Recruiter View
+     </a>
+    </nav>
+   </div>
+  </header>
+  <main class="page">
+   <section class="signup-card">
+    <div class="signup-header">
+     <div>
+      <h1 id="screenTitle">
+       Choose Profile Type
+      </h1>
+     </div>
+     <div class="step-count" id="stepCount">
+      Step 1 of 6
+     </div>
+    </div>
+    <div class="progress">
+     <div id="progressBar">
+     </div>
+    </div>
+    <div class="screen active" data-step="profile-type">
+     <span class="label">
+      Create Account
+     </span>
+     <div class="choice-grid">
+      <button class="choice" data-choice="athlete" onclick="selectChoice('profileType','athlete', this)">
+       <strong>
+        Athlete Profile
+       </strong>
+       <span>
+        Create a public recruiting portfolio for an athlete.
+       </span>
+      </button>
+      <button class="choice" data-choice="scout" onclick="selectChoice('profileType','scout', this)">
+       <strong>
+        Professional / Scout Profile
+       </strong>
+       <span>
+        Create a private scout workspace. This branch will be specified after the athlete path is confirmed.
+       </span>
+      </button>
+     </div>
+    </div>
+    <div class="screen" data-step="dob">
+     <span class="label">
+      Athlete Details
+     </span>
+     <div class="age-step-intro">
+      <div>
+       <div class="form-grid">
+       <div class="field">
+        <label for="athleteName">
+         Athlete name <span class="required">*</span>
+        </label>
+         <input id="athleteName" placeholder="Example: Sofia Martin" type="text"/>
+        </div>
+        <div class="field">
+         <label for="athleteDob">
+          Athlete date of birth <span class="required">*</span>
+         </label>
+         <input id="athleteDob" type="date"/>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="age-band-section">
+      <span class="section-label">
+       Age group preview
+      </span>
+      <div class="age-band-grid">
+       <button class="choice" onclick="selectChoice('ageBand','under14', this)">
+        <span>
+         <strong>
+          Under 14
+         </strong>
+         Parent or guardian creates and manages the athlete profile.
+        </span>
+        <small>
+         Guardian managed
+        </small>
+       </button>
+       <button class="choice" onclick="selectChoice('ageBand','teen1415', this)">
+        <span>
+         <strong>
+          14-15
+         </strong>
+         Athlete can have supervised login. Guardian approval is required for messages.
+        </span>
+        <small>
+         Supervised
+        </small>
+       </button>
+       <button class="choice" onclick="selectChoice('ageBand','teen1617', this)">
+        <span>
+         <strong>
+          16-17
+         </strong>
+         Independent messaging can be enabled only after athlete and guardian consent.
+        </span>
+        <small>
+         Connected
+        </small>
+       </button>
+       <button class="choice" onclick="selectChoice('ageBand','adult', this)">
+        <span>
+         <strong>
+          18+
+         </strong>
+         Athlete manages their own account, profile visibility, and scout communication.
+        </span>
+        <small>
+         Independent
+        </small>
+       </button>
+      </div>
+     </div>
+     <div class="info-box">
+      No age group gives immediate scout visibility. Visibility still depends on account verification, profile readiness, and the selected visibility setting.
+     </div>
+    </div>
+    <div class="screen" data-step="guardian">
+     <span class="label">
+      Under-14 Athlete
+     </span>
+     <p>
+      Because this athlete is under 14, a parent or legal guardian must create and manage the account.
+     </p>
+     <div class="form-grid">
+      <div class="field">
+       <label for="guardianName">
+        Guardian name <span class="required">*</span>
+       </label>
+       <input id="guardianName" placeholder="Guardian full name" type="text"/>
+      </div>
+      <div class="field">
+       <label for="guardianEmail">
+        Guardian email <span class="required">*</span>
+       </label>
+       <input id="guardianEmail" placeholder="guardian@email.com" type="email"/>
+      </div>
+      <div class="field">
+       <label for="guardianRelation">
+        Relationship to athlete <span class="required">*</span>
+       </label>
+       <select id="guardianRelation">
+        <option>
+         Parent
+        </option>
+        <option>
+         Legal guardian
+        </option>
+        <option>
+         Other authorized guardian
+        </option>
+       </select>
+      </div>
+      <div class="field">
+       <label for="guardianPassword">
+        Password <span class="required">*</span>
+       </label>
+       <input id="guardianPassword" placeholder="Create password" type="password"/>
+      </div>
+     </div>
+    </div>
+    <div class="screen" data-step="consent">
+     <span class="label">
+      Under-14 Athlete
+     </span>
+     <div class="required-note">
+      Account activation requires every consent item on this form to be checked.
+     </div>
+      <div class="consent-list">
+      <label class="consent-item">
+       <input class="required-consent" type="checkbox"/>
+       <span>
+        I confirm that I am the parent or legal guardian of this athlete.
+        <small>
+         This confirmation is required because the athlete is under 14 and cannot manage the account independently.
+        </small>
+       </span>
+      </label>
+      <label class="consent-item">
+       <input class="required-consent" type="checkbox"/>
+       <span>
+        I consent to creating and managing this athlete profile on UnicAthlete.
+        <small>
+         I understand that I will manage profile information, media, visibility settings, scout messages, and information requests.
+        </small>
+       </span>
+      </label>
+      <label class="consent-item">
+       <input class="required-consent" type="checkbox"/>
+       <span>
+        I consent to UnicAthlete processing the athlete profile information for athlete discovery and recruiting review.
+        <small>
+         The platform should collect only what is needed for the athlete profile and recruiting workflow.
+        </small>
+       </span>
+      </label>
+      <label class="consent-item">
+       <input class="required-consent" type="checkbox"/>
+       <span>
+        I understand that verified scouts may view the athlete profile according to the visibility settings I choose.
+        <small>
+         Scout access may include verified scouts in Canada, the United States, or other countries.
+        </small>
+       </span>
+      </label>
+      <label class="consent-item">
+       <input class="required-consent" type="checkbox"/>
+       <span>
+        I understand that scout messages and information requests will be handled through my guardian account.
+        <small>
+         The athlete will not have an independent login or independent messaging in the under-14 MVP flow.
+        </small>
+       </span>
+      </label>
+      <label class="consent-item">
+       <input class="required-consent" type="checkbox"/>
+       <span>
+        I understand I can request access, correction, deletion, or withdraw consent, subject to platform and legal requirements.
+        <small>
+         Consent and policy versions are recorded for audit history.
+        </small>
+       </span>
+      </label>
+      <label class="consent-item">
+       <input class="required-consent" type="checkbox"/>
+       <span>
+        I agree to the Privacy Policy and Terms.
+        <small>
+         Links will open the current legal documents before launch.
+        </small>
+       </span>
+      </label>
+     </div>
+    </div>
+    <div class="screen" data-step="teen-access">
+     <span class="label">
+      Age 14-15 Athlete
+     </span>
+     <p>
+      This athlete can have their own login, but guardian connection and message approval are required.
+     </p>
+     <div class="choice-grid">
+      <button class="choice" data-manager-choice="athlete_supervised" onclick="selectChoice('manager','athlete_supervised', this)">
+       <strong>
+        I am the athlete
+       </strong>
+       <span>
+        I create my login first. Guardian consent is collected through a secure email approval link.
+       </span>
+      </button>
+      <button class="choice" data-manager-choice="guardian_supervised" onclick="selectChoice('manager','guardian_supervised', this)">
+       <strong>
+        I am a parent / guardian
+       </strong>
+       <span>
+        I consent inside the platform first, then invite the athlete to create their login.
+       </span>
+      </button>
+     </div>
+     <div class="info-box">
+      Messages can be drafted by the athlete, but they wait for guardian approval before being sent.
+     </div>
+    </div>
+    <div class="screen" data-step="teen-account-athlete">
+     <span class="label">
+      Age 14-15 Athlete
+     </span>
+     <p id="teenAccountIntro">
+      The athlete creates their own login and provides guardian contact details only so the system can send the approval link.
+     </p>
+     <div class="path-form">
+      <div class="form-grid">
+       <div class="field">
+        <label>
+         Athlete email <span class="required">*</span>
+        </label>
+        <input placeholder="athlete@email.com" type="email"/>
+        <p class="field-help">
+         <strong>
+          Don't have an email?
+         </strong>
+         <button class="field-help-link" onclick="switchTeenSignupPath('guardian_supervised')" type="button">
+          A parent or guardian can start the account and invite the athlete later.
+         </button>
+        </p>
+       </div>
+       <div class="field">
+        <label>
+         Athlete password <span class="required">*</span>
+        </label>
+        <input placeholder="Created by athlete" type="password"/>
+       </div>
+       <div class="field">
+        <label>
+         Guardian name <span class="required">*</span>
+        </label>
+        <input placeholder="Guardian full name" type="text"/>
+       </div>
+       <div class="field">
+        <label>
+         Guardian email for approval link <span class="required">*</span>
+        </label>
+        <input placeholder="guardian@email.com" type="email"/>
+       </div>
+       <div class="field">
+        <label>
+         Relationship to athlete <span class="required">*</span>
+        </label>
+        <select>
+         <option>
+          Parent
+         </option>
+         <option>
+          Legal guardian
+         </option>
+         <option>
+          Other authorized guardian
+         </option>
+        </select>
+       </div>
+      </div>
+     </div>
+     <div class="info-box" id="teenAccountNotice">
+      Before the profile becomes visible or messaging is enabled, the guardian must approve through the secure email link.
+     </div>
+     <div class="inline-email-preview">
+      <h3>
+       Guardian approval happens by email
+      </h3>
+      <p>
+       After the athlete submits this step, the guardian receives a secure approval email. The consent points below show what the guardian approves from that email.
+      </p>
+      <div class="email-envelope-card" style="display:grid">
+       <div class="email-envelope-row">
+        <span>
+         To
+        </span>
+        Guardian email for approval link
+       </div>
+       <div class="email-envelope-row">
+        <span>
+         Subject
+        </span>
+        Approve supervised access for a 14-15 athlete
+       </div>
+       <div class="email-envelope-row">
+        <span>
+         Opens
+        </span>
+        Guardian consent form
+       </div>
+      </div>
+      <div class="required-note">
+       Email approval requires every consent item to be checked by the guardian.
+      </div>
+      <div class="consent-list">
+       <label class="consent-item">
+        <input class="required-teen-consent" type="checkbox"/>
+        <span>
+         I confirm that I am the parent or legal guardian of this athlete.
+         <small>
+          Guardian connection is required for athletes aged 14-15.
+         </small>
+        </span>
+       </label>
+       <label class="consent-item">
+        <input class="required-teen-consent" type="checkbox"/>
+        <span>
+         I consent to this athlete having supervised access to their athlete profile.
+         <small>
+          The athlete can log in, but guardian supervision remains active.
+         </small>
+        </span>
+       </label>
+       <label class="consent-item">
+        <input class="required-teen-consent" type="checkbox"/>
+        <span>
+         I understand that athlete messages require guardian approval before they are sent.
+         <small>
+          Drafts are held until the guardian approves them.
+         </small>
+        </span>
+       </label>
+       <label class="consent-item">
+        <input class="required-teen-consent" type="checkbox"/>
+        <span>
+         I consent to athlete profile information being processed for athlete discovery and recruiting review.
+         <small>
+          Verified scouts may view the profile according to visibility settings.
+         </small>
+        </span>
+       </label>
+       <label class="consent-item">
+        <input class="required-teen-consent" type="checkbox"/>
+        <span>
+         I understand that verified scouts may be located in Canada, the United States, or other countries.
+         <small>
+          International access is handled under platform privacy safeguards.
+         </small>
+        </span>
+       </label>
+       <label class="consent-item">
+        <input class="required-teen-consent" type="checkbox"/>
+        <span>
+         I agree to the Privacy Policy and Terms.
+         <small>
+          Links will open the current legal documents before launch.
+         </small>
+        </span>
+       </label>
+      </div>
+      <div class="email-verification-step">
+       <header>
+        <div>
+         <h4>
+          Guardian identity verification
+         </h4>
+         <p>
+          After consent, the same secure email link can continue into guardian ID verification.
+         </p>
+        </div>
+       </header>
+       <div class="verification-mini-grid">
+        <div class="verification-mini-item">
+         <span>
+          Opens
+         </span>
+         <strong>
+          Hosted third-party verification
+         </strong>
+        </div>
+        <div class="verification-mini-item">
+         <span>
+          Platform stores
+         </span>
+         <strong>
+          Result and provider reference only
+         </strong>
+        </div>
+        <div class="verification-mini-item">
+         <span>
+          If skipped
+         </span>
+         <strong>
+          Profile stays not scout-visible
+         </strong>
+        </div>
+       </div>
+       <div class="verification-later-note">
+        The guardian may choose Verify later. Profile setup can continue, but scout visibility, messaging, and information requests stay locked until verification is complete.
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="screen" data-step="teen-account-guardian">
+     <span class="label">
+      Age 14-15 Athlete
+     </span>
+     <h2>
+      Create guardian supervised account
+     </h2>
+     <p>
+      The guardian creates their own login first. Athlete login can be invited now or added later.
+     </p>
+     <div class="path-form">
+      <div class="form-grid">
+       <div class="field">
+        <label>
+         Guardian name <span class="required">*</span>
+        </label>
+        <input placeholder="Guardian full name" type="text"/>
+       </div>
+       <div class="field">
+        <label>
+         Guardian email <span class="required">*</span>
+        </label>
+        <input placeholder="guardian@email.com" type="email"/>
+       </div>
+       <div class="field">
+        <label>
+         Guardian password <span class="required">*</span>
+        </label>
+        <input placeholder="Created by guardian" type="password"/>
+       </div>
+       <div class="field">
+        <label>
+         Relationship to athlete <span class="required">*</span>
+        </label>
+        <select>
+         <option>
+          Parent
+         </option>
+         <option>
+          Legal guardian
+         </option>
+         <option>
+          Other authorized guardian
+         </option>
+        </select>
+       </div>
+       <div class="field">
+        <label>
+         Athlete email for login invitation
+        </label>
+        <input placeholder="athlete@email.com" type="email"/>
+        <p class="field-help">
+         Optional at signup. If the athlete does not have an email yet, the guardian can create the supervised profile now and invite the athlete later.
+        </p>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="screen" data-step="teen-consent">
+     <div class="consent-email-frame">
+      <div class="email-envelope-card email-preview-only">
+       <div class="email-envelope-row">
+        <span>
+         From
+        </span>
+        UnicAthlete approvals
+       </div>
+       <div class="email-envelope-row">
+        <span>
+         To
+        </span>
+        Guardian email from previous step
+       </div>
+       <div class="email-envelope-row">
+        <span>
+         Subject
+        </span>
+        Approve supervised access for a 14-15 athlete
+       </div>
+      </div>
+      <span class="label" id="teenConsentLabel">
+       Age 14-15 Athlete
+      </span>
+      <div class="consent-form-shell" id="teenConsentFormShell">
+      <div class="email-preview-head email-preview-only">
+       <div>
+        <span>
+         Guardian secure approval link
+        </span>
+        <strong>
+         Consent form opened from email invitation
+        </strong>
+       </div>
+       <div class="email-badge">
+        Email flow
+       </div>
+      </div>
+      <p class="email-preview-only">
+       In the real product, this consent form is what the guardian reaches from the secure email link sent after the athlete starts signup. Guardian name, email, and relationship were provided in the previous step.
+      </p>
+      <div class="info-box email-preview-only">
+       The guardian email is already identified by the secure link. This page should not ask the guardian to create a password in the athlete-start path.
+      </div>
+      <div class="required-note">
+       Account activation requires every consent item on this form to be checked.
+      </div>
+      <div class="consent-list">
+      <label class="consent-item">
+       <input class="required-teen-consent" type="checkbox"/>
+       <span>
+        I confirm that I am the parent or legal guardian of this athlete.
+        <small>
+         Guardian connection is required for athletes aged 14-15.
+        </small>
+       </span>
+      </label>
+      <label class="consent-item">
+       <input class="required-teen-consent" type="checkbox"/>
+       <span>
+        I consent to this athlete having supervised access to their athlete profile.
+        <small>
+         The athlete can log in, but guardian supervision remains active.
+        </small>
+       </span>
+      </label>
+      <label class="consent-item">
+       <input class="required-teen-consent" type="checkbox"/>
+       <span>
+        I understand that athlete messages require guardian approval before they are sent.
+        <small>
+         Drafts are held until the guardian approves them.
+        </small>
+       </span>
+      </label>
+      <label class="consent-item">
+       <input class="required-teen-consent" type="checkbox"/>
+       <span>
+        I consent to athlete profile information being processed for athlete discovery and recruiting review.
+        <small>
+         Verified scouts may view the profile according to visibility settings.
+        </small>
+       </span>
+      </label>
+      <label class="consent-item">
+       <input class="required-teen-consent" type="checkbox"/>
+       <span>
+        I understand that verified scouts may be located in Canada, the United States, or other countries.
+        <small>
+         International access is handled under platform privacy safeguards.
+        </small>
+       </span>
+      </label>
+      <label class="consent-item">
+       <input class="required-teen-consent" type="checkbox"/>
+       <span>
+        I agree to the Privacy Policy and Terms.
+        <small>
+         Links will open the current legal documents before launch.
+        </small>
+       </span>
+      </label>
+     </div>
+     </div>
+     </div>
+    </div>
+    <div class="screen" data-step="older-teen-access">
+     <span class="label">
+      Age 16-17 Athlete
+     </span>
+     <p>
+      This athlete can have their own account. A guardian remains connected until adult transfer, but communication can be supervised or independent by consent.
+     </p>
+     <div class="choice-grid">
+      <button class="choice" onclick="selectChoice('manager','athlete_older', this)">
+       <strong>
+        I am the athlete
+       </strong>
+       <span>
+        I create my login first. Guardian consent is collected through a secure email link.
+       </span>
+      </button>
+      <button class="choice" onclick="selectChoice('manager','guardian_older', this)">
+       <strong>
+        I am a parent / guardian
+       </strong>
+       <span>
+        I connect as guardian first, then invite the athlete to activate their login.
+       </span>
+      </button>
+     </div>
+     <div class="info-box">
+      Nothing becomes independent automatically at 16. Independent communication requires explicit consent.
+     </div>
+    </div>
+    <div class="screen" data-step="older-teen-account-athlete">
+     <span class="label">
+      Age 16-17 Athlete
+     </span>
+     <h2>
+      Create connected athlete login
+     </h2>
+     <div class="path-form">
+      <div class="form-grid">
+       <div class="field">
+        <label>
+         Athlete email <span class="required">*</span>
+        </label>
+        <input placeholder="athlete@email.com" type="email"/>
+       </div>
+       <div class="field">
+        <label>
+         Athlete password <span class="required">*</span>
+        </label>
+        <input placeholder="Created by athlete" type="password"/>
+       </div>
+       <div class="field">
+        <label>
+         Guardian name <span class="required">*</span>
+        </label>
+        <input placeholder="Guardian full name" type="text"/>
+       </div>
+       <div class="field">
+        <label>
+         Guardian email for consent link <span class="required">*</span>
+        </label>
+        <input placeholder="guardian@email.com" type="email"/>
+       </div>
+       <div class="field">
+        <label>
+         Relationship to athlete <span class="required">*</span>
+        </label>
+        <select>
+         <option>
+          Parent
+         </option>
+         <option>
+          Legal guardian
+         </option>
+         <option>
+          Other authorized guardian
+         </option>
+        </select>
+       </div>
+      </div>
+     </div>
+     <div class="path-form">
+      <h3>
+       Requested communication mode
+      </h3>
+      <p>
+       This choice controls which consent points appear in the guardian email.
+      </p>
+      <div class="choice-grid">
+       <button class="choice" data-comm-choice="supervised_1617" onclick="selectOlderTeenInlineMode('supervised_1617', this)">
+        <strong>
+         Supervised mode
+        </strong>
+        <span>
+         Athlete drafts messages and sensitive request responses. Guardian approves before anything is sent or shared.
+        </span>
+       </button>
+       <button class="choice" data-comm-choice="independent_1617" onclick="selectOlderTeenInlineMode('independent_1617', this)">
+        <strong>
+         Independent communication
+        </strong>
+        <span>
+         Athlete can handle scout messages, information requests, and recruiting sharing directly after guardian consent.
+        </span>
+       </button>
+      </div>
+     </div>
+     <div class="inline-email-preview">
+      <h3>
+       Guardian consent happens by email
+      </h3>
+      <p>
+       After the athlete submits this step, the guardian receives a secure consent email. The consent points below show what the guardian approves from that email.
+      </p>
+      <div class="email-envelope-card" style="display:grid">
+       <div class="email-envelope-row">
+        <span>
+         To
+        </span>
+        Guardian email for consent link
+       </div>
+       <div class="email-envelope-row">
+       <span>
+         Subject
+        </span>
+        <strong id="olderTeenInlineEmailSubject">
+         Confirm supervised guardian consent for a 16-17 athlete
+        </strong>
+       </div>
+       <div class="email-envelope-row">
+        <span>
+         Opens
+        </span>
+        Guardian consent form
+       </div>
+      </div>
+      <div class="required-note">
+       Email consent requires every visible consent item to be checked by the guardian.
+      </div>
+      <div class="consent-version-pill" id="olderTeenInlineConsentVersion">
+       Consent version: Supervised mode
+      </div>
+      <div class="consent-list" id="olderTeenInlineConsentList">
+       <label class="consent-item">
+        <input class="required-older-teen-consent" type="checkbox"/>
+        <span>
+         I confirm that I am the parent or legal guardian of this athlete.
+         <small>
+          Guardian connection remains required for athletes aged 16-17.
+         </small>
+        </span>
+       </label>
+       <label class="consent-item">
+        <input class="required-older-teen-consent" type="checkbox"/>
+        <span>
+         I consent to this athlete having their own connected athlete account.
+         <small>
+          Athlete and guardian have separate logins linked to the same athlete profile.
+         </small>
+        </span>
+       </label>
+       <label class="consent-item">
+        <input class="required-older-teen-consent" type="checkbox"/>
+        <span>
+         I understand that messages, information request responses, and sensitive sharing require guardian approval in supervised mode.
+         <small>
+          Athlete drafts are held in the pending approval queue before being sent or shared.
+         </small>
+        </span>
+       </label>
+       <label class="consent-item">
+        <input class="required-older-teen-consent" type="checkbox"/>
+        <span>
+         I consent to athlete profile information being processed for athlete discovery and recruiting review.
+         <small>
+          Verified scouts may view the profile according to visibility settings.
+         </small>
+        </span>
+       </label>
+       <label class="consent-item">
+        <input class="required-older-teen-consent" type="checkbox"/>
+        <span>
+         I agree to the Privacy Policy and Terms.
+         <small>
+          Links will open the current legal documents before launch.
+         </small>
+        </span>
+       </label>
+      </div>
+      <div class="email-verification-step">
+       <header>
+        <div>
+         <h4>
+          Guardian identity verification
+         </h4>
+         <p>
+          After consent, the same secure email link can continue into guardian ID verification.
+         </p>
+        </div>
+       </header>
+       <div class="verification-mini-grid">
+        <div class="verification-mini-item">
+         <span>
+          Opens
+         </span>
+         <strong>
+          Hosted third-party verification
+         </strong>
+        </div>
+        <div class="verification-mini-item">
+         <span>
+          Platform stores
+         </span>
+         <strong>
+          Result and provider reference only
+         </strong>
+        </div>
+        <div class="verification-mini-item">
+         <span>
+          If skipped
+         </span>
+         <strong>
+          Profile stays not scout-visible
+         </strong>
+        </div>
+       </div>
+       <div class="verification-later-note">
+        The guardian may choose Verify later. Profile setup can continue, but scout visibility, messaging, and information requests stay locked until verification is complete.
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="screen" data-step="older-teen-account-guardian">
+     <span class="label">
+      Age 16-17 Athlete
+     </span>
+     <p id="olderTeenGuardianAccountIntro">
+      The guardian creates their own login first, then invites the athlete to activate their login.
+     </p>
+     <div class="info-box" id="olderTeenGuardianAccountNotice">
+      After guardian consent, the guardian can continue profile setup. The athlete invitation remains pending until the athlete activates their login.
+     </div>
+     <div class="path-form">
+      <div class="form-grid">
+       <div class="field">
+        <label>
+         Guardian name <span class="required">*</span>
+        </label>
+        <input placeholder="Guardian full name" type="text"/>
+       </div>
+       <div class="field">
+        <label>
+         Guardian email <span class="required">*</span>
+        </label>
+        <input placeholder="guardian@email.com" type="email"/>
+       </div>
+       <div class="field">
+        <label>
+         Guardian password <span class="required">*</span>
+        </label>
+        <input placeholder="Created by guardian" type="password"/>
+       </div>
+       <div class="field">
+        <label>
+         Relationship to athlete <span class="required">*</span>
+        </label>
+        <select>
+         <option>
+          Parent
+         </option>
+         <option>
+          Legal guardian
+         </option>
+         <option>
+          Other authorized guardian
+         </option>
+        </select>
+       </div>
+       <div class="field">
+        <label>
+         Athlete email for activation invitation <span class="required">*</span>
+        </label>
+        <input placeholder="athlete@email.com" type="email"/>
+       </div>
+      </div>
+     </div>
+     <div class="path-form">
+      <h3>
+       Requested communication mode
+      </h3>
+      <p>
+       This choice controls which consent points appear in the guardian consent step.
+      </p>
+      <div class="choice-grid">
+       <button class="choice" data-comm-choice="supervised_1617" onclick="selectChoice('commMode','supervised_1617', this)">
+        <strong>
+         Supervised mode
+        </strong>
+        <span>
+         Athlete drafts messages and sensitive request responses. Guardian approves before anything is sent or shared.
+        </span>
+       </button>
+       <button class="choice" data-comm-choice="independent_1617" onclick="selectChoice('commMode','independent_1617', this)">
+        <strong>
+         Independent communication
+        </strong>
+        <span>
+         Athlete can handle scout messages, information requests, and recruiting sharing directly after joint consent.
+        </span>
+       </button>
+      </div>
+     </div>
+     <div class="info-box" id="olderTeenModeNotice">
+      Supervised mode needs guardian consent. Independent mode needs both guardian consent and athlete acceptance; if either side declines, supervised mode wins.
+     </div>
+     <div class="email-consent-preview">
+      <div class="email-preview-head">
+       <div>
+        <span>
+         Athlete invitation email
+        </span>
+        <strong>
+         What the athlete receives after guardian consent
+        </strong>
+       </div>
+       <div class="email-badge">
+        Email preview
+       </div>
+      </div>
+      <div class="email-envelope-card" style="display:grid">
+       <div class="email-envelope-row">
+        <span>
+         To
+        </span>
+        Athlete email for activation invitation
+       </div>
+       <div class="email-envelope-row">
+        <span>
+         Subject
+        </span>
+        Activate your connected athlete account
+       </div>
+       <div class="email-envelope-row">
+        <span>
+         Opens
+        </span>
+        Athlete activation link
+       </div>
+      </div>
+      <p>
+       The athlete opens a secure email link, creates their password, and sees the communication mode requested by the guardian.
+      </p>
+      <div class="form-grid">
+       <div class="field">
+        <label>
+         Athlete password <span class="required">*</span>
+        </label>
+        <input placeholder="Created by athlete from email link" type="password"/>
+       </div>
+      </div>
+      <div class="info-box older-supervised-consent">
+       In supervised mode, the athlete activates their login only. No independent communication choice is shown.
+      </div>
+      <div class="choice-grid older-independent-consent">
+       <button class="choice" type="button">
+        <strong>
+         Accept independent communication
+        </strong>
+        <span>
+         I agree to manage scout messages, information requests, requested media/documents, and recruiting follow-up directly.
+        </span>
+       </button>
+       <button class="choice" type="button">
+        <strong>
+         Keep supervised mode
+        </strong>
+        <span>
+         I want guardian approval to remain required for sensitive scout communication and sharing.
+        </span>
+       </button>
+      </div>
+      <div class="verification-later-note older-independent-consent">
+       Independent communication becomes active only if the athlete accepts it from this email. If they choose supervised mode, supervised mode wins.
+      </div>
+     </div>
+    </div>
+    <div class="screen" data-step="older-teen-consent">
+     <div class="consent-email-frame">
+      <div class="email-envelope-card email-preview-only">
+       <div class="email-envelope-row">
+        <span>
+         From
+        </span>
+        UnicAthlete approvals
+       </div>
+       <div class="email-envelope-row">
+        <span>
+         To
+        </span>
+        Guardian email from previous step
+       </div>
+       <div class="email-envelope-row">
+        <span>
+         Subject
+        </span>
+        Confirm guardian consent for a 16-17 athlete
+       </div>
+      </div>
+      <span class="label" id="olderTeenConsentLabel">
+       Age 16-17 Athlete
+      </span>
+      <div class="consent-form-shell" id="olderTeenConsentFormShell">
+      <div class="email-preview-head email-preview-only">
+       <div>
+        <span>
+         Guardian secure consent link
+        </span>
+        <strong>
+         Consent form opened from email invitation
+        </strong>
+       </div>
+       <div class="email-badge">
+        Email flow
+       </div>
+      </div>
+      <p class="email-preview-only">
+       In the real product, this consent form is what the guardian reaches from the secure email link sent after the athlete starts signup. The guardian email is already identified by that link.
+      </p>
+      <div class="required-note">
+       Account activation requires every consent item on this form to be checked.
+      </div>
+      <div class="consent-list">
+      <label class="consent-item">
+       <input class="required-older-teen-consent" type="checkbox"/>
+       <span>
+        I confirm that I am the parent or legal guardian of this athlete.
+        <small>
+         Guardian connection remains required for athletes aged 16-17.
+        </small>
+       </span>
+      </label>
+      <label class="consent-item">
+       <input class="required-older-teen-consent" type="checkbox"/>
+       <span>
+        I consent to this athlete having their own connected athlete account.
+        <small>
+         Athlete and guardian have separate logins linked to the same athlete profile.
+        </small>
+       </span>
+      </label>
+      <label class="consent-item older-supervised-consent">
+       <input class="required-older-teen-consent" type="checkbox"/>
+       <span>
+        I understand that messages, information request responses, and sensitive sharing require guardian approval in supervised mode.
+        <small>
+         Athlete drafts are held in the pending approval queue before being sent or shared.
+        </small>
+       </span>
+      </label>
+      <label class="consent-item older-independent-consent">
+       <input class="required-older-teen-consent" type="checkbox"/>
+       <span>
+        I consent to this 16-17 athlete managing scout communication and recruiting information sharing independently.
+        <small>
+         This includes messages, information request responses, requested media/documents, and related recruiting follow-up.
+        </small>
+       </span>
+      </label>
+      <label class="consent-item older-independent-consent">
+       <input class="required-older-teen-consent" type="checkbox"/>
+       <span>
+        I understand that guardian approval will not be required for routine scout communication in independent mode.
+        <small>
+         Guardian remains connected for oversight, safety settings, consent controls, and adult transfer.
+        </small>
+       </span>
+      </label>
+      <label class="consent-item older-independent-consent older-guardian-start-field">
+       <input class="required-older-teen-consent" type="checkbox"/>
+       <span>
+        I understand the athlete must also accept independent communication when activating their login.
+        <small>
+         If the athlete chooses supervised mode instead, the account becomes supervised even though guardian permission was granted.
+        </small>
+       </span>
+      </label>
+      <label class="consent-item older-independent-consent older-athlete-start-field">
+       <input class="required-older-teen-consent" type="checkbox"/>
+       <span>
+        I understand that if I do not approve independent communication, the account will use supervised mode.
+        <small>
+         The athlete account can still activate, but guardian approval will be required for sensitive communication and sharing.
+        </small>
+       </span>
+      </label>
+      <label class="consent-item">
+       <input class="required-older-teen-consent" type="checkbox"/>
+       <span>
+        I consent to athlete profile information being processed for athlete discovery and recruiting review.
+        <small>
+         Verified scouts may view the profile according to visibility settings.
+        </small>
+       </span>
+      </label>
+      <label class="consent-item">
+       <input class="required-older-teen-consent" type="checkbox"/>
+       <span>
+        I agree to the Privacy Policy and Terms.
+        <small>
+         Links will open the current legal documents before launch.
+        </small>
+       </span>
+      </label>
+     </div>
+     </div>
+     </div>
+    </div>
+    <div class="screen" data-step="adult-account">
+     <span class="label">
+      18+ Athlete
+     </span>
+     <h2>
+      Create independent athlete account
+     </h2>
+     <p>
+      Adult athletes create and manage their own account, profile visibility, scout communication, and recruiting responses.
+     </p>
+     <div class="form-grid">
+      <div class="field">
+       <label>
+        Athlete email <span class="required">*</span>
+       </label>
+       <input placeholder="athlete@email.com" type="email"/>
+      </div>
+      <div class="field">
+       <label>
+        Password <span class="required">*</span>
+       </label>
+       <input placeholder="Created by athlete" type="password"/>
+      </div>
+     </div>
+     <div class="info-box">
+      Email verification is required before the profile can become scout-visible or messaging can become active.
+     </div>
+    </div>
+    <div class="screen" data-step="adult-consent">
+     <span class="label">
+      Account Consent
+     </span>
+     <h2>
+      Confirm independent account rules
+     </h2>
+     <p>
+      The adult athlete confirms account ownership, data processing, profile visibility, messaging, and platform terms.
+     </p>
+     <div class="required-note">
+      Account activation requires every required item on this form to be checked.
+     </div>
+     <div class="consent-list">
+      <label class="consent-item">
+       <input class="required-adult-consent" type="checkbox"/>
+       <span>
+        I confirm I am creating my own athlete account and will manage my profile.
+        <small>
+         No guardian approval flow applies to adult athlete accounts.
+        </small>
+       </span>
+      </label>
+      <label class="consent-item">
+       <input class="required-adult-consent" type="checkbox"/>
+       <span>
+        I consent to UnicAthlete processing my athlete profile information for discovery and recruiting review.
+        <small>
+         This includes sport profile data, media, evaluations, and recruiting communication records.
+        </small>
+       </span>
+      </label>
+      <label class="consent-item">
+       <input class="required-adult-consent" type="checkbox"/>
+       <span>
+        I understand verified scouts may view my profile according to my visibility settings.
+        <small>
+         Scout visibility also depends on account verification and profile-readiness rules.
+        </small>
+       </span>
+      </label>
+      <label class="consent-item">
+       <input class="required-adult-consent" type="checkbox"/>
+       <span>
+        I understand I can message scouts and respond to information requests independently once account rules allow.
+        <small>
+         The athlete controls whether to reply, share requested information, or decline.
+        </small>
+       </span>
+      </label>
+      <label class="consent-item">
+       <input class="required-adult-consent" type="checkbox"/>
+       <span>
+        I agree to the Privacy Policy and Terms.
+        <small>
+         Links will open the current legal documents before launch.
+        </small>
+       </span>
+      </label>
+     </div>
+    </div>
+    <div class="screen" data-step="guardian-verification">
+     <div class="info-box">
+      The platform stores only the verification result, provider reference, and timestamp. It should not store ID document images unless legal review requires it.
+     </div>
+     <div class="choice-grid">
+      <button class="choice" onclick="selectPassiveChoice(this)" type="button">
+       <strong>
+        Verify now
+       </strong>
+       <span>
+        Opens hosted third-party ID verification for the guardian.
+       </span>
+      </button>
+      <button class="choice" onclick="selectPassiveChoice(this)" type="button">
+       <strong>
+        Verify later
+       </strong>
+       <span>
+        Continue profile setup now. Scout visibility and messaging remain locked until verification is complete.
+       </span>
+      </button>
+     </div>
+    </div>
+    <div class="screen" data-step="adult-verification">
+     <span class="label">
+      Adult Verification
+     </span>
+     <h2>
+      Verify athlete identity
+     </h2>
+     <p>
+      Adult athletes verify identity and age through a secure third-party provider. This can be done now or later.
+     </p>
+     <div class="info-box">
+      The athlete can continue building the profile if verification is skipped, but scout visibility, messaging, and sensitive information sharing remain locked until adult identity verification is complete.
+     </div>
+     <div class="choice-grid">
+      <button class="choice" onclick="selectPassiveChoice(this)" type="button">
+       <strong>
+        Verify now
+       </strong>
+       <span>
+        Opens hosted third-party ID and age verification.
+       </span>
+      </button>
+      <button class="choice" onclick="selectPassiveChoice(this)" type="button">
+       <strong>
+        Verify later
+       </strong>
+       <span>
+        Continue profile setup in draft/limited mode and complete verification before publishing.
+       </span>
+      </button>
+     </div>
+     <div class="summary-grid">
+      <div class="summary-item">
+       <span>
+        Required for
+       </span>
+       <strong>
+        18+ athlete accounts
+       </strong>
+      </div>
+      <div class="summary-item">
+       <span>
+        Confirms
+       </span>
+       <strong>
+        Identity and adult age
+       </strong>
+      </div>
+      <div class="summary-item">
+       <span>
+        Stored by platform
+       </span>
+       <strong>
+        Verification status only
+       </strong>
+      </div>
+      <div class="summary-item">
+       <span>
+        If skipped
+       </span>
+       <strong>
+        Not scout-visible yet
+       </strong>
+      </div>
+     </div>
+    </div>
+    <div class="screen" data-step="profile-basics">
+     <span class="label">
+      Athlete Profile Setup
+     </span>
+     <h2>
+      Add athlete profile basics
+     </h2>
+     <p>
+      Add the baseline sport profile information. Account permissions and approval rules depend on the athlete age band and guardian consent mode.
+     </p>
+     <div class="form-grid">
+      <div class="field">
+       <label>
+        Primary sport <span class="required">*</span>
+       </label>
+       <select>
+        <option>
+         Soccer
+        </option>
+        <option>
+         Basketball
+        </option>
+        <option>
+         Tennis
+        </option>
+       </select>
+      </div>
+      <div class="field">
+       <label>
+        Location <span class="required">*</span>
+       </label>
+       <input placeholder="City, country" type="text"/>
+      </div>
+      <div class="field">
+       <label>
+        Club / team <span class="required">*</span>
+       </label>
+       <input placeholder="Current club or school" type="text"/>
+      </div>
+      <div class="field">
+       <label>
+        Position / role <span class="required">*</span>
+       </label>
+       <input placeholder="Example: Forward" type="text"/>
+      </div>
+      <div class="field">
+       <label>
+        Profile visibility <span class="required">*</span>
+       </label>
+       <select>
+        <option>
+         Visible to verified scouts
+        </option>
+        <option>
+         Private draft
+        </option>
+       </select>
+      </div>
+     </div>
+    </div>
+    <div class="screen" data-step="scout-placeholder">
+     <span class="label">
+      Professional / Scout
+     </span>
+     <h2>
+      Scout signup will be specified next
+     </h2>
+     <p>
+      Athlete signup now covers the under-14, 14-15, 16-17, and 18+ account-rule branches. The professional signup branch will be completed separately.
+     </p>
+    </div>
+    <div class="screen" data-step="age-placeholder">
+     <span class="label">
+      Future Age Group
+     </span>
+     <h2 id="agePlaceholderTitle">
+      This age group will be specified next
+     </h2>
+     <p id="agePlaceholderCopy">
+      The current signup wireframe implements Under 14, 14-15, 16-17, and 18+. This selected age group will be expanded after the rules are confirmed.
+     </p>
+    </div>
+    <div class="actions">
+     <button class="button btn-light" id="backButton" onclick="goBack()">
+      Back
+     </button>
+     <button class="button btn-primary" id="nextButton" onclick="goNext()">
+      Continue
+     </button>
+    </div>
+   </section>
+   <section class="rule-list path-hidden" id="teenRuleNote">
+    <div class="rule-note-header">
+     <div>
+      <h3>
+       Wireframe rule note: 14-15 supervised accounts
+      </h3>
+      <p>
+       This is a product rule behind the screen, not a user-facing signup field.
+      </p>
+     </div>
+     <span class="rule-chip">
+      Spec note
+     </span>
+    </div>
+    <div class="rule-card-grid">
+     <div class="rule-card">
+      <strong>
+       Account structure
+      </strong>
+      <ul>
+       <li>
+        Athlete and guardian are separate user accounts.
+       </li>
+       <li>
+        Both accounts are linked to one athlete profile.
+       </li>
+       <li>
+        Each user has their own email and password.
+       </li>
+      </ul>
+     </div>
+     <div class="rule-card allowed">
+      <strong>
+       Athlete can edit directly
+      </strong>
+      <ul>
+       <li>
+        Non-sensitive sport profile information.
+       </li>
+       <li>
+        Stats, position, club/team, achievements, and recruiting media.
+       </li>
+      </ul>
+     </div>
+     <div class="rule-card approval">
+      <strong>
+       Guardian approval required
+      </strong>
+      <ul>
+       <li>
+        Messages and information request responses.
+       </li>
+       <li>
+        Visibility settings, contact details, protected documents, and sensitive fields.
+       </li>
+      </ul>
+     </div>
+     <div class="rule-card">
+      <strong>
+       MVP approval model
+      </strong>
+      <ul>
+       <li>
+        One generic queue: pending guardian approval.
+       </li>
+       <li>
+        Guardian can approve, reject, or edit before sensitive information is sent, visible, or shared.
+       </li>
+      </ul>
+     </div>
+    </div>
+   </section>
+   <section class="rule-list path-hidden" id="olderTeenRuleNote">
+    <div class="rule-note-header">
+     <div>
+      <h3>
+       Wireframe rule note: 16-17 connected accounts
+      </h3>
+      <p>
+       This explains the product rule behind the 16-17 access choice before either signup path starts.
+      </p>
+     </div>
+     <span class="rule-chip">
+      Spec note
+     </span>
+    </div>
+    <div class="rule-card-grid">
+     <div class="rule-card">
+      <strong>
+       Account structure
+      </strong>
+      <ul>
+       <li>
+        Athlete and guardian are separate user accounts linked to one athlete profile.
+       </li>
+       <li>
+        Guardian remains connected until adult transfer or explicit relationship change.
+       </li>
+      </ul>
+     </div>
+     <div class="rule-card approval">
+      <strong>
+       Supervised mode
+      </strong>
+      <ul>
+       <li>
+        Same approval pattern as 14-15.
+       </li>
+       <li>
+        Messages, request responses, and sensitive sharing wait for guardian approval.
+       </li>
+      </ul>
+     </div>
+     <div class="rule-card allowed">
+      <strong>
+       Independent mode
+      </strong>
+      <ul>
+       <li>
+        The starter can request it, but both athlete and guardian must confirm.
+       </li>
+       <li>
+        Athlete can handle scout communication and recruiting information sharing directly only after joint consent.
+       </li>
+      </ul>
+     </div>
+     <div class="rule-card">
+      <strong>
+       Consent fallback
+      </strong>
+      <ul>
+       <li>
+        If either side declines or does not confirm, supervised mode wins.
+       </li>
+       <li>
+        Guardian keeps view access, safety settings, consent controls, adult-transfer controls, and can return independent mode to supervised later.
+       </li>
+      </ul>
+     </div>
+    </div>
+   </section>
+  </main>
+  <script>
+const sequences = {
+  under14: ['profile-type', 'dob', 'guardian', 'consent', 'guardian-verification', 'profile-basics'],
+  teen1415Athlete: ['profile-type', 'dob', 'teen-access', 'teen-account-athlete', 'profile-basics'],
+  teen1415Guardian: ['profile-type', 'dob', 'teen-access', 'teen-account-guardian', 'teen-consent', 'guardian-verification', 'profile-basics'],
+  teen1617Athlete: ['profile-type', 'dob', 'older-teen-access', 'older-teen-account-athlete', 'profile-basics'],
+  teen1617Guardian: ['profile-type', 'dob', 'older-teen-access', 'older-teen-account-guardian', 'older-teen-consent', 'guardian-verification', 'profile-basics'],
+  adult: ['profile-type', 'dob', 'adult-account', 'adult-consent', 'adult-verification', 'profile-basics'],
+  scout: ['profile-type', 'scout-placeholder'],
+  placeholder: ['profile-type', 'dob', 'age-placeholder']
+};
+let activeSequence = sequences.under14;
+let currentStep = 'profile-type';
+let selected = {
+  profileType: '',
+  manager: '',
+  ageBand: 'under14',
+  commMode: '',
+};
+const copy = {
+  'profile-type': ['Choose Profile Type', 'Start by choosing which profile you want to create.'],
+  dob: ['Athlete Age Group', 'The system applies age-based account rules before showing management options.'],
+  guardian: ['Guardian Account Details', 'Under-14 athlete profiles must be created and managed by a verified guardian.'],
+  consent: ['Parent / Guardian Consent', 'Confirm authority, data processing, scout visibility, and messaging rules.'],
+  'teen-access': ['Supervised Athlete Access', 'Athletes aged 14-15 can log in, but guardian approval is required for messages.'],
+  'teen-account-athlete': ['Athlete Starts', 'Create the supervised athlete login and send guardian approval by email.'],
+  'teen-account-guardian': ['Guardian Starts', 'Create the guardian account and optionally invite the athlete later.'],
+  'teen-consent': ['Guardian Consent', 'Confirm supervised access, profile visibility, and message approval rules.'],
+  'older-teen-access': ['Connected Guardian Access', 'Athletes aged 16-17 can have more independence, but guardian connection remains required.'],
+  'older-teen-account-athlete': ['Athlete Starts', 'Create the connected athlete login and send guardian consent by email.'],
+  'older-teen-account-guardian': ['Guardian Starts', 'Create the guardian account and invite the athlete to activate their login.'],
+  'older-teen-consent': ['Guardian Consent', 'Confirm connection, safety settings, and the selected communication mode.'],
+  'adult-account': ['Independent Athlete Account', 'Adult athletes create their own login and manage their own profile.'],
+  'adult-consent': ['Adult Account Consent', 'Confirm ownership, visibility, data processing, messaging, and platform terms.'],
+  'guardian-verification': ['Guardian Verification', 'Verify guardian identity now, or continue and verify later before scout visibility.'],
+  'adult-verification': ['Adult Verification', 'Verify adult athlete identity now, or continue and verify later before scout visibility.'],
+  'profile-basics': ['Athlete Profile Basics', 'Add the core sport profile information before finishing signup.'],
+  'scout-placeholder': ['Professional / Scout Signup', 'This branch will be specified after the under-14 athlete flow is confirmed.'],
+  'age-placeholder': ['Age Group Placeholder', 'This branch will be specified after the current age-group rules are confirmed.']
+};
+function render() {
+  document.querySelectorAll('.screen').forEach(screen => {
+    screen.classList.toggle('active', screen.dataset.step === currentStep);
+  });
+  const teenRuleNote = document.getElementById('teenRuleNote');
+  if (teenRuleNote) {
+    teenRuleNote.classList.toggle('path-hidden', currentStep !== 'teen-access');
+  }
+  const olderTeenRuleNote = document.getElementById('olderTeenRuleNote');
+  if (olderTeenRuleNote) {
+    olderTeenRuleNote.classList.toggle('path-hidden', currentStep !== 'older-teen-access');
+  }
+  const index = activeSequence.includes(currentStep) ? activeSequence.indexOf(currentStep) : 0;
+  document.getElementById('screenTitle').textContent = copy[currentStep][0];
+  document.getElementById('screenSubtitle').textContent = copy[currentStep][1];
+  document.getElementById('stepCount').textContent = currentStep === 'scout-placeholder' ? 'Placeholder' : `Step ${index + 1} of ${activeSequence.length}`;
+  document.getElementById('progressBar').style.width = currentStep === 'scout-placeholder' ? '16%' : `${((index + 1) / activeSequence.length) * 100}%`;
+  document.getElementById('backButton').style.visibility = currentStep === 'profile-type' ? 'hidden' : 'visible';
+  document.getElementById('nextButton').textContent = currentStep === 'profile-basics' ? 'Finish Signup' : 'Continue';
+  const supervisedChoiceRequired = currentStep === 'teen-access' && !selected.manager;
+  const olderTeenChoiceRequired = currentStep === 'older-teen-access' && !selected.manager;
+  const commModeRequired = (currentStep === 'older-teen-account-guardian' || currentStep === 'older-teen-account-athlete') && !selected.commMode;
+  const ageBandRequired = currentStep === 'dob' && !selected.ageBand;
+  document.getElementById('nextButton').disabled = (currentStep === 'profile-type' && !selected.profileType) || ageBandRequired || supervisedChoiceRequired || olderTeenChoiceRequired || commModeRequired;
+  updateTeenPathCopy();
+  updateOlderTeenPathCopy();
+  updateAgePlaceholderCopy();
+}
+function selectChoice(key, value, button) {
+  selected[key] = value;
+  if (key === 'profileType') {
+    selected.manager = '';
+    selected.ageBand = '';
+    selected.commMode = '';
+    document.querySelectorAll('[data-step="teen-access"] .choice').forEach(choice => choice.classList.remove('selected'));
+    document.querySelectorAll('[data-step="older-teen-access"] .choice').forEach(choice => choice.classList.remove('selected'));
+    document.querySelectorAll('[data-step="older-teen-account-guardian"] [data-comm-choice]').forEach(choice => choice.classList.remove('selected'));
+  }
+  if (key === 'ageBand') {
+    selected.manager = '';
+    selected.commMode = '';
+    document.querySelectorAll('[data-step="teen-access"] .choice').forEach(choice => choice.classList.remove('selected'));
+    document.querySelectorAll('[data-step="older-teen-access"] .choice').forEach(choice => choice.classList.remove('selected'));
+    document.querySelectorAll('[data-step="older-teen-account-guardian"] [data-comm-choice]').forEach(choice => choice.classList.remove('selected'));
+  }
+  if (key === 'manager') {
+    if (selected.ageBand === 'teen1415') {
+      activeSequence = value === 'guardian_supervised' ? sequences.teen1415Guardian : sequences.teen1415Athlete;
+    } else if (selected.ageBand === 'teen1617') {
+      activeSequence = value === 'guardian_older' ? sequences.teen1617Guardian : sequences.teen1617Athlete;
+    }
+  }
+  button.parentElement.querySelectorAll('.choice').forEach(choice => choice.classList.remove('selected'));
+  button.classList.add('selected');
+  render();
+}
+function selectPassiveChoice(button) {
+  button.parentElement.querySelectorAll('.choice').forEach(choice => choice.classList.remove('selected'));
+  button.classList.add('selected');
+}
+function goNext() {
+  if (currentStep === 'profile-type') {
+    activeSequence = selected.profileType === 'scout' ? sequences.scout : sequences.under14;
+    currentStep = selected.profileType === 'scout' ? 'scout-placeholder' : 'dob';
+  } else if (currentStep === 'dob') {
+    activeSequence = selected.ageBand === 'teen1617' ? sequences.teen1617Athlete : selected.ageBand === 'teen1415' ? sequences.teen1415Athlete : selected.ageBand === 'adult' ? sequences.adult : selected.ageBand === 'under14' ? sequences.under14 : sequences.placeholder;
+    currentStep = selected.ageBand === 'teen1617' ? 'older-teen-access' : selected.ageBand === 'teen1415' ? 'teen-access' : selected.ageBand === 'adult' ? 'adult-account' : selected.ageBand === 'under14' ? 'guardian' : 'age-placeholder';
+  } else if (currentStep === 'teen-access') {
+    currentStep = selected.manager === 'guardian_supervised' ? 'teen-account-guardian' : 'teen-account-athlete';
+  } else if (currentStep === 'teen-account-athlete') {
+    currentStep = 'profile-basics';
+  } else if (currentStep === 'teen-account-guardian') {
+    currentStep = 'teen-consent';
+  } else if (currentStep === 'teen-consent') {
+    currentStep = selected.manager === 'guardian_supervised' ? 'guardian-verification' : 'profile-basics';
+  } else if (currentStep === 'older-teen-access') {
+    if (selected.manager === 'athlete_older' && !selected.commMode) {
+      selected.commMode = 'supervised_1617';
+    }
+    currentStep = selected.manager === 'guardian_older' ? 'older-teen-account-guardian' : 'older-teen-account-athlete';
+  } else if (currentStep === 'older-teen-account-athlete') {
+    currentStep = 'profile-basics';
+  } else if (currentStep === 'older-teen-account-guardian') {
+    currentStep = 'older-teen-consent';
+  } else if (currentStep === 'older-teen-consent') {
+    currentStep = selected.manager === 'guardian_older' ? 'guardian-verification' : 'profile-basics';
+  } else if (currentStep === 'guardian-verification') {
+    currentStep = 'profile-basics';
+  } else if (currentStep === 'adult-account') {
+    currentStep = 'adult-consent';
+  } else if (currentStep === 'adult-consent') {
+    currentStep = 'adult-verification';
+  } else if (currentStep === 'adult-verification') {
+    currentStep = 'profile-basics';
+  } else if (currentStep === 'guardian') {
+    currentStep = 'consent';
+  } else if (currentStep === 'consent') {
+    currentStep = 'guardian-verification';
+  }
+  render();
+}
+function goBack() {
+  if (currentStep === 'scout-placeholder') {
+    currentStep = 'profile-type';
+  } else if (currentStep === 'dob') {
+    currentStep = 'profile-type';
+  } else if (currentStep === 'teen-access') {
+    currentStep = 'dob';
+  } else if (currentStep === 'older-teen-access') {
+    currentStep = 'dob';
+  } else if (currentStep === 'adult-account') {
+    currentStep = 'dob';
+  } else if (currentStep === 'teen-account-athlete' || currentStep === 'teen-account-guardian') {
+    currentStep = 'teen-access';
+  } else if (currentStep === 'teen-consent') {
+    currentStep = selected.manager === 'guardian_supervised' ? 'teen-account-guardian' : 'teen-account-athlete';
+  } else if (currentStep === 'guardian-verification') {
+    currentStep = selected.ageBand === 'teen1617'
+      ? 'older-teen-consent'
+      : selected.ageBand === 'teen1415'
+        ? 'teen-consent'
+        : 'consent';
+  } else if (currentStep === 'older-teen-account-athlete' || currentStep === 'older-teen-account-guardian') {
+    currentStep = 'older-teen-access';
+  } else if (currentStep === 'older-teen-consent') {
+    currentStep = selected.manager === 'guardian_older' ? 'older-teen-account-guardian' : 'older-teen-account-athlete';
+  } else if (currentStep === 'adult-consent') {
+    currentStep = 'adult-account';
+  } else if (currentStep === 'adult-verification') {
+    currentStep = 'adult-consent';
+  } else if (currentStep === 'guardian') {
+    currentStep = 'dob';
+  } else if (currentStep === 'consent') {
+    currentStep = 'guardian';
+  } else if (currentStep === 'profile-basics') {
+    currentStep = selected.ageBand === 'teen1617'
+      ? selected.manager === 'guardian_older' ? 'guardian-verification' : 'older-teen-account-athlete'
+      : selected.ageBand === 'teen1415'
+        ? selected.manager === 'guardian_supervised' ? 'guardian-verification' : 'teen-account-athlete'
+        : selected.ageBand === 'adult'
+          ? 'adult-verification'
+          : 'guardian-verification';
+  } else if (currentStep === 'age-placeholder') {
+    currentStep = 'dob';
+  }
+  render();
+}
+function switchTeenSignupPath(value) {
+  selected.manager = value;
+  activeSequence = value === 'guardian_supervised' ? sequences.teen1415Guardian : sequences.teen1415Athlete;
+  currentStep = value === 'guardian_supervised' ? 'teen-account-guardian' : 'teen-account-athlete';
+  document.querySelectorAll('[data-step="teen-access"] .choice').forEach(choice => {
+    choice.classList.toggle('selected', choice.dataset.managerChoice === value);
+  });
+  render();
+}
+function selectOlderTeenInlineMode(value, button) {
+  selected.manager = 'athlete_older';
+  selected.commMode = value;
+  activeSequence = sequences.teen1617Athlete;
+  currentStep = 'older-teen-account-athlete';
+  button.parentElement.querySelectorAll('.choice').forEach(choice => choice.classList.remove('selected'));
+  button.classList.add('selected');
+  renderOlderTeenInlineConsent(value === 'independent_1617');
+  render();
+}
+function updateTeenPathCopy() {
+  const athleteStarted = selected.manager === 'athlete_supervised';
+  const consentLabel = document.getElementById('teenConsentLabel');
+  const consentTitle = document.getElementById('teenConsentTitle');
+  const consentIntro = document.getElementById('teenConsentIntro');
+  const consentScreen = document.querySelector('[data-step="teen-consent"]');
+  if (consentScreen) {
+    consentScreen.classList.toggle('email-preview-mode', athleteStarted);
+  }
+  if (!consentLabel || !consentTitle || !consentIntro) return;
+  if (athleteStarted) {
+    consentLabel.textContent = 'Email Preview';
+    consentTitle.textContent = 'Guardian opens approval link';
+    consentIntro.textContent = 'This is not an athlete-facing form. It represents the consent page the guardian reaches from the secure email link.';
+  } else {
+    consentLabel.textContent = 'Guardian Consent';
+    consentTitle.textContent = 'Consent for supervised athlete account';
+    consentIntro.textContent = 'The guardian confirms supervised access directly inside the platform.';
+  }
+}
+function renderOlderTeenInlineConsent(independentMode) {
+  const list = document.getElementById('olderTeenInlineConsentList');
+  if (!list) return;
+  const sharedStart = `
+       <label class="consent-item">
+        <input class="required-older-teen-consent" type="checkbox"/>
+        <span>
+         I confirm that I am the parent or legal guardian of this athlete.
+         <small>Guardian connection remains required for athletes aged 16-17.</small>
+        </span>
+       </label>
+       <label class="consent-item">
+        <input class="required-older-teen-consent" type="checkbox"/>
+        <span>
+         I consent to this athlete having their own connected athlete account.
+         <small>Athlete and guardian have separate logins linked to the same athlete profile.</small>
+        </span>
+       </label>`;
+  const sharedEnd = `
+       <label class="consent-item">
+        <input class="required-older-teen-consent" type="checkbox"/>
+        <span>
+         I consent to athlete profile information being processed for athlete discovery and recruiting review.
+         <small>Verified scouts may view the profile according to visibility settings.</small>
+        </span>
+       </label>
+       <label class="consent-item">
+        <input class="required-older-teen-consent" type="checkbox"/>
+        <span>
+         I agree to the Privacy Policy and Terms.
+         <small>Links will open the current legal documents before launch.</small>
+        </span>
+       </label>`;
+  const modeSpecific = independentMode
+    ? `
+       <label class="consent-item">
+        <input class="required-older-teen-consent" type="checkbox"/>
+        <span>
+         I consent to this 16-17 athlete managing scout communication and recruiting information sharing independently.
+         <small>This includes messages, information request responses, requested media/documents, and related recruiting follow-up.</small>
+        </span>
+       </label>
+       <label class="consent-item">
+        <input class="required-older-teen-consent" type="checkbox"/>
+        <span>
+         I understand that guardian approval will not be required for routine scout communication in independent mode.
+         <small>Guardian remains connected for oversight, safety settings, consent controls, and adult transfer.</small>
+        </span>
+       </label>
+       <label class="consent-item">
+        <input class="required-older-teen-consent" type="checkbox"/>
+        <span>
+         I understand that if I do not approve independent communication, the account will use supervised mode.
+         <small>The athlete account can still activate, but guardian approval will be required for sensitive communication and sharing.</small>
+        </span>
+       </label>`
+    : `
+       <label class="consent-item">
+        <input class="required-older-teen-consent" type="checkbox"/>
+        <span>
+         I understand that messages, information request responses, and sensitive sharing require guardian approval in supervised mode.
+         <small>Athlete drafts are held in the pending approval queue before being sent or shared.</small>
+        </span>
+       </label>`;
+  list.innerHTML = sharedStart + modeSpecific + sharedEnd;
+}
+function updateOlderTeenPathCopy() {
+  const athleteStarted = selected.manager === 'athlete_older';
+  if (athleteStarted && currentStep === 'older-teen-account-athlete' && !selected.commMode) {
+    selected.commMode = 'supervised_1617';
+  }
+  const independentMode = selected.commMode === 'independent_1617';
+  const accountIntro = document.getElementById('olderTeenAccountIntro');
+  const accountNotice = document.getElementById('olderTeenAccountNotice');
+  const consentLabel = document.getElementById('olderTeenConsentLabel');
+  const consentTitle = document.getElementById('olderTeenConsentTitle');
+  const inlineConsentVersion = document.getElementById('olderTeenInlineConsentVersion');
+  const inlineEmailSubject = document.getElementById('olderTeenInlineEmailSubject');
+  const consentIntro = document.getElementById('olderTeenConsentIntro');
+  const modeNotice = document.getElementById('olderTeenModeNotice');
+  const consentScreen = document.querySelector('[data-step="older-teen-consent"]');
+  document.querySelectorAll('.older-athlete-start-field').forEach(field => field.classList.toggle('path-hidden', !athleteStarted));
+  document.querySelectorAll('.older-guardian-start-field').forEach(field => field.classList.toggle('path-hidden', athleteStarted));
+  document.querySelectorAll('.older-supervised-consent').forEach(field => field.classList.toggle('path-hidden', independentMode));
+  document.querySelectorAll('.older-independent-consent').forEach(field => field.classList.toggle('path-hidden', !independentMode));
+  document.querySelectorAll('[data-step="older-teen-account-athlete"] [data-comm-choice]').forEach(choice => {
+    choice.classList.toggle('selected', choice.dataset.commChoice === selected.commMode);
+  });
+  document.querySelectorAll('[data-step="older-teen-account-guardian"] [data-comm-choice]').forEach(choice => {
+    choice.classList.toggle('selected', choice.dataset.commChoice === selected.commMode);
+  });
+  if (inlineConsentVersion) {
+    inlineConsentVersion.textContent = independentMode ? 'Consent version: Independent communication' : 'Consent version: Supervised mode';
+  }
+  if (inlineEmailSubject) {
+    inlineEmailSubject.textContent = independentMode ? 'Approve independent communication for a 16-17 athlete' : 'Confirm supervised guardian consent for a 16-17 athlete';
+  }
+  renderOlderTeenInlineConsent(independentMode);
+  if (consentScreen) {
+    consentScreen.classList.toggle('email-preview-mode', athleteStarted);
+  }
+  if (accountIntro && accountNotice) {
+    if (athleteStarted) {
+      accountIntro.textContent = 'The athlete creates their own login and provides guardian name, email, and relationship for the consent link.';
+      accountNotice.textContent = 'The guardian opens the secure link, verifies their email, and confirms the selected communication mode.';
+    } else {
+      accountIntro.textContent = 'The guardian connects first and provides the athlete email for activation.';
+      accountNotice.textContent = 'After guardian consent, the guardian can continue profile setup. The athlete invitation remains pending until the athlete activates their login.';
+    }
+  }
+  if (modeNotice) {
+    modeNotice.textContent = independentMode
+      ? 'Independent mode is a request until both sides confirm. If either guardian or athlete declines, supervised mode wins.'
+      : 'Supervised mode keeps the same approval pattern as 14-15 for sensitive communication and sharing, and no independent-consent field is shown.';
+  }
+  if (consentIntro) {
+    consentIntro.textContent = independentMode
+      ? athleteStarted
+        ? 'This is not an athlete-facing form. The guardian opened this secure email link to approve the requested communication mode.'
+        : 'The guardian requested independent communication. The athlete must also accept it when activating their login.'
+      : athleteStarted
+        ? 'This is not an athlete-facing form. The guardian opened this secure email link to confirm connected guardian access.'
+        : 'The guardian confirms connected access, profile visibility, and supervised approval rules.';
+  }
+  if (consentLabel && consentTitle) {
+    consentLabel.textContent = athleteStarted ? 'Email Preview' : 'Guardian Consent';
+    consentTitle.textContent = athleteStarted ? 'Guardian opens consent link' : 'Consent for age 16-17 account';
+  }
+}
+function updateAgePlaceholderCopy() {
+  const title = document.getElementById('agePlaceholderTitle');
+  const copy = document.getElementById('agePlaceholderCopy');
+  if (!title || !copy) return;
+  title.textContent = 'This age group will be specified next';
+  copy.textContent = 'The current signup wireframe implements Under 14, 14-15, 16-17, and 18+. This selected age group will be expanded after the rules are confirmed.';
+}
+render();
+document.querySelectorAll('.required-consent').forEach(box => box.addEventListener('change', render));
+document.querySelectorAll('.required-teen-consent').forEach(box => box.addEventListener('change', render));
+document.querySelectorAll('.required-older-teen-consent').forEach(box => box.addEventListener('change', render));
+document.querySelectorAll('.required-adult-consent').forEach(box => box.addEventListener('change', render));
+  </script>
+ </body>
+</html>

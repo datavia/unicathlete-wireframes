@@ -502,9 +502,6 @@ select:focus, input:focus {
      <a href="../index.html">
       Platform
      </a>
-     <a href="../signup.html">
-      Create Account
-     </a>
      <a href="../athlete/overview.html">
       Athlete View
      </a>
@@ -519,7 +516,7 @@ select:focus, input:focus {
     Recruiter Overview
    </a>
    <a href="scout-profile.html">
-    Scout Profile
+    Professional Profile
    </a>
    <a href="dashboard.html">
     Dashboard
@@ -544,9 +541,9 @@ select:focus, input:focus {
       Discover Athletes
      </h1>
     </div>
-	    <a class="button btn-primary" href="#">
-	     Save Search as Project
-	    </a>
+    <a class="button btn-primary" href="#">
+     Save as Project
+    </a>
    </div>
    <div class="layout">
     <div class="card filters">
@@ -880,21 +877,13 @@ select:focus, input:focus {
      </div>
     </div>
     <div>
-	     <div class="card search-panel">
-	      <input class="search-box" placeholder="Search by name, position, club, country, or recruiting criteria..."/>
-	      <a class="button btn-dark" href="#">
-	       Search
-	      </a>
-	     </div>
-	     <div class="card" style="margin:0 0 14px; padding:12px; background:#eff6ff; border-color:#bfdbfe;">
-	      <strong style="display:block; color:#1d4ed8; margin-bottom:4px;">
-	       Save to Project
-	      </strong>
-	      <p style="font-size:13px;">
-	       Saving adds the athlete to the selected project's Saved Athletes longlist. Pipeline starts later when the scout chooses Add to Pipeline.
-	      </p>
-	     </div>
-	     <div class="results">
+     <div class="card search-panel">
+      <input class="search-box" placeholder="Search by name, position, club, country, or recruiting criteria..."/>
+      <a class="button btn-dark" href="#">
+       Search
+      </a>
+     </div>
+     <div class="results">
       <div class="athlete-card">
        <div>
         <div class="athlete-main">
@@ -933,25 +922,25 @@ select:focus, input:focus {
         </button>
         <div class="destination-select">
          <button class="button btn-light">
-          Save to selected project...
+          Add to selected workspace...
          </button>
          <div class="destination-menu">
           <button class="destination-option" onclick="addToWorkspace(this, 'Toronto Academy &middot; U17 Midfielders')">
            Toronto Academy &middot; U17 Midfielders
            <small>
-            Project saved athletes list
+            Organization project / recruiting focus
            </small>
           </button>
           <button class="destination-option" onclick="addToWorkspace(this, 'Toronto Academy &middot; Spain Targets')">
            Toronto Academy &middot; Spain Targets
            <small>
-            Project saved athletes list
+            Organization project / recruiting focus
            </small>
           </button>
           <button class="destination-option" onclick="addToWorkspace(this, 'My Individual Workspace &middot; Personal Watchlist')">
            My Individual Workspace &middot; Personal Watchlist
            <small>
-            Private project saved athletes list
+            Private project
            </small>
           </button>
          </div>
@@ -993,25 +982,25 @@ select:focus, input:focus {
         </button>
         <div class="destination-select">
          <button class="button btn-light">
-          Save to selected project...
+          Add to selected workspace...
          </button>
          <div class="destination-menu">
           <button class="destination-option" onclick="addToWorkspace(this, 'Toronto Academy &middot; U17 Midfielders')">
            Toronto Academy &middot; U17 Midfielders
            <small>
-            Project saved athletes list
+            Organization project / recruiting focus
            </small>
           </button>
           <button class="destination-option" onclick="addToWorkspace(this, 'Toronto Academy &middot; Spain Targets')">
            Toronto Academy &middot; Spain Targets
            <small>
-            Project saved athletes list
+            Organization project / recruiting focus
            </small>
           </button>
           <button class="destination-option" onclick="addToWorkspace(this, 'My Individual Workspace &middot; Personal Watchlist')">
            My Individual Workspace &middot; Personal Watchlist
            <small>
-            Private project saved athletes list
+            Private project
            </small>
           </button>
          </div>
@@ -1053,25 +1042,25 @@ select:focus, input:focus {
         </button>
         <div class="destination-select">
          <button class="button btn-light">
-          Save to selected project...
+          Add to selected workspace...
          </button>
          <div class="destination-menu">
           <button class="destination-option" onclick="addToWorkspace(this, 'Toronto Academy &middot; U17 Midfielders')">
            Toronto Academy &middot; U17 Midfielders
            <small>
-            Project saved athletes list
+            Organization project / recruiting focus
            </small>
           </button>
           <button class="destination-option" onclick="addToWorkspace(this, 'Toronto Academy &middot; Spain Targets')">
            Toronto Academy &middot; Spain Targets
            <small>
-            Project saved athletes list
+            Organization project / recruiting focus
            </small>
           </button>
           <button class="destination-option" onclick="addToWorkspace(this, 'My Individual Workspace &middot; Personal Watchlist')">
            My Individual Workspace &middot; Personal Watchlist
            <small>
-            Private project saved athletes list
+            Private project
            </small>
           </button>
          </div>
@@ -1166,7 +1155,7 @@ function updateProjectPreview() {
 function addToWorkspace(option, workspaceName){
   const menu = option.closest(".destination-select");
   const btn = menu.querySelector(".button");
-  btn.innerText = "✓ Saved";
+  btn.innerText = "✓ Added";
   btn.style.background = "#dcfce7";
   btn.style.color = "#166534";
   btn.style.borderColor = "#22c55e";

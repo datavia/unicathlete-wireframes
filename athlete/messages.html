@@ -484,6 +484,65 @@ p {
   font-weight:800;
   font-size:13px
 }
+.trust-preview-toggle summary {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  cursor:pointer;
+  list-style:none;
+  margin-top:8px
+}
+.trust-preview-toggle summary::-webkit-details-marker {
+  display:none
+}
+.trust-preview-toggle summary::after {
+  content:"Show";
+  border:1px solid #bfdbfe;
+  background:white;
+  color:var(--blue);
+  border-radius:999px;
+  padding:5px 9px;
+  font-size:11px;
+  font-weight:900
+}
+.trust-preview-toggle[open] summary::after {
+  content:"Hide";
+  background:var(--blue);
+  color:white
+}
+.trust-card-preview {
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+  background:#f9fafb;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:14px;
+  margin-top:12px
+}
+.trust-avatar {
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:var(--navy);
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  flex-shrink:0
+}
+.trust-card-preview h3 {
+  margin:0 0 4px;
+  color:var(--navy);
+  font-size:16px
+}
+.trust-card-preview p {
+  margin:0 0 8px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.4
+}
 .note {
   background:#fff7ed;
   color:#9a3412;
@@ -543,6 +602,9 @@ p {
      <a href="../index.html">
       Platform
      </a>
+     <a href="../signup.html">
+      Create Account
+     </a>
      <a class="active" href="overview.html">
       Athlete View
      </a>
@@ -571,8 +633,8 @@ p {
     <h1>
      Athlete Messages
     </h1>
-    <p>
-     Communicate with verified professional workspaces. Some threads may include multiple approved professionals from the same organization.
+	    <p>
+	     Communicate directly with verified scouts. If different scouts from the same organization contact you, each scout can have a separate conversation.
     </p>
    </div>
    <div class="conversation-layout">
@@ -581,14 +643,14 @@ p {
       Conversations
      </h2>
      <div class="list">
-      <div class="item highlight">
-       <div class="item-title">
-        Toronto Academy
-       </div>
-       <div class="item-meta">
-         2 professionals participating
-        <br/>
-       </div>
+	      <div class="item highlight">
+	       <div class="item-title">
+	        Mike Brown &middot; Toronto Academy
+	       </div>
+	       <div class="item-meta">
+	         Sports Recruiter &middot; Toronto, Canada
+	        <br/>
+	       </div>
        <span class="tag orange">
         Request Active
        </span>
@@ -596,26 +658,26 @@ p {
         New Message
        </span>
       </div>
-      <div class="item">
-       <div class="item-title">
-        Spanish Partnership
-       </div>
-       <div class="item-meta">
-        Ana Martinez participating
-        <br/>
-       </div>
+	      <div class="item">
+	       <div class="item-title">
+	        Sarah Lee &middot; Toronto Academy
+	       </div>
+	       <div class="item-meta">
+	        Sports Recruiter &middot; Toronto, Canada
+	        <br/>
+	       </div>
        <span class="tag purple">
         Opportunity
        </span>
       </div>
-      <div class="item">
-       <div class="item-title">
-        University Recruiting Office
-       </div>
-       <div class="item-meta">
-        1 professional participating
-        <br/>
-       </div>
+	      <div class="item">
+	       <div class="item-title">
+	        Ana Martinez &middot; Global Soccer Partners
+	       </div>
+	       <div class="item-meta">
+	        Sports Recruiter &middot; Madrid, Spain
+	        <br/>
+	       </div>
        <span class="tag green">
         Completed Request
        </span>
@@ -624,28 +686,51 @@ p {
     <div class="section chat-box">
      <div class="item-head">
       <div>
-       <h2>
-        Toronto Academy
-       </h2>
-       <p>
-        Workspace conversation &middot; Participants: Mike Brown, Sarah Lee, Alex Kim
-        <br/>
-        Active request: Full match video · Due Jun 30 · Pending
-       </p>
-      </div>
+	       <h2>
+	        Mike Brown &middot; Toronto Academy
+	       </h2>
+	       <p>
+	        Direct scout-athlete conversation
+	        <br/>
+	        Active request: Full match video · Due Jun 30 · Pending
+	       </p>
+	       <details class="trust-preview-toggle">
+		        <summary>
+		         <strong>
+		          Scout details
+		         </strong>
+		        </summary>
+	        <div class="trust-card-preview">
+	         <div class="trust-avatar">
+	          MB
+	         </div>
+	         <div>
+	          <h3>
+	           Mike Brown
+	          </h3>
+	          <p>
+	           Sports Recruiter &middot; Toronto Academy &middot; Toronto, Canada
+	          </p>
+	          <span class="tag green">
+	           Verified by UnicAthlete
+	          </span>
+	         </div>
+	        </div>
+	       </details>
+	      </div>
       <a class="button btn-primary" href="#">
        Submit Media
       </a>
      </div>
-     <div class="messages">
-      <div class="bubble system">
-       Toronto Academy sent a Media Request. Messages in this thread are visible to approved Toronto Academy workspace members.
+	     <div class="messages">
+	      <div class="bubble system">
+	       Mike Brown sent a Media Request.
       </div>
       <div class="item" style="margin:0; background:#fff7ed; border-color:#fed7aa;">
        <div class="item-head">
         <div>
          <div class="item-title">Active Information Request</div>
-         <div class="item-meta">Media Request · Full match video · Due Jun 30 · Submit through this workspace thread.</div>
+         <div class="item-meta">Media Request · Full match video · Due Jun 30 · Submit to Mike Brown.</div>
         </div>
         <span class="status orange">Pending</span>
        </div>
@@ -664,11 +749,11 @@ p {
        <br/>
        Yes, I can upload the East York match today.
       </div>
-      <div class="bubble recruiter">
-       <strong>Sarah Lee &middot; Toronto Academy</strong>
-       <br/>
-       Thanks Alex. Once submitted, our scouting team will review it and follow up about trial availability.
-      </div>
+	      <div class="bubble recruiter">
+	       <strong>Mike Brown &middot; Toronto Academy</strong>
+	       <br/>
+	       Thanks Alex. Once submitted, I will review it and follow up about availability.
+	      </div>
      </div>
      <div class="actions">
       <a class="button btn-light" href="#" style="flex:1">
